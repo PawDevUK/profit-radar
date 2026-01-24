@@ -34,7 +34,7 @@ export default async function PlatformPage({ params }: PageProps) {
 			<div className='mb-6'>
 				<h1 className='text-3xl font-bold text-amazon'>{platform.name}</h1>
 				<p className='text-gray-600 mt-2'>
-					View and manage all invoices downloaded from this platform. You can log in to fetch new invoices or review existing records below.
+					View and manage all invoices downloaded from this platform. You can log in to download new invoices or review existing records below.
 				</p>
 			</div>
 
@@ -74,7 +74,7 @@ export default async function PlatformPage({ params }: PageProps) {
 			<div className='rounded-xl border bg-white border-gray-200 p-6'>
 				<h2 className='text-xl font-semibold text-gray-900 mb-4'>All Invoices</h2>
 				{totalInvoices === 0 ? (
-					<p className='text-gray-500 text-center py-8'>No invoices to display. Sync this platform to fetch invoices.</p>
+					<p className='text-gray-500 text-center py-8'>No invoices to display. Sync this platform to download invoices.</p>
 				) : (
 					<div className='overflow-x-auto'>
 						<table className='w-full text-left border-collapse'>
