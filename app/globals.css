@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+.bg-amazon {
+  background-color: #f5f3ef;
+}
+
+.mainPading {
+  padding: 0px 24px;
+}
+
+.text-amazon {
+  color: #161d26;
+}
+
+.hover-amazon {
+  bacground: #FF6200
+}
