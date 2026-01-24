@@ -89,7 +89,7 @@ export default function NavigationClient({ platforms }: NavigationClientProps) {
 					<div className='space-x-4'>
 						<span className='sr-only'>Skip to main content</span>
 						<Link href='/' className='text-3xl font-bold text-gray-700 hidden md:block'>
-							Fetch<span className='text-[#FF6200]'>y</span>
+							Profit<span className='text-[#FF6200] ml-2'>Radar</span>
 						</Link>
 					</div>
 					<div className='hidden md:flex items-center space-x-4'>
