@@ -55,7 +55,7 @@ export default async function PlatformPage({ params }: PageProps) {
 						<h3 className='text-sm font-medium text-gray-700 mb-1'>Account</h3>
 						<p className='text-sm text-gray-600'>{platform.username}</p>
 					</div>
-					<LoginButton isActive={platform.isActive} />
+					<LoginButton isActive={platform.isActive ?? false} />
 				</div>
 			</div>
 
