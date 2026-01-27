@@ -7,6 +7,7 @@ A comprehensive financial management and analytics platform for tracking and opt
 This project consists of multiple tools and a web application:
 
 **Web Application (Next.js):**
+
 - Interactive dashboard for viewing sales and auctions
 - Calendar view of upcoming sales with detailed information
 - Browsable catalog of cars available in each sale
@@ -14,6 +15,7 @@ This project consists of multiple tools and a web application:
 - Real-time bidding and "Buy It Now" interface
 
 **Backend Tools:**
+
 - Scraping car auction listings from Copart
 - Enriching car data with market prices from multiple countries
 - Generating interactive HTML reports with price comparisons
@@ -34,6 +36,7 @@ npm run dev
 The application will be available at `http://localhost:3000`
 
 **Features:**
+
 - **Dashboard**: Overview of sales and auctions
 - **Calendar Page** (`/calendar`): View upcoming sales across California locations
 - **Sale Results** (`/saleListResults/[id]`): Browse cars available in each sale
@@ -68,6 +71,7 @@ scraper/
 Displays all upcoming sales across California locations in a table format.
 
 **Features:**
+
 - Sale name and date
 - Number of lots available
 - "Buy It Now" opportunities count
@@ -76,6 +80,7 @@ Displays all upcoming sales across California locations in a table format.
 - Click any row to view cars for that sale
 
 **Data:**
+
 - 4 California locations: Hayward, Sacramento, San Diego, San Jose
 - Live update of auction status
 
@@ -84,6 +89,7 @@ Displays all upcoming sales across California locations in a table format.
 Browse all cars available in a specific sale.
 
 **Features:**
+
 - Table view of all vehicles
 - Lot information and vehicle details
 - Condition status (Excellent, Good, Fair)
@@ -96,6 +102,7 @@ Browse all cars available in a specific sale.
 Comprehensive view of a specific vehicle with all details.
 
 **Sections:**
+
 - **Sticky Header**: Quick access to current bid and navigation
 - **Vehicle Images**: Image gallery placeholder
 - **Lot Information**: Lot #, VIN, Lane/Item, Title code
