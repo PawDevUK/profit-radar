@@ -154,11 +154,7 @@ export default function SaleListResultsPage() {
 						</thead>
 						<tbody>
 							{cars.map((car, index) => (
-								<tr 
-									key={index}
-									onClick={() => handleRowClick(car.id)}
-									className='border-b border-gray-200 hover:bg-gray-100 transition-colors cursor-pointer'
-								>
+								<tr key={index} onClick={() => handleRowClick(car.id)} className='border-b border-gray-200 hover:bg-gray-100 transition-colors cursor-pointer'>
 									<td className='px-6 py-4 text-gray-700'>{car.image}</td>
 									<td className='px-6 py-4 text-gray-900 font-medium'>{car.lotInfo}</td>
 									<td className='px-6 py-4 text-gray-700'>{car.vehicleInfo}</td>
