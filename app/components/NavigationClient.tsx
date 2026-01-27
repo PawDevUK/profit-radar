@@ -1,25 +1,14 @@
 'use client';
 
 import Link from 'next/link';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { authService } from '../../lib/auth';
 
-type Platform = {
-	_id: string;
-	name: string;
-};
-
-type NavigationClientProps = {
-	platforms: Platform[];
-};
-
-export default function NavigationClient({ platforms }: NavigationClientProps) {
-	const [isOpen, setIsOpen] = useState(false);
+export default function NavigationClient() {
 	const [mobileOpen, setMobileOpen] = useState(false);
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const [currentUser, setCurrentUser] = useState<any>(null);
-	const dropdownRef = useRef<HTMLDivElement>(null);
 	const router = useRouter();
 
 	useEffect(() => {
@@ -48,19 +37,6 @@ export default function NavigationClient({ platforms }: NavigationClientProps) {
 		};
 	}, []);
 
-	useEffect(() => {
-		const handleClickOutside = (event: MouseEvent) => {
-			if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-				setIsOpen(false);
-			}
-		};
-
-		document.addEventListener('mousedown', handleClickOutside);
-		return () => {
-			document.removeEventListener('mousedown', handleClickOutside);
-		};
-	}, []);
-
 	const handleLogout = () => {
 		authService.logout();
 		setIsLoggedIn(false);
@@ -70,7 +46,7 @@ export default function NavigationClient({ platforms }: NavigationClientProps) {
 
 	const menuItems = [
 		{ href: '/dashboard', label: 'Dashboard' },
-		{ href: '/notifications', label: 'Notifications' },
+		{ href: '/calendar', label: 'Calendar' },
 		{ href: '/payables', label: 'Payables' },
 		{ href: '/documentation', label: 'Documentation' },
 		{ href: '/api', label: 'Api Connect' },
@@ -124,29 +100,6 @@ export default function NavigationClient({ platforms }: NavigationClientProps) {
 				<div className='flex justify-center items-center h-14'>
 					{/* Desktop Navigation */}
 					<div className='hidden md:flex items-center space-x-3'>
-						<div className='relative' ref={dropdownRef}>
-							<div
-								onClick={() => setIsOpen(!isOpen)}
-								className='flex items-center text-gray-700 hover:text-[#FF6200] hover:bg-[#EAE2D0] hover:shadow-lg px-3 py-2 text-lg font-medium cursor-pointer rounded-[5px] transition-all'>
-								Platforms
-								<svg className={`ml-1 w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-									<path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M19 9l-7 7-7-7' />
-								</svg>
-							</div>
-							<div
-								className={`absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg transition-opacity duration-200 z-10 ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
-								{platforms.length > 0 ? (
-									platforms.map((platform) => (
-										<Link key={platform._id} href={`/platform/${platform._id}`} className='block px-4 py-2 text-md text-gray-700 hover:bg-[#EAE2D0]'>
-											{platform.name}
-										</Link>
-									))
-								) : (
-									<div className='px-4 py-2 text-sm text-gray-500'>No platforms available</div>
-								)}
-							</div>
-						</div>
-
 						{menuItems.map((item) => (
 							<Link
 								key={item.href}
@@ -183,25 +136,6 @@ export default function NavigationClient({ platforms }: NavigationClientProps) {
 								</div>
 							</div>
 						)}
-						<div>
-							<div onClick={() => setIsOpen(!isOpen)} className='flex items-center text-gray-700 px-3 py-2 text-sm font-medium w-full text-left cursor-pointer'>
-								Platforms
-								<svg className={`ml-1 w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-									<path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M19 9l-7 7-7-7' />
-								</svg>
-							</div>
-							<div className={`${isOpen ? 'block' : 'hidden'} ml-4 space-y-2`}>
-								{platforms.length > 0 ? (
-									platforms.map((platform) => (
-										<Link key={platform._id} href={`/platform/${platform._id}`} className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'>
-											{platform.name}
-										</Link>
-									))
-								) : (
-									<div className='px-4 py-2 text-sm text-gray-500'>No platforms</div>
-								)}
-							</div>
-						</div>
 						{menuItems.map((item) => (
 							<Link key={item.href} href={item.href} className='block text-gray-700 px-3 py-2 text-sm font-medium hover:bg-[#EAE2D0] rounded-[5px]'>
 								{item.label}
