@@ -17,6 +17,8 @@
 		"next": "16.1.4",
 		"playwright": "^1.57.0",
 		"puppeteer": "^22.13.1",
+		"puppeteer-extra": "^3.3.6",
+		"puppeteer-extra-plugin-stealth": "^2.11.2",
 		"react": "19.2.3",
 		"react-dom": "19.2.3",
 		"speakeasy": "^2.0.0"
