@@ -1,181 +1,264 @@
 'use client';
 
 import { useParams, useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 
 type Car = {
-	id: string;
-	image: string;
-	lotInfo: string;
-	vehicleInfo: string;
-	condition: string;
-	saleInfo: string;
-	bids: string;
+	lotNumber: string;
+	title: string;
+	price: string;
+	buyItNowPrice?: string;
+	estimatedRetailValue?: string;
+	damage: string;
+	odometer: string;
+	year: string;
+	make: string;
+	model: string;
+	vin: string;
+	imageUrl: string;
+	images?: string[];
+	detailsLink: string;
+	bodyType?: string;
+	color?: string;
+	transmission?: string;
+	titleCode?: string;
+	engineStarts?: string;
+	transmissionEngages?: string;
+	hasKey?: string;
+	highlights?: string[];
+	notes?: string;
 };
 
 export default function SaleListResultsPage() {
 	const params = useParams();
 	const router = useRouter();
 	const saleId = params.id as string;
+	const [cars, setCars] = useState<Car[]>([]);
+	const [loading, setLoading] = useState(true);
+	const [fetching, setFetching] = useState(false);
+	const [error, setError] = useState<string | null>(null);
+	const [saleName, setSaleName] = useState<string | null>(null);
+	const [saleMeta, setSaleMeta] = useState<{ location?: string; saleDate?: string; saleTime?: string } | null>(null);
+	const fetchingRef = useRef(false); // Prevent duplicate fetching
 
-	// Mock data for cars - in a real app, this would come from an API
-	const carsData: { [key: string]: Car[] } = {
-		hayward: [
-			{
-				id: '1',
-				image: 'Image 1',
-				lotInfo: 'Lot #12345',
-				vehicleInfo: '2020 Honda Civic',
-				condition: 'Good',
-				saleInfo: 'Auction ends 01/30/2026',
-				bids: '5',
-			},
-			{
-				id: '2',
-				image: 'Image 2',
-				lotInfo: 'Lot #12346',
-				vehicleInfo: '2019 Toyota Camry',
-				condition: 'Fair',
-				saleInfo: 'Auction ends 01/30/2026',
-				bids: '8',
-			},
-			{
-				id: '3',
-				image: 'Image 3',
-				lotInfo: 'Lot #12347',
-				vehicleInfo: '2021 Ford F-150',
-				condition: 'Excellent',
-				saleInfo: 'Auction ends 01/30/2026',
-				bids: '12',
-			},
-		],
-		sacramento: [
-			{
-				id: '1',
-				image: 'Image 1',
-				lotInfo: 'Lot #54321',
-				vehicleInfo: '2018 BMW 3 Series',
-				condition: 'Good',
-				saleInfo: 'Auction ends 01/30/2026',
-				bids: '3',
-			},
-			{
-				id: '2',
-				image: 'Image 2',
-				lotInfo: 'Lot #54322',
-				vehicleInfo: '2020 Chevrolet Malibu',
-				condition: 'Fair',
-				saleInfo: 'Auction ends 01/30/2026',
-				bids: '6',
-			},
-		],
-		sandiego: [
-			{
-				id: '1',
-				image: 'Image 1',
-				lotInfo: 'Lot #99001',
-				vehicleInfo: '2022 Tesla Model 3',
-				condition: 'Excellent',
-				saleInfo: 'Auction ends 01/30/2026',
-				bids: '15',
-			},
-			{
-				id: '2',
-				image: 'Image 2',
-				lotInfo: 'Lot #99002',
-				vehicleInfo: '2019 Mazda CX-5',
-				condition: 'Good',
-				saleInfo: 'Auction ends 01/30/2026',
-				bids: '7',
-			},
-		],
-		sanjose: [
-			{
-				id: '1',
-				image: 'Image 1',
-				lotInfo: 'Lot #77001',
-				vehicleInfo: '2021 Hyundai Santa Fe',
-				condition: 'Excellent',
-				saleInfo: 'Auction ends 01/30/2026',
-				bids: '9',
-			},
-			{
-				id: '2',
-				image: 'Image 2',
-				lotInfo: 'Lot #77002',
-				vehicleInfo: '2020 Kia Sportage',
-				condition: 'Good',
-				saleInfo: 'Auction ends 01/30/2026',
-				bids: '4',
-			},
-		],
+	useEffect(() => {
+		// Prevent duplicate execution
+		if (fetchingRef.current) return;
+		fetchingRef.current = true;
+
+		const loadOrScrapeData = async () => {
+			try {
+				// Get the full URL and sale metadata from sessionStorage
+				const auctionUrl = sessionStorage.getItem(`auction_${saleId}_url`);
+				const location = sessionStorage.getItem(`auction_${saleId}_location`) || saleId;
+				const storedSaleDate = sessionStorage.getItem(`auction_${saleId}_saleDate`) || '';
+				const storedSaleTime = sessionStorage.getItem(`auction_${saleId}_saleTime`) || '';
+				const storedSaleName = sessionStorage.getItem(`auction_${saleId}_name`);
+
+				// Set header display values
+				setSaleName(storedSaleName || null);
+				setSaleMeta({ location, saleDate: storedSaleDate || undefined, saleTime: storedSaleTime || undefined });
+
+				if (!auctionUrl) {
+					setError('Missing auction URL. Please navigate from the calendar page.');
+					setLoading(false);
+					return;
+				}
+
+				console.log('Using auction URL:', auctionUrl);
+
+				// Check if auction exists in consolidated auctions.json
+				const auctionResponse = await fetch(`/api/auctions?auctionId=${saleId}`);
+
+				if (auctionResponse.ok) {
+					const auctionData = await auctionResponse.json();
+					if (auctionData && auctionData.cars && auctionData.cars.length > 0) {
+						console.log(`Loaded ${auctionData.cars.length} cars from auctions.json`);
+						setCars(auctionData.cars);
+						setLoading(false);
+						return;
+					} else if (auctionData && auctionData.cars && auctionData.cars.length === 0) {
+						console.log('Auction exists but cars array is empty, fetching data...');
+					}
+				} else {
+					console.log('Auction not found in auctions.json, fetching data...');
+				}
+
+				// Auction doesn't exist or has empty cars array, fetch data
+				console.log('Auction URL:', auctionUrl);
+				console.log('Location:', location);
+				setFetching(true);
+				setLoading(false);
+
+				// Fetch auction data from the API
+				const fetchResponse = await fetch('/api/scrape-sale-list', {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify({
+						auctionUrl,
+						auctionId: saleId,
+						location,
+					}),
+				});
+
+				if (!fetchResponse.ok) {
+					const errorData = await fetchResponse.json();
+					throw new Error(errorData.details || 'Failed to fetch auction data');
+				}
+
+				const fetchResult = await fetchResponse.json();
+				console.log('Data fetch complete:', fetchResult);
+
+				// Load the newly fetched data from auctions.json
+				const updatedAuctionResponse = await fetch(`/api/auctions?auctionId=${saleId}`);
+				if (updatedAuctionResponse.ok) {
+					const auctionData = await updatedAuctionResponse.json();
+					if (auctionData && auctionData.cars) {
+						if (auctionData.cars.length === 0) {
+							setError('No cars found in this auction. The auction may be empty or not available at this time. Please try refreshing the page.');
+						} else {
+							setCars(auctionData.cars);
+						}
+					}
+				} else {
+					setError('Failed to load data after fetching completed');
+				}
+
+				setFetching(false);
+			} catch (error) {
+				console.error('Error loading/fetching data:', error);
+				setError(error instanceof Error ? error.message : 'Unknown error');
+				setLoading(false);
+				setFetching(false);
+			}
+		};
+
+		loadOrScrapeData();
+	}, [saleId]);
+
+	const handleRowClick = (lotNumber: string) => {
+		router.push(`/saleListResults/${saleId}/lot/${lotNumber}`);
 	};
 
-	const cars = carsData[saleId] || [];
+	if (loading || fetching) {
+		return (
+			<div className='min-h-screen bg-gray-50 flex items-center justify-center'>
+				<div className='text-center'>
+					<div className='animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4'></div>
+					<p className='text-gray-600'>{fetching ? 'Fetching auction data...' : 'Loading cars...'}</p>
+					{fetching && <p className='text-sm text-gray-500 mt-2'>This may take up to 2 minutes</p>}
+				</div>
+			</div>
+		);
+	}
 
-	const handleRowClick = (carId: string) => {
-		router.push(`/saleListResults/${saleId}/lot/${carId}`);
-	};
+	if (error) {
+		return (
+			<div className='min-h-screen bg-gray-50 flex items-center justify-center'>
+				<div className='text-center max-w-lg'>
+					<div className='text-red-600 text-xl mb-4'>⚠️ Error</div>
+					<p className='text-gray-700 mb-4'>{error}</p>
+					<div className='flex gap-4 justify-center'>
+						<button onClick={() => router.back()} className='px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700'>
+							Go Back
+						</button>
+						<button onClick={() => window.location.reload()} className='px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700'>
+							Try Again
+						</button>
+					</div>
+					<p className='text-sm text-gray-500 mt-4'>Note: If a verification window appears, please complete it to continue.</p>
+				</div>
+			</div>
+		);
+	}
 
 	return (
 		<div className='min-h-screen bg-gray-50 py-6 px-4 sm:px-6 lg:px-8'>
-			<div className='max-w-7xl mx-auto'>
+			<div className='max-w-[1400px] mx-auto'>
 				<div className='mb-6'>
 					<button onClick={() => router.back()} className='text-blue-600 hover:text-blue-800 font-medium mb-4'>
 						← Back to Sales
 					</button>
-					<h1 className='text-3xl font-bold text-gray-900 mb-2'>Sale List Results</h1>
+					<h1 className='text-3xl font-bold text-gray-900 mb-1'>Sale List Results</h1>
+					{saleName ? (
+						<p className='text-gray-700 text-sm mb-1'>{saleName}</p>
+					) : (
+						<p className='text-gray-700 text-sm mb-1'>
+							{saleMeta?.location || 'Unknown location'}
+							{saleMeta?.saleDate ? ` — ${saleMeta.saleDate}` : ''}
+							{saleMeta?.saleTime ? ` ${saleMeta.saleTime}` : ''}
+						</p>
+					)}
 					<p className='text-gray-600'>Showing {cars.length} cars for sale</p>
 				</div>
 
-				<div className='overflow-x-auto bg-white rounded-lg shadow'>
-					<table className='w-full border-collapse'>
-						<thead>
-							<tr className='bg-gray-100 border-b-2 border-gray-300'>
-								<th scope='col' className='px-6 py-4 text-left font-semibold text-gray-900'>
-									Image
-								</th>
-								<th scope='col' className='px-6 py-4 text-left font-semibold text-gray-900'>
-									Lot Info
-								</th>
-								<th scope='col' className='px-6 py-4 text-left font-semibold text-gray-900'>
-									Vehicle Info
-								</th>
-								<th scope='col' className='px-6 py-4 text-left font-semibold text-gray-900'>
-									Condition
-								</th>
-								<th scope='col' className='px-6 py-4 text-left font-semibold text-gray-900'>
-									Sale Info
-								</th>
-								<th scope='col' className='px-6 py-4 text-left font-semibold text-gray-900'>
-									Bids
-								</th>
-							</tr>
-						</thead>
-						<tbody>
-							{cars.map((car, index) => (
-								<tr key={index} onClick={() => handleRowClick(car.id)} className='border-b border-gray-200 hover:bg-gray-100 transition-colors cursor-pointer'>
-									<td className='px-6 py-4 text-gray-700'>{car.image}</td>
-									<td className='px-6 py-4 text-gray-900 font-medium'>{car.lotInfo}</td>
-									<td className='px-6 py-4 text-gray-700'>{car.vehicleInfo}</td>
-									<td className='px-6 py-4'>
-										<span
-											className={`text-sm px-3 py-1 rounded-full font-medium ${
-												car.condition === 'Excellent'
-													? 'bg-green-100 text-green-800'
-													: car.condition === 'Good'
-														? 'bg-blue-100 text-blue-800'
-														: 'bg-yellow-100 text-yellow-800'
-											}`}>
-											{car.condition}
-										</span>
-									</td>
-									<td className='px-6 py-4 text-gray-700'>{car.saleInfo}</td>
-									<td className='px-6 py-4 text-gray-900 font-medium'>{car.bids}</td>
-								</tr>
-							))}
-						</tbody>
-					</table>
+				<div className='bg-white rounded-lg shadow overflow-hidden'>
+					{/* Header */}
+					<div className='grid grid-cols-[200px_120px_1fr_140px_120px_110px_110px] gap-4 px-4 py-3 bg-gray-100 border-b-2 border-gray-300 font-semibold text-gray-900 text-sm'>
+						<div>IMAGE</div>
+						<div>LOT #</div>
+						<div>VEHICLE INFO</div>
+						<div>DAMAGE</div>
+						<div>ODOMETER</div>
+						<div>CURRENT BID</div>
+						<div>BUY IT NOW</div>
+					</div>
+
+					{/* Rows */}
+					<div className='divide-y divide-gray-200'>
+						{cars.map((car, index) => (
+							<div
+								key={index}
+								onClick={() => handleRowClick(car.lotNumber)}
+								className='grid grid-cols-[200px_120px_1fr_140px_120px_110px_110px] gap-4 px-4 py-2 hover:bg-gray-50 transition-colors cursor-pointer items-center h-[145px]'>
+								{/* Image */}
+								<div className='relative w-[180px] h-[125px] bg-gray-200 rounded overflow-hidden'>
+									{car.imageUrl ? (
+										<img src={car.imageUrl} alt={car.title} className='w-full h-full object-cover' />
+									) : (
+										<div className='w-full h-full flex items-center justify-center text-gray-400 text-xs'>No Image</div>
+									)}
+								</div>
+
+								{/* Lot Number */}
+								<div className='text-sm'>
+									<div className='font-semibold text-blue-600'>{car.lotNumber}</div>
+								</div>
+
+								{/* Vehicle Info */}
+								<div className='text-sm space-y-1'>
+									<div className='font-semibold text-gray-900'>{car.title || `${car.year} ${car.make} ${car.model}`.trim()}</div>
+									{car.vin && <div className='text-gray-500 text-xs'>VIN: {car.vin}</div>}
+								</div>
+
+								{/* Damage */}
+								<div className='text-sm'>
+									<span
+										className={`inline-block px-2 py-1 rounded text-xs font-medium ${
+											car.damage === 'Clean Title'
+												? 'bg-green-100 text-green-800'
+												: car.damage?.includes('Water') || car.damage?.includes('Fire')
+													? 'bg-red-100 text-red-800'
+													: 'bg-yellow-100 text-yellow-800'
+										}`}>
+										{car.damage || 'N/A'}
+									</span>
+								</div>
+
+								{/* Odometer */}
+								<div className='text-sm text-gray-700'>{car.odometer ? `${car.odometer} mi` : 'N/A'}</div>
+
+								{/* Current Bid */}
+								<div className='text-sm font-bold text-gray-900'>{car.price || 'N/A'}</div>
+
+								{/* Buy It Now Price */}
+								<div className='text-sm font-bold'>
+									{car.buyItNowPrice ? <span className='text-green-600'>{car.buyItNowPrice}</span> : <span className='text-gray-400'>—</span>}
+								</div>
+							</div>
+						))}
+					</div>
 				</div>
 
 				{cars.length === 0 && (
