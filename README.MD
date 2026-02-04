@@ -16,10 +16,13 @@ This project consists of multiple tools and a web application:
 
 **Backend Tools:**
 
-- Scraping car auction listings from Copart
+- Scraping car auction listings from Copart.
+- Scraping data from otomoto.pl
 - Enriching car data with market prices from multiple countries
 - Generating interactive HTML reports with price comparisons
 - Researching market values across European markets
+
+The development link to saleResults is
 
 ## 🚀 Quick Start
 
