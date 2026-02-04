@@ -40,3 +40,15 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .env.local
+
+# Project specific
+results/*.json
+!results/auctions.json
+results/*.html
+results/*.png
+debug-*.png
+public/results/
+*.log
+
+# Proxy credentials (NEVER COMMIT)
+lib/scrapers/copart/proxy-config.ts
