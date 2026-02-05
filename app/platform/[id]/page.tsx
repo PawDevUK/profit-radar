@@ -1,7 +1,7 @@
 import { getPlatformWithInvoices } from '../../../lib/platforms';
 import Link from 'next/link';
 import LoginButton from '../../components/LoginButton';
-
+import Calendar from '../../components/calendar/calendar';
 export const dynamic = 'force-dynamic';
 
 type PageProps = {
@@ -37,6 +37,8 @@ export default async function PlatformPage({ params }: PageProps) {
 					View and manage all invoices downloaded from this platform. You can log in to download new invoices or review existing records below.
 				</p>
 			</div>
+
+			<Calendar></Calendar>
 
 			{/* Status & Login Section */}
 			<div className='grid grid-cols-1 md:grid-cols-2 gap-4 mb-6'>
