@@ -42,23 +42,25 @@ export async function POST(request: NextRequest) {
 			const scrapedData = JSON.parse(fs.readFileSync(resultFile, 'utf-8'));
 
 			// Map scrapedData into SaleList[] (best-effort mapping)
-			const saleList: SaleList[] = Array.isArray(scrapedData) ? scrapedData.map((car: any) => ({
-				title: car.title || `${car.year ?? ''} ${car.make ?? ''} ${car.model ?? ''}`.trim(),
-				lotNr: String(car.lotNumber ?? ''),
-				odometr: car.odometer ? String(car.odometer) : '',
-				odometrStatus: car.odometerStatus || '',
-				EstimateRetail: car.estimateRetail || '',
-				condionTitle: car.conditionTitle || '',
-				damage: car.damage || '',
-				keys: typeof car.hasKey === 'boolean' ? (car.hasKey ? 'Yes' : 'No') : (car.keys || ''),
-				location: car.location || (location || ''),
-				yeardLocation: car.yeardLocation || '',
-				item: car.laneItem || '',
-				actionCountDown: car.auctionCountdown || '',
-				currentBid: car.currentBid ? String(car.currentBid) : (car.price ? String(car.price) : ''),
-				buyItNow: car.buyItNow ? String(car.buyItNow) : '',
-				details: undefined as any, // filled when scraping lot details separately
-			})) : [];
+			const saleList: SaleList[] = Array.isArray(scrapedData)
+				? scrapedData.map((car: any) => ({
+						title: car.title || `${car.year ?? ''} ${car.make ?? ''} ${car.model ?? ''}`.trim(),
+						lotNr: String(car.lotNumber ?? ''),
+						odometr: car.odometer ? String(car.odometer) : '',
+						odometrStatus: car.odometerStatus || '',
+						EstimateRetail: car.estimateRetail || '',
+						condionTitle: car.conditionTitle || '',
+						damage: car.damage || '',
+						keys: typeof car.hasKey === 'boolean' ? (car.hasKey ? 'Yes' : 'No') : car.keys || '',
+						location: car.location || location || '',
+						yeardLocation: car.yeardLocation || '',
+						item: car.laneItem || '',
+						actionCountDown: car.auctionCountdown || '',
+						currentBid: car.currentBid ? String(car.currentBid) : car.price ? String(car.price) : '',
+						buyItNow: car.buyItNow ? String(car.buyItNow) : '',
+						details: undefined as any, // filled when scraping lot details separately
+					}))
+				: [];
 
 			if (saleList.length > 0) {
 				try {
