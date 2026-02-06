@@ -157,3 +157,124 @@ export async function attachSaleListToAuctionByLink(viewSalesLink: string, saleL
 	);
 	return res.modifiedCount || res.upsertedCount || 0;
 }
+
+// Incremental merge: update only missing fields and rolling fields for sale list items
+export async function incrementalAttachSaleListByLink(viewSalesLink: string, newSaleList: SaleList[]) {
+	await connectDB();
+	// Fetch current month doc containing the auction
+	const doc = await CalendarMonth.findOne({ 'auctions.viewSalesLink': viewSalesLink }).lean();
+	if (!doc) {
+		// If not found, fallback to full attach
+		return attachSaleListToAuctionByLink(viewSalesLink, newSaleList);
+	}
+
+	// Find auction index
+	const idx = (doc.auctions || []).findIndex((a) => a.viewSalesLink === viewSalesLink);
+	if (idx < 0) {
+		return 0;
+	}
+
+	const existingList: SaleList[] = (doc.auctions[idx].saleList || []) as SaleList[];
+
+	// Build index by stable identifier (prefer lotNr, then VIN, then lotNumber)
+	const keyOf = (s: SaleList) => {
+		const vin = s?.details?.vin || '';
+		const lotNumber = String(s?.details?.lotNumber || '').trim();
+		const lotNr = String(s?.lotNr || '').trim();
+		return (lotNr && `lotNr:${lotNr}`) || (vin && `vin:${vin}`) || (lotNumber && `lot:${lotNumber}`) || `title:${(s.title || '').trim()}`;
+	};
+
+	const existingMap = new Map<string, SaleList>();
+	for (const e of existingList) existingMap.set(keyOf(e), e);
+
+	const merged: SaleList[] = [...existingList];
+	let changes = 0;
+
+	for (const n of newSaleList) {
+		const k = keyOf(n);
+		const e = existingMap.get(k);
+		if (!e) {
+			merged.push(n);
+			existingMap.set(k, n);
+			changes++;
+			continue;
+		}
+
+		// Rolling fields that can be updated even if present
+		const rollingFields: (keyof SaleList)[] = ['currentBid', 'buyItNow', 'actionCountDown'];
+		for (const f of rollingFields) {
+			const nv = (n as any)[f];
+			const ev = (e as any)[f];
+			if (nv && nv !== ev) {
+				(e as any)[f] = nv;
+				changes++;
+			}
+		}
+
+		// Enrich missing top-level fields
+		const enrichTop: (keyof SaleList)[] = ['odometr', 'odometrStatus', 'EstimateRetail', 'condionTitle', 'damage', 'keys', 'location', 'yeardLocation', 'item'];
+		for (const f of enrichTop) {
+			const ev = (e as any)[f];
+			const nv = (n as any)[f];
+			if ((ev === undefined || ev === null || ev === '') && nv) {
+				(e as any)[f] = nv;
+				changes++;
+			}
+		}
+
+		// Merge lot details: fill missing fields, update rolling price/countdown
+		if (n.details) {
+			e.details = e.details || ({} as any);
+			const dFields = [
+				'title','year','make','model','trim','runAndDrive','vin','lotNumber','laneItem','saleName','location','engineVerified','engineVerifiedNote','engineStatus','transmissionEngages','transmissionNote','titleCode','titleStatus','odometer','odometerUnit','odometerStatus','primaryDamage','cylinders','color','hasKey','engineType','transmission','vehicleType','drivetrain','fuel','saleDate','highlights','notes'
+			] as const;
+			for (const f of dFields) {
+				const ev = (e.details as any)[f];
+				const nv = (n.details as any)[f];
+				const isEmpty = ev === undefined || ev === null || ev === '' || (Array.isArray(ev) && ev.length === 0);
+				if (isEmpty && nv !== undefined && nv !== null && !(Array.isArray(nv) && nv.length === 0)) {
+					(e.details as any)[f] = nv;
+					changes++;
+				}
+			}
+			// Rolling in details
+			if (n.details.currentBid && n.details.currentBid !== e.details.currentBid) {
+				e.details.currentBid = n.details.currentBid;
+				changes++;
+			}
+			if (n.details.buyItNow !== undefined && n.details.buyItNow !== e.details.buyItNow) {
+				e.details.buyItNow = n.details.buyItNow as any;
+				changes++;
+			}
+			if (n.details.auctionCountdown && n.details.auctionCountdown !== e.details.auctionCountdown) {
+				e.details.auctionCountdown = n.details.auctionCountdown;
+				changes++;
+			}
+			// Merge images: append new ones
+			const imgs = new Set([...(e.details.images || []), ...(n.details.images || [])]);
+			if (imgs.size !== (e.details.images || []).length) {
+				e.details.images = Array.from(imgs);
+				changes++;
+			}
+			// Update lastUpdated timestamp
+			e.details.lastUpdated = new Date().toISOString();
+		}
+	}
+
+	// Perform update only if changes detected
+	if (changes > 0) {
+		const res = await CalendarMonth.updateOne(
+			{ 'auctions.viewSalesLink': viewSalesLink },
+			{
+				$set: {
+					'auctions.$.saleList': merged,
+					// numberOnSale based on latest scrape size, not merged size
+					'auctions.$.numberOnSale': Array.isArray(newSaleList) ? newSaleList.length : undefined,
+				},
+			},
+			{ upsert: false },
+		);
+		return res.modifiedCount || res.upsertedCount || 0;
+	}
+	return 0;
+}
