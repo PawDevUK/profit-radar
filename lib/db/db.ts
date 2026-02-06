@@ -226,7 +226,39 @@ export async function incrementalAttachSaleListByLink(viewSalesLink: string, new
 		if (n.details) {
 			e.details = e.details || ({} as any);
 			const dFields = [
-				'title','year','make','model','trim','runAndDrive','vin','lotNumber','laneItem','saleName','location','engineVerified','engineVerifiedNote','engineStatus','transmissionEngages','transmissionNote','titleCode','titleStatus','odometer','odometerUnit','odometerStatus','primaryDamage','cylinders','color','hasKey','engineType','transmission','vehicleType','drivetrain','fuel','saleDate','highlights','notes'
+				'title',
+				'year',
+				'make',
+				'model',
+				'trim',
+				'runAndDrive',
+				'vin',
+				'lotNumber',
+				'laneItem',
+				'saleName',
+				'location',
+				'engineVerified',
+				'engineVerifiedNote',
+				'engineStatus',
+				'transmissionEngages',
+				'transmissionNote',
+				'titleCode',
+				'titleStatus',
+				'odometer',
+				'odometerUnit',
+				'odometerStatus',
+				'primaryDamage',
+				'cylinders',
+				'color',
+				'hasKey',
+				'engineType',
+				'transmission',
+				'vehicleType',
+				'drivetrain',
+				'fuel',
+				'saleDate',
+				'highlights',
+				'notes',
 			] as const;
 			for (const f of dFields) {
 				const ev = (e.details as any)[f];
