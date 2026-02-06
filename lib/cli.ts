@@ -2,7 +2,7 @@
 import 'dotenv/config';
 import { scrapeCopartCalendar } from './scrapers/copart/calendar/calendarScraper.mjs';
 import { CopartSaleListScraper } from './scrapers/copart/saleList/saleListScraper.mjs';
-import { saveCalendarMonth, getCalendarMonth, attachSaleListToAuctionByLink } from './db/db';
+import { saveCalendarMonth, getCalendarMonth, incrementalAttachSaleListByLink } from './db/db';
 
 function getMonthName(d: Date) {
 	return d.toLocaleString('en-US', { month: 'long' });
