@@ -93,6 +93,15 @@ npm run scrape:all
 - **Scope scrapes**: limit sales/lots to today/upcoming; avoid hammering past data.
 - **Diagnostics**: capture HTML/screenshot to `results/debug/` if empty results; leverage proxies per [doc/PROXY_SETUP.md](doc/PROXY_SETUP.md).
 
+## Lot Scraping: Browser Reuse Strategy
+
+- **Reuse one browser/page**: Open a single Puppeteer browser and one page, loop through lot URLs with `page.goto()`, and parse. This keeps cookies/session intact, reduces CAPTCHA risk, and is much faster than reopening.
+- **Pacing and jitter**: Add small, randomized delays between lots (e.g., 250–750 ms) and backoff/retry on transient load issues.
+- **Light concurrency only**: If needed, use a tiny page pool (2–4 pages) within the same browser; higher concurrency increases detection risk.
+- **Session stickiness**: If your proxy supports sessions, keep the same session for 5–10 minutes per auction batch, then rotate for the next batch.
+- **Periodic refresh**: Every 50–100 lots (or after each sale), close and reopen the page to keep memory stable. Recreate the browser/context only after hard failures or to rotate proxy identity.
+- **Failure handling**: On CAPTCHA/blocked responses, open a fresh page (or incognito context) and, if needed, rotate the proxy session before continuing.
+
 ## Next Extensions
 
 - Add `taskLots` and `incrementalAttachLotDetailsById` for lot-level merges.
