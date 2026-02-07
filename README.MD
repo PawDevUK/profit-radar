@@ -18,20 +18,6 @@ npm install
 npm run dev
 ```
 
-The app runs at <http://localhost:3000>.
-
-## Environment Variables
-
-Create a `.env` in the project root:
-
-```env
-# MongoDB (optional, used by lib/db)
-MONGODB_URI=mongodb+srv://user:pass@cluster/db
-MONGODB_DB=profit_radar
-```
-
-If `MONGODB_URI` is not set, database features will throw an error. See [lib/db/db.ts](lib/db/db.ts) for details.
-
 ## API Routes (Selected)
 
 Server endpoints live under `app/api`:
