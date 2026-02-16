@@ -46,19 +46,19 @@ export async function POST(request: NextRequest) {
 				? scrapedData.map((car: any) => ({
 						title: car.title || `${car.year ?? ''} ${car.make ?? ''} ${car.model ?? ''}`.trim(),
 						lotNr: String(car.lotNumber ?? ''),
-						odometr: car.odometer ? String(car.odometer) : '',
-						odometrStatus: car.odometerStatus || '',
+						odometer: car.odometer ? String(car.odometer) : '',
+						odometerStatus: car.odometerStatus || '',
 						EstimateRetail: car.estimateRetail || '',
-						condionTitle: car.conditionTitle || '',
+						conditionTitle: car.conditionTitle || '',
 						damage: car.damage || '',
 						keys: typeof car.hasKey === 'boolean' ? (car.hasKey ? 'Yes' : 'No') : car.keys || '',
 						location: car.location || location || '',
-						yeardLocation: car.yeardLocation || '',
+						yardLocation: car.yardLocation || '',
 						item: car.laneItem || '',
 						actionCountDown: car.auctionCountdown || '',
 						currentBid: car.currentBid ? String(car.currentBid) : car.price ? String(car.price) : '',
 						buyItNow: car.buyItNow ? String(car.buyItNow) : '',
-						details: undefined as any, // filled when scraping lot details separately
+						details: null,
 					}))
 				: [];
 
@@ -66,8 +66,12 @@ export async function POST(request: NextRequest) {
 				try {
 					const modified = await attachSaleListToAuctionByLink(auctionUrl, saleList);
 					console.log(`Attached ${saleList.length} sale list items to auction in DB (modified=${modified}).`);
-				} catch (dbErr: any) {
-					console.warn('Failed to attach sale list to DB:', dbErr?.message || dbErr);
+				} catch (dbErr: unknown) {
+					if (dbErr && typeof dbErr === 'object' && 'message' in dbErr) {
+						console.warn('Failed to attach sale list to DB:', (dbErr as { message?: string }).message);
+					} else {
+						console.warn('Failed to attach sale list to DB:', dbErr);
+					}
 				}
 			}
 
