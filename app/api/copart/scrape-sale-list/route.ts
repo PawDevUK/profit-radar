@@ -74,7 +74,13 @@ export async function POST(request: NextRequest) {
 			// Save to consolidated auctions.json (debug/backup)
 			if (scrapedData && scrapedData.length > 0) {
 				const auctionsFile = path.join(process.cwd(), 'results', 'auctions.json');
-				let allAuctions = {};
+								let allAuctions: Record<string, {
+									location: string;
+									viewSalesLink: string;
+									scrapedAt: string;
+									numberOnSale: number;
+									cars: SaleList[];
+								}> = {};
 
 				if (fs.existsSync(auctionsFile)) {
 					allAuctions = JSON.parse(fs.readFileSync(auctionsFile, 'utf-8'));
