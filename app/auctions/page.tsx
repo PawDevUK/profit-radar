@@ -1,4 +1,5 @@
 import { headers } from 'next/headers';
+import { AuctionData } from './AuctionsClient';
 
 // Helper to resolve base URL for server-side fetch
 async function resolveBaseUrl() {
@@ -23,7 +24,8 @@ export default async function AuctionsPage() {
 	}
 	const data = await res.json();
 
-	const initialEntries: Array<[string, unknown]> = Object.entries(data || {});
+	// Replace 'AuctionData' with the correct type if needed
+	const initialEntries: Array<[string, AuctionData]> = Object.entries(data || {}) as Array<[string, AuctionData]>;
 
 	// Lazy import client component to keep this as a Server Component entry
 	const AuctionsClient = (await import('./AuctionsClient')).AuctionsClient;
