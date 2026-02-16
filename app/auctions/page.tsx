@@ -2,21 +2,21 @@ import { headers } from 'next/headers';
 import { AuctionData } from './AuctionsClient';
 
 // Helper to resolve base URL for server-side fetch
-async function resolveBaseUrl() {
-	const h = await headers();
-	const host = h.get('host');
-	const protocol = h.get('x-forwarded-proto') || 'http';
-	const envBase = process.env.NEXT_PUBLIC_BASE_URL;
-	if (envBase) return envBase.replace(/\/$/, '');
-	if (host) return `${protocol}://${host}`;
-	return 'http://localhost:3000';
-}
+// async function resolveBaseUrl() {
+// 	const h = await headers();
+// 	const host = h.get('host');
+// 	const protocol = h.get('x-forwarded-proto') || 'http';
+// 	const envBase = process.env.NEXT_PUBLIC_BASE_URL;
+// 	if (envBase) return envBase.replace(/\/$/, '');
+// 	if (host) return `${protocol}://${host}`;
+// 	return 'http://localhost:3000';
+// }
 
 export const dynamic = 'force-static';
 
 export default async function AuctionsPage() {
-	const baseUrl = await resolveBaseUrl();
-	const res = await fetch(`${baseUrl}/api/auctions`, {
+	// const baseUrl = await resolveBaseUrl();
+	const res = await fetch('/api/auctions', {
 		next: { revalidate: 60, tags: ['auctions'] },
 	});
 	if (!res.ok) {
