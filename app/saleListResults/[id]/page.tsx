@@ -107,8 +107,8 @@ export default function SaleListResultsPage() {
 					throw new Error(errorData.details || 'Failed to fetch auction data');
 				}
 
-				const fetchResult = await fetchResponse.json();
-				console.log('Data fetch complete:', fetchResult);
+				// const fetchResult = await fetchResponse.json();
+				// console.log('Data fetch complete:', fetchResult);
 
 				// Load the newly fetched data from auctions.json
 				const updatedAuctionResponse = await fetch(`/api/auctions?auctionId=${saleId}`);
