@@ -63,9 +63,6 @@ export async function POST(request: NextRequest) {
 		// Write back to file
 		fs.writeFileSync(AUCTIONS_FILE, JSON.stringify(auctionsData, null, 2), 'utf-8');
 
-		// Revalidate server-side tagged caches so Server Components refresh
-		revalidateTag('auctions');
-
 		return NextResponse.json({ success: true, message: 'Auction data saved' });
 	} catch (error: any) {
 		console.error('Error saving auction:', error);
