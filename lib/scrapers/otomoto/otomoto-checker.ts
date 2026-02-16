@@ -116,7 +116,7 @@ function buildOtomotoSearchUrl(make: string, model: string): string {
 export async function verifyCarOnOtomoto(make: string, model: string): Promise<{ found: boolean; count: number }> {
 	try {
 		const browser = await puppeteer.launch({
-			headless: 'new',
+			headless: false,
 			args: ['--disable-blink-features=AutomationControlled', '--disable-web-resources'],
 		});
 		const page = await browser.newPage();
