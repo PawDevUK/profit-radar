@@ -70,14 +70,14 @@ const SaleListSchema = new Schema<SaleList>(
 	{
 		title: { type: String },
 		lotNr: { type: String },
-		odometr: { type: String },
-		odometrStatus: { type: String },
+		odometer: { type: String },
+		odometerStatus: { type: String },
 		EstimateRetail: { type: String },
-		condionTitle: { type: String },
+		conditionTitle: { type: String },
 		damage: { type: String },
 		keys: { type: String },
 		location: { type: String },
-		yeardLocation: { type: String },
+		yardLocation: { type: String },
 		item: { type: String },
 		actionCountDown: { type: String },
 		currentBid: { type: String },
@@ -203,29 +203,34 @@ export async function incrementalAttachSaleListByLink(viewSalesLink: string, new
 		// Rolling fields that can be updated even if present
 		const rollingFields: (keyof SaleList)[] = ['currentBid', 'buyItNow', 'actionCountDown'];
 		for (const f of rollingFields) {
-			const nv = (n as any)[f];
-			const ev = (e as any)[f];
-			if (nv && nv !== ev) {
-				(e as any)[f] = nv;
+			const nv = n[f];
+			const ev = e[f];
+			if (typeof nv === 'string' && nv !== '' && nv !== ev) {
+				// @ts-expect-error: TypeScript can't guarantee at compile time, but we know f is a string field
+				e[f] = nv;
 				changes++;
 			}
 		}
 
 		// Enrich missing top-level fields
-		const enrichTop: (keyof SaleList)[] = ['odometr', 'odometrStatus', 'EstimateRetail', 'condionTitle', 'damage', 'keys', 'location', 'yeardLocation', 'item'];
+		const enrichTop: (keyof SaleList)[] = ['odometer', 'odometerStatus', 'EstimateRetail', 'conditionTitle', 'damage', 'keys', 'location', 'yardLocation', 'item'];
+		function setSaleListField(obj: SaleList, key: keyof SaleList, value: string) {
+			// Only assign to string fields
+			(obj[key] as unknown as string) = value;
+		}
 		for (const f of enrichTop) {
-			const ev = (e as any)[f];
-			const nv = (n as any)[f];
+			const ev = e[f];
+			const nv = n[f];
 			if ((ev === undefined || ev === null || ev === '') && nv) {
-				(e as any)[f] = nv;
+				setSaleListField(e, f, nv as string);
 				changes++;
 			}
 		}
 
 		// Merge lot details: fill missing fields, update rolling price/countdown
 		if (n.details) {
-			e.details = e.details || ({} as any);
-			const dFields = [
+			if (!e.details) e.details = {} as LotDetails;
+			const dFields: (keyof LotDetails)[] = [
 				'title',
 				'year',
 				'make',
@@ -261,11 +266,11 @@ export async function incrementalAttachSaleListByLink(viewSalesLink: string, new
 				'notes',
 			] as const;
 			for (const f of dFields) {
-				const ev = (e.details as any)[f];
-				const nv = (n.details as any)[f];
+				const ev = e.details[f];
+				const nv = n.details[f];
 				const isEmpty = ev === undefined || ev === null || ev === '' || (Array.isArray(ev) && ev.length === 0);
 				if (isEmpty && nv !== undefined && nv !== null && !(Array.isArray(nv) && nv.length === 0)) {
-					(e.details as any)[f] = nv;
+					(e.details as Record<typeof f, typeof nv>)[f] = nv;
 					changes++;
 				}
 			}
@@ -275,7 +280,7 @@ export async function incrementalAttachSaleListByLink(viewSalesLink: string, new
 				changes++;
 			}
 			if (n.details.buyItNow !== undefined && n.details.buyItNow !== e.details.buyItNow) {
-				e.details.buyItNow = n.details.buyItNow as any;
+				e.details.buyItNow = n.details.buyItNow;
 				changes++;
 			}
 			if (n.details.auctionCountdown && n.details.auctionCountdown !== e.details.auctionCountdown) {
