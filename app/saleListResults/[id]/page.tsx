@@ -2,39 +2,14 @@
 
 import { useParams, useRouter } from 'next/navigation';
 import { useState, useEffect, useRef } from 'react';
+import { LotDetails } from '@/lib/types/lot-details';
 import Image from 'next/image';
-
-type Car = {
-	lotNumber: string;
-	title: string;
-	price: string;
-	buyItNowPrice?: string;
-	estimatedRetailValue?: string;
-	damage: string;
-	odometer: string;
-	year: string;
-	make: string;
-	model: string;
-	vin: string;
-	imageUrl: string;
-	images?: string[];
-	detailsLink: string;
-	bodyType?: string;
-	color?: string;
-	transmission?: string;
-	titleCode?: string;
-	engineStarts?: string;
-	transmissionEngages?: string;
-	hasKey?: string;
-	highlights?: string[];
-	notes?: string;
-};
 
 export default function SaleListResultsPage() {
 	const params = useParams();
 	const router = useRouter();
 	const saleId = params.id as string;
-	const [cars, setCars] = useState<Car[]>([]);
+	const [cars, setCars] = useState<LotDetails[]>([]);
 	const [loading, setLoading] = useState(true);
 	const [fetching, setFetching] = useState(false);
 	const [error, setError] = useState<string | null>(null);
@@ -137,7 +112,7 @@ export default function SaleListResultsPage() {
 		loadOrScrapeData();
 	}, [saleId]);
 
-	const handleRowClick = (lotNumber: string) => {
+	const handleRowClick = (lotNumber: string | number) => {
 		router.push(`/saleListResults/${saleId}/lot/${lotNumber}`);
 	};
 
@@ -214,8 +189,8 @@ export default function SaleListResultsPage() {
 								className='grid grid-cols-[200px_120px_1fr_140px_120px_110px_110px] gap-4 px-4 py-2 hover:bg-gray-50 transition-colors cursor-pointer items-center h-[145px]'>
 								{/* Image */}
 								<div className='relative w-[180px] h-[125px] bg-gray-200 rounded overflow-hidden'>
-									{car.imageUrl ? (
-										<img src={car.imageUrl} alt={car.title} className='w-full h-full object-cover' />
+									{car.images.length > 0 ? (
+										<Image src={car.images[0]} alt={car.title} fill className='object-cover' sizes='(max-width: 600px) 100vw, 180px' priority={index < 10} />
 									) : (
 										<div className='w-full h-full flex items-center justify-center text-gray-400 text-xs'>No Image</div>
 									)}
@@ -236,13 +211,13 @@ export default function SaleListResultsPage() {
 								<div className='text-sm'>
 									<span
 										className={`inline-block px-2 py-1 rounded text-xs font-medium ${
-											car.damage === 'Clean Title'
+											car.primaryDamage === 'Clean Title'
 												? 'bg-green-100 text-green-800'
-												: car.damage?.includes('Water') || car.damage?.includes('Fire')
+												: car.primaryDamage?.includes('Water') || car.primaryDamage?.includes('Fire')
 													? 'bg-red-100 text-red-800'
 													: 'bg-yellow-100 text-yellow-800'
 										}`}>
-										{car.damage || 'N/A'}
+										{car.primaryDamage || 'N/A'}
 									</span>
 								</div>
 
@@ -250,11 +225,11 @@ export default function SaleListResultsPage() {
 								<div className='text-sm text-gray-700'>{car.odometer ? `${car.odometer} mi` : 'N/A'}</div>
 
 								{/* Current Bid */}
-								<div className='text-sm font-bold text-gray-900'>{car.price || 'N/A'}</div>
+								<div className='text-sm font-bold text-gray-900'>{car.currentBid || 'N/A'}</div>
 
 								{/* Buy It Now Price */}
 								<div className='text-sm font-bold'>
-									{car.buyItNowPrice ? <span className='text-green-600'>{car.buyItNowPrice}</span> : <span className='text-gray-400'>—</span>}
+									{car.buyItNow ? <span className='text-green-600'>{car.buyItNow}</span> : <span className='text-gray-400'>—</span>}
 								</div>
 							</div>
 						))}
