@@ -8,13 +8,18 @@ import { authService } from '../../lib/auth';
 export default function NavigationClient() {
 	const [mobileOpen, setMobileOpen] = useState(false);
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
-	const [currentUser, setCurrentUser] = useState<any>(null);
+	interface User {
+		fullName?: string;
+		// Add other properties as needed
+	}
+
+	const [currentUser, setCurrentUser] = useState<User | null>(null);
 	const router = useRouter();
 
 	useEffect(() => {
 		// Check login status on mount
-		setIsLoggedIn(authService.isLoggedIn());
-		setCurrentUser(authService.getCurrentUser());
+		// setIsLoggedIn(authService.isLoggedIn());
+		// setCurrentUser(authService.getCurrentUser());
 
 		// Listen for auth state changes
 		const handleAuthChange = (event: Event) => {
