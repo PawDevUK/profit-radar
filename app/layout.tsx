@@ -10,8 +10,8 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-	title: 'eCommerce Scraper',
-	description: 'Automated document retrieval from eCommerce platforms',
+	title: 'Profit Radar',
+	description: 'Automated auction monitoring and analytics for savvy resellers.',
 };
 
 export default function RootLayout({
