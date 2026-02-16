@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { revalidateTag } from 'next/cache';
 import fs from 'fs';
 import path from 'path';
 
@@ -36,9 +35,9 @@ export async function GET(request: NextRequest) {
 			res.headers.set('Cache-Control', 'public, max-age=60, stale-while-revalidate=300');
 			return res;
 		}
-	} catch (error: any) {
+	} catch (error: unknown) {
 		console.error('Error reading auctions:', error);
-		return NextResponse.json({ error: 'Failed to read auctions', details: error.message }, { status: 500 });
+		return NextResponse.json({ error: 'Failed to read auctions', details: error instanceof Error ? error.message : String(error) }, { status: 500 });
 	}
 }
 
@@ -64,8 +63,8 @@ export async function POST(request: NextRequest) {
 		fs.writeFileSync(AUCTIONS_FILE, JSON.stringify(auctionsData, null, 2), 'utf-8');
 
 		return NextResponse.json({ success: true, message: 'Auction data saved' });
-	} catch (error: any) {
+	} catch (error: unknown) {
 		console.error('Error saving auction:', error);
-		return NextResponse.json({ error: 'Failed to save auction', details: error.message }, { status: 500 });
+		return NextResponse.json({ error: 'Failed to save auction', details: error instanceof Error ? error.message : String(error) }, { status: 500 });
 	}
 }
