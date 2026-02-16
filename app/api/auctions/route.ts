@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { revalidateTag } from 'next/cache';
 import fs from 'fs';
 import path from 'path';
 
@@ -23,13 +24,17 @@ export async function GET(request: NextRequest) {
 			// Return specific auction
 			const auction = auctionsData[auctionId];
 			if (auction) {
-				return NextResponse.json(auction);
+				const res = NextResponse.json(auction);
+				res.headers.set('Cache-Control', 'public, max-age=60, stale-while-revalidate=300');
+				return res;
 			} else {
 				return NextResponse.json({ error: 'Auction not found' }, { status: 404 });
 			}
 		} else {
 			// Return all auctions
-			return NextResponse.json(auctionsData);
+			const res = NextResponse.json(auctionsData);
+			res.headers.set('Cache-Control', 'public, max-age=60, stale-while-revalidate=300');
+			return res;
 		}
 	} catch (error: any) {
 		console.error('Error reading auctions:', error);
@@ -57,6 +62,9 @@ export async function POST(request: NextRequest) {
 
 		// Write back to file
 		fs.writeFileSync(AUCTIONS_FILE, JSON.stringify(auctionsData, null, 2), 'utf-8');
+
+		// Revalidate server-side tagged caches so Server Components refresh
+		revalidateTag('auctions');
 
 		return NextResponse.json({ success: true, message: 'Auction data saved' });
 	} catch (error: any) {
