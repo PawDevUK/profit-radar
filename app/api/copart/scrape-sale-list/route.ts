@@ -41,9 +41,32 @@ export async function POST(request: NextRequest) {
 		if (fs.existsSync(resultFile)) {
 			const scrapedData = JSON.parse(fs.readFileSync(resultFile, 'utf-8'));
 
+			// Define the type for scraped car objects
+			type ScrapedCar = {
+				title?: string;
+				year?: string | number;
+				make?: string;
+				model?: string;
+				lotNumber?: string | number;
+				odometer?: string | number;
+				odometerStatus?: string;
+				estimateRetail?: string;
+				conditionTitle?: string;
+				damage?: string;
+				hasKey?: boolean;
+				keys?: string;
+				location?: string;
+				yardLocation?: string;
+				laneItem?: string;
+				auctionCountdown?: string;
+				currentBid?: string | number;
+				price?: string | number;
+				buyItNow?: string | number;
+			};
+
 			// Map scrapedData into SaleList[] (best-effort mapping)
 			const saleList: SaleList[] = Array.isArray(scrapedData)
-				? scrapedData.map((car: any) => ({
+				? scrapedData.map((car: ScrapedCar) => ({
 						title: car.title || `${car.year ?? ''} ${car.make ?? ''} ${car.model ?? ''}`.trim(),
 						lotNr: String(car.lotNumber ?? ''),
 						odometer: car.odometer ? String(car.odometer) : '',
@@ -112,12 +135,12 @@ export async function POST(request: NextRequest) {
 			success: true,
 			message: `Successfully scraped auction ${auctionId}`,
 		});
-	} catch (error: any) {
+	} catch (error: unknown) {
 		console.error('Error running sale list scraper:', error);
 		return NextResponse.json(
 			{
 				error: 'Failed to scrape sale list',
-				details: error.message,
+				details: error && typeof error === 'object' && 'message' in error ? (error as { message?: string }).message : String(error),
 			},
 			{ status: 500 },
 		);
