@@ -1,6 +1,6 @@
 import { getPlatformWithInvoices } from '../../../lib/platforms';
 import Link from 'next/link';
-import LoginButton from '../../components/LoginButton';
+import LoginButton from '../../components/header/LoginButton';
 import Calendar from '../../components/calendar/calendar';
 export const dynamic = 'force-dynamic';
 
