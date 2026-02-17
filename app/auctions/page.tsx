@@ -1,5 +1,5 @@
 import { headers } from 'next/headers';
-import { AuctionData } from './AuctionsClient';
+// import { AuctionData } from './AuctionsClient';
 
 // Helper to resolve base URL for server-side fetch
 // async function resolveBaseUrl() {
