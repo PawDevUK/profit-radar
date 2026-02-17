@@ -3,7 +3,8 @@
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { authService } from '../../lib/auth';
+import { authService } from '../../../lib/auth';
+import SearchBar from '@/app/components/header/search';
 
 export default function NavigationClient() {
 	const [mobileOpen, setMobileOpen] = useState(false);
@@ -73,6 +74,7 @@ export default function NavigationClient() {
 							Profit<span className='text-[#FF6200] ml-2'>Radar</span>
 						</Link>
 					</div>
+					<SearchBar></SearchBar>
 					<div className='hidden md:flex items-center space-x-4'>
 						{isLoggedIn ? (
 							<div className='flex items-center space-x-2 bg-green-50 px-4 py-2 rounded-lg border border-green-200 hover:bg-green-100 transition-all'>
