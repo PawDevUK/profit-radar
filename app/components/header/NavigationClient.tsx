@@ -51,11 +51,12 @@ export default function NavigationClient() {
 	};
 
 	const menuItems = [
-		{ href: '/dashboard', label: 'Dashboard' },
-		{ href: '/calendar', label: 'Calendar' },
-		{ href: '/payables', label: 'Payables' },
-		{ href: '/documentation', label: 'Documentation' },
-		{ href: '/api', label: 'Api Connect' },
+		{ href: '/howItWorks', label: 'How it works' },
+		{ href: '/inventory', label: 'Inventory' },
+		{ href: '/auctions', label: 'Auctions' },
+		{ href: '/locations', label: 'Locations' },
+		{ href: '/sell-your-car', label: 'Sell your car' },
+		{ href: '/services-support', label: 'Services & support' },
 	];
 
 	const authItems = [
