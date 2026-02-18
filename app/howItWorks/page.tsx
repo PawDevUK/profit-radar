@@ -80,7 +80,7 @@ export default function HowItWorks() {
 					<div className=' w-full pr-card'>
 						{/* Heading */}
 						<div className='text-center '>
-							<h2 className='text-3xl font-bold tracking-tight text-blue-600 sm:text-3xl'>After You&#39;ve Registered:</h2>
+							<h2 className='text-2xl font-bold text-blue-600 sm:text-3xl'>After You&#39;ve Registered:</h2>
 							<p className='mt-4 text-lg text-gray-600'>
 								Credentials to buy a vehicle in a specific state, search for No License Required vehicles or work with a Broker.
 							</p>
