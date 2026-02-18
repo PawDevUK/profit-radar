@@ -5,6 +5,10 @@
   --mongo-green: #00684A;
 }
 
+body {
+  overflow-x: hidden;
+}
+
 /* "pr" class stands for profit radar */
 
 .bg-mongo {
