@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+/* "pr" class stands for profit radar */
+
 .bg-amazon {
   background-color: #C4D8E1;
 }
@@ -14,4 +16,12 @@
 
 .hover-copart {
   bacground: #FF6200
+}
+
+.pr-card {
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  @apply shadow-lg my-5 p-7 md:p-10;
+  border-radius: 8px;
+  /* padding: 40px; */
 }
