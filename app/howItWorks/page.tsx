@@ -1,5 +1,7 @@
 // components/HowItWorks.tsx
 import Link from 'next/link';
+import Image from 'next/image';
+import { bmw535, tiguan, chargergt } from '@/img';
 
 export default function HowItWorks() {
 	return (
@@ -43,31 +45,17 @@ export default function HowItWorks() {
 						<div className='grid grid-cols-2 gap-4 sm:gap-6'>
 							{/* Image 1 - Inspector / Tablet */}
 							<div className='aspect-[4/3] overflow-hidden rounded-xl shadow-lg'>
-								<img
-									src='https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80'
-									alt='Inspector checking vehicle with tablet'
-									className='h-full w-full object-cover'
-									loading='lazy'
-								/>
+								<Image src={bmw535} alt='BMW 535i white' className='h-full w-full object-cover' loading='lazy' placeholder='blur' />
 							</div>
 
 							{/* Image 2 - Tow truck / Sports car */}
 							<div className='aspect-[4/3] overflow-hidden rounded-xl shadow-lg'>
-								<img
-									src='https://images.unsplash.com/photo-1502877338535-766e3a6052c0?auto=format&fit=crop&q=80'
-									alt='Tow truck loading red sports car'
-									className='h-full w-full object-cover'
-									loading='lazy'
-								/>
+								<Image src={tiguan} alt='VW tiguan grey.' className='h-full w-full object-cover' loading='lazy' width={400} height={300} />
 							</div>
 
 							{/* Image 3 - Large lot overview (spans both columns) */}
 							<div className='col-span-2 aspect-[16/9] overflow-hidden rounded-xl shadow-lg'>
-								<img
-									src='https://images.unsplash.com/photo-1506529134274-9a26lienss?auto=format&fit=crop&q=80'
-									alt='Huge vehicle auction lot with thousands of cars'
-									className='h-full w-full object-cover'
-								/>
+								<Image src={chargergt} alt='Doge Charger red' className='h-full w-full object-cover' width={800} height={450} />
 							</div>
 						</div>
 					</div>
@@ -85,11 +73,11 @@ export default function HowItWorks() {
 					</div>
 				</div>
 			</section>
-			<section className='bg-white py-16 md:py-20'>
+			<section className='bg-white pt-6 md:pt-8 pb-6 md:pb-8'>
 				<div className='mx-auto max-w-7xl px-5 sm:px-6 lg:px-8'>
 					{/* Heading */}
 					<div className='text-center mb-12'>
-						<h2 className='text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl'>After You've Registered:</h2>
+						<h2 className='text-3xl font-bold tracking-tight text-blue-600 sm:text-3xl'>After You&#39;ve Registered:</h2>
 						<p className='mt-4 text-lg text-gray-600'>
 							Credentials to buy a vehicle in a specific state, search for No License Required vehicles or work with a Broker.
 						</p>
@@ -112,7 +100,7 @@ export default function HowItWorks() {
 										/>
 									</svg>
 								</div>
-								<h3 className='text-xl font-semibold text-gray-900'>Upload License(s)</h3>
+								<h3 className='text-xl font-semibold text-blue-600'>Upload License(s)</h3>
 								<p className='mt-3 text-gray-600'>
 									Scan a government-issued ID and upload any business licenses required in states where you want to buy vehicles.
 								</p>
@@ -142,16 +130,17 @@ export default function HowItWorks() {
 										/>
 									</svg>
 								</div>
-								<h3 className='text-xl font-semibold text-gray-900'>Join Auctions</h3>
+								<h3 className='text-xl font-semibold text-blue-600'>Join Auctions</h3>
 								<p className='mt-3 text-gray-600'>
-									Join the fun and action of our live auctions under the options in the Auctions tab, like Today's Auctions, Auction Calendar and Join An Auction.
+									Join the fun and action of our live auctions under the options in the Auctions tab, like Today&#39;s Auctions, Auction Calendar and Join An
+									Auction.
 								</p>
 								<div className='mt-4 space-y-1 text-sm'>
 									<Link href='#' className='block text-blue-600 hover:underline'>
 										Auction Calendar →
 									</Link>
 									<Link href='#' className='block text-blue-600 hover:underline'>
-										Today's Auctions →
+										Today&apos;s Auctions →
 									</Link>
 									<Link href='#' className='block text-blue-600 hover:underline'>
 										Join An Auction →
@@ -176,10 +165,10 @@ export default function HowItWorks() {
 										<path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M9 12l2 2 4-4' />
 									</svg>
 								</div>
-								<h3 className='text-xl font-semibold text-gray-900'>No License Is No Problem</h3>
+								<h3 className='text-xl font-semibold text-blue-600'>No License Is No Problem</h3>
 								<p className='mt-3 text-gray-600'>
-									If you don't have a dealer's license or other required credentials to buy a vehicle in a specific state, search for No License Required vehicles
-									or work with a Broker.
+									If you don&apos;t have a dealer&apos;s license or other required credentials to buy a vehicle in a specific state, search for No License
+									Required vehicles or work with a Broker.
 								</p>
 								<div className='mt-4 space-y-1 text-sm'>
 									<Link href='#' className='block text-blue-600 hover:underline'>
@@ -199,7 +188,7 @@ export default function HowItWorks() {
 										<path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6' />
 									</svg>
 								</div>
-								<h3 className='text-xl font-semibold text-gray-900'>Other Ways to Win</h3>
+								<h3 className='text-xl font-semibold text-blue-600'>Other Ways to Win</h3>
 								<p className='mt-3 text-gray-600'>
 									Set a Max Bid and our system will incrementally bid for you up to your top price. Purchase Buy It Now vehicles... or make counteroffers with
 									Make An Offer.
@@ -236,7 +225,7 @@ export default function HowItWorks() {
 										/>
 									</svg>
 								</div>
-								<h3 className='text-xl font-semibold text-gray-900'>Search, Save & Set Alerts</h3>
+								<h3 className='text-xl font-semibold text-blue-600'>Search, Save & Set Alerts</h3>
 								<p className='mt-3 text-gray-600'>
 									Search & filter our huge selection to find the vehicles that fit your needs. Save your common searches. Track vehicles... and set Vehicle
 									Alerts.
@@ -265,7 +254,7 @@ export default function HowItWorks() {
 										<path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4' />
 									</svg>
 								</div>
-								<h3 className='text-xl font-semibold text-gray-900'>Receive Your Vehicles</h3>
+								<h3 className='text-xl font-semibold text-blue-600'>Receive Your Vehicles</h3>
 								<p className='mt-3 text-gray-600'>Order delivery through Copart, dispatch your own transporter, or pick vehicles up in person.</p>
 								<div className='mt-4 space-y-1 text-sm'>
 									<Link href='#' className='block text-blue-600 hover:underline'>
