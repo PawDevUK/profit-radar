@@ -140,14 +140,11 @@ export default function NavigationClient() {
 							</Link>
 						))}
 						{!isLoggedIn && (
-							<div className='flex mt-5 space-x-4 justify-center flex-col'>
-								{authItems.map((item) => (
-									<Link
-										key={item.href}
-										href={item.href}
-										className='flex items-center justify-center text-gray-700 border border-black hover:border-[#FF6200] px-8 rounded-full text-sm font-medium hover:bg-[#EAE2D0] hover:text-[#FF6200] hover:shadow-lg transition-all bg-transparent h-10'>
-										{item.label}
-									</Link>
+							<div className='flex mt-5 flex-col space-y-4 justify-center items-center'>
+								{authItems.map((item, i) => (
+									<div key={i} className='w-70'>
+										<LogButton item={item} />
+									</div>
 								))}
 							</div>
 						)}
