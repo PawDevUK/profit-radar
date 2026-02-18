@@ -31,10 +31,12 @@ export default function RootLayout({
 				<main className='min-h-screen'>{children}</main>
 
 				{/* Footer */}
-				<footer className="text-white py-8" style={{ background: 'linear-gradient(to right, var(--background-mongo), #2563eb)' }}>
-				<div className='mx-auto px-4'>
+				<footer
+					className='py-8 border border-gray-200 shadow-lg'
+					style={{ background: 'linear-gradient(to right, var(--background-mongo) 0%, var(--background-mongo) 40%, #2563eb 100%)' }}>
+					<div className='mx-auto px-4'>
 						<div className='text-center'>
-							<p className=' text-sm'>© 2026 Profit Radar. All rights reserved.</p>
+							<p className=' footer-header'>© 2026 Profit Radar. All rights reserved.</p>
 						</div>
 					</div>
 				</footer>
