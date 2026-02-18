@@ -1,9 +1,19 @@
 @import "tailwindcss";
 
+/* Define the CSS variable at :root for global access */
+:root {
+  --mongo-green: #00684A;
+}
+
 /* "pr" class stands for profit radar */
 
-.bg-amazon {
-  background-color: #C4D8E1;
+.bg-mongo {
+  /* background-color: #C4D8E1; */
+  background-color: #F9FBFA;
+}
+
+.mongo-green {
+  background-color: #00684A;
 }
 
 .mainPading {
