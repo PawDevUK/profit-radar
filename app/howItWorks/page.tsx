@@ -6,12 +6,11 @@ import { bmw535, tiguan, chargergt } from '@/img';
 export default function HowItWorks() {
 	return (
 		<div>
-			<section className='bg-white py-6 md:py-8 lg:py-4'>
-				<div className='mx-auto max-w-7xl px-5 sm:px-6 lg:px-8'>
+			<section className='bg-white px-4 md:px-6 lg:px-8 my-5'>
+				<div className='w-full'>
 					{/* Heading */}
-
 					{/* Main content grid */}
-					<div className='mt-12 grid gap-10 lg:grid-cols-2 lg:gap-12 xl:gap-16 items-center'>
+					<div className='grid gap-10 lg:grid-cols-2 lg:gap-12 xl:gap-16 items-center pr-card'>
 						<div className='space-y-8 lg:space-y-10'>
 							<div className=''>
 								<h2 className='text-3xl font-bold tracking-tight text-blue-600 sm:text-4xl lg:text-5xl'>How it Works</h2>
@@ -59,24 +58,26 @@ export default function HowItWorks() {
 							</div>
 						</div>
 					</div>
-					<div className='space-y-5'>
-						<h3 className='text-2xl font-bold text-blue-600 sm:text-3xl'>Get Started</h3>
-						<p className='text-lg leading-relaxed text-gray-700'>
-							Register for an account, then purchase a Basic or Premier Membership. You can get a full refund for up to seven days if you change your mind as long as
-							you don’t use your Member benefits*, so it’s risk free.
-						</p>
-						<Link
-							href='/signup'
-							className='inline-flex items-center justify-center rounded-full bg-blue-600 px-8 py-3.5 text-base font-semibold text-white shadow-md hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors'>
-							Register Now
-						</Link>
-					</div>
 				</div>
 			</section>
-			<section className='bg-white pt-6 md:pt-8 pb-6 md:pb-8'>
-				<div className='mx-auto max-w-7xl px-5 sm:px-6 lg:px-8'>
+			<section className='bg-white px-4 md:px-6 lg:px-8 my-5'>
+				<div className='space-y-5 pr-card'>
+					<h3 className='text-2xl font-bold text-blue-600 sm:text-3xl'>Get Started</h3>
+					<p className='text-lg leading-relaxed text-gray-700'>
+						Register for an account, then purchase a Basic or Premier Membership. You can get a full refund for up to seven days if you change your mind as long as you
+						don’t use your Member benefits*, so it’s risk free.
+					</p>
+					<Link
+						href='/signup'
+						className='inline-flex items-center justify-center rounded-full bg-blue-600 px-8 py-3.5 text-base font-semibold text-white shadow-md hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors'>
+						Register Now
+					</Link>
+				</div>
+			</section>
+			<section className='bg-white px-4 md:px-6 lg:px-8 my-5  mb-12'>
+				<div className=' w-full pr-card'>
 					{/* Heading */}
-					<div className='text-center mb-12'>
+					<div className='text-center '>
 						<h2 className='text-3xl font-bold tracking-tight text-blue-600 sm:text-3xl'>After You&#39;ve Registered:</h2>
 						<p className='mt-4 text-lg text-gray-600'>
 							Credentials to buy a vehicle in a specific state, search for No License Required vehicles or work with a Broker.
