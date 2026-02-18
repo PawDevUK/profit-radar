@@ -31,8 +31,8 @@ export default function RootLayout({
 				<main className='min-h-screen'>{children}</main>
 
 				{/* Footer */}
-				<footer className='bg-mongo text-gray-700 py-8'>
-					<div className=' mx-auto px-4'>
+				<footer className="text-white py-8" style={{ background: 'linear-gradient(to right, var(--background-mongo), #2563eb)' }}>
+				<div className='mx-auto px-4'>
 						<div className='text-center'>
 							<p className=' text-sm'>© 2026 Profit Radar. All rights reserved.</p>
 						</div>
