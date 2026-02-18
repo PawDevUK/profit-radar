@@ -28,7 +28,7 @@ export default function RootLayout({
 				<Navigation />
 
 				{/* Main Content */}
-				<main className='min-h-screen  mx-auto px-4'>{children}</main>
+				<main className='min-h-screen'>{children}</main>
 
 				{/* Footer */}
 				<footer className='bg-mongo text-gray-700 py-8'>
