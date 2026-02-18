@@ -31,7 +31,7 @@ export default function RootLayout({
 				<main className='min-h-screen  mx-auto px-4'>{children}</main>
 
 				{/* Footer */}
-				<footer className='bg-amazon text-gray-700 py-8'>
+				<footer className='bg-mongo text-gray-700 py-8'>
 					<div className=' mx-auto px-4'>
 						<div className='text-center'>
 							<p className=' text-sm'>© 2026 Profit Radar. All rights reserved.</p>
