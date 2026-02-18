@@ -5,6 +5,8 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { authService } from '../../../lib/auth';
 import SearchBar from '@/app/components/header/search';
+import Button from '../common/buttons/Button';
+import NavButton from '../common/buttons/NavButton';
 
 export default function NavigationClient() {
 	const [mobileOpen, setMobileOpen] = useState(false);
@@ -65,9 +67,9 @@ export default function NavigationClient() {
 	];
 
 	return (
-		<header className='bg-amazon shadow-sm border-b border-gray-200 mainPadding mx-auto'>
+		<header className='bg-mongo shadow-sm border-b border-gray-200 mainPadding mx-auto'>
 			{/* Top Bar */}
-			<div className='bg-amazon text-gray-700 px-4 py-2'>
+			<div className='bg-mongo text-gray-700 px-4 py-2'>
 				<div className='mx-auto flex items-center justify-between text-sm px-4 pt-3'>
 					<div className='space-x-4'>
 						<span className='sr-only'>Skip to main content</span>
@@ -84,20 +86,13 @@ export default function NavigationClient() {
 								</div>
 								<div className='flex flex-col'>
 									<span className='text-gray-700 text-sm font-medium'>{currentUser?.fullName || 'User'}</span>
-									<button onClick={handleLogout} className='text-green-600 text-xs font-semibold hover:text-green-800 transition-colors text-left'>
+									{/* <button onClick={handleLogout} className='text-green-600 text-xs font-semibold hover:text-green-800 transition-colors text-left'>
 										Log Out
-									</button>
+									</button> */}
 								</div>
 							</div>
 						) : (
-							authItems.map((item) => (
-								<Link
-									key={item.href}
-									href={item.href}
-									className='flex items-center justify-center text-gray-700 border border-black hover:border-[#FF6200] px-8 rounded-full text-sm font-medium hover:bg-[#EAE2D0] hover:text-[#FF6200] hover:shadow-lg transition-all bg-transparent h-10'>
-									{item.label}
-								</Link>
-							))
+							authItems.map((item, i) => <Button key={i} item={item} />)
 						)}
 					</div>
 				</div>
@@ -109,12 +104,7 @@ export default function NavigationClient() {
 					{/* Desktop Navigation */}
 					<div className='hidden md:flex items-center space-x-3'>
 						{menuItems.map((item) => (
-							<Link
-								key={item.href}
-								href={item.href}
-								className='text-gray-700 hover:text-[#FF6200] px-3 py-2 text-lg font-medium hover:bg-[#EAE2D0] hover:shadow-lg rounded-[5px] transition-all'>
-								{item.label}
-							</Link>
+							<NavButton key={item.href} item={item} />
 						))}
 					</div>
 
