@@ -52,6 +52,10 @@ export default function NavigationClient() {
 		router.push('/');
 	};
 
+	const handleClose = () => {
+		setMobileOpen(false);
+	};
+
 	const menuItems = [
 		{ href: '/howItWorks', label: 'How it works' },
 		{ href: '/inventory', label: 'Inventory' },
@@ -70,51 +74,50 @@ export default function NavigationClient() {
 		<header className='bg-mongo shadow-sm border-b border-gray-200 mainPadding mx-auto'>
 			{/* Top Bar */}
 			<div className='bg-mongo text-gray-700 px-4 py-2'>
-				<div className='mx-auto flex items-center justify-between text-sm px-4 pt-3'>
-					<div className='space-x-4'>
-						<span className='sr-only'>Skip to main content</span>
+				<div className='mx-auto flex flex-col items-center justify-between text-sm  pt-3'>
+					{/* Mobile menu button */}
+					<div className='flex *:items-center justify-between w-full mb-5'>
+						<div className='space-x-4'>
+							<Link href='/' className='text-3xl font-bold text-gray-700 md:hidden'>
+								Profit<span className='text-[#FF6200] ml-2'>Radar</span>
+							</Link>
+						</div>
+						<div className='md:hidden'>
+							<button type='button' onClick={() => setMobileOpen(!mobileOpen)} className='text-gray-700 hover:text-gray-900 py-2 flex flex-row'>
+								<svg className='w-6 h-6' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+									<path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M4 6h16M4 12h16M4 18h16' />
+								</svg>
+								<span className='ml-1 text-sm font-medium flex items-center '>
+									<p>Menu</p>
+								</span>
+							</button>
+						</div>
+					</div>
+					{/* Desktop logo and search bar */}
+					<div className='flex flex-row w-full'>
 						<Link href='/' className='text-3xl font-bold text-gray-700 hidden md:block'>
 							Profit<span className='text-[#FF6200] ml-2'>Radar</span>
 						</Link>
-					</div>
-					<SearchBar></SearchBar>
-					<div className='hidden md:flex items-center space-x-4'>
-						{isLoggedIn ? (
-							<div className='flex items-center space-x-2 bg-green-50 px-4 py-2 rounded-lg border border-green-200 hover:bg-green-100 transition-all'>
-								<div className='w-8 h-8 rounded-full bg-green-500 flex items-center justify-center text-white font-semibold'>
-									{currentUser?.fullName?.charAt(0).toUpperCase() || 'U'}
+						<SearchBar></SearchBar>
+						<div className='flex flex-row space-x-4 hidden md:flex'>
+							{authItems.map((item, i) => (
+								<div key={i} className='w-30'>
+									<LogButton item={item} onclick={handleClose} />
 								</div>
-								<div className='flex flex-col'>
-									<span className='text-gray-700 text-sm font-medium'>{currentUser?.fullName || 'User'}</span>
-									{/* <button onClick={handleLogout} className='text-green-600 text-xs font-semibold hover:text-green-800 transition-colors text-left'>
-										Log Out
-									</button> */}
-								</div>
-							</div>
-						) : (
-							authItems.map((item, i) => <LogButton key={i} item={item} />)
-						)}
+							))}
+						</div>
 					</div>
 				</div>
 			</div>
 
 			{/* Main Navigation */}
 			<nav className='mx-auto px-4'>
-				<div className='flex justify-center items-center h-14'>
+				<div className='flex justify-center items-center h-5 md:h-14'>
 					{/* Desktop Navigation */}
 					<div className='hidden md:flex items-center space-x-3'>
 						{menuItems.map((item) => (
 							<NavButton key={item.href} item={item} />
 						))}
-					</div>
-
-					{/* Mobile menu button */}
-					<div className='md:hidden'>
-						<button type='button' onClick={() => setMobileOpen(!mobileOpen)} className='text-gray-700 hover:text-gray-900 p-2'>
-							<svg className='w-6 h-6' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-								<path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M4 6h16M4 12h16M4 18h16' />
-							</svg>
-						</button>
 					</div>
 				</div>
 
@@ -143,7 +146,7 @@ export default function NavigationClient() {
 							<div className='flex mt-5 flex-col space-y-4 justify-center items-center'>
 								{authItems.map((item, i) => (
 									<div key={i} className='w-70'>
-										<LogButton item={item} />
+										<LogButton item={item} onclick={handleClose} />
 									</div>
 								))}
 							</div>
