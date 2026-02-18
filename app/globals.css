@@ -4,6 +4,7 @@
 :root {
   --mongo-green: #00684A;
   --background-mongo: #F9FBFA;
+  --header-text: #001e2bc8;
 }
 
 body {
@@ -40,4 +41,10 @@ body {
   @apply shadow-lg my-5 p-7 md:p-10;
   border-radius: 8px;
   /* padding: 40px; */
+}
+
+.footer-header {
+  color: var(--header-text);
+  font-size: 16px;
+  font-weight: 500;
 }
