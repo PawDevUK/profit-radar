@@ -13,15 +13,15 @@
     font-size: 0.875rem;
     font-weight: 500;
     height: 2.5625rem;
-    transition: all 0.2s;
 }
 
 .log-button:hover {
     /* background: var(--mongo-green); */
-    color: var(--mongo-green);
+    /* color: var(--mongo-green); */
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
     /* shadow-lg */
     border-color: var(--mongo-green);
+    color: var(--mongo-green);
 }
 
 
@@ -35,11 +35,13 @@
     background: transparent;
     padding-left: 2rem;
     padding-right: 2rem;
-    border-radius: 10px;
+    border-radius: 10px 10px 0px 0px;
     font-size: 0.875rem;
     font-weight: 500;
-    height: 2.5625rem;
-    transition: all 0.2s;
+    height: 3rem;
+    border-bottom: var(--background-mongo) solid 1px;
+
+    transition: all 0.2s, border-bottom-width 0.2s, border-bottom-color 0.2s;
 }
 
 .nav-button:hover {
@@ -47,5 +49,6 @@
     color: var(--mongo-green);
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
     /* shadow-lg */
+    border-bottom: var(--mongo-green) solid 1px;
     border-color: var(--mongo-green);
 }
