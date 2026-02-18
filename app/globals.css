@@ -8,13 +8,14 @@
 
 body {
   overflow-x: hidden;
+  background-color: #F9FAFB;
 }
 
 /* "pr" class stands for profit radar */
 
 .bg-mongo {
   /* background-color: #C4D8E1; */
-  background-color: #F9FBFA;
+  background-color: var(--background-mongo) !important;
 }
 
 .mongo-green {
