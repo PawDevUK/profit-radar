@@ -13,7 +13,7 @@ export default function HowItWorks() {
 					<div className='w-full'>
 						{/* Heading */}
 						{/* Main content grid */}
-						<div className='grid gap-10 lg:grid-cols-2 lg:gap-12 xl:gap-16 items-center pr-card'>
+						<div className='grid gap-10 lg:grid-cols-2 lg:gap-12 xl:gap-16 items-center pr-card  p-7 md:p-10'>
 							<div className='space-y-8 lg:space-y-10'>
 								<div className=''>
 									<h2 className='text-3xl font-bold tracking-tight text-blue-600 sm:text-4xl lg:text-5xl'>How it Works</h2>
@@ -35,7 +35,7 @@ export default function HowItWorks() {
 										We hold regular auctions at our <span className='font-semibold'>275+ Locations</span> in 11 countries, and national
 										<span className='font-semibold'> spotlight auctions</span> that make it easy to find a specific type of vehicle.
 									</p>
-									<div className='w-90 py-5'>
+									<div className='md:w-90 py-5'>
 										<LogButton item={{ href: '/inventory', label: 'Shop Our Inventory', fontSize: 18 }}></LogButton>
 									</div>
 								</div>
@@ -66,7 +66,7 @@ export default function HowItWorks() {
 							Register for an account, then purchase a Basic or Premier Membership. You can get a full refund for up to seven days if you change your mind as long as
 							you don’t use your Member benefits*, so it’s risk free.
 						</p>
-						<div className='w-90 py-5'>
+						<div className='md:w-90 py-5'>
 							<LogButton item={{ href: '/signup', label: 'Register Now', fontSize: 18 }}></LogButton>
 						</div>
 						{/* <Link
