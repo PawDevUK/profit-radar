@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { authService } from '../../../lib/auth';
 import SearchBar from '@/app/components/header/search';
-import Button from '../common/buttons/Button';
+import LogButton from '../common/buttons/logButton';
 import NavButton from '../common/buttons/NavButton';
 
 export default function NavigationClient() {
@@ -92,7 +92,7 @@ export default function NavigationClient() {
 								</div>
 							</div>
 						) : (
-							authItems.map((item, i) => <Button key={i} item={item} />)
+							authItems.map((item, i) => <LogButton key={i} item={item} />)
 						)}
 					</div>
 				</div>
