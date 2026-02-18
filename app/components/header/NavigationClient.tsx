@@ -112,9 +112,9 @@ export default function NavigationClient() {
 
 			{/* Main Navigation */}
 			<nav className='mx-auto px-4'>
-				<div className='flex justify-center items-center h-5 md:h-14'>
+				<div className='flex justify-center items-center'>
 					{/* Desktop Navigation */}
-					<div className='hidden md:flex items-center space-x-3'>
+					<div className='hidden md:flex items-center '>
 						{menuItems.map((item) => (
 							<NavButton key={item.href} item={item} />
 						))}
