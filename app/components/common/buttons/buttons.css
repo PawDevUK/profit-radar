@@ -1,0 +1,51 @@
+/* Vanilla CSS equivalent for the provided Tailwind classes */
+.log-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #001E2B;
+    border: 1px solid #00684b50;
+    /* fallback color if --bg-button is not set */
+    background: transparent;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    border-radius: 10px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    height: 2.5rem;
+    transition: all 0.2s;
+}
+
+.log-button:hover {
+    /* background: var(--mongo-green); */
+    color: var(--mongo-green);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    /* shadow-lg */
+    border-color: var(--mongo-green);
+}
+
+
+.nav-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #001E2B;
+    /* border: 1px solid #00684b50; */
+    /* fallback color if --bg-button is not set */
+    background: transparent;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    border-radius: 10px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    height: 2.5rem;
+    transition: all 0.2s;
+}
+
+.nav-button:hover {
+    /* background: var(--mongo-green); */
+    color: var(--mongo-green);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    /* shadow-lg */
+    border-color: var(--mongo-green);
+}
