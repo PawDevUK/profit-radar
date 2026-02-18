@@ -73,7 +73,7 @@ export default function NavigationClient() {
 	return (
 		<header className='bg-mongo shadow-sm border-b border-gray-200 mainPadding mx-auto'>
 			{/* Top Bar */}
-			<div className='bg-mongo text-gray-700 px-4 pt-2 pb-5'>
+			<div className=' text-gray-700 px-4 pt-2 pb-5'>
 				<div className='mx-auto flex flex-col items-center justify-between text-sm  pt-3'>
 					{/* Mobile menu button */}
 					<div className='flex *:items-center justify-between w-full mb-5'>
