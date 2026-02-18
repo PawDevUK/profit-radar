@@ -85,11 +85,11 @@ export default function HowItWorks() {
 					</div>
 
 					{/* Three-column grid */}
-					<div className='grid gap-10 md:grid-cols-3 md:gap-8 lg:gap-12'>
+					<div className='grid gap-10 md:grid-cols-3 md:gap-8 lg:gap-12 p-4'>
 						{/* Column 1: Upload License & Join Auctions */}
-						<div className='space-y-10'>
+						<div className='space-y-6'>
 							{/* Upload License(s) */}
-							<div className='text-center md:text-left'>
+							<div className='text-center md:text-left h-[50%]'>
 								<div className='mx-auto md:mx-0 mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-blue-100 text-blue-600'>
 									{/* Cloud Upload Icon */}
 									<svg className='h-8 w-8' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
@@ -119,7 +119,7 @@ export default function HowItWorks() {
 							</div>
 
 							{/* Join Auctions */}
-							<div className='text-center md:text-left'>
+							<div className='text-center md:text-left h-[50%]'>
 								<div className='mx-auto md:mx-0 mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-blue-100 text-blue-600'>
 									{/* Calendar Icon */}
 									<svg className='h-8 w-8' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
@@ -153,7 +153,7 @@ export default function HowItWorks() {
 						{/* Column 2: No License & Other Ways */}
 						<div className='space-y-10'>
 							{/* No License Is No Problem */}
-							<div className='text-center md:text-left'>
+							<div className='text-center md:text-left h-[50%]'>
 								<div className='mx-auto md:mx-0 mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-blue-100 text-blue-600'>
 									{/* Document Check Icon */}
 									<svg className='h-8 w-8' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
@@ -182,7 +182,7 @@ export default function HowItWorks() {
 							</div>
 
 							{/* Other Ways to Win */}
-							<div className='text-center md:text-left'>
+							<div className='text-center md:text-left h-[50%]'>
 								<div className='mx-auto md:mx-0 mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-blue-100 text-blue-600'>
 									{/* Gavel / Bid Icon placeholder */}
 									<svg className='h-8 w-8' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
@@ -206,49 +206,52 @@ export default function HowItWorks() {
 						</div>
 
 						{/* Column 3: Search & Receive */}
-						<div className='space-y-10'>
+						<div className='space-y-10 h-full'>
 							{/* Search, Save & Set Alerts */}
-							<div className='text-center md:text-left'>
-								<div className='mx-auto md:mx-0 mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-blue-100 text-blue-600'>
-									{/* Heart + Search Icon */}
-									<svg className='h-8 w-8' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
-										<path
-											strokeLinecap='round'
-											strokeLinejoin='round'
-											strokeWidth={2}
-											d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7'
-										/>
-										<path
-											strokeLinecap='round'
-											strokeLinejoin='round'
-											strokeWidth={2}
-											d='M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z'
-										/>
-									</svg>
-								</div>
-								<h3 className='text-xl font-semibold text-blue-600'>Search, Save & Set Alerts</h3>
-								<p className='mt-3 text-gray-600'>
-									Search & filter our huge selection to find the vehicles that fit your needs. Save your common searches. Track vehicles... and set Vehicle
-									Alerts.
-								</p>
-								<div className='mt-4 space-y-1 text-sm'>
-									<Link href='#' className='block text-blue-600 hover:underline'>
-										Vehicle Finder Tool →
-									</Link>
-									<Link href='#' className='block text-blue-600 hover:underline'>
-										Set a Vehicle Alert →
-									</Link>
-									<Link href='#' className='block text-blue-600 hover:underline'>
-										Save a Search →
-									</Link>
-									<Link href='#' className='block text-blue-600 hover:underline'>
-										Watchlist →
-									</Link>
-								</div>
+							<div className='text-center md:text-left h-[50%] '>
+								<section className=''>
+									<div className='mx-auto md:mx-0 mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-blue-100 text-blue-600'>
+										{/* Heart + Search Icon */}
+										<svg className='h-8 w-8' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
+											<path
+												strokeLinecap='round'
+												strokeLinejoin='round'
+												strokeWidth={2}
+												d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7'
+											/>
+											<path
+												strokeLinecap='round'
+												strokeLinejoin='round'
+												strokeWidth={2}
+												d='M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z'
+											/>
+										</svg>
+									</div>
+								</section>
+								<section className=''>
+									<h3 className='text-xl font-semibold text-blue-600'>Search, Save & Set Alerts</h3>
+									<p className='mt-3 text-gray-600'>
+										Search & filter our huge selection to find the vehicles that fit your needs. Save your common searches. Track vehicles... and set Vehicle
+										Alerts.
+									</p>
+								</section>
+								<section className=''>
+									<div className='h-full mt-4 space-y-1 text-sm'>
+										<Link href='#' className='block text-blue-600 hover:underline'>
+											Vehicle Finder Tool →
+										</Link>
+										<Link href='#' className='block text-blue-600 hover:underline'>
+											Set a Vehicle Alert →
+										</Link>
+										<Link href='#' className='block text-blue-600 hover:underline'>
+											Save a Search →
+										</Link>
+									</div>
+								</section>
 							</div>
 
 							{/* Receive Your Vehicles */}
-							<div className='text-center md:text-left'>
+							<div className='text-center md:text-left h-[50%]'>
 								<div className='mx-auto md:mx-0 mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-blue-100 text-blue-600'>
 									{/* Truck Delivery Icon */}
 									<svg className='h-8 w-8' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
