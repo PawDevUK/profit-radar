@@ -3,6 +3,7 @@
 /* Define the CSS variable at :root for global access */
 :root {
   --mongo-green: #00684A;
+  --mongo-green-light: #00ED64;
   --background-mongo: #F9FBFA;
   --header-text: #001e2bc8;
 }
