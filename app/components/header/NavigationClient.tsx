@@ -79,7 +79,7 @@ export default function NavigationClient() {
 					<div className='flex *:items-center justify-between w-full mb-5'>
 						<div className='space-x-4'>
 							<Link href='/' className='text-3xl font-bold text-gray-700 md:hidden'>
-								Profit<span className='text-[#FF6200] ml-2'>Radar</span>
+								Profit<span className='text-(--mongo-green) ml-2'>Radar</span>
 							</Link>
 						</div>
 						<div className='md:hidden'>
@@ -96,7 +96,7 @@ export default function NavigationClient() {
 					{/* Desktop logo and search bar */}
 					<div className='flex flex-row w-full'>
 						<Link href='/' className='text-3xl font-bold text-gray-700 hidden md:block'>
-							Profit<span className='text-[#FF6200] ml-2'>Radar</span>
+							Profit<span className='text-(--mongo-green) ml-2'>Radar</span>
 						</Link>
 						<SearchBar></SearchBar>
 						<div className='flex flex-row space-x-4 hidden md:flex'>
