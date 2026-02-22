@@ -1,19 +1,20 @@
 'use client';
 import React, { useState } from 'react';
+import './style.css';
 
 export default function CollapseCard({ children, title }: { children: React.ReactNode; title: string }) {
 	const [open, setOpen] = useState(false);
 	return (
-		<div className='z-20 bg-white border border-gray-300 rounded shadow'>
+		<div className='z-20 bg-white borderBottom'>
 			<button className='w-full flex items-center justify-between px-4 py-3 font-semibold text-black focus:outline-none' onClick={() => setOpen((v) => !v)}>
-				<span>{title}</span>
+				<span className='header'>{title}</span>
 				<svg
-					className={`transition-transform duration-200 ${open ? 'rotate-90' : ''}`}
+					className={`transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
 					width='20'
 					height='20'
 					fill='none'
 					stroke='currentColor'
-					strokeWidth='2'
+					strokeWidth='1'
 					strokeLinecap='round'
 					strokeLinejoin='round'
 					viewBox='0 0 24 24'>
