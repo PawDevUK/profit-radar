@@ -2,9 +2,51 @@
 import React, { useState } from 'react';
 import Toggler from '../components/common/toggler/toggler';
 import CollapseCard from '../components/common/collapseCard/collapseCard';
-import Make from './search/make';
-import Model from './search/model';
+import CheckBoxList from './search/checkBoxList';
 import { SquareChevronRight, SquareChevronLeft } from 'lucide-react';
+
+export const americanCarMakes = [
+	'Acura',
+	'Alfaomeo',
+	'Aston Martin',
+	'Audi',
+	'Bentley',
+	'BMW',
+	'Buick',
+	'Cadillac',
+	'Chevrolet',
+	'Chrysler',
+	'Dodge',
+	'Ferrari',
+	'Fiat',
+	'Ford',
+	'Genesis',
+	'GMC',
+	'Honda',
+	'Hyundai',
+	'Infiniti',
+	'Jaguar',
+	'Jeep',
+	'Kia',
+	'Land Rover',
+	'Lexus',
+	'Lincoln',
+	'Maserati',
+	'Mazda',
+	'McLaren',
+	'Mercedes-Benz',
+	'MINI',
+	'Mitsubishi',
+	'Nissan',
+	'Porsche',
+	'Ram',
+	'Rolls-Royce',
+	'Subaru',
+	'Tesla',
+	'Toyota',
+	'Volkswagen',
+	'Volvo',
+];
 
 const ToggleButton = ({ open, toggleFilters }: { open: boolean; toggleFilters: () => void }) => {
 	const IconSize = 26;
@@ -16,8 +58,10 @@ const ToggleButton = ({ open, toggleFilters }: { open: boolean; toggleFilters: (
 };
 
 export default function Page() {
-	const [open, setOpen] = useState(false);
-	const [showSidebar, setShowSidebar] = useState(false);
+	const [open, setOpen] = useState(true);
+	const [showSidebar, setShowSidebar] = useState(true);
+	const [selectedMakes, setSelectedMakes] = useState<string[]>([]);
+	const [selectedModels, setSelectedModels] = useState<string[]>([]);
 
 	const toggleFilters = () => {
 		setOpen((prev) => !prev);
@@ -49,8 +93,8 @@ export default function Page() {
 						</div>
 						{showSidebar ? (
 							<div>
-								<Make />
-								<Model />
+								<CheckBoxList title='Make' options={americanCarMakes} selected={selectedMakes} onChange={setSelectedMakes} scrollable />
+								<CheckBoxList title='Model' options={americanCarMakes} selected={selectedModels} onChange={setSelectedModels} scrollable />
 								<CollapseCard title='Search filters'>
 									<div className='flex items-center justify-between mb-2'>
 										<span className='font-semibold'>Vehicles only</span>
