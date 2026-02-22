@@ -8,6 +8,12 @@
   --header-text: #001e2bc8;
 }
 
+.header {
+  color: var(--header-text);
+  font-size: 14px;
+  font-weight: 500;
+}
+
 body {
   overflow-x: hidden;
   background-color: #F9FAFB;
