@@ -1,0 +1,12 @@
+.borderBottom {
+
+    position: relative;
+}
+
+.borderBottom::after {
+    content: "";
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+    border-bottom: 1px solid #9291916e;
+}
