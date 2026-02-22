@@ -2,10 +2,10 @@
 import React, { useState } from 'react';
 import './style.css';
 
-export default function CollapseCard({ children, title }: { children: React.ReactNode; title: string }) {
+export default function CollapseCard({ scrollable, children, title }: { scrollable?: boolean; children: React.ReactNode; title: string }) {
 	const [open, setOpen] = useState(false);
 	return (
-		<div className='z-20 bg-white borderBottom'>
+		<div className={`z-20 bg-white borderBottom ${scrollable ? 'max-h-64 overflow-y-auto' : ''}`}>
 			<button className='w-full flex items-center justify-between px-4 py-3 font-semibold text-black focus:outline-none' onClick={() => setOpen((v) => !v)}>
 				<span className='header'>{title}</span>
 				<svg
