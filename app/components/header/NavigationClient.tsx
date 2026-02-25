@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { authService } from '../../../lib/auth';
-import SearchBar from '@/app/components/header/search';
+import SearchBar from '@/app/components/search/search';
 import LogButton from '../common/buttons/logButton';
 import NavButton from '../common/buttons/NavButton';
 
@@ -123,8 +123,7 @@ export default function NavigationClient() {
 
 				{/* Mobile Menu */}
 				<div
-            className={`md:hidden overflow-hidden border-t border-gray-200 transition-all duration-500 ease-in-out ${mobileOpen ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'}`}
-        >
+					className={`md:hidden overflow-hidden border-t border-gray-200 transition-all duration-500 ease-in-out ${mobileOpen ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'}`}>
 					<div className='px-4 py-4 space-y-1'>
 						{isLoggedIn && (
 							<div className='mb-4 flex items-center space-x-2 bg-green-50 px-3 py-2 rounded-lg border border-green-200 hover:bg-green-100 transition-all'>
