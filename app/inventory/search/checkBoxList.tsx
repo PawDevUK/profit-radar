@@ -32,7 +32,7 @@ export default function CheckBoxList({ options, selected, onChange, title, scrol
 								className='peer h-4 w-4 cursor-pointer transition-all appearance-none rounded shadow hover:shadow-md border border-slate-300 '
 								onChange={() => handleChange(option)}
 							/>
-							<span className='absolute text-[var(--mongo-green)] opacity-0 peer-checked:opacity-100 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none'>
+							<span className='absolute text-[var(--mongo-green)] opacity-0 peer-checked:opacity-100 top-[11px] left-[8px] transform -translate-x-1/2 -translate-y-1/2 pointer-events-none'>
 								<svg xmlns='http://www.w3.org/2000/svg' className='h-3.5 w-3.5' viewBox='0 0 20 20' fill='currentColor' stroke='currentColor' strokeWidth='1'>
 									<path
 										fillRule='evenodd'
@@ -41,9 +41,9 @@ export default function CheckBoxList({ options, selected, onChange, title, scrol
 									/>
 								</svg>
 							</span>
+							<div className='ml-2 mt-0.5 text-gray-500'>{option}</div>
 						</label>
 					</div>
-					<div className='ml-2 mt-0.5 text-gray-500'>{option}</div>
 				</div>
 			))}
 		</CollapseCard>
