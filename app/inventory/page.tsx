@@ -2,51 +2,10 @@
 import React, { useState } from 'react';
 import Toggler from '../components/common/toggler/toggler';
 import CollapseCard from '../components/common/collapseCard/collapseCard';
-import CheckBoxList from './search/checkBoxList';
+import CheckBoxList from './sideSearchComponent/search/checkBoxList';
 import { SquareChevronRight, SquareChevronLeft } from 'lucide-react';
-
-export const americanCarMakes = [
-	'Acura',
-	'Alfaomeo',
-	'Aston Martin',
-	'Audi',
-	'Bentley',
-	'BMW',
-	'Buick',
-	'Cadillac',
-	'Chevrolet',
-	'Chrysler',
-	'Dodge',
-	'Ferrari',
-	'Fiat',
-	'Ford',
-	'Genesis',
-	'GMC',
-	'Honda',
-	'Hyundai',
-	'Infiniti',
-	'Jaguar',
-	'Jeep',
-	'Kia',
-	'Land Rover',
-	'Lexus',
-	'Lincoln',
-	'Maserati',
-	'Mazda',
-	'McLaren',
-	'Mercedes-Benz',
-	'MINI',
-	'Mitsubishi',
-	'Nissan',
-	'Porsche',
-	'Ram',
-	'Rolls-Royce',
-	'Subaru',
-	'Tesla',
-	'Toyota',
-	'Volkswagen',
-	'Volvo',
-];
+import { americanCarMakes } from './samples';
+import Results from './results/results';
 
 const ToggleButton = ({ open, toggleFilters }: { open: boolean; toggleFilters: () => void }) => {
 	const IconSize = 26;
@@ -71,8 +30,7 @@ export default function Page() {
 	};
 
 	return (
-		<div>
-			{/* Search and filter section */}
+		<div className='flex flex-col'>
 			{open ? (
 				<aside
 					className='w-70 bg-white shadow-lg border-r border-gray-200 h-screen sticky top-0 flex flex-col transition-all duration-500 ease-in-out'
@@ -247,7 +205,7 @@ export default function Page() {
 				</aside>
 			)}
 			{/* Inventory list */}
-			<div></div>
+			<Results></Results>
 		</div>
 	);
 }
