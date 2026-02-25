@@ -122,7 +122,9 @@ export default function NavigationClient() {
 				</div>
 
 				{/* Mobile Menu */}
-				<div className={`md:hidden ${mobileOpen ? 'block' : 'hidden'} border-t border-gray-200`}>
+				<div
+            className={`md:hidden overflow-hidden border-t border-gray-200 transition-all duration-500 ease-in-out ${mobileOpen ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'}`}
+        >
 					<div className='px-4 py-4 space-y-1'>
 						{isLoggedIn && (
 							<div className='mb-4 flex items-center space-x-2 bg-green-50 px-3 py-2 rounded-lg border border-green-200 hover:bg-green-100 transition-all'>
@@ -138,7 +140,11 @@ export default function NavigationClient() {
 							</div>
 						)}
 						{menuItems.map((item) => (
-							<Link key={item.href} href={item.href} className='block text-gray-700 px-3 py-2 text-sm font-medium hover:bg-[#EAE2D0] rounded-[5px]'>
+							<Link
+								key={item.href}
+								href={item.href}
+								onClick={() => setMobileOpen(false)}
+								className='block text-gray-700 px-3 py-2 text-sm font-medium hover:bg-[#EAE2D0] rounded-[5px]'>
 								{item.label}
 							</Link>
 						))}
