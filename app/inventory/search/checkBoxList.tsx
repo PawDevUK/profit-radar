@@ -1,5 +1,7 @@
 'use client';
 import CollapseCard from '@/app/components/common/collapseCard/collapseCard';
+import SearchBar from '@/app/components/search/search';
+import { useState } from 'react';
 
 // Reusable CheckboxList component
 type CheckboxListProps = {
@@ -11,6 +13,8 @@ type CheckboxListProps = {
 };
 
 export default function CheckBoxList({ options, selected, onChange, title, scrollable }: CheckboxListProps) {
+	const [searchOptions, setSearchOptions] = useState<string[]>(options);
+
 	const handleChange = (option: string) => {
 		if (selected.includes(option)) {
 			onChange(selected.filter((o) => o !== option));
@@ -18,11 +22,19 @@ export default function CheckBoxList({ options, selected, onChange, title, scrol
 			onChange([...selected, option]);
 		}
 	};
+	const handleSearchChange = (query: string) => {
+		// Implement search logic here, e.g., filter options based on the query
+		const filteredOptions = options.filter((option) => option.toLowerCase().includes(query.toLowerCase()));
+		setSearchOptions(filteredOptions);
+		if (!query.trim()) {
+			setSearchOptions(options);
+		}
+	};
 
 	return (
 		<CollapseCard title={title || ''} scrollable={scrollable}>
-			{/* {title && <div className='font-semibold mb-2'>{title}</div>} */}
-			{options.map((option) => (
+			<SearchBar handleOnChange={handleSearchChange} subject={title} />
+			{searchOptions.map((option) => (
 				<div key={option} className='flex flex-row mx-1'>
 					<div className='inline-flex items-center'>
 						<label className='flex items-center cursor-pointer relative'>
