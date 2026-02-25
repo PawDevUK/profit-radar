@@ -1,13 +1,16 @@
 'use client';
 
 import { useState, FormEvent } from 'react';
+import { useRouter } from 'next/navigation';
 
-export default function SearchBar({ handleOnChange, subject }: { handleOnChange?: (query: string) => void; subject?: string }) {
+export default function SearchBar({ handleOnChange }: { handleOnChange?: (query: string) => void }) {
 	const [query, setQuery] = useState('');
+	const router = useRouter();
 
 	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		if (!query.trim()) return;
+		router.push('/inventory');
 	};
 
 	return (
