@@ -7,7 +7,7 @@ import { useState } from 'react';
 type CheckboxListProps = {
 	options: string[];
 	selected: string[];
-	onChange: (selected: string[]) => void;
+	onChange: (cars: string[]) => void;
 	title?: string;
 	scrollable?: boolean;
 };
