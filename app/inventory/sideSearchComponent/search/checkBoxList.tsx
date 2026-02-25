@@ -33,7 +33,7 @@ export default function CheckBoxList({ options, selected, onChange, title, scrol
 
 	return (
 		<CollapseCard title={title || ''} scrollable={scrollable}>
-			<SearchBar handleOnChange={handleSearchChange} subject={title} />
+			<SearchBar handleOnChange={handleSearchChange} />
 			{searchOptions.map((option) => (
 				<div key={option} className='flex flex-row mx-1'>
 					<div className='inline-flex items-center'>
