@@ -34,7 +34,7 @@ export default function Page() {
 		<div className='flex flex-row'>
 			{open ? (
 				<aside
-					className='w-70 bg-white shadow-lg border-r border-gray-200 h-screen sticky top-0 flex flex-col transition-all duration-500 ease-in-out'
+					className='w-70 bg-white shadow-lg border-r border-gray-200 min-h-screen sticky top-0 flex flex-col transition-all duration-500 ease-in-out'
 					onTransitionEnd={() => {
 						setShowSidebar(true);
 					}}>
