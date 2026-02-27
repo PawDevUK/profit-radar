@@ -1,7 +1,6 @@
 'use client';
 import { useState } from 'react';
 import { SquareChevronRight, SquareChevronLeft } from 'lucide-react';
-import Results from './results/results';
 import SideSearch from './sideSearchComponent/sideSearch';
 
 const ToggleButton = ({ open, toggleFilters }: { open: boolean; toggleFilters: () => void }) => {
@@ -16,6 +15,7 @@ const ToggleButton = ({ open, toggleFilters }: { open: boolean; toggleFilters: (
 export default function Page() {
 	const [open, setOpen] = useState(true);
 	const [showSidebar, setShowSidebar] = useState(true);
+	const [resetAll, setResetAll] = useState(false);
 	// const [filteredCars, setFilteredCars] = useState<string[]>([]);
 
 	const toggleFilters = () => {
@@ -27,6 +27,12 @@ export default function Page() {
 
 	const getFilteredLot = (cars: string[]) => {
 		// setFilteredCars(cars);
+	};
+	const resetAllClick = () => {
+		setResetAll(true);
+		setTimeout(() => {
+			setResetAll(false);
+		}, 100);
 	};
 
 	return (
@@ -42,14 +48,16 @@ export default function Page() {
 							{showSidebar ? (
 								<div className='flex items-center justify-between w-45'>
 									<h2 className='text-[16px] font-bold text-(--header-text)'>Search filters</h2>
-									<button className='text-(--header-text) cursor-pointer text-xs mt-0.5 font-medium hover:underline'>Reset All</button>
+									<button onClick={resetAllClick} className='resetButton'>
+										Reset All
+									</button>
 								</div>
 							) : (
 								<div></div>
 							)}
 							<ToggleButton open={open} toggleFilters={toggleFilters} />
 						</div>
-						{showSidebar ? <SideSearch filteredSaleResults={getFilteredLot} /> : <div></div>}
+						{showSidebar ? <SideSearch resetAll={resetAll} filteredSaleResults={getFilteredLot} /> : <div></div>}
 					</>
 				</aside>
 			) : (
