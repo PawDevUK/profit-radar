@@ -30,9 +30,13 @@ export default function CheckBoxList({ options, selected, onChange, title, scrol
 			setSearchOptions(options);
 		}
 	};
+	const resetOptions = () => {
+		onChange([]);
+		setSearchOptions(options);
+	};
 
 	return (
-		<CollapseCard title={title || ''}>
+		<CollapseCard title={title || ''} resetOptions={resetOptions}>
 			<SearchBar handleOnChange={handleSearchChange} />
 			<div className={` ${scrollable ? 'max-h-64 overflow-y-auto' : ''}`}>
 				{searchOptions.map((option) => (
