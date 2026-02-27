@@ -13,15 +13,14 @@ import {
 	auctionName,
 	location,
 	bodyType,
-} from '@/app/inventory/samples';
-
-import Toggler from '@/app/components/common/toggler/toggler';
+} from '@/app/inventory/options';
 
 interface SideSearchProps {
-	filteredSaleResults: (cars: string[]) => void; // Updated type to match CheckBoxList
+	filteredSaleResults: (cars: string[]) => void;
+	resetAll: boolean;
 }
 
-export default function SideSearch({ filteredSaleResults }: SideSearchProps) {
+export default function SideSearch({ filteredSaleResults, resetAll }: SideSearchProps) {
 	const [selectedMakes, setSelectedMakes] = useState<string[]>([]);
 	const [selectedModels, setSelectedModels] = useState<string[]>([]);
 	const [selectedTitleType, setSelectedTitleType] = useState<string[]>([]);
@@ -36,9 +35,32 @@ export default function SideSearch({ filteredSaleResults }: SideSearchProps) {
 	const [selectedLocation, setSelectedLocation] = useState<string[]>([]);
 	const [selectedBodyType, setSelectedBodyType] = useState<string[]>([]);
 
+	const resetAllFilters = () => {
+		setSelectedMakes([]);
+		setSelectedModels([]);
+		setSelectedTitleType([]);
+		setSelectedConditionType([]);
+		setSelectedVehicleType([]);
+		setSelectedEngineType([]);
+		setSelectedTransmissionType([]);
+		setSelectedFuelType([]);
+		setSelectedDriveTrain([]);
+		setSelectedCylinderType([]);
+		setSelectedAuctionName([]);
+		setSelectedLocation([]);
+		setSelectedBodyType([]);
+	};
+
 	useEffect(() => {
 		filteredSaleResults(selectedMakes);
 	}, [selectedMakes]);
+
+	useEffect(() => {
+		if (resetAll) {
+			// eslint-disable-next-line react-hooks/set-state-in-effect
+			resetAllFilters();
+		}
+	}, [resetAll]);
 
 	return (
 		<div className='flex flex-col min-h-screen '>
