@@ -5,7 +5,7 @@ export const cylinderType = ['2 Cylinder', '3 Cylinder', '4 Cylinder', '5 Cylind
 export const driveTrain = ['FWD', 'RWD', 'AWD', '4WD', 'Part-Time 4WD', 'Full-Time 4WD', 'Other'];
 export const fuelType = ['Gasoline', 'Diesel', 'Electric', 'Hybrid', 'LPG', 'CNG', 'Hydrogen', 'Other'];
 export const transmissionType = ['Automatic', 'Manual', 'CVT', 'Semi-Automatic', 'Dual-Clutch', 'Tiptronic', 'Other'];
-export const engineType = ['4 Cylinder', '6 Cylinder', '8 Cylinder', '10 Cylinder', '12 Cylinder', 'Electric', 'Hybrid', 'Diesel', 'Gasoline', 'Rotary', 'Other'];
+export const engineType = ['0', '0.7L  2', '1.5L  3', '1.5L 3', '2.0L 4', '2.5L  6', '3.0L  6', '3.0L 6', '4.4L  8', '4.4L 8'];
 export const vehicleType = [
 	'ATVs',
 	'Agriculture and Farm equipment',
@@ -229,5 +229,5 @@ export const location = [
 	'WA - GRAHAM',
 	'WI - MILWAUKEE SOUTH',
 ];
-export const titleType = ['Clean title', 'Non Repaireble', 'Salvage'];
-export const conditionType = ['Norrmal Wear', 'Low Damage', 'Medium - Heavy Damage'];
+export const titleType = ['Clean title', 'Non Repairable', 'Salvage'];
+export const conditionType = ['Normal Wear', 'Low Damage', 'Medium - Heavy Damage'];
