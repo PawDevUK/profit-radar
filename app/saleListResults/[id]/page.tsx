@@ -4,7 +4,7 @@ import { useParams, useRouter } from 'next/navigation';
 import { useState, useEffect, useRef } from 'react';
 import { LotDetails } from '@/lib/types/lot-details';
 import Image from 'next/image';
-import { dummySaleListings } from '@/lib/results/saleListtemplates';
+// import { dummySaleListings } from '@/lib/results/saleListtemplates';
 
 export default function SaleListResultsPage() {
 	const params = useParams();
