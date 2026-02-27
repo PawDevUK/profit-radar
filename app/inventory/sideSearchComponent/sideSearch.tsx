@@ -1,19 +1,40 @@
 import { useState, useEffect } from 'react';
-import CollapseCard from '@/app/components/common/collapseCard/collapseCard';
 import CheckBoxList from './search/checkBoxList';
+import {
+	makes,
+	titleType,
+	conditionType,
+	vehicleType,
+	engineType,
+	transmissionType,
+	fuelType,
+	driveTrain,
+	cylinderType,
+	auctionName,
+	location,
+	bodyType,
+} from '@/app/inventory/samples';
 
 import Toggler from '@/app/components/common/toggler/toggler';
 
 interface SideSearchProps {
-	saleResults: string[];
 	filteredSaleResults: (cars: string[]) => void; // Updated type to match CheckBoxList
 }
 
-export default function SideSearch({ saleResults, filteredSaleResults }: SideSearchProps) {
+export default function SideSearch({ filteredSaleResults }: SideSearchProps) {
 	const [selectedMakes, setSelectedMakes] = useState<string[]>([]);
 	const [selectedModels, setSelectedModels] = useState<string[]>([]);
 	const [selectedTitleType, setSelectedTitleType] = useState<string[]>([]);
 	const [selectedConditionType, setSelectedConditionType] = useState<string[]>([]);
+	const [selectedVehicleType, setSelectedVehicleType] = useState<string[]>([]);
+	const [selectedEngineType, setSelectedEngineType] = useState<string[]>([]);
+	const [selectedTransmissionType, setSelectedTransmissionType] = useState<string[]>([]);
+	const [selectedFuelType, setSelectedFuelType] = useState<string[]>([]);
+	const [selectedDriveTrain, setSelectedDriveTrain] = useState<string[]>([]);
+	const [selectedCylinderType, setSelectedCylinderType] = useState<string[]>([]);
+	const [selectedAuctionName, setSelectedAuctionName] = useState<string[]>([]);
+	const [selectedLocation, setSelectedLocation] = useState<string[]>([]);
+	const [selectedBodyType, setSelectedBodyType] = useState<string[]>([]);
 
 	useEffect(() => {
 		filteredSaleResults(selectedMakes);
@@ -21,21 +42,19 @@ export default function SideSearch({ saleResults, filteredSaleResults }: SideSea
 
 	return (
 		<div className='flex flex-col min-h-screen '>
-			<CheckBoxList title='Make' options={saleResults} selected={selectedMakes} onChange={setSelectedMakes} scrollable />
-			<CheckBoxList title='Model' options={saleResults} selected={selectedModels} onChange={setSelectedModels} scrollable />
-			<CheckBoxList title='Vehicle title type' options={saleResults} selected={selectedTitleType} onChange={setSelectedTitleType}></CheckBoxList>
-			<CheckBoxList title='Vehicle condition type' options={saleResults} selected={selectedConditionType} onChange={setSelectedConditionType}></CheckBoxList>
-			<CheckBoxList title='Search near ZIP code' options={saleResults} selected={selectedConditionType} onChange={setSelectedConditionType}></CheckBoxList>
-			<CheckBoxList title='Vehicle type' options={saleResults} selected={selectedConditionType} onChange={setSelectedConditionType}></CheckBoxList>
-			<CheckBoxList title='Engine type' options={saleResults} selected={selectedConditionType} onChange={setSelectedConditionType}></CheckBoxList>
-			<CheckBoxList title='Transmission' options={saleResults} selected={selectedConditionType} onChange={setSelectedConditionType}></CheckBoxList>
-			<CheckBoxList title='Fuel type' options={saleResults} selected={selectedConditionType} onChange={setSelectedConditionType}></CheckBoxList>
-			<CheckBoxList title='Drive train' options={saleResults} selected={selectedConditionType} onChange={setSelectedConditionType}></CheckBoxList>
-			<CheckBoxList title='Cylinder' options={saleResults} selected={selectedConditionType} onChange={setSelectedConditionType}></CheckBoxList>
-			<CheckBoxList title='Auction name' options={saleResults} selected={selectedConditionType} onChange={setSelectedConditionType}></CheckBoxList>
-			<CheckBoxList title='Location' options={saleResults} selected={selectedConditionType} onChange={setSelectedConditionType}></CheckBoxList>
-			<CheckBoxList title='Body style' options={saleResults} selected={selectedConditionType} onChange={setSelectedConditionType}></CheckBoxList>
-			<CheckBoxList title='Sale date' options={saleResults} selected={selectedConditionType} onChange={setSelectedConditionType}></CheckBoxList>
+			<CheckBoxList title='Make' options={makes} selected={selectedMakes} onChange={setSelectedMakes} scrollable />
+			<CheckBoxList title='Model' options={makes} selected={selectedModels} onChange={setSelectedModels} scrollable />
+			<CheckBoxList title='Vehicle title type' options={titleType} selected={selectedTitleType} onChange={setSelectedTitleType} />
+			<CheckBoxList title='Vehicle condition type' options={conditionType} selected={selectedConditionType} onChange={setSelectedConditionType} />
+			<CheckBoxList title='Vehicle type' options={vehicleType} selected={selectedVehicleType} onChange={setSelectedVehicleType} scrollable />
+			<CheckBoxList title='Engine type' options={engineType} selected={selectedEngineType} onChange={setSelectedEngineType} />
+			<CheckBoxList title='Transmission' options={transmissionType} selected={selectedTransmissionType} onChange={setSelectedTransmissionType} />
+			<CheckBoxList title='Fuel type' options={fuelType} selected={selectedFuelType} onChange={setSelectedFuelType} />
+			<CheckBoxList title='Drive train' options={driveTrain} selected={selectedDriveTrain} onChange={setSelectedDriveTrain} />
+			<CheckBoxList title='Cylinder' options={cylinderType} selected={selectedCylinderType} onChange={setSelectedCylinderType} />
+			<CheckBoxList title='Auction name' options={auctionName} selected={selectedAuctionName} onChange={setSelectedAuctionName} />
+			<CheckBoxList title='Location' options={location} selected={selectedLocation} onChange={setSelectedLocation} scrollable />
+			<CheckBoxList title='Body style' options={bodyType} selected={selectedBodyType} onChange={setSelectedBodyType} />
 		</div>
 	);
 }
