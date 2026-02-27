@@ -6,19 +6,19 @@ import Toggler from '@/app/components/common/toggler/toggler';
 
 interface SideSearchProps {
 	saleResults: string[];
-	filterdSaleResults: (cars: string[]) => void; // Updated type to match CheckBoxList
+	filteredSaleResults: (cars: string[]) => void; // Updated type to match CheckBoxList
 }
 
-export default function SideSearch({ saleResults, filterdSaleResults }: SideSearchProps) {
+export default function SideSearch({ saleResults, filteredSaleResults }: SideSearchProps) {
 	const [selectedMakes, setSelectedMakes] = useState<string[]>([]);
 	const [selectedModels, setSelectedModels] = useState<string[]>([]);
 
 	useEffect(() => {
-		filterdSaleResults(selectedMakes);
+		filteredSaleResults(selectedMakes);
 	}, [selectedMakes]);
 
 	return (
-		<div>
+		<div className='flex flex-col min-h-screen '>
 			<CheckBoxList title='Make' options={saleResults} selected={selectedMakes} onChange={setSelectedMakes} scrollable />
 			<CheckBoxList title='Model' options={saleResults} selected={selectedModels} onChange={setSelectedModels} scrollable />
 			<CollapseCard title='Search filters'>

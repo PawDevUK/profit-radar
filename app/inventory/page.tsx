@@ -50,7 +50,7 @@ export default function Page() {
 							)}
 							<ToggleButton open={open} toggleFilters={toggleFilters} />
 						</div>
-						{showSidebar ? <SideSearch saleResults={americanCarMakes} filterdSaleResults={getFilteredLot} /> : <div></div>}
+						{showSidebar ? <SideSearch saleResults={americanCarMakes} filteredSaleResults={getFilteredLot} /> : <div></div>}
 					</>
 				</aside>
 			) : (
