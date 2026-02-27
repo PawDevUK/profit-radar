@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { SquareChevronRight, SquareChevronLeft } from 'lucide-react';
 import Results from './results/results';
 import SideSearch from './sideSearchComponent/sideSearch';
-import { americanCarMakes } from '@/app/inventory/samples';
 
 const ToggleButton = ({ open, toggleFilters }: { open: boolean; toggleFilters: () => void }) => {
 	const IconSize = 26;
@@ -17,7 +16,7 @@ const ToggleButton = ({ open, toggleFilters }: { open: boolean; toggleFilters: (
 export default function Page() {
 	const [open, setOpen] = useState(true);
 	const [showSidebar, setShowSidebar] = useState(true);
-	const [filteredCars, setFilteredCars] = useState(americanCarMakes);
+	const [filteredCars, setFilteredCars] = useState();
 
 	const toggleFilters = () => {
 		setOpen((prev) => !prev);
@@ -50,7 +49,7 @@ export default function Page() {
 							)}
 							<ToggleButton open={open} toggleFilters={toggleFilters} />
 						</div>
-						{showSidebar ? <SideSearch saleResults={americanCarMakes} filteredSaleResults={getFilteredLot} /> : <div></div>}
+						{showSidebar ? <SideSearch filteredSaleResults={getFilteredLot} /> : <div></div>}
 					</>
 				</aside>
 			) : (
@@ -61,9 +60,7 @@ export default function Page() {
 				</aside>
 			)}
 
-			<div className=''>
-				<Results>{filteredCars}</Results>
-			</div>
+			<div className=''>{/* <Results>{filteredCars}</Results> */}</div>
 		</div>
 	);
 }
