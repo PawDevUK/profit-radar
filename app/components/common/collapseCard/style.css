@@ -10,3 +10,15 @@
     margin: 0 auto;
     border-bottom: 1px solid #9291916e;
 }
+
+.resetButton {
+    color: var(--main-blue);
+    cursor: pointer;
+    font-size: 0.75rem;
+    margin-top: 0.125rem;
+    font-weight: 500;
+}
+
+.resetButton:hover {
+    text-decoration: underline;
+}

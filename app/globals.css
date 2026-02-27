@@ -2,6 +2,7 @@
 
 /* Define the CSS variable at :root for global access */
 :root {
+  --main-blue: #1E90FF;
   --mongo-green: #00684A;
   --mongo-green-light: #00ED64;
   --background-mongo: #F9FBFA;
