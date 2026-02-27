@@ -16,7 +16,7 @@ const ToggleButton = ({ open, toggleFilters }: { open: boolean; toggleFilters: (
 export default function Page() {
 	const [open, setOpen] = useState(true);
 	const [showSidebar, setShowSidebar] = useState(true);
-	const [filteredCars, setFilteredCars] = useState();
+	// const [filteredCars, setFilteredCars] = useState<string[]>([]);
 
 	const toggleFilters = () => {
 		setOpen((prev) => !prev);
@@ -26,7 +26,7 @@ export default function Page() {
 	};
 
 	const getFilteredLot = (cars: string[]) => {
-		setFilteredCars(cars);
+		// setFilteredCars(cars);
 	};
 
 	return (
