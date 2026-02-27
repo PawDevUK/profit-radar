@@ -2,10 +2,13 @@
 import React, { useState } from 'react';
 import './style.css';
 
-export default function CollapseCard({ children, title }: { children: React.ReactNode; title: string }) {
+export default function CollapseCard({ children, title, resetOptions }: { children: React.ReactNode; title: string; resetOptions?: () => void }) {
 	const [open, setOpen] = useState(false);
 	return (
 		<div className='z-20 bg-white borderBottom'>
+			<button className='absolute left-50 top-1 resetButton' onClick={resetOptions}>
+				Reset
+			</button>
 			<button className='w-full flex items-center justify-between px-5 py-1 font-semibold text-black focus:outline-none' onClick={() => setOpen((v) => !v)}>
 				<span className='header'>{title}</span>
 				<svg
