@@ -47,7 +47,7 @@ export default function Page() {
 						<div className='px-4 py-3 flex *:items-center justify-between'>
 							{showSidebar ? (
 								<div className='flex items-center justify-between w-45'>
-									<h2 className='text-[16px] font-bold text-(--header-text)'>Search filters</h2>
+									<h2 className='text-[18px] font-bold text-(--header-text)'>Search filters</h2>
 									<button onClick={resetAllClick} className='resetButton'>
 										Reset All
 									</button>
