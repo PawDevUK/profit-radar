@@ -6,15 +6,15 @@ export default function CollapseCard({ children, title, resetOptions }: { childr
 	const [open, setOpen] = useState(false);
 	return (
 		<div className='z-20 bg-white borderBottom'>
-			<button className='absolute left-50 top-1 resetButton' onClick={resetOptions}>
+			<button className='absolute left-75 top-2 resetButton' onClick={resetOptions}>
 				Reset
 			</button>
-			<button className='w-full flex items-center justify-between px-5 py-1 font-semibold text-black focus:outline-none' onClick={() => setOpen((v) => !v)}>
+			<button className='w-full flex items-center justify-between px-5 py-2 font-semibold text-black focus:outline-none' onClick={() => setOpen((v) => !v)}>
 				<span className='header'>{title}</span>
 				<svg
 					className={`transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
-					width='20'
-					height='20'
+					width='23'
+					height='23'
 					fill='none'
 					stroke='currentColor'
 					strokeWidth='1'
