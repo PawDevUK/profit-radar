@@ -4,7 +4,7 @@ import { SquareChevronRight, SquareChevronLeft } from 'lucide-react';
 import SideSearch from './sideSearchComponent/sideSearch';
 
 const ToggleButton = ({ open, toggleFilters }: { open: boolean; toggleFilters: () => void }) => {
-	const IconSize = 26;
+	const IconSize = 32;
 	return (
 		<button className='' onClick={toggleFilters}>
 			{open ? <SquareChevronLeft className='ml-2 text-(--mongo-green)' size={IconSize} /> : <SquareChevronRight className='ml-2 text-(--header-text)' size={IconSize} />}
