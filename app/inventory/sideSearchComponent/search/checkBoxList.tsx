@@ -40,7 +40,7 @@ export default function CheckBoxList({ options, selected, onChange, title, scrol
 			<SearchBar handleOnChange={handleSearchChange} />
 			<div className={` ${scrollable ? 'max-h-64 overflow-y-auto' : ''}`}>
 				{searchOptions.map((option) => (
-					<div key={option} className='flex flex-row mx-1'>
+					<div key={option} className='flex flex-row mx-2 my-1'>
 						<div className='inline-flex items-center'>
 							<label className='flex items-center cursor-pointer relative'>
 								<input
