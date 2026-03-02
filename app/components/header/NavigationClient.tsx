@@ -59,7 +59,7 @@ export default function NavigationClient() {
 	const menuItems = [
 		{ href: '/howItWorks', label: 'How it works' },
 		{ href: '/inventory', label: 'Inventory' },
-		{ href: '/auctions', label: 'Auctions' },
+		{ href: '/calendar', label: 'Auctions' },
 		{ href: '/locations', label: 'Locations' },
 		{ href: '/sell-your-car', label: 'Sell your car' },
 		{ href: '/services-support', label: 'Services & support' },
