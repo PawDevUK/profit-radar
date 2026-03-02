@@ -74,7 +74,7 @@ export default function Calendar({ sales }: { sales: CalendarAuction[] }) {
 		time: sale.saleTime,
 		date: sale.saleDate,
 		location: sale.location,
-		image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80', // placeholder
+		image: '',
 	}));
 
 	const [currentDate, setCurrentDate] = useState(new Date());
@@ -93,7 +93,7 @@ export default function Calendar({ sales }: { sales: CalendarAuction[] }) {
 			<div className='px-6 py-4'>
 				<h2 className='text-lg font-semibold text-gray-900'>Upcoming Auctions</h2>
 				<div className='mt-6'>
-					<div className='flex items-center justify-between'>
+					<div className='flex justify-center items-center'>
 						<div className='flex items-center space-x-2'>
 							<button
 								type='button'
@@ -123,11 +123,6 @@ export default function Calendar({ sales }: { sales: CalendarAuction[] }) {
 								</svg>
 							</button>
 						</div>
-						<div className='flex items-center space-x-2'>
-							<button type='button' className='rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-700'>
-								Add event
-							</button>
-						</div>
 					</div>
 					<div className='mt-6 grid grid-cols-7 gap-1 text-center text-xs font-medium uppercase tracking-wide text-gray-500'>
 						{dayLabels.map((label) => (
@@ -150,6 +145,11 @@ export default function Calendar({ sales }: { sales: CalendarAuction[] }) {
 								{day.events.length > 0 && <div className='absolute bottom-1 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-blue-600'></div>}
 							</button>
 						))}
+					</div>
+					<div className='mt-4 flex justify-end'>
+						<button type='button' className='rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-700'>
+							Add event
+						</button>
 					</div>
 				</div>
 			</div>
