@@ -61,7 +61,7 @@ export default function Page() {
 					</>
 				</aside>
 			) : (
-				<aside className='w-15 bg-white shadow-lg border-gray-200 h-screen sticky top-0 flex flex-col transition-all duration-500 ease-in-out'>
+				<aside className='w-15 bg-white  border-gray-200 h-screen sticky top-0 flex flex-col transition-all duration-500 ease-in-out'>
 					<div className='px-4 py-3 flex justify-end'>
 						<ToggleButton open={open} toggleFilters={toggleFilters} />
 					</div>
