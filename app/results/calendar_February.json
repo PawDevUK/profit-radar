@@ -1,0 +1,3492 @@
+{
+  "scrapedAt": "2026-02-05T22:46:06.510Z",
+  "totalAuctions": 498,
+  "auctions": [
+    {
+      "location": "NCS - Central Region",
+      "saleDate": "2026-02-05",
+      "saleTime": "02:00 AM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/881/2026-02-05?location=*NCS - Central Region&saleDate=1770343200000&liveAuction=false&from=&yardNum=881",
+      "numberOnSale": null
+    },
+    {
+      "location": "NCS - Eastern Region",
+      "saleDate": "2026-02-05",
+      "saleTime": "02:00 AM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/880/2026-02-05?location=*NCS - Eastern Region&saleDate=1770343200000&liveAuction=false&from=&yardNum=880",
+      "numberOnSale": null
+    },
+    {
+      "location": "NCS - Mountain Region",
+      "saleDate": "2026-02-05",
+      "saleTime": "02:00 AM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/882/2026-02-05?location=*NCS - Mountain Region&saleDate=1770343200000&liveAuction=false&from=&yardNum=882",
+      "numberOnSale": null
+    },
+    {
+      "location": "NCS - Pacific Region",
+      "saleDate": "2026-02-05",
+      "saleTime": "02:00 AM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/883/2026-02-05?location=*NCS - Pacific Region&saleDate=1770343200000&liveAuction=false&from=&yardNum=883",
+      "numberOnSale": null
+    },
+    {
+      "location": "CT - Hartford",
+      "saleDate": "2026-02-06",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/23/2026-02-06?location=CT - Hartford&saleDate=1770390000000&liveAuction=false&from=&yardNum=23",
+      "numberOnSale": null
+    },
+    {
+      "location": "DC - Washington DC",
+      "saleDate": "2026-02-06",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/32/2026-02-06?location=DC - Washington DC&saleDate=1770390000000&liveAuction=false&from=&yardNum=32",
+      "numberOnSale": null
+    },
+    {
+      "location": "FL - Miami North",
+      "saleDate": "2026-02-06",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/33/2026-02-06?location=FL - Miami North&saleDate=1770390000000&liveAuction=false&from=&yardNum=33",
+      "numberOnSale": null
+    },
+    {
+      "location": "FL - Punta Gorda",
+      "saleDate": "2026-02-06",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/348/2026-02-06?location=FL - Punta Gorda&saleDate=1770390000000&liveAuction=false&from=&yardNum=348",
+      "numberOnSale": null
+    },
+    {
+      "location": "FL - Tallahassee",
+      "saleDate": "2026-02-06",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/117/2026-02-06?location=FL - Tallahassee&saleDate=1770390000000&liveAuction=false&from=&yardNum=117",
+      "numberOnSale": null
+    },
+    {
+      "location": "FL - Tampa South",
+      "saleDate": "2026-02-06",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/34/2026-02-06?location=FL - Tampa South&saleDate=1770390000000&liveAuction=false&from=&yardNum=34",
+      "numberOnSale": null
+    },
+    {
+      "location": "GA - Atlanta West",
+      "saleDate": "2026-02-06",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/15/2026-02-06?location=GA - Atlanta West&saleDate=1770390000000&liveAuction=false&from=&yardNum=15",
+      "numberOnSale": null
+    },
+    {
+      "location": "IN - Indianapolis",
+      "saleDate": "2026-02-06",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/44/2026-02-06?location=IN - Indianapolis&saleDate=1770390000000&liveAuction=false&from=&yardNum=44",
+      "numberOnSale": null
+    },
+    {
+      "location": "KY - Walton",
+      "saleDate": "2026-02-06",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/138/2026-02-06?location=KY - Walton&saleDate=1770390000000&liveAuction=false&from=&yardNum=138",
+      "numberOnSale": null
+    },
+    {
+      "location": "MA - North Boston",
+      "saleDate": "2026-02-06",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/53/2026-02-06?location=MA - North Boston&saleDate=1770390000000&liveAuction=false&from=&yardNum=53",
+      "numberOnSale": null
+    },
+    {
+      "location": "ME - Windham",
+      "saleDate": "2026-02-06",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/384/2026-02-06?location=ME - Windham&saleDate=1770390000000&liveAuction=false&from=&yardNum=384",
+      "numberOnSale": null
+    },
+    {
+      "location": "MI - Detroit",
+      "saleDate": "2026-02-06",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/61/2026-02-06?location=MI - Detroit&saleDate=1770390000000&liveAuction=false&from=&yardNum=61",
+      "numberOnSale": null
+    },
+    {
+      "location": "MI - Ionia",
+      "saleDate": "2026-02-06",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/160/2026-02-06?location=MI - Ionia&saleDate=1770390000000&liveAuction=false&from=&yardNum=160",
+      "numberOnSale": null
+    },
+    {
+      "location": "MI - Lansing",
+      "saleDate": "2026-02-06",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/103/2026-02-06?location=MI - Lansing&saleDate=1770390000000&liveAuction=false&from=&yardNum=103",
+      "numberOnSale": null
+    },
+    {
+      "location": "NC - Raleigh North",
+      "saleDate": "2026-02-06",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/368/2026-02-06?location=NC - Raleigh North&saleDate=1770390000000&liveAuction=false&from=&yardNum=368",
+      "numberOnSale": null
+    },
+    {
+      "location": "NJ - Somerville",
+      "saleDate": "2026-02-06",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/91/2026-02-06?location=NJ - Somerville&saleDate=1770390000000&liveAuction=false&from=&yardNum=91",
+      "numberOnSale": null
+    },
+    {
+      "location": "OH - Akron",
+      "saleDate": "2026-02-06",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/376/2026-02-06?location=OH - Akron&saleDate=1770390000000&liveAuction=false&from=&yardNum=376",
+      "numberOnSale": null
+    },
+    {
+      "location": "OH - Columbus",
+      "saleDate": "2026-02-06",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/29/2026-02-06?location=OH - Columbus&saleDate=1770390000000&liveAuction=false&from=&yardNum=29",
+      "numberOnSale": null
+    },
+    {
+      "location": "OH - Dayton",
+      "saleDate": "2026-02-06",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/166/2026-02-06?location=OH - Dayton&saleDate=1770390000000&liveAuction=false&from=&yardNum=166",
+      "numberOnSale": null
+    },
+    {
+      "location": "PA - Chambersburg",
+      "saleDate": "2026-02-06",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/128/2026-02-06?location=PA - Chambersburg&saleDate=1770390000000&liveAuction=false&from=&yardNum=128",
+      "numberOnSale": null
+    },
+    {
+      "location": "PA - Philadelphia",
+      "saleDate": "2026-02-06",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/26/2026-02-06?location=PA - Philadelphia&saleDate=1770390000000&liveAuction=false&from=&yardNum=26",
+      "numberOnSale": null
+    },
+    {
+      "location": "SC - Columbia",
+      "saleDate": "2026-02-06",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/56/2026-02-06?location=SC - Columbia&saleDate=1770390000000&liveAuction=false&from=&yardNum=56",
+      "numberOnSale": null
+    },
+    {
+      "location": "VA - Danville",
+      "saleDate": "2026-02-06",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/82/2026-02-06?location=VA - Danville&saleDate=1770390000000&liveAuction=false&from=&yardNum=82",
+      "numberOnSale": null
+    },
+    {
+      "location": "VA - Richmond",
+      "saleDate": "2026-02-06",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/139/2026-02-06?location=VA - Richmond&saleDate=1770390000000&liveAuction=false&from=&yardNum=139",
+      "numberOnSale": null
+    },
+    {
+      "location": "Equipment Specialty Sale",
+      "saleDate": "2026-02-06",
+      "saleTime": "05:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/837/2026-02-06?location=Equipment Specialty Sale&saleDate=1770397200000&liveAuction=false&from=&yardNum=837",
+      "numberOnSale": null
+    },
+    {
+      "location": "IA - Des Moines",
+      "saleDate": "2026-02-06",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/60/2026-02-06?location=IA - Des Moines&saleDate=1770400800000&liveAuction=false&from=&yardNum=60",
+      "numberOnSale": null
+    },
+    {
+      "location": "IL - Chicago South",
+      "saleDate": "2026-02-06",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/81/2026-02-06?location=IL - Chicago South&saleDate=1770400800000&liveAuction=false&from=&yardNum=81",
+      "numberOnSale": null
+    },
+    {
+      "location": "LA - Baton Rouge",
+      "saleDate": "2026-02-06",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/50/2026-02-06?location=LA - Baton Rouge&saleDate=1770400800000&liveAuction=false&from=&yardNum=50",
+      "numberOnSale": null
+    },
+    {
+      "location": "MO - St. Louis",
+      "saleDate": "2026-02-06",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/20/2026-02-06?location=MO - St. Louis&saleDate=1770400800000&liveAuction=false&from=&yardNum=20",
+      "numberOnSale": null
+    },
+    {
+      "location": "MS - Jackson",
+      "saleDate": "2026-02-06",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/40/2026-02-06?location=MS - Jackson&saleDate=1770400800000&liveAuction=false&from=&yardNum=40",
+      "numberOnSale": null
+    },
+    {
+      "location": "OK - Tulsa",
+      "saleDate": "2026-02-06",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/19/2026-02-06?location=OK - Tulsa&saleDate=1770400800000&liveAuction=false&from=&yardNum=19",
+      "numberOnSale": null
+    },
+    {
+      "location": "TX - Abilene",
+      "saleDate": "2026-02-06",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/73/2026-02-06?location=TX - Abilene&saleDate=1770400800000&liveAuction=false&from=&yardNum=73",
+      "numberOnSale": null
+    },
+    {
+      "location": "TX - Ft. Worth",
+      "saleDate": "2026-02-06",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/98/2026-02-06?location=TX - Ft. Worth&saleDate=1770400800000&liveAuction=false&from=&yardNum=98",
+      "numberOnSale": null
+    },
+    {
+      "location": "TX - Houston",
+      "saleDate": "2026-02-06",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/11/2026-02-06?location=TX - Houston&saleDate=1770400800000&liveAuction=false&from=&yardNum=11",
+      "numberOnSale": null
+    },
+    {
+      "location": "AZ - Tucson",
+      "saleDate": "2026-02-06",
+      "saleTime": "07:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/93/2026-02-06?location=AZ - Tucson&saleDate=1770404400000&liveAuction=false&from=&yardNum=93",
+      "numberOnSale": null
+    },
+    {
+      "location": "TX - El Paso",
+      "saleDate": "2026-02-06",
+      "saleTime": "07:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/45/2026-02-06?location=TX - El Paso&saleDate=1770404400000&liveAuction=false&from=&yardNum=45",
+      "numberOnSale": null
+    },
+    {
+      "location": "UT - Salt Lake City",
+      "saleDate": "2026-02-06",
+      "saleTime": "07:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/336/2026-02-06?location=UT - Salt Lake City&saleDate=1770404400000&liveAuction=false&from=&yardNum=336",
+      "numberOnSale": null
+    },
+    {
+      "location": "CA - Bakersfield",
+      "saleDate": "2026-02-06",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/5/2026-02-06?location=CA - Bakersfield&saleDate=1770408000000&liveAuction=false&from=&yardNum=5",
+      "numberOnSale": null
+    },
+    {
+      "location": "CA - Long Beach",
+      "saleDate": "2026-02-06",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/186/2026-02-06?location=CA - Long Beach&saleDate=1770408000000&liveAuction=false&from=&yardNum=186",
+      "numberOnSale": null
+    },
+    {
+      "location": "CA - Redding",
+      "saleDate": "2026-02-06",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/343/2026-02-06?location=CA - Redding&saleDate=1770408000000&liveAuction=false&from=&yardNum=343",
+      "numberOnSale": null
+    },
+    {
+      "location": "CA - San Diego",
+      "saleDate": "2026-02-06",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/59/2026-02-06?location=CA - San Diego&saleDate=1770408000000&liveAuction=false&from=&yardNum=59",
+      "numberOnSale": null
+    },
+    {
+      "location": "CA - Vallejo",
+      "saleDate": "2026-02-06",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/1/2026-02-06?location=CA - Vallejo&saleDate=1770408000000&liveAuction=false&from=&yardNum=1",
+      "numberOnSale": null
+    },
+    {
+      "location": "CA - Van Nuys",
+      "saleDate": "2026-02-06",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/43/2026-02-06?location=CA - Van Nuys&saleDate=1770408000000&liveAuction=false&from=&yardNum=43",
+      "numberOnSale": null
+    },
+    {
+      "location": "Connecticut Friday Sale",
+      "saleDate": "2026-02-06",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/850/2026-02-06?location=Connecticut Friday Sale&saleDate=1770408000000&liveAuction=false&from=&yardNum=850",
+      "numberOnSale": null
+    },
+    {
+      "location": "WA - Graham",
+      "saleDate": "2026-02-06",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/64/2026-02-06?location=WA - Graham&saleDate=1770408000000&liveAuction=false&from=&yardNum=64",
+      "numberOnSale": null
+    },
+    {
+      "location": "WA - Pasco",
+      "saleDate": "2026-02-06",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/71/2026-02-06?location=WA - Pasco&saleDate=1770408000000&liveAuction=false&from=&yardNum=71",
+      "numberOnSale": null
+    },
+    {
+      "location": "NCS - Central Region",
+      "saleDate": "2026-02-09",
+      "saleTime": "02:00 AM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/881/2026-02-09?location=*NCS - Central Region&saleDate=1770688800000&liveAuction=false&from=&yardNum=881",
+      "numberOnSale": null
+    },
+    {
+      "location": "NCS - Eastern Region",
+      "saleDate": "2026-02-09",
+      "saleTime": "02:00 AM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/880/2026-02-09?location=*NCS - Eastern Region&saleDate=1770688800000&liveAuction=false&from=&yardNum=880",
+      "numberOnSale": null
+    },
+    {
+      "location": "NCS - Mountain Region",
+      "saleDate": "2026-02-09",
+      "saleTime": "02:00 AM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/882/2026-02-09?location=*NCS - Mountain Region&saleDate=1770688800000&liveAuction=false&from=&yardNum=882",
+      "numberOnSale": null
+    },
+    {
+      "location": "NCS - Pacific Region",
+      "saleDate": "2026-02-09",
+      "saleTime": "02:00 AM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/883/2026-02-09?location=*NCS - Pacific Region&saleDate=1770688800000&liveAuction=false&from=&yardNum=883",
+      "numberOnSale": null
+    },
+    {
+      "location": "FL - Clewiston",
+      "saleDate": "2026-02-09",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/366/2026-02-09?location=FL - Clewiston&saleDate=1770649200000&liveAuction=false&from=&yardNum=366",
+      "numberOnSale": null
+    },
+    {
+      "location": "FL - Jacksonville North",
+      "saleDate": "2026-02-09",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/163/2026-02-09?location=FL - Jacksonville North&saleDate=1770649200000&liveAuction=false&from=&yardNum=163",
+      "numberOnSale": null
+    },
+    {
+      "location": "FL - Miami Central",
+      "saleDate": "2026-02-09",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/105/2026-02-09?location=FL - Miami Central&saleDate=1770649200000&liveAuction=false&from=&yardNum=105",
+      "numberOnSale": null
+    },
+    {
+      "location": "FL - Orlando North",
+      "saleDate": "2026-02-09",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/153/2026-02-09?location=FL - Orlando North&saleDate=1770649200000&liveAuction=false&from=&yardNum=153",
+      "numberOnSale": null
+    },
+    {
+      "location": "GA - Atlanta East",
+      "saleDate": "2026-02-09",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/107/2026-02-09?location=GA - Atlanta East&saleDate=1770649200000&liveAuction=false&from=&yardNum=107",
+      "numberOnSale": null
+    },
+    {
+      "location": "GA - Fairburn",
+      "saleDate": "2026-02-09",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/173/2026-02-09?location=GA - Fairburn&saleDate=1770649200000&liveAuction=false&from=&yardNum=173",
+      "numberOnSale": null
+    },
+    {
+      "location": "GA - Savannah",
+      "saleDate": "2026-02-09",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/87/2026-02-09?location=GA - Savannah&saleDate=1770649200000&liveAuction=false&from=&yardNum=87",
+      "numberOnSale": null
+    },
+    {
+      "location": "IN - Fort Wayne",
+      "saleDate": "2026-02-09",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/360/2026-02-09?location=IN - Fort Wayne&saleDate=1770649200000&liveAuction=false&from=&yardNum=360",
+      "numberOnSale": null
+    },
+    {
+      "location": "KY - Lexington East",
+      "saleDate": "2026-02-09",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/115/2026-02-09?location=KY - Lexington East&saleDate=1770649200000&liveAuction=false&from=&yardNum=115",
+      "numberOnSale": null
+    },
+    {
+      "location": "KY - Louisville",
+      "saleDate": "2026-02-09",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/143/2026-02-09?location=KY - Louisville&saleDate=1770649200000&liveAuction=false&from=&yardNum=143",
+      "numberOnSale": null
+    },
+    {
+      "location": "MA - South Boston",
+      "saleDate": "2026-02-09",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/27/2026-02-09?location=MA - South Boston&saleDate=1770649200000&liveAuction=false&from=&yardNum=27",
+      "numberOnSale": null
+    },
+    {
+      "location": "MD - Baltimore",
+      "saleDate": "2026-02-09",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/102/2026-02-09?location=MD - Baltimore&saleDate=1770649200000&liveAuction=false&from=&yardNum=102",
+      "numberOnSale": null
+    },
+    {
+      "location": "NC - China Grove",
+      "saleDate": "2026-02-09",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/41/2026-02-09?location=NC - China Grove&saleDate=1770649200000&liveAuction=false&from=&yardNum=41",
+      "numberOnSale": null
+    },
+    {
+      "location": "NC - Lumberton",
+      "saleDate": "2026-02-09",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/338/2026-02-09?location=NC - Lumberton&saleDate=1770649200000&liveAuction=false&from=&yardNum=338",
+      "numberOnSale": null
+    },
+    {
+      "location": "NJ - Trenton",
+      "saleDate": "2026-02-09",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/135/2026-02-09?location=NJ - Trenton&saleDate=1770649200000&liveAuction=false&from=&yardNum=135",
+      "numberOnSale": null
+    },
+    {
+      "location": "NY - Albany",
+      "saleDate": "2026-02-09",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/94/2026-02-09?location=NY - Albany&saleDate=1770649200000&liveAuction=false&from=&yardNum=94",
+      "numberOnSale": null
+    },
+    {
+      "location": "NY - Buffalo",
+      "saleDate": "2026-02-09",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/344/2026-02-09?location=NY - Buffalo&saleDate=1770649200000&liveAuction=false&from=&yardNum=344",
+      "numberOnSale": null
+    },
+    {
+      "location": "NY - Long Island",
+      "saleDate": "2026-02-09",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/30/2026-02-09?location=NY - Long Island&saleDate=1770649200000&liveAuction=false&from=&yardNum=30",
+      "numberOnSale": null
+    },
+    {
+      "location": "NY - Rochester",
+      "saleDate": "2026-02-09",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/35/2026-02-09?location=NY - Rochester&saleDate=1770649200000&liveAuction=false&from=&yardNum=35",
+      "numberOnSale": null
+    },
+    {
+      "location": "NY - Syracuse",
+      "saleDate": "2026-02-09",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/25/2026-02-09?location=NY - Syracuse&saleDate=1770649200000&liveAuction=false&from=&yardNum=25",
+      "numberOnSale": null
+    },
+    {
+      "location": "OH - Cleveland West",
+      "saleDate": "2026-02-09",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/112/2026-02-09?location=OH - Cleveland West&saleDate=1770649200000&liveAuction=false&from=&yardNum=112",
+      "numberOnSale": null
+    },
+    {
+      "location": "PA - Philadelphia East",
+      "saleDate": "2026-02-09",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/164/2026-02-09?location=PA - Philadelphia East&saleDate=1770649200000&liveAuction=false&from=&yardNum=164",
+      "numberOnSale": null
+    },
+    {
+      "location": "PA - York Haven",
+      "saleDate": "2026-02-09",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/127/2026-02-09?location=PA - York Haven&saleDate=1770649200000&liveAuction=false&from=&yardNum=127",
+      "numberOnSale": null
+    },
+    {
+      "location": "SC - North Charleston",
+      "saleDate": "2026-02-09",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/197/2026-02-09?location=SC - North Charleston&saleDate=1770649200000&liveAuction=false&from=&yardNum=197",
+      "numberOnSale": null
+    },
+    {
+      "location": "SC - Spartanburg",
+      "saleDate": "2026-02-09",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/144/2026-02-09?location=SC - Spartanburg&saleDate=1770649200000&liveAuction=false&from=&yardNum=144",
+      "numberOnSale": null
+    },
+    {
+      "location": "VA - Richmond East",
+      "saleDate": "2026-02-09",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/101/2026-02-09?location=VA - Richmond East&saleDate=1770649200000&liveAuction=false&from=&yardNum=101",
+      "numberOnSale": null
+    },
+    {
+      "location": "VT - Rutland",
+      "saleDate": "2026-02-09",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/395/2026-02-09?location=VT - Rutland&saleDate=1770649200000&liveAuction=false&from=&yardNum=395",
+      "numberOnSale": null
+    },
+    {
+      "location": "CT - Hartford",
+      "saleDate": "2026-02-10",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/23/2026-02-10?location=CT - Hartford&saleDate=1770735600000&liveAuction=false&from=&yardNum=23",
+      "numberOnSale": null
+    },
+    {
+      "location": "DC - Washington DC",
+      "saleDate": "2026-02-10",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/32/2026-02-10?location=DC - Washington DC&saleDate=1770735600000&liveAuction=false&from=&yardNum=32",
+      "numberOnSale": null
+    },
+    {
+      "location": "DE - Seaford",
+      "saleDate": "2026-02-10",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/130/2026-02-10?location=DE - Seaford&saleDate=1770735600000&liveAuction=false&from=&yardNum=130",
+      "numberOnSale": null
+    },
+    {
+      "location": "FL - Miami North",
+      "saleDate": "2026-02-10",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/33/2026-02-10?location=FL - Miami North&saleDate=1770735600000&liveAuction=false&from=&yardNum=33",
+      "numberOnSale": null
+    },
+    {
+      "location": "FL - Ocala",
+      "saleDate": "2026-02-10",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/108/2026-02-10?location=FL - Ocala&saleDate=1770735600000&liveAuction=false&from=&yardNum=108",
+      "numberOnSale": null
+    },
+    {
+      "location": "FL - Orlando South",
+      "saleDate": "2026-02-10",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/55/2026-02-10?location=FL - Orlando South&saleDate=1770735600000&liveAuction=false&from=&yardNum=55",
+      "numberOnSale": null
+    },
+    {
+      "location": "FL - Punta Gorda",
+      "saleDate": "2026-02-10",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/348/2026-02-10?location=FL - Punta Gorda&saleDate=1770735600000&liveAuction=false&from=&yardNum=348",
+      "numberOnSale": null
+    },
+    {
+      "location": "FL - Tampa South",
+      "saleDate": "2026-02-10",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/34/2026-02-10?location=FL - Tampa South&saleDate=1770735600000&liveAuction=false&from=&yardNum=34",
+      "numberOnSale": null
+    },
+    {
+      "location": "FL - West Palm Beach",
+      "saleDate": "2026-02-10",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/70/2026-02-10?location=FL - West Palm Beach&saleDate=1770735600000&liveAuction=false&from=&yardNum=70",
+      "numberOnSale": null
+    },
+    {
+      "location": "GA - Atlanta South",
+      "saleDate": "2026-02-10",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/146/2026-02-10?location=GA - Atlanta South&saleDate=1770735600000&liveAuction=false&from=&yardNum=146",
+      "numberOnSale": null
+    },
+    {
+      "location": "GA - Atlanta West",
+      "saleDate": "2026-02-10",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/15/2026-02-10?location=GA - Atlanta West&saleDate=1770735600000&liveAuction=false&from=&yardNum=15",
+      "numberOnSale": null
+    },
+    {
+      "location": "GA - Augusta",
+      "saleDate": "2026-02-10",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/359/2026-02-10?location=GA - Augusta&saleDate=1770735600000&liveAuction=false&from=&yardNum=359",
+      "numberOnSale": null
+    },
+    {
+      "location": "GA - Tifton",
+      "saleDate": "2026-02-10",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/88/2026-02-10?location=GA - Tifton&saleDate=1770735600000&liveAuction=false&from=&yardNum=88",
+      "numberOnSale": null
+    },
+    {
+      "location": "IN - Cicero",
+      "saleDate": "2026-02-10",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/170/2026-02-10?location=IN - Cicero&saleDate=1770735600000&liveAuction=false&from=&yardNum=170",
+      "numberOnSale": null
+    },
+    {
+      "location": "IN - Indianapolis",
+      "saleDate": "2026-02-10",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/44/2026-02-10?location=IN - Indianapolis&saleDate=1770735600000&liveAuction=false&from=&yardNum=44",
+      "numberOnSale": null
+    },
+    {
+      "location": "MD - Baltimore East",
+      "saleDate": "2026-02-10",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/342/2026-02-10?location=MD - Baltimore East&saleDate=1770735600000&liveAuction=false&from=&yardNum=342",
+      "numberOnSale": null
+    },
+    {
+      "location": "MI - Detroit",
+      "saleDate": "2026-02-10",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/61/2026-02-10?location=MI - Detroit&saleDate=1770735600000&liveAuction=false&from=&yardNum=61",
+      "numberOnSale": null
+    },
+    {
+      "location": "NC - Raleigh",
+      "saleDate": "2026-02-10",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/54/2026-02-10?location=NC - Raleigh&saleDate=1770735600000&liveAuction=false&from=&yardNum=54",
+      "numberOnSale": null
+    },
+    {
+      "location": "NH - Candia",
+      "saleDate": "2026-02-10",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/155/2026-02-10?location=NH - Candia&saleDate=1770735600000&liveAuction=false&from=&yardNum=155",
+      "numberOnSale": null
+    },
+    {
+      "location": "NJ - Glassboro East",
+      "saleDate": "2026-02-10",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/31/2026-02-10?location=NJ - Glassboro East&saleDate=1770735600000&liveAuction=false&from=&yardNum=31",
+      "numberOnSale": null
+    },
+    {
+      "location": "NJ - Glassboro West",
+      "saleDate": "2026-02-10",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/69/2026-02-10?location=NJ - Glassboro West&saleDate=1770735600000&liveAuction=false&from=&yardNum=69",
+      "numberOnSale": null
+    },
+    {
+      "location": "NJ - Somerville",
+      "saleDate": "2026-02-10",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/91/2026-02-10?location=NJ - Somerville&saleDate=1770735600000&liveAuction=false&from=&yardNum=91",
+      "numberOnSale": null
+    },
+    {
+      "location": "NY - Newburgh",
+      "saleDate": "2026-02-10",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/24/2026-02-10?location=NY - Newburgh&saleDate=1770735600000&liveAuction=false&from=&yardNum=24",
+      "numberOnSale": null
+    },
+    {
+      "location": "OH - Akron",
+      "saleDate": "2026-02-10",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/376/2026-02-10?location=OH - Akron&saleDate=1770735600000&liveAuction=false&from=&yardNum=376",
+      "numberOnSale": null
+    },
+    {
+      "location": "OH - Columbus",
+      "saleDate": "2026-02-10",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/29/2026-02-10?location=OH - Columbus&saleDate=1770735600000&liveAuction=false&from=&yardNum=29",
+      "numberOnSale": null
+    },
+    {
+      "location": "Ontario Auction",
+      "saleDate": "2026-02-10",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/294/2026-02-10?location=Ontario Auction&saleDate=1770735600000&liveAuction=false&from=&yardNum=294",
+      "numberOnSale": null
+    },
+    {
+      "location": "PA - Harrisburg",
+      "saleDate": "2026-02-10",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/76/2026-02-10?location=PA - Harrisburg&saleDate=1770735600000&liveAuction=false&from=&yardNum=76",
+      "numberOnSale": null
+    },
+    {
+      "location": "PA - Philadelphia",
+      "saleDate": "2026-02-10",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/26/2026-02-10?location=PA - Philadelphia&saleDate=1770735600000&liveAuction=false&from=&yardNum=26",
+      "numberOnSale": null
+    },
+    {
+      "location": "TN - Knoxville",
+      "saleDate": "2026-02-10",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/114/2026-02-10?location=TN - Knoxville&saleDate=1770735600000&liveAuction=false&from=&yardNum=114",
+      "numberOnSale": null
+    },
+    {
+      "location": "VA - Hampton",
+      "saleDate": "2026-02-10",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/162/2026-02-10?location=VA - Hampton&saleDate=1770735600000&liveAuction=false&from=&yardNum=162",
+      "numberOnSale": null
+    },
+    {
+      "location": "FL - Ft. Pierce",
+      "saleDate": "2026-02-11",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/86/2026-02-11?location=FL - Ft. Pierce&saleDate=1770822000000&liveAuction=false&from=&yardNum=86",
+      "numberOnSale": null
+    },
+    {
+      "location": "FL - Jacksonville North",
+      "saleDate": "2026-02-11",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/163/2026-02-11?location=FL - Jacksonville North&saleDate=1770822000000&liveAuction=false&from=&yardNum=163",
+      "numberOnSale": null
+    },
+    {
+      "location": "FL - Miami Central",
+      "saleDate": "2026-02-11",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/105/2026-02-11?location=FL - Miami Central&saleDate=1770822000000&liveAuction=false&from=&yardNum=105",
+      "numberOnSale": null
+    },
+    {
+      "location": "FL - Miami South",
+      "saleDate": "2026-02-11",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/148/2026-02-11?location=FL - Miami South&saleDate=1770822000000&liveAuction=false&from=&yardNum=148",
+      "numberOnSale": null
+    },
+    {
+      "location": "FL - Orlando North",
+      "saleDate": "2026-02-11",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/153/2026-02-11?location=FL - Orlando North&saleDate=1770822000000&liveAuction=false&from=&yardNum=153",
+      "numberOnSale": null
+    },
+    {
+      "location": "GA - Atlanta East",
+      "saleDate": "2026-02-11",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/107/2026-02-11?location=GA - Atlanta East&saleDate=1770822000000&liveAuction=false&from=&yardNum=107",
+      "numberOnSale": null
+    },
+    {
+      "location": "GA - Atlanta North",
+      "saleDate": "2026-02-11",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/157/2026-02-11?location=GA - Atlanta North&saleDate=1770822000000&liveAuction=false&from=&yardNum=157",
+      "numberOnSale": null
+    },
+    {
+      "location": "KY - Lexington West",
+      "saleDate": "2026-02-11",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/83/2026-02-11?location=KY - Lexington West&saleDate=1770822000000&liveAuction=false&from=&yardNum=83",
+      "numberOnSale": null
+    },
+    {
+      "location": "MA - Freetown",
+      "saleDate": "2026-02-11",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/361/2026-02-11?location=MA - Freetown&saleDate=1770822000000&liveAuction=false&from=&yardNum=361",
+      "numberOnSale": null
+    },
+    {
+      "location": "MA - North Boston",
+      "saleDate": "2026-02-11",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/53/2026-02-11?location=MA - North Boston&saleDate=1770822000000&liveAuction=false&from=&yardNum=53",
+      "numberOnSale": null
+    },
+    {
+      "location": "MA - West Warren",
+      "saleDate": "2026-02-11",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/149/2026-02-11?location=MA - West Warren&saleDate=1770822000000&liveAuction=false&from=&yardNum=149",
+      "numberOnSale": null
+    },
+    {
+      "location": "ME - Windham",
+      "saleDate": "2026-02-11",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/384/2026-02-11?location=ME - Windham&saleDate=1770822000000&liveAuction=false&from=&yardNum=384",
+      "numberOnSale": null
+    },
+    {
+      "location": "MI - Flint",
+      "saleDate": "2026-02-11",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/159/2026-02-11?location=MI - Flint&saleDate=1770822000000&liveAuction=false&from=&yardNum=159",
+      "numberOnSale": null
+    },
+    {
+      "location": "MI - Kincheloe",
+      "saleDate": "2026-02-11",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/161/2026-02-11?location=MI - Kincheloe&saleDate=1770822000000&liveAuction=false&from=&yardNum=161",
+      "numberOnSale": null
+    },
+    {
+      "location": "NC - Gastonia",
+      "saleDate": "2026-02-11",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/340/2026-02-11?location=NC - Gastonia&saleDate=1770822000000&liveAuction=false&from=&yardNum=340",
+      "numberOnSale": null
+    },
+    {
+      "location": "NC - Mebane",
+      "saleDate": "2026-02-11",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/154/2026-02-11?location=NC - Mebane&saleDate=1770822000000&liveAuction=false&from=&yardNum=154",
+      "numberOnSale": null
+    },
+    {
+      "location": "NC - Mocksville",
+      "saleDate": "2026-02-11",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/196/2026-02-11?location=NC - Mocksville&saleDate=1770822000000&liveAuction=false&from=&yardNum=196",
+      "numberOnSale": null
+    },
+    {
+      "location": "NJ - Trenton",
+      "saleDate": "2026-02-11",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/135/2026-02-11?location=NJ - Trenton&saleDate=1770822000000&liveAuction=false&from=&yardNum=135",
+      "numberOnSale": null
+    },
+    {
+      "location": "NY - Albany",
+      "saleDate": "2026-02-11",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/94/2026-02-11?location=NY - Albany&saleDate=1770822000000&liveAuction=false&from=&yardNum=94",
+      "numberOnSale": null
+    },
+    {
+      "location": "NY - Long Island",
+      "saleDate": "2026-02-11",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/30/2026-02-11?location=NY - Long Island&saleDate=1770822000000&liveAuction=false&from=&yardNum=30",
+      "numberOnSale": null
+    },
+    {
+      "location": "NY - Syracuse",
+      "saleDate": "2026-02-11",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/25/2026-02-11?location=NY - Syracuse&saleDate=1770822000000&liveAuction=false&from=&yardNum=25",
+      "numberOnSale": null
+    },
+    {
+      "location": "OH - Cleveland East",
+      "saleDate": "2026-02-11",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/111/2026-02-11?location=OH - Cleveland East&saleDate=1770822000000&liveAuction=false&from=&yardNum=111",
+      "numberOnSale": null
+    },
+    {
+      "location": "OH - Dayton",
+      "saleDate": "2026-02-11",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/166/2026-02-11?location=OH - Dayton&saleDate=1770822000000&liveAuction=false&from=&yardNum=166",
+      "numberOnSale": null
+    },
+    {
+      "location": "PA - Philadelphia East",
+      "saleDate": "2026-02-11",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/164/2026-02-11?location=PA - Philadelphia East&saleDate=1770822000000&liveAuction=false&from=&yardNum=164",
+      "numberOnSale": null
+    },
+    {
+      "location": "PA - Pittsburgh South",
+      "saleDate": "2026-02-11",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/85/2026-02-11?location=PA - Pittsburgh South&saleDate=1770822000000&liveAuction=false&from=&yardNum=85",
+      "numberOnSale": null
+    },
+    {
+      "location": "PA - Pittsburgh West",
+      "saleDate": "2026-02-11",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/174/2026-02-11?location=PA - Pittsburgh West&saleDate=1770822000000&liveAuction=false&from=&yardNum=174",
+      "numberOnSale": null
+    },
+    {
+      "location": "PA - Scranton",
+      "saleDate": "2026-02-11",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/142/2026-02-11?location=PA - Scranton&saleDate=1770822000000&liveAuction=false&from=&yardNum=142",
+      "numberOnSale": null
+    },
+    {
+      "location": "SC - North Charleston",
+      "saleDate": "2026-02-11",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/197/2026-02-11?location=SC - North Charleston&saleDate=1770822000000&liveAuction=false&from=&yardNum=197",
+      "numberOnSale": null
+    },
+    {
+      "location": "SC - Spartanburg",
+      "saleDate": "2026-02-11",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/144/2026-02-11?location=SC - Spartanburg&saleDate=1770822000000&liveAuction=false&from=&yardNum=144",
+      "numberOnSale": null
+    },
+    {
+      "location": "VA - Fredericksburg",
+      "saleDate": "2026-02-11",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/194/2026-02-11?location=VA - Fredericksburg&saleDate=1770822000000&liveAuction=false&from=&yardNum=194",
+      "numberOnSale": null
+    },
+    {
+      "location": "CT - Hartford Springfield",
+      "saleDate": "2026-02-12",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/350/2026-02-12?location=CT - Hartford Springfield&saleDate=1770908400000&liveAuction=false&from=&yardNum=350",
+      "numberOnSale": null
+    },
+    {
+      "location": "FL - Orlando South",
+      "saleDate": "2026-02-12",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/55/2026-02-12?location=FL - Orlando South&saleDate=1770908400000&liveAuction=false&from=&yardNum=55",
+      "numberOnSale": null
+    },
+    {
+      "location": "FL - West Palm Beach",
+      "saleDate": "2026-02-12",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/70/2026-02-12?location=FL - West Palm Beach&saleDate=1770908400000&liveAuction=false&from=&yardNum=70",
+      "numberOnSale": null
+    },
+    {
+      "location": "GA - Atlanta South",
+      "saleDate": "2026-02-12",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/146/2026-02-12?location=GA - Atlanta South&saleDate=1770908400000&liveAuction=false&from=&yardNum=146",
+      "numberOnSale": null
+    },
+    {
+      "location": "GA - Cartersville",
+      "saleDate": "2026-02-12",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/175/2026-02-12?location=GA - Cartersville&saleDate=1770908400000&liveAuction=false&from=&yardNum=175",
+      "numberOnSale": null
+    },
+    {
+      "location": "GA - Macon",
+      "saleDate": "2026-02-12",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/187/2026-02-12?location=GA - Macon&saleDate=1770908400000&liveAuction=false&from=&yardNum=187",
+      "numberOnSale": null
+    },
+    {
+      "location": "GA - Savannah",
+      "saleDate": "2026-02-12",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/87/2026-02-12?location=GA - Savannah&saleDate=1770908400000&liveAuction=false&from=&yardNum=87",
+      "numberOnSale": null
+    },
+    {
+      "location": "KY - Louisville",
+      "saleDate": "2026-02-12",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/143/2026-02-12?location=KY - Louisville&saleDate=1770908400000&liveAuction=false&from=&yardNum=143",
+      "numberOnSale": null
+    },
+    {
+      "location": "MA - North Boston",
+      "saleDate": "2026-02-12",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/53/2026-02-12?location=MA - North Boston&saleDate=1770908400000&liveAuction=false&from=&yardNum=53",
+      "numberOnSale": null
+    },
+    {
+      "location": "MA - South Boston",
+      "saleDate": "2026-02-12",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/27/2026-02-12?location=MA - South Boston&saleDate=1770908400000&liveAuction=false&from=&yardNum=27",
+      "numberOnSale": null
+    },
+    {
+      "location": "MD - Baltimore East",
+      "saleDate": "2026-02-12",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/342/2026-02-12?location=MD - Baltimore East&saleDate=1770908400000&liveAuction=false&from=&yardNum=342",
+      "numberOnSale": null
+    },
+    {
+      "location": "ME - Lyman",
+      "saleDate": "2026-02-12",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/90/2026-02-12?location=ME - Lyman&saleDate=1770908400000&liveAuction=false&from=&yardNum=90",
+      "numberOnSale": null
+    },
+    {
+      "location": "MI - Wayland",
+      "saleDate": "2026-02-12",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/385/2026-02-12?location=MI - Wayland&saleDate=1770908400000&liveAuction=false&from=&yardNum=385",
+      "numberOnSale": null
+    },
+    {
+      "location": "NC - Concord",
+      "saleDate": "2026-02-12",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/356/2026-02-12?location=NC - Concord&saleDate=1770908400000&liveAuction=false&from=&yardNum=356",
+      "numberOnSale": null
+    },
+    {
+      "location": "NC - Raleigh",
+      "saleDate": "2026-02-12",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/54/2026-02-12?location=NC - Raleigh&saleDate=1770908400000&liveAuction=false&from=&yardNum=54",
+      "numberOnSale": null
+    },
+    {
+      "location": "NH - Candia",
+      "saleDate": "2026-02-12",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/155/2026-02-12?location=NH - Candia&saleDate=1770908400000&liveAuction=false&from=&yardNum=155",
+      "numberOnSale": null
+    },
+    {
+      "location": "NJ - Glassboro East",
+      "saleDate": "2026-02-12",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/31/2026-02-12?location=NJ - Glassboro East&saleDate=1770908400000&liveAuction=false&from=&yardNum=31",
+      "numberOnSale": null
+    },
+    {
+      "location": "NY - Newburgh",
+      "saleDate": "2026-02-12",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/24/2026-02-12?location=NY - Newburgh&saleDate=1770908400000&liveAuction=false&from=&yardNum=24",
+      "numberOnSale": null
+    },
+    {
+      "location": "OH - Cleveland West",
+      "saleDate": "2026-02-12",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/112/2026-02-12?location=OH - Cleveland West&saleDate=1770908400000&liveAuction=false&from=&yardNum=112",
+      "numberOnSale": null
+    },
+    {
+      "location": "Ontario Auction",
+      "saleDate": "2026-02-12",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/294/2026-02-12?location=Ontario Auction&saleDate=1770908400000&liveAuction=false&from=&yardNum=294",
+      "numberOnSale": null
+    },
+    {
+      "location": "PA - Altoona",
+      "saleDate": "2026-02-12",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/129/2026-02-12?location=PA - Altoona&saleDate=1770908400000&liveAuction=false&from=&yardNum=129",
+      "numberOnSale": null
+    },
+    {
+      "location": "PA - Pittsburgh North",
+      "saleDate": "2026-02-12",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/28/2026-02-12?location=PA - Pittsburgh North&saleDate=1770908400000&liveAuction=false&from=&yardNum=28",
+      "numberOnSale": null
+    },
+    {
+      "location": "PA - York Haven",
+      "saleDate": "2026-02-12",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/127/2026-02-12?location=PA - York Haven&saleDate=1770908400000&liveAuction=false&from=&yardNum=127",
+      "numberOnSale": null
+    },
+    {
+      "location": "RI - Exeter",
+      "saleDate": "2026-02-12",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/199/2026-02-12?location=RI - Exeter&saleDate=1770908400000&liveAuction=false&from=&yardNum=199",
+      "numberOnSale": null
+    },
+    {
+      "location": "TN - Knoxville",
+      "saleDate": "2026-02-12",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/114/2026-02-12?location=TN - Knoxville&saleDate=1770908400000&liveAuction=false&from=&yardNum=114",
+      "numberOnSale": null
+    },
+    {
+      "location": "WV - Charleston",
+      "saleDate": "2026-02-12",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/89/2026-02-12?location=WV - Charleston&saleDate=1770908400000&liveAuction=false&from=&yardNum=89",
+      "numberOnSale": null
+    },
+    {
+      "location": "DC - Washington DC",
+      "saleDate": "2026-02-13",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/32/2026-02-13?location=DC - Washington DC&saleDate=1770994800000&liveAuction=false&from=&yardNum=32",
+      "numberOnSale": null
+    },
+    {
+      "location": "FL - Tallahassee",
+      "saleDate": "2026-02-13",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/117/2026-02-13?location=FL - Tallahassee&saleDate=1770994800000&liveAuction=false&from=&yardNum=117",
+      "numberOnSale": null
+    },
+    {
+      "location": "FL - Tampa South",
+      "saleDate": "2026-02-13",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/34/2026-02-13?location=FL - Tampa South&saleDate=1770994800000&liveAuction=false&from=&yardNum=34",
+      "numberOnSale": null
+    },
+    {
+      "location": "GA - Atlanta West",
+      "saleDate": "2026-02-13",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/15/2026-02-13?location=GA - Atlanta West&saleDate=1770994800000&liveAuction=false&from=&yardNum=15",
+      "numberOnSale": null
+    },
+    {
+      "location": "KY - Walton",
+      "saleDate": "2026-02-13",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/138/2026-02-13?location=KY - Walton&saleDate=1770994800000&liveAuction=false&from=&yardNum=138",
+      "numberOnSale": null
+    },
+    {
+      "location": "MA - North Boston",
+      "saleDate": "2026-02-13",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/53/2026-02-13?location=MA - North Boston&saleDate=1770994800000&liveAuction=false&from=&yardNum=53",
+      "numberOnSale": null
+    },
+    {
+      "location": "MI - Ionia",
+      "saleDate": "2026-02-13",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/160/2026-02-13?location=MI - Ionia&saleDate=1770994800000&liveAuction=false&from=&yardNum=160",
+      "numberOnSale": null
+    },
+    {
+      "location": "MI - Lansing",
+      "saleDate": "2026-02-13",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/103/2026-02-13?location=MI - Lansing&saleDate=1770994800000&liveAuction=false&from=&yardNum=103",
+      "numberOnSale": null
+    },
+    {
+      "location": "NC - Raleigh North",
+      "saleDate": "2026-02-13",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/368/2026-02-13?location=NC - Raleigh North&saleDate=1770994800000&liveAuction=false&from=&yardNum=368",
+      "numberOnSale": null
+    },
+    {
+      "location": "NJ - Somerville",
+      "saleDate": "2026-02-13",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/91/2026-02-13?location=NJ - Somerville&saleDate=1770994800000&liveAuction=false&from=&yardNum=91",
+      "numberOnSale": null
+    },
+    {
+      "location": "OH - Columbus",
+      "saleDate": "2026-02-13",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/29/2026-02-13?location=OH - Columbus&saleDate=1770994800000&liveAuction=false&from=&yardNum=29",
+      "numberOnSale": null
+    },
+    {
+      "location": "PA - Chambersburg",
+      "saleDate": "2026-02-13",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/128/2026-02-13?location=PA - Chambersburg&saleDate=1770994800000&liveAuction=false&from=&yardNum=128",
+      "numberOnSale": null
+    },
+    {
+      "location": "SC - Columbia",
+      "saleDate": "2026-02-13",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/56/2026-02-13?location=SC - Columbia&saleDate=1770994800000&liveAuction=false&from=&yardNum=56",
+      "numberOnSale": null
+    },
+    {
+      "location": "VA - Danville",
+      "saleDate": "2026-02-13",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/82/2026-02-13?location=VA - Danville&saleDate=1770994800000&liveAuction=false&from=&yardNum=82",
+      "numberOnSale": null
+    },
+    {
+      "location": "VA - Richmond",
+      "saleDate": "2026-02-13",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/139/2026-02-13?location=VA - Richmond&saleDate=1770994800000&liveAuction=false&from=&yardNum=139",
+      "numberOnSale": null
+    },
+    {
+      "location": "Medium Duty Clean Title Sale",
+      "saleDate": "2026-02-09",
+      "saleTime": "05:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/832/2026-02-09?location=Medium Duty Clean Title Sale&saleDate=1770656400000&liveAuction=false&from=&yardNum=832",
+      "numberOnSale": null
+    },
+    {
+      "location": "Rental Vehicle Sale",
+      "saleDate": "2026-02-09",
+      "saleTime": "05:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/838/2026-02-09?location=Rental Vehicle Sale&saleDate=1770656400000&liveAuction=false&from=&yardNum=838",
+      "numberOnSale": null
+    },
+    {
+      "location": "Heavy Truck, Trailer, Rv Clean Title Sale",
+      "saleDate": "2026-02-10",
+      "saleTime": "05:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/833/2026-02-10?location=Heavy Truck, Trailer, Rv Clean Title Sale&saleDate=1770742800000&liveAuction=false&from=&yardNum=833",
+      "numberOnSale": null
+    },
+    {
+      "location": "QC - Montreal",
+      "saleDate": "2026-02-10",
+      "saleTime": "05:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/205/2026-02-10?location=QC - Montreal&saleDate=1770742800000&liveAuction=false&from=&yardNum=205",
+      "numberOnSale": null
+    },
+    {
+      "location": "Wholesale Auction",
+      "saleDate": "2026-02-10",
+      "saleTime": "05:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/855/2026-02-10?location=Wholesale Auction&saleDate=1770742800000&liveAuction=false&from=&yardNum=855",
+      "numberOnSale": null
+    },
+    {
+      "location": "Medium Duty Specialty Sale",
+      "saleDate": "2026-02-11",
+      "saleTime": "05:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/835/2026-02-11?location=Medium Duty Specialty Sale&saleDate=1770829200000&liveAuction=false&from=&yardNum=835",
+      "numberOnSale": null
+    },
+    {
+      "location": "Rental Vehicle Sale",
+      "saleDate": "2026-02-11",
+      "saleTime": "05:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/838/2026-02-11?location=Rental Vehicle Sale&saleDate=1770829200000&liveAuction=false&from=&yardNum=838",
+      "numberOnSale": null
+    },
+    {
+      "location": "Atlantic Canada Auction",
+      "saleDate": "2026-02-12",
+      "saleTime": "05:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/295/2026-02-12?location=Atlantic Canada Auction&saleDate=1770915600000&liveAuction=false&from=&yardNum=295",
+      "numberOnSale": null
+    },
+    {
+      "location": "Heavy Truck, Trailer, Rv Specialty Sale",
+      "saleDate": "2026-02-12",
+      "saleTime": "05:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/836/2026-02-12?location=Heavy Truck, Trailer, Rv Specialty Sale&saleDate=1770915600000&liveAuction=false&from=&yardNum=836",
+      "numberOnSale": null
+    },
+    {
+      "location": "Wholesale Auction",
+      "saleDate": "2026-02-12",
+      "saleTime": "05:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/855/2026-02-12?location=Wholesale Auction&saleDate=1770915600000&liveAuction=false&from=&yardNum=855",
+      "numberOnSale": null
+    },
+    {
+      "location": "Equipment Specialty Sale",
+      "saleDate": "2026-02-13",
+      "saleTime": "05:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/837/2026-02-13?location=Equipment Specialty Sale&saleDate=1771002000000&liveAuction=false&from=&yardNum=837",
+      "numberOnSale": null
+    },
+    {
+      "location": "AL - Mobile",
+      "saleDate": "2026-02-09",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/58/2026-02-09?location=AL - Mobile&saleDate=1770660000000&liveAuction=false&from=&yardNum=58",
+      "numberOnSale": null
+    },
+    {
+      "location": "AR - Fayetteville",
+      "saleDate": "2026-02-09",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/140/2026-02-09?location=AR - Fayetteville&saleDate=1770660000000&liveAuction=false&from=&yardNum=140",
+      "numberOnSale": null
+    },
+    {
+      "location": "AR - Little Rock",
+      "saleDate": "2026-02-09",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/21/2026-02-09?location=AR - Little Rock&saleDate=1770660000000&liveAuction=false&from=&yardNum=21",
+      "numberOnSale": null
+    },
+    {
+      "location": "IL - Peoria",
+      "saleDate": "2026-02-09",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/51/2026-02-09?location=IL - Peoria&saleDate=1770660000000&liveAuction=false&from=&yardNum=51",
+      "numberOnSale": null
+    },
+    {
+      "location": "IL - Southern Illinois",
+      "saleDate": "2026-02-09",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/189/2026-02-09?location=IL - Southern Illinois&saleDate=1770660000000&liveAuction=false&from=&yardNum=189",
+      "numberOnSale": null
+    },
+    {
+      "location": "IL - Wheeling",
+      "saleDate": "2026-02-09",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/156/2026-02-09?location=IL - Wheeling&saleDate=1770660000000&liveAuction=false&from=&yardNum=156",
+      "numberOnSale": null
+    },
+    {
+      "location": "IN - Dyer",
+      "saleDate": "2026-02-09",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/370/2026-02-09?location=IN - Dyer&saleDate=1770660000000&liveAuction=false&from=&yardNum=370",
+      "numberOnSale": null
+    },
+    {
+      "location": "KS - Wichita",
+      "saleDate": "2026-02-09",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/67/2026-02-09?location=KS - Wichita&saleDate=1770660000000&liveAuction=false&from=&yardNum=67",
+      "numberOnSale": null
+    },
+    {
+      "location": "MN - St. Cloud",
+      "saleDate": "2026-02-09",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/52/2026-02-09?location=MN - St. Cloud&saleDate=1770660000000&liveAuction=false&from=&yardNum=52",
+      "numberOnSale": null
+    },
+    {
+      "location": "MO - Sikeston",
+      "saleDate": "2026-02-09",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/141/2026-02-09?location=MO - Sikeston&saleDate=1770660000000&liveAuction=false&from=&yardNum=141",
+      "numberOnSale": null
+    },
+    {
+      "location": "TN - Nashville",
+      "saleDate": "2026-02-09",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/63/2026-02-09?location=TN - Nashville&saleDate=1770660000000&liveAuction=false&from=&yardNum=63",
+      "numberOnSale": null
+    },
+    {
+      "location": "TX - Dallas",
+      "saleDate": "2026-02-09",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/12/2026-02-09?location=TX - Dallas&saleDate=1770660000000&liveAuction=false&from=&yardNum=12",
+      "numberOnSale": null
+    },
+    {
+      "location": "TX - Dallas South",
+      "saleDate": "2026-02-09",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/181/2026-02-09?location=TX - Dallas South&saleDate=1770660000000&liveAuction=false&from=&yardNum=181",
+      "numberOnSale": null
+    },
+    {
+      "location": "TX - Houston East",
+      "saleDate": "2026-02-09",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/357/2026-02-09?location=TX - Houston East&saleDate=1770660000000&liveAuction=false&from=&yardNum=357",
+      "numberOnSale": null
+    },
+    {
+      "location": "TX - Longview",
+      "saleDate": "2026-02-09",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/14/2026-02-09?location=TX - Longview&saleDate=1770660000000&liveAuction=false&from=&yardNum=14",
+      "numberOnSale": null
+    },
+    {
+      "location": "TX - Lufkin",
+      "saleDate": "2026-02-09",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/13/2026-02-09?location=TX - Lufkin&saleDate=1770660000000&liveAuction=false&from=&yardNum=13",
+      "numberOnSale": null
+    },
+    {
+      "location": "WI - Appleton",
+      "saleDate": "2026-02-09",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/191/2026-02-09?location=WI - Appleton&saleDate=1770660000000&liveAuction=false&from=&yardNum=191",
+      "numberOnSale": null
+    },
+    {
+      "location": "WI - Milwaukee South",
+      "saleDate": "2026-02-09",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/371/2026-02-09?location=WI - Milwaukee South&saleDate=1770660000000&liveAuction=false&from=&yardNum=371",
+      "numberOnSale": null
+    },
+    {
+      "location": "AL - Birmingham",
+      "saleDate": "2026-02-10",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/136/2026-02-10?location=AL - Birmingham&saleDate=1770746400000&liveAuction=false&from=&yardNum=136",
+      "numberOnSale": null
+    },
+    {
+      "location": "AL - Mobile South",
+      "saleDate": "2026-02-10",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/184/2026-02-10?location=AL - Mobile South&saleDate=1770746400000&liveAuction=false&from=&yardNum=184",
+      "numberOnSale": null
+    },
+    {
+      "location": "IL - Chicago North",
+      "saleDate": "2026-02-10",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/36/2026-02-10?location=IL - Chicago North&saleDate=1770746400000&liveAuction=false&from=&yardNum=36",
+      "numberOnSale": null
+    },
+    {
+      "location": "KS - Kansas City",
+      "saleDate": "2026-02-10",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/369/2026-02-10?location=KS - Kansas City&saleDate=1770746400000&liveAuction=false&from=&yardNum=369",
+      "numberOnSale": null
+    },
+    {
+      "location": "LA - Baton Rouge",
+      "saleDate": "2026-02-10",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/50/2026-02-10?location=LA - Baton Rouge&saleDate=1770746400000&liveAuction=false&from=&yardNum=50",
+      "numberOnSale": null
+    },
+    {
+      "location": "MN - Minneapolis",
+      "saleDate": "2026-02-10",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/37/2026-02-10?location=MN - Minneapolis&saleDate=1770746400000&liveAuction=false&from=&yardNum=37",
+      "numberOnSale": null
+    },
+    {
+      "location": "MN - Minneapolis North",
+      "saleDate": "2026-02-10",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/80/2026-02-10?location=MN - Minneapolis North&saleDate=1770746400000&liveAuction=false&from=&yardNum=80",
+      "numberOnSale": null
+    },
+    {
+      "location": "MO - Columbia",
+      "saleDate": "2026-02-10",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/125/2026-02-10?location=MO - Columbia&saleDate=1770746400000&liveAuction=false&from=&yardNum=125",
+      "numberOnSale": null
+    },
+    {
+      "location": "MO - St. Louis",
+      "saleDate": "2026-02-10",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/20/2026-02-10?location=MO - St. Louis&saleDate=1770746400000&liveAuction=false&from=&yardNum=20",
+      "numberOnSale": null
+    },
+    {
+      "location": "NE - Lincoln",
+      "saleDate": "2026-02-10",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/123/2026-02-10?location=NE - Lincoln&saleDate=1770746400000&liveAuction=false&from=&yardNum=123",
+      "numberOnSale": null
+    },
+    {
+      "location": "OK - Oklahoma City",
+      "saleDate": "2026-02-10",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/18/2026-02-10?location=OK - Oklahoma City&saleDate=1770746400000&liveAuction=false&from=&yardNum=18",
+      "numberOnSale": null
+    },
+    {
+      "location": "TN - Memphis",
+      "saleDate": "2026-02-10",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/22/2026-02-10?location=TN - Memphis&saleDate=1770746400000&liveAuction=false&from=&yardNum=22",
+      "numberOnSale": null
+    },
+    {
+      "location": "TX - Amarillo",
+      "saleDate": "2026-02-10",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/95/2026-02-10?location=TX - Amarillo&saleDate=1770746400000&liveAuction=false&from=&yardNum=95",
+      "numberOnSale": null
+    },
+    {
+      "location": "TX - Corpus Christi",
+      "saleDate": "2026-02-10",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/96/2026-02-10?location=TX - Corpus Christi&saleDate=1770746400000&liveAuction=false&from=&yardNum=96",
+      "numberOnSale": null
+    },
+    {
+      "location": "TX - Ft. Worth",
+      "saleDate": "2026-02-10",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/98/2026-02-10?location=TX - Ft. Worth&saleDate=1770746400000&liveAuction=false&from=&yardNum=98",
+      "numberOnSale": null
+    },
+    {
+      "location": "TX - Houston",
+      "saleDate": "2026-02-10",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/11/2026-02-10?location=TX - Houston&saleDate=1770746400000&liveAuction=false&from=&yardNum=11",
+      "numberOnSale": null
+    },
+    {
+      "location": "WI - Madison South",
+      "saleDate": "2026-02-10",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/308/2026-02-10?location=WI - Madison South&saleDate=1770746400000&liveAuction=false&from=&yardNum=308",
+      "numberOnSale": null
+    },
+    {
+      "location": "AL - Tanner",
+      "saleDate": "2026-02-11",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/66/2026-02-11?location=AL - Tanner&saleDate=1770832800000&liveAuction=false&from=&yardNum=66",
+      "numberOnSale": null
+    },
+    {
+      "location": "AR - Fayetteville",
+      "saleDate": "2026-02-11",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/140/2026-02-11?location=AR - Fayetteville&saleDate=1770832800000&liveAuction=false&from=&yardNum=140",
+      "numberOnSale": null
+    },
+    {
+      "location": "AR - Little Rock",
+      "saleDate": "2026-02-11",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/21/2026-02-11?location=AR - Little Rock&saleDate=1770832800000&liveAuction=false&from=&yardNum=21",
+      "numberOnSale": null
+    },
+    {
+      "location": "Drive Wholesale Canada",
+      "saleDate": "2026-02-11",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/292/2026-02-11?location=Drive Wholesale Canada&saleDate=1770832800000&liveAuction=false&from=&yardNum=292",
+      "numberOnSale": null
+    },
+    {
+      "location": "IA - Cedar Rapids",
+      "saleDate": "2026-02-11",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/398/2026-02-11?location=IA - Cedar Rapids&saleDate=1770832800000&liveAuction=false&from=&yardNum=398",
+      "numberOnSale": null
+    },
+    {
+      "location": "IA - Davenport",
+      "saleDate": "2026-02-11",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/169/2026-02-11?location=IA - Davenport&saleDate=1770832800000&liveAuction=false&from=&yardNum=169",
+      "numberOnSale": null
+    },
+    {
+      "location": "IL - Chicago South",
+      "saleDate": "2026-02-11",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/81/2026-02-11?location=IL - Chicago South&saleDate=1770832800000&liveAuction=false&from=&yardNum=81",
+      "numberOnSale": null
+    },
+    {
+      "location": "IL - Southern Illinois",
+      "saleDate": "2026-02-11",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/189/2026-02-11?location=IL - Southern Illinois&saleDate=1770832800000&liveAuction=false&from=&yardNum=189",
+      "numberOnSale": null
+    },
+    {
+      "location": "KS - Wichita",
+      "saleDate": "2026-02-11",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/67/2026-02-11?location=KS - Wichita&saleDate=1770832800000&liveAuction=false&from=&yardNum=67",
+      "numberOnSale": null
+    },
+    {
+      "location": "LA - New Orleans",
+      "saleDate": "2026-02-11",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/79/2026-02-11?location=LA - New Orleans&saleDate=1770832800000&liveAuction=false&from=&yardNum=79",
+      "numberOnSale": null
+    },
+    {
+      "location": "MO - Springfield",
+      "saleDate": "2026-02-11",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/92/2026-02-11?location=MO - Springfield&saleDate=1770832800000&liveAuction=false&from=&yardNum=92",
+      "numberOnSale": null
+    },
+    {
+      "location": "MS - Grenada",
+      "saleDate": "2026-02-11",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/326/2026-02-11?location=MS - Grenada&saleDate=1770832800000&liveAuction=false&from=&yardNum=326",
+      "numberOnSale": null
+    },
+    {
+      "location": "OK - Tulsa",
+      "saleDate": "2026-02-11",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/19/2026-02-11?location=OK - Tulsa&saleDate=1770832800000&liveAuction=false&from=&yardNum=19",
+      "numberOnSale": null
+    },
+    {
+      "location": "TN - Nashville",
+      "saleDate": "2026-02-11",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/63/2026-02-11?location=TN - Nashville&saleDate=1770832800000&liveAuction=false&from=&yardNum=63",
+      "numberOnSale": null
+    },
+    {
+      "location": "TX - Andrews",
+      "saleDate": "2026-02-11",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/185/2026-02-11?location=TX - Andrews&saleDate=1770832800000&liveAuction=false&from=&yardNum=185",
+      "numberOnSale": null
+    },
+    {
+      "location": "TX - McAllen",
+      "saleDate": "2026-02-11",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/65/2026-02-11?location=TX - McAllen&saleDate=1770832800000&liveAuction=false&from=&yardNum=65",
+      "numberOnSale": null
+    },
+    {
+      "location": "TX - Waco",
+      "saleDate": "2026-02-11",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/182/2026-02-11?location=TX - Waco&saleDate=1770832800000&liveAuction=false&from=&yardNum=182",
+      "numberOnSale": null
+    },
+    {
+      "location": "WI - Milwaukee North",
+      "saleDate": "2026-02-11",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/339/2026-02-11?location=WI - Milwaukee North&saleDate=1770832800000&liveAuction=false&from=&yardNum=339",
+      "numberOnSale": null
+    },
+    {
+      "location": " CrashedToys Powersport Auction",
+      "saleDate": "2026-02-12",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/841/2026-02-12?location= CrashedToys Powersport Auction&saleDate=1770919200000&liveAuction=false&from=&yardNum=841",
+      "numberOnSale": null
+    },
+    {
+      "location": "AL - Dothan",
+      "saleDate": "2026-02-12",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/341/2026-02-12?location=AL - Dothan&saleDate=1770919200000&liveAuction=false&from=&yardNum=341",
+      "numberOnSale": null
+    },
+    {
+      "location": "AL - Montgomery",
+      "saleDate": "2026-02-12",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/145/2026-02-12?location=AL - Montgomery&saleDate=1770919200000&liveAuction=false&from=&yardNum=145",
+      "numberOnSale": null
+    },
+    {
+      "location": "IL - Chicago North",
+      "saleDate": "2026-02-12",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/36/2026-02-12?location=IL - Chicago North&saleDate=1770919200000&liveAuction=false&from=&yardNum=36",
+      "numberOnSale": null
+    },
+    {
+      "location": "KS - Kansas City",
+      "saleDate": "2026-02-12",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/369/2026-02-12?location=KS - Kansas City&saleDate=1770919200000&liveAuction=false&from=&yardNum=369",
+      "numberOnSale": null
+    },
+    {
+      "location": "KY - Earlington",
+      "saleDate": "2026-02-12",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/345/2026-02-12?location=KY - Earlington&saleDate=1770919200000&liveAuction=false&from=&yardNum=345",
+      "numberOnSale": null
+    },
+    {
+      "location": "LA - Shreveport",
+      "saleDate": "2026-02-12",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/84/2026-02-12?location=LA - Shreveport&saleDate=1770919200000&liveAuction=false&from=&yardNum=84",
+      "numberOnSale": null
+    },
+    {
+      "location": "MN - Minneapolis",
+      "saleDate": "2026-02-12",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/37/2026-02-12?location=MN - Minneapolis&saleDate=1770919200000&liveAuction=false&from=&yardNum=37",
+      "numberOnSale": null
+    },
+    {
+      "location": "MN - Minneapolis North",
+      "saleDate": "2026-02-12",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/80/2026-02-12?location=MN - Minneapolis North&saleDate=1770919200000&liveAuction=false&from=&yardNum=80",
+      "numberOnSale": null
+    },
+    {
+      "location": "OK - Oklahoma City",
+      "saleDate": "2026-02-12",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/18/2026-02-12?location=OK - Oklahoma City&saleDate=1770919200000&liveAuction=false&from=&yardNum=18",
+      "numberOnSale": null
+    },
+    {
+      "location": "TN - Memphis",
+      "saleDate": "2026-02-12",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/22/2026-02-12?location=TN - Memphis&saleDate=1770919200000&liveAuction=false&from=&yardNum=22",
+      "numberOnSale": null
+    },
+    {
+      "location": "TX - Austin",
+      "saleDate": "2026-02-12",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/62/2026-02-12?location=TX - Austin&saleDate=1770919200000&liveAuction=false&from=&yardNum=62",
+      "numberOnSale": null
+    },
+    {
+      "location": "TX - Dallas",
+      "saleDate": "2026-02-12",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/12/2026-02-12?location=TX - Dallas&saleDate=1770919200000&liveAuction=false&from=&yardNum=12",
+      "numberOnSale": null
+    },
+    {
+      "location": "TX - Dallas South",
+      "saleDate": "2026-02-12",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/181/2026-02-12?location=TX - Dallas South&saleDate=1770919200000&liveAuction=false&from=&yardNum=181",
+      "numberOnSale": null
+    },
+    {
+      "location": "TX - Houston East",
+      "saleDate": "2026-02-12",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/357/2026-02-12?location=TX - Houston East&saleDate=1770919200000&liveAuction=false&from=&yardNum=357",
+      "numberOnSale": null
+    },
+    {
+      "location": "TX - North Austin",
+      "saleDate": "2026-02-12",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/394/2026-02-12?location=TX - North Austin&saleDate=1770919200000&liveAuction=false&from=&yardNum=394",
+      "numberOnSale": null
+    },
+    {
+      "location": "TX - San Antonio",
+      "saleDate": "2026-02-12",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/74/2026-02-12?location=TX - San Antonio&saleDate=1770919200000&liveAuction=false&from=&yardNum=74",
+      "numberOnSale": null
+    },
+    {
+      "location": "IA - Des Moines",
+      "saleDate": "2026-02-13",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/60/2026-02-13?location=IA - Des Moines&saleDate=1771005600000&liveAuction=false&from=&yardNum=60",
+      "numberOnSale": null
+    },
+    {
+      "location": "MO - St. Louis",
+      "saleDate": "2026-02-13",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/20/2026-02-13?location=MO - St. Louis&saleDate=1771005600000&liveAuction=false&from=&yardNum=20",
+      "numberOnSale": null
+    },
+    {
+      "location": "MS - Jackson",
+      "saleDate": "2026-02-13",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/40/2026-02-13?location=MS - Jackson&saleDate=1771005600000&liveAuction=false&from=&yardNum=40",
+      "numberOnSale": null
+    },
+    {
+      "location": "OK - Tulsa",
+      "saleDate": "2026-02-13",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/19/2026-02-13?location=OK - Tulsa&saleDate=1771005600000&liveAuction=false&from=&yardNum=19",
+      "numberOnSale": null
+    },
+    {
+      "location": "TX - Abilene",
+      "saleDate": "2026-02-13",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/73/2026-02-13?location=TX - Abilene&saleDate=1771005600000&liveAuction=false&from=&yardNum=73",
+      "numberOnSale": null
+    },
+    {
+      "location": "TX - Ft. Worth",
+      "saleDate": "2026-02-13",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/98/2026-02-13?location=TX - Ft. Worth&saleDate=1771005600000&liveAuction=false&from=&yardNum=98",
+      "numberOnSale": null
+    },
+    {
+      "location": "TX - Houston",
+      "saleDate": "2026-02-13",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/11/2026-02-13?location=TX - Houston&saleDate=1771005600000&liveAuction=false&from=&yardNum=11",
+      "numberOnSale": null
+    },
+    {
+      "location": "AZ - Phoenix",
+      "saleDate": "2026-02-09",
+      "saleTime": "07:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/47/2026-02-09?location=AZ - Phoenix&saleDate=1770663600000&liveAuction=false&from=&yardNum=47",
+      "numberOnSale": null
+    },
+    {
+      "location": "CO - Colorado Springs",
+      "saleDate": "2026-02-09",
+      "saleTime": "07:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/118/2026-02-09?location=CO - Colorado Springs&saleDate=1770663600000&liveAuction=false&from=&yardNum=118",
+      "numberOnSale": null
+    },
+    {
+      "location": "CO - Denver South",
+      "saleDate": "2026-02-09",
+      "saleTime": "07:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/193/2026-02-09?location=CO - Denver South&saleDate=1770663600000&liveAuction=false&from=&yardNum=193",
+      "numberOnSale": null
+    },
+    {
+      "location": "MT - Billings",
+      "saleDate": "2026-02-09",
+      "saleTime": "07:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/122/2026-02-09?location=MT - Billings&saleDate=1770663600000&liveAuction=false&from=&yardNum=122",
+      "numberOnSale": null
+    },
+    {
+      "location": "NM - Albuquerque",
+      "saleDate": "2026-02-09",
+      "saleTime": "07:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/75/2026-02-09?location=NM - Albuquerque&saleDate=1770663600000&liveAuction=false&from=&yardNum=75",
+      "numberOnSale": null
+    },
+    {
+      "location": "UT - Ogden",
+      "saleDate": "2026-02-09",
+      "saleTime": "07:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/188/2026-02-09?location=UT - Ogden&saleDate=1770663600000&liveAuction=false&from=&yardNum=188",
+      "numberOnSale": null
+    },
+    {
+      "location": "AB - Calgary",
+      "saleDate": "2026-02-10",
+      "saleTime": "07:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/203/2026-02-10?location=AB - Calgary&saleDate=1770750000000&liveAuction=false&from=&yardNum=203",
+      "numberOnSale": null
+    },
+    {
+      "location": "AZ - Phoenix North",
+      "saleDate": "2026-02-10",
+      "saleTime": "07:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/362/2026-02-10?location=AZ - Phoenix North&saleDate=1770750000000&liveAuction=false&from=&yardNum=362",
+      "numberOnSale": null
+    },
+    {
+      "location": "CO - Denver",
+      "saleDate": "2026-02-10",
+      "saleTime": "07:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/68/2026-02-10?location=CO - Denver&saleDate=1770750000000&liveAuction=false&from=&yardNum=68",
+      "numberOnSale": null
+    },
+    {
+      "location": "CO - Denver Central",
+      "saleDate": "2026-02-10",
+      "saleTime": "07:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/120/2026-02-10?location=CO - Denver Central&saleDate=1770750000000&liveAuction=false&from=&yardNum=120",
+      "numberOnSale": null
+    },
+    {
+      "location": "MT - Helena",
+      "saleDate": "2026-02-10",
+      "saleTime": "07:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/106/2026-02-10?location=MT - Helena&saleDate=1770750000000&liveAuction=false&from=&yardNum=106",
+      "numberOnSale": null
+    },
+    {
+      "location": "SD - Rapid City",
+      "saleDate": "2026-02-10",
+      "saleTime": "07:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/396/2026-02-10?location=SD - Rapid City&saleDate=1770750000000&liveAuction=false&from=&yardNum=396",
+      "numberOnSale": null
+    },
+    {
+      "location": "UT - Salt Lake City",
+      "saleDate": "2026-02-10",
+      "saleTime": "07:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/336/2026-02-10?location=UT - Salt Lake City&saleDate=1770750000000&liveAuction=false&from=&yardNum=336",
+      "numberOnSale": null
+    },
+    {
+      "location": "AZ - Phoenix",
+      "saleDate": "2026-02-11",
+      "saleTime": "07:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/47/2026-02-11?location=AZ - Phoenix&saleDate=1770836400000&liveAuction=false&from=&yardNum=47",
+      "numberOnSale": null
+    },
+    {
+      "location": "CO - Colorado Springs",
+      "saleDate": "2026-02-11",
+      "saleTime": "07:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/118/2026-02-11?location=CO - Colorado Springs&saleDate=1770836400000&liveAuction=false&from=&yardNum=118",
+      "numberOnSale": null
+    },
+    {
+      "location": "CO - Denver South",
+      "saleDate": "2026-02-11",
+      "saleTime": "07:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/193/2026-02-11?location=CO - Denver South&saleDate=1770836400000&liveAuction=false&from=&yardNum=193",
+      "numberOnSale": null
+    },
+    {
+      "location": "WY - Casper",
+      "saleDate": "2026-02-11",
+      "saleTime": "07:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/328/2026-02-11?location=WY - Casper&saleDate=1770836400000&liveAuction=false&from=&yardNum=328",
+      "numberOnSale": null
+    },
+    {
+      "location": "AB - Edmonton",
+      "saleDate": "2026-02-12",
+      "saleTime": "07:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/204/2026-02-12?location=AB - Edmonton&saleDate=1770922800000&liveAuction=false&from=&yardNum=204",
+      "numberOnSale": null
+    },
+    {
+      "location": "AZ - Phoenix North",
+      "saleDate": "2026-02-12",
+      "saleTime": "07:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/362/2026-02-12?location=AZ - Phoenix North&saleDate=1770922800000&liveAuction=false&from=&yardNum=362",
+      "numberOnSale": null
+    },
+    {
+      "location": "CO - Denver",
+      "saleDate": "2026-02-12",
+      "saleTime": "07:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/68/2026-02-12?location=CO - Denver&saleDate=1770922800000&liveAuction=false&from=&yardNum=68",
+      "numberOnSale": null
+    },
+    {
+      "location": "CO - Denver Central",
+      "saleDate": "2026-02-12",
+      "saleTime": "07:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/120/2026-02-12?location=CO - Denver Central&saleDate=1770922800000&liveAuction=false&from=&yardNum=120",
+      "numberOnSale": null
+    },
+    {
+      "location": "ID - Boise",
+      "saleDate": "2026-02-12",
+      "saleTime": "07:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/72/2026-02-12?location=ID - Boise&saleDate=1770922800000&liveAuction=false&from=&yardNum=72",
+      "numberOnSale": null
+    },
+    {
+      "location": "NM - Albuquerque",
+      "saleDate": "2026-02-12",
+      "saleTime": "07:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/75/2026-02-12?location=NM - Albuquerque&saleDate=1770922800000&liveAuction=false&from=&yardNum=75",
+      "numberOnSale": null
+    },
+    {
+      "location": "AZ - Tucson",
+      "saleDate": "2026-02-13",
+      "saleTime": "07:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/93/2026-02-13?location=AZ - Tucson&saleDate=1771009200000&liveAuction=false&from=&yardNum=93",
+      "numberOnSale": null
+    },
+    {
+      "location": "TX - El Paso",
+      "saleDate": "2026-02-13",
+      "saleTime": "07:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/45/2026-02-13?location=TX - El Paso&saleDate=1771009200000&liveAuction=false&from=&yardNum=45",
+      "numberOnSale": null
+    },
+    {
+      "location": "UT - Salt Lake City",
+      "saleDate": "2026-02-13",
+      "saleTime": "07:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/336/2026-02-13?location=UT - Salt Lake City&saleDate=1771009200000&liveAuction=false&from=&yardNum=336",
+      "numberOnSale": null
+    },
+    {
+      "location": "CA - American Canyon",
+      "saleDate": "2026-02-09",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/190/2026-02-09?location=CA - American Canyon&saleDate=1770667200000&liveAuction=false&from=&yardNum=190",
+      "numberOnSale": null
+    },
+    {
+      "location": "CA - Fresno",
+      "saleDate": "2026-02-09",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/4/2026-02-09?location=CA - Fresno&saleDate=1770667200000&liveAuction=false&from=&yardNum=4",
+      "numberOnSale": null
+    },
+    {
+      "location": "CA - Los Angeles",
+      "saleDate": "2026-02-09",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/10/2026-02-09?location=CA - Los Angeles&saleDate=1770667200000&liveAuction=false&from=&yardNum=10",
+      "numberOnSale": null
+    },
+    {
+      "location": "CA - Martinez",
+      "saleDate": "2026-02-09",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/78/2026-02-09?location=CA - Martinez&saleDate=1770667200000&liveAuction=false&from=&yardNum=78",
+      "numberOnSale": null
+    },
+    {
+      "location": "CA - San Bernardino",
+      "saleDate": "2026-02-09",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/7/2026-02-09?location=CA - San Bernardino&saleDate=1770667200000&liveAuction=false&from=&yardNum=7",
+      "numberOnSale": null
+    },
+    {
+      "location": "CA - So Sacramento",
+      "saleDate": "2026-02-09",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/16/2026-02-09?location=CA - So Sacramento&saleDate=1770667200000&liveAuction=false&from=&yardNum=16",
+      "numberOnSale": null
+    },
+    {
+      "location": "CA - Sun Valley",
+      "saleDate": "2026-02-09",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/180/2026-02-09?location=CA - Sun Valley&saleDate=1770667200000&liveAuction=false&from=&yardNum=180",
+      "numberOnSale": null
+    },
+    {
+      "location": "ND - Bismarck",
+      "saleDate": "2026-02-09",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/363/2026-02-09?location=ND - Bismarck&saleDate=1770667200000&liveAuction=false&from=&yardNum=363",
+      "numberOnSale": null
+    },
+    {
+      "location": "NV - Las Vegas West",
+      "saleDate": "2026-02-09",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/133/2026-02-09?location=NV - Las Vegas West&saleDate=1770667200000&liveAuction=false&from=&yardNum=133",
+      "numberOnSale": null
+    },
+    {
+      "location": "OR - Portland North",
+      "saleDate": "2026-02-09",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/9/2026-02-09?location=OR - Portland North&saleDate=1770667200000&liveAuction=false&from=&yardNum=9",
+      "numberOnSale": null
+    },
+    {
+      "location": "OR - Portland South",
+      "saleDate": "2026-02-09",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/134/2026-02-09?location=OR - Portland South&saleDate=1770667200000&liveAuction=false&from=&yardNum=134",
+      "numberOnSale": null
+    },
+    {
+      "location": "WA - North Seattle",
+      "saleDate": "2026-02-09",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/48/2026-02-09?location=WA - North Seattle&saleDate=1770667200000&liveAuction=false&from=&yardNum=48",
+      "numberOnSale": null
+    },
+    {
+      "location": "CA - Antelope",
+      "saleDate": "2026-02-10",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/151/2026-02-10?location=CA - Antelope&saleDate=1770753600000&liveAuction=false&from=&yardNum=151",
+      "numberOnSale": null
+    },
+    {
+      "location": "CA - Hayward",
+      "saleDate": "2026-02-10",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/3/2026-02-10?location=CA - Hayward&saleDate=1770753600000&liveAuction=false&from=&yardNum=3",
+      "numberOnSale": null
+    },
+    {
+      "location": "CA - Rancho Cucamonga",
+      "saleDate": "2026-02-10",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/97/2026-02-10?location=CA - Rancho Cucamonga&saleDate=1770753600000&liveAuction=false&from=&yardNum=97",
+      "numberOnSale": null
+    },
+    {
+      "location": "CA - Sacramento",
+      "saleDate": "2026-02-10",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/2/2026-02-10?location=CA - Sacramento&saleDate=1770753600000&liveAuction=false&from=&yardNum=2",
+      "numberOnSale": null
+    },
+    {
+      "location": "CA - San Diego",
+      "saleDate": "2026-02-10",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/59/2026-02-10?location=CA - San Diego&saleDate=1770753600000&liveAuction=false&from=&yardNum=59",
+      "numberOnSale": null
+    },
+    {
+      "location": "CA - San Jose",
+      "saleDate": "2026-02-10",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/6/2026-02-10?location=CA - San Jose&saleDate=1770753600000&liveAuction=false&from=&yardNum=6",
+      "numberOnSale": null
+    },
+    {
+      "location": "CA - Van Nuys",
+      "saleDate": "2026-02-10",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/43/2026-02-10?location=CA - Van Nuys&saleDate=1770753600000&liveAuction=false&from=&yardNum=43",
+      "numberOnSale": null
+    },
+    {
+      "location": "NV - Las Vegas",
+      "saleDate": "2026-02-10",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/57/2026-02-10?location=NV - Las Vegas&saleDate=1770753600000&liveAuction=false&from=&yardNum=57",
+      "numberOnSale": null
+    },
+    {
+      "location": "OR - Eugene",
+      "saleDate": "2026-02-10",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/104/2026-02-10?location=OR - Eugene&saleDate=1770753600000&liveAuction=false&from=&yardNum=104",
+      "numberOnSale": null
+    },
+    {
+      "location": "WA - Graham",
+      "saleDate": "2026-02-10",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/64/2026-02-10?location=WA - Graham&saleDate=1770753600000&liveAuction=false&from=&yardNum=64",
+      "numberOnSale": null
+    },
+    {
+      "location": "CA - Long Beach",
+      "saleDate": "2026-02-11",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/186/2026-02-11?location=CA - Long Beach&saleDate=1770840000000&liveAuction=false&from=&yardNum=186",
+      "numberOnSale": null
+    },
+    {
+      "location": "CA - Martinez",
+      "saleDate": "2026-02-11",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/78/2026-02-11?location=CA - Martinez&saleDate=1770840000000&liveAuction=false&from=&yardNum=78",
+      "numberOnSale": null
+    },
+    {
+      "location": "CA - Mentone",
+      "saleDate": "2026-02-11",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/367/2026-02-11?location=CA - Mentone&saleDate=1770840000000&liveAuction=false&from=&yardNum=367",
+      "numberOnSale": null
+    },
+    {
+      "location": "CA - Sun Valley",
+      "saleDate": "2026-02-11",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/180/2026-02-11?location=CA - Sun Valley&saleDate=1770840000000&liveAuction=false&from=&yardNum=180",
+      "numberOnSale": null
+    },
+    {
+      "location": "NV - Las Vegas West",
+      "saleDate": "2026-02-11",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/133/2026-02-11?location=NV - Las Vegas West&saleDate=1770840000000&liveAuction=false&from=&yardNum=133",
+      "numberOnSale": null
+    },
+    {
+      "location": "OR - Portland North",
+      "saleDate": "2026-02-11",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/9/2026-02-11?location=OR - Portland North&saleDate=1770840000000&liveAuction=false&from=&yardNum=9",
+      "numberOnSale": null
+    },
+    {
+      "location": "WA - Spokane",
+      "saleDate": "2026-02-11",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/116/2026-02-11?location=WA - Spokane&saleDate=1770840000000&liveAuction=false&from=&yardNum=116",
+      "numberOnSale": null
+    },
+    {
+      "location": "CA - American Canyon",
+      "saleDate": "2026-02-12",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/190/2026-02-12?location=CA - American Canyon&saleDate=1770926400000&liveAuction=false&from=&yardNum=190",
+      "numberOnSale": null
+    },
+    {
+      "location": "CA - Antelope",
+      "saleDate": "2026-02-12",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/151/2026-02-12?location=CA - Antelope&saleDate=1770926400000&liveAuction=false&from=&yardNum=151",
+      "numberOnSale": null
+    },
+    {
+      "location": "CA - Fresno",
+      "saleDate": "2026-02-12",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/4/2026-02-12?location=CA - Fresno&saleDate=1770926400000&liveAuction=false&from=&yardNum=4",
+      "numberOnSale": null
+    },
+    {
+      "location": "CA - Hayward",
+      "saleDate": "2026-02-12",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/3/2026-02-12?location=CA - Hayward&saleDate=1770926400000&liveAuction=false&from=&yardNum=3",
+      "numberOnSale": null
+    },
+    {
+      "location": "CA - Los Angeles",
+      "saleDate": "2026-02-12",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/10/2026-02-12?location=CA - Los Angeles&saleDate=1770926400000&liveAuction=false&from=&yardNum=10",
+      "numberOnSale": null
+    },
+    {
+      "location": "CA - Rancho Cucamonga",
+      "saleDate": "2026-02-12",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/97/2026-02-12?location=CA - Rancho Cucamonga&saleDate=1770926400000&liveAuction=false&from=&yardNum=97",
+      "numberOnSale": null
+    },
+    {
+      "location": "CA - Sacramento",
+      "saleDate": "2026-02-12",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/2/2026-02-12?location=CA - Sacramento&saleDate=1770926400000&liveAuction=false&from=&yardNum=2",
+      "numberOnSale": null
+    },
+    {
+      "location": "CA - San Bernardino",
+      "saleDate": "2026-02-12",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/7/2026-02-12?location=CA - San Bernardino&saleDate=1770926400000&liveAuction=false&from=&yardNum=7",
+      "numberOnSale": null
+    },
+    {
+      "location": "CA - San Jose",
+      "saleDate": "2026-02-12",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/6/2026-02-12?location=CA - San Jose&saleDate=1770926400000&liveAuction=false&from=&yardNum=6",
+      "numberOnSale": null
+    },
+    {
+      "location": "CA - So Sacramento",
+      "saleDate": "2026-02-12",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/16/2026-02-12?location=CA - So Sacramento&saleDate=1770926400000&liveAuction=false&from=&yardNum=16",
+      "numberOnSale": null
+    },
+    {
+      "location": "NV - Las Vegas",
+      "saleDate": "2026-02-12",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/57/2026-02-12?location=NV - Las Vegas&saleDate=1770926400000&liveAuction=false&from=&yardNum=57",
+      "numberOnSale": null
+    },
+    {
+      "location": "NV - Reno",
+      "saleDate": "2026-02-12",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/100/2026-02-12?location=NV - Reno&saleDate=1770926400000&liveAuction=false&from=&yardNum=100",
+      "numberOnSale": null
+    },
+    {
+      "location": "CA - Bakersfield",
+      "saleDate": "2026-02-13",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/5/2026-02-13?location=CA - Bakersfield&saleDate=1771012800000&liveAuction=false&from=&yardNum=5",
+      "numberOnSale": null
+    },
+    {
+      "location": "CA - Long Beach",
+      "saleDate": "2026-02-13",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/186/2026-02-13?location=CA - Long Beach&saleDate=1771012800000&liveAuction=false&from=&yardNum=186",
+      "numberOnSale": null
+    },
+    {
+      "location": "CA - Vallejo",
+      "saleDate": "2026-02-13",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/1/2026-02-13?location=CA - Vallejo&saleDate=1771012800000&liveAuction=false&from=&yardNum=1",
+      "numberOnSale": null
+    },
+    {
+      "location": "WA - Graham",
+      "saleDate": "2026-02-13",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/64/2026-02-13?location=WA - Graham&saleDate=1771012800000&liveAuction=false&from=&yardNum=64",
+      "numberOnSale": null
+    },
+    {
+      "location": "WA - Pasco",
+      "saleDate": "2026-02-13",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/71/2026-02-13?location=WA - Pasco&saleDate=1771012800000&liveAuction=false&from=&yardNum=71",
+      "numberOnSale": null
+    },
+    {
+      "location": "AK - Anchorage",
+      "saleDate": "2026-02-10",
+      "saleTime": "09:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/113/2026-02-10?location=AK - Anchorage&saleDate=1770757200000&liveAuction=false&from=&yardNum=113",
+      "numberOnSale": null
+    },
+    {
+      "location": "HI - Honolulu",
+      "saleDate": "2026-02-09",
+      "saleTime": "10:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/110/2026-02-09?location=HI - Honolulu&saleDate=1770674400000&liveAuction=false&from=&yardNum=110",
+      "numberOnSale": null
+    },
+    {
+      "location": "FL - Clewiston",
+      "saleDate": "2026-02-16",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/366/2026-02-16?location=FL - Clewiston&saleDate=1771254000000&liveAuction=false&from=&yardNum=366",
+      "numberOnSale": null
+    },
+    {
+      "location": "FL - Jacksonville North",
+      "saleDate": "2026-02-16",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/163/2026-02-16?location=FL - Jacksonville North&saleDate=1771254000000&liveAuction=false&from=&yardNum=163",
+      "numberOnSale": null
+    },
+    {
+      "location": "FL - Orlando North",
+      "saleDate": "2026-02-16",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/153/2026-02-16?location=FL - Orlando North&saleDate=1771254000000&liveAuction=false&from=&yardNum=153",
+      "numberOnSale": null
+    },
+    {
+      "location": "GA - Fairburn",
+      "saleDate": "2026-02-16",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/173/2026-02-16?location=GA - Fairburn&saleDate=1771254000000&liveAuction=false&from=&yardNum=173",
+      "numberOnSale": null
+    },
+    {
+      "location": "GA - Savannah",
+      "saleDate": "2026-02-16",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/87/2026-02-16?location=GA - Savannah&saleDate=1771254000000&liveAuction=false&from=&yardNum=87",
+      "numberOnSale": null
+    },
+    {
+      "location": "IN - Fort Wayne",
+      "saleDate": "2026-02-16",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/360/2026-02-16?location=IN - Fort Wayne&saleDate=1771254000000&liveAuction=false&from=&yardNum=360",
+      "numberOnSale": null
+    },
+    {
+      "location": "KY - Lexington East",
+      "saleDate": "2026-02-16",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/115/2026-02-16?location=KY - Lexington East&saleDate=1771254000000&liveAuction=false&from=&yardNum=115",
+      "numberOnSale": null
+    },
+    {
+      "location": "KY - Louisville",
+      "saleDate": "2026-02-16",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/143/2026-02-16?location=KY - Louisville&saleDate=1771254000000&liveAuction=false&from=&yardNum=143",
+      "numberOnSale": null
+    },
+    {
+      "location": "MD - Baltimore",
+      "saleDate": "2026-02-16",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/102/2026-02-16?location=MD - Baltimore&saleDate=1771254000000&liveAuction=false&from=&yardNum=102",
+      "numberOnSale": null
+    },
+    {
+      "location": "NC - Lumberton",
+      "saleDate": "2026-02-16",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/338/2026-02-16?location=NC - Lumberton&saleDate=1771254000000&liveAuction=false&from=&yardNum=338",
+      "numberOnSale": null
+    },
+    {
+      "location": "NY - Albany",
+      "saleDate": "2026-02-16",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/94/2026-02-16?location=NY - Albany&saleDate=1771254000000&liveAuction=false&from=&yardNum=94",
+      "numberOnSale": null
+    },
+    {
+      "location": "NY - Buffalo",
+      "saleDate": "2026-02-16",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/344/2026-02-16?location=NY - Buffalo&saleDate=1771254000000&liveAuction=false&from=&yardNum=344",
+      "numberOnSale": null
+    },
+    {
+      "location": "NY - Long Island",
+      "saleDate": "2026-02-16",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/30/2026-02-16?location=NY - Long Island&saleDate=1771254000000&liveAuction=false&from=&yardNum=30",
+      "numberOnSale": null
+    },
+    {
+      "location": "NY - Rochester",
+      "saleDate": "2026-02-16",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/35/2026-02-16?location=NY - Rochester&saleDate=1771254000000&liveAuction=false&from=&yardNum=35",
+      "numberOnSale": null
+    },
+    {
+      "location": "OH - Cleveland West",
+      "saleDate": "2026-02-16",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/112/2026-02-16?location=OH - Cleveland West&saleDate=1771254000000&liveAuction=false&from=&yardNum=112",
+      "numberOnSale": null
+    },
+    {
+      "location": "PA - York Haven",
+      "saleDate": "2026-02-16",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/127/2026-02-16?location=PA - York Haven&saleDate=1771254000000&liveAuction=false&from=&yardNum=127",
+      "numberOnSale": null
+    },
+    {
+      "location": "SC - North Charleston",
+      "saleDate": "2026-02-16",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/197/2026-02-16?location=SC - North Charleston&saleDate=1771254000000&liveAuction=false&from=&yardNum=197",
+      "numberOnSale": null
+    },
+    {
+      "location": "SC - Spartanburg",
+      "saleDate": "2026-02-16",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/144/2026-02-16?location=SC - Spartanburg&saleDate=1771254000000&liveAuction=false&from=&yardNum=144",
+      "numberOnSale": null
+    },
+    {
+      "location": "VA - Richmond East",
+      "saleDate": "2026-02-16",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/101/2026-02-16?location=VA - Richmond East&saleDate=1771254000000&liveAuction=false&from=&yardNum=101",
+      "numberOnSale": null
+    },
+    {
+      "location": "VT - Rutland",
+      "saleDate": "2026-02-16",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/395/2026-02-16?location=VT - Rutland&saleDate=1771254000000&liveAuction=false&from=&yardNum=395",
+      "numberOnSale": null
+    },
+    {
+      "location": "DC - Washington DC",
+      "saleDate": "2026-02-17",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/32/2026-02-17?location=DC - Washington DC&saleDate=1771340400000&liveAuction=false&from=&yardNum=32",
+      "numberOnSale": null
+    },
+    {
+      "location": "DE - Seaford",
+      "saleDate": "2026-02-17",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/130/2026-02-17?location=DE - Seaford&saleDate=1771340400000&liveAuction=false&from=&yardNum=130",
+      "numberOnSale": null
+    },
+    {
+      "location": "FL - Miami North",
+      "saleDate": "2026-02-17",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/33/2026-02-17?location=FL - Miami North&saleDate=1771340400000&liveAuction=false&from=&yardNum=33",
+      "numberOnSale": null
+    },
+    {
+      "location": "FL - Ocala",
+      "saleDate": "2026-02-17",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/108/2026-02-17?location=FL - Ocala&saleDate=1771340400000&liveAuction=false&from=&yardNum=108",
+      "numberOnSale": null
+    },
+    {
+      "location": "FL - Punta Gorda",
+      "saleDate": "2026-02-17",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/348/2026-02-17?location=FL - Punta Gorda&saleDate=1771340400000&liveAuction=false&from=&yardNum=348",
+      "numberOnSale": null
+    },
+    {
+      "location": "GA - Atlanta South",
+      "saleDate": "2026-02-17",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/146/2026-02-17?location=GA - Atlanta South&saleDate=1771340400000&liveAuction=false&from=&yardNum=146",
+      "numberOnSale": null
+    },
+    {
+      "location": "GA - Atlanta West",
+      "saleDate": "2026-02-17",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/15/2026-02-17?location=GA - Atlanta West&saleDate=1771340400000&liveAuction=false&from=&yardNum=15",
+      "numberOnSale": null
+    },
+    {
+      "location": "GA - Augusta",
+      "saleDate": "2026-02-17",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/359/2026-02-17?location=GA - Augusta&saleDate=1771340400000&liveAuction=false&from=&yardNum=359",
+      "numberOnSale": null
+    },
+    {
+      "location": "IN - Indianapolis",
+      "saleDate": "2026-02-17",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/44/2026-02-17?location=IN - Indianapolis&saleDate=1771340400000&liveAuction=false&from=&yardNum=44",
+      "numberOnSale": null
+    },
+    {
+      "location": "MI - Detroit",
+      "saleDate": "2026-02-17",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/61/2026-02-17?location=MI - Detroit&saleDate=1771340400000&liveAuction=false&from=&yardNum=61",
+      "numberOnSale": null
+    },
+    {
+      "location": "NJ - Glassboro East",
+      "saleDate": "2026-02-17",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/31/2026-02-17?location=NJ - Glassboro East&saleDate=1771340400000&liveAuction=false&from=&yardNum=31",
+      "numberOnSale": null
+    },
+    {
+      "location": "OH - Columbus",
+      "saleDate": "2026-02-17",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/29/2026-02-17?location=OH - Columbus&saleDate=1771340400000&liveAuction=false&from=&yardNum=29",
+      "numberOnSale": null
+    },
+    {
+      "location": "Ontario Auction",
+      "saleDate": "2026-02-17",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/294/2026-02-17?location=Ontario Auction&saleDate=1771340400000&liveAuction=false&from=&yardNum=294",
+      "numberOnSale": null
+    },
+    {
+      "location": "PA - Harrisburg",
+      "saleDate": "2026-02-17",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/76/2026-02-17?location=PA - Harrisburg&saleDate=1771340400000&liveAuction=false&from=&yardNum=76",
+      "numberOnSale": null
+    },
+    {
+      "location": "PA - Philadelphia",
+      "saleDate": "2026-02-17",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/26/2026-02-17?location=PA - Philadelphia&saleDate=1771340400000&liveAuction=false&from=&yardNum=26",
+      "numberOnSale": null
+    },
+    {
+      "location": "FL - Ft. Pierce",
+      "saleDate": "2026-02-18",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/86/2026-02-18?location=FL - Ft. Pierce&saleDate=1771426800000&liveAuction=false&from=&yardNum=86",
+      "numberOnSale": null
+    },
+    {
+      "location": "FL - Jacksonville North",
+      "saleDate": "2026-02-18",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/163/2026-02-18?location=FL - Jacksonville North&saleDate=1771426800000&liveAuction=false&from=&yardNum=163",
+      "numberOnSale": null
+    },
+    {
+      "location": "FL - Miami South",
+      "saleDate": "2026-02-18",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/148/2026-02-18?location=FL - Miami South&saleDate=1771426800000&liveAuction=false&from=&yardNum=148",
+      "numberOnSale": null
+    },
+    {
+      "location": "GA - Atlanta East",
+      "saleDate": "2026-02-18",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/107/2026-02-18?location=GA - Atlanta East&saleDate=1771426800000&liveAuction=false&from=&yardNum=107",
+      "numberOnSale": null
+    },
+    {
+      "location": "MA - Freetown",
+      "saleDate": "2026-02-18",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/361/2026-02-18?location=MA - Freetown&saleDate=1771426800000&liveAuction=false&from=&yardNum=361",
+      "numberOnSale": null
+    },
+    {
+      "location": "MA - West Warren",
+      "saleDate": "2026-02-18",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/149/2026-02-18?location=MA - West Warren&saleDate=1771426800000&liveAuction=false&from=&yardNum=149",
+      "numberOnSale": null
+    },
+    {
+      "location": "MI - Flint",
+      "saleDate": "2026-02-18",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/159/2026-02-18?location=MI - Flint&saleDate=1771426800000&liveAuction=false&from=&yardNum=159",
+      "numberOnSale": null
+    },
+    {
+      "location": "NJ - Trenton",
+      "saleDate": "2026-02-18",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/135/2026-02-18?location=NJ - Trenton&saleDate=1771426800000&liveAuction=false&from=&yardNum=135",
+      "numberOnSale": null
+    },
+    {
+      "location": "NY - Albany",
+      "saleDate": "2026-02-18",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/94/2026-02-18?location=NY - Albany&saleDate=1771426800000&liveAuction=false&from=&yardNum=94",
+      "numberOnSale": null
+    },
+    {
+      "location": "NY - Long Island",
+      "saleDate": "2026-02-18",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/30/2026-02-18?location=NY - Long Island&saleDate=1771426800000&liveAuction=false&from=&yardNum=30",
+      "numberOnSale": null
+    },
+    {
+      "location": "NY - Syracuse",
+      "saleDate": "2026-02-18",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/25/2026-02-18?location=NY - Syracuse&saleDate=1771426800000&liveAuction=false&from=&yardNum=25",
+      "numberOnSale": null
+    },
+    {
+      "location": "OH - Cleveland East",
+      "saleDate": "2026-02-18",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/111/2026-02-18?location=OH - Cleveland East&saleDate=1771426800000&liveAuction=false&from=&yardNum=111",
+      "numberOnSale": null
+    },
+    {
+      "location": "GA - Macon",
+      "saleDate": "2026-02-19",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/187/2026-02-19?location=GA - Macon&saleDate=1771513200000&liveAuction=false&from=&yardNum=187",
+      "numberOnSale": null
+    },
+    {
+      "location": "GA - Savannah",
+      "saleDate": "2026-02-19",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/87/2026-02-19?location=GA - Savannah&saleDate=1771513200000&liveAuction=false&from=&yardNum=87",
+      "numberOnSale": null
+    },
+    {
+      "location": "MI - Wayland",
+      "saleDate": "2026-02-19",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/385/2026-02-19?location=MI - Wayland&saleDate=1771513200000&liveAuction=false&from=&yardNum=385",
+      "numberOnSale": null
+    },
+    {
+      "location": "NC - Concord",
+      "saleDate": "2026-02-19",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/356/2026-02-19?location=NC - Concord&saleDate=1771513200000&liveAuction=false&from=&yardNum=356",
+      "numberOnSale": null
+    },
+    {
+      "location": "NY - Newburgh",
+      "saleDate": "2026-02-19",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/24/2026-02-19?location=NY - Newburgh&saleDate=1771513200000&liveAuction=false&from=&yardNum=24",
+      "numberOnSale": null
+    },
+    {
+      "location": "OH - Cleveland West",
+      "saleDate": "2026-02-19",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/112/2026-02-19?location=OH - Cleveland West&saleDate=1771513200000&liveAuction=false&from=&yardNum=112",
+      "numberOnSale": null
+    },
+    {
+      "location": "PA - Pittsburgh North",
+      "saleDate": "2026-02-19",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/28/2026-02-19?location=PA - Pittsburgh North&saleDate=1771513200000&liveAuction=false&from=&yardNum=28",
+      "numberOnSale": null
+    },
+    {
+      "location": "RI - Exeter",
+      "saleDate": "2026-02-19",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/199/2026-02-19?location=RI - Exeter&saleDate=1771513200000&liveAuction=false&from=&yardNum=199",
+      "numberOnSale": null
+    },
+    {
+      "location": "TN - Knoxville",
+      "saleDate": "2026-02-19",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/114/2026-02-19?location=TN - Knoxville&saleDate=1771513200000&liveAuction=false&from=&yardNum=114",
+      "numberOnSale": null
+    },
+    {
+      "location": "MI - Detroit",
+      "saleDate": "2026-02-20",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/61/2026-02-20?location=MI - Detroit&saleDate=1771599600000&liveAuction=false&from=&yardNum=61",
+      "numberOnSale": null
+    },
+    {
+      "location": "MI - Lansing",
+      "saleDate": "2026-02-20",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/103/2026-02-20?location=MI - Lansing&saleDate=1771599600000&liveAuction=false&from=&yardNum=103",
+      "numberOnSale": null
+    },
+    {
+      "location": "NJ - Somerville",
+      "saleDate": "2026-02-20",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/91/2026-02-20?location=NJ - Somerville&saleDate=1771599600000&liveAuction=false&from=&yardNum=91",
+      "numberOnSale": null
+    },
+    {
+      "location": "OH - Akron",
+      "saleDate": "2026-02-20",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/376/2026-02-20?location=OH - Akron&saleDate=1771599600000&liveAuction=false&from=&yardNum=376",
+      "numberOnSale": null
+    },
+    {
+      "location": "Medium Duty Clean Title Sale",
+      "saleDate": "2026-02-16",
+      "saleTime": "05:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/832/2026-02-16?location=Medium Duty Clean Title Sale&saleDate=1771261200000&liveAuction=false&from=&yardNum=832",
+      "numberOnSale": null
+    },
+    {
+      "location": "Heavy Truck, Trailer, Rv Clean Title Sale",
+      "saleDate": "2026-02-17",
+      "saleTime": "05:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/833/2026-02-17?location=Heavy Truck, Trailer, Rv Clean Title Sale&saleDate=1771347600000&liveAuction=false&from=&yardNum=833",
+      "numberOnSale": null
+    },
+    {
+      "location": "Wholesale Auction",
+      "saleDate": "2026-02-17",
+      "saleTime": "05:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/855/2026-02-17?location=Wholesale Auction&saleDate=1771347600000&liveAuction=false&from=&yardNum=855",
+      "numberOnSale": null
+    },
+    {
+      "location": "Medium Duty Specialty Sale",
+      "saleDate": "2026-02-18",
+      "saleTime": "05:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/835/2026-02-18?location=Medium Duty Specialty Sale&saleDate=1771434000000&liveAuction=false&from=&yardNum=835",
+      "numberOnSale": null
+    },
+    {
+      "location": "Atlantic Canada Auction",
+      "saleDate": "2026-02-19",
+      "saleTime": "05:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/295/2026-02-19?location=Atlantic Canada Auction&saleDate=1771520400000&liveAuction=false&from=&yardNum=295",
+      "numberOnSale": null
+    },
+    {
+      "location": "Heavy Truck, Trailer, Rv Specialty Sale",
+      "saleDate": "2026-02-19",
+      "saleTime": "05:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/836/2026-02-19?location=Heavy Truck, Trailer, Rv Specialty Sale&saleDate=1771520400000&liveAuction=false&from=&yardNum=836",
+      "numberOnSale": null
+    },
+    {
+      "location": "Wholesale Auction",
+      "saleDate": "2026-02-19",
+      "saleTime": "05:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/855/2026-02-19?location=Wholesale Auction&saleDate=1771520400000&liveAuction=false&from=&yardNum=855",
+      "numberOnSale": null
+    },
+    {
+      "location": "AL - Mobile",
+      "saleDate": "2026-02-16",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/58/2026-02-16?location=AL - Mobile&saleDate=1771264800000&liveAuction=false&from=&yardNum=58",
+      "numberOnSale": null
+    },
+    {
+      "location": "AR - Little Rock",
+      "saleDate": "2026-02-16",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/21/2026-02-16?location=AR - Little Rock&saleDate=1771264800000&liveAuction=false&from=&yardNum=21",
+      "numberOnSale": null
+    },
+    {
+      "location": "IL - Peoria",
+      "saleDate": "2026-02-16",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/51/2026-02-16?location=IL - Peoria&saleDate=1771264800000&liveAuction=false&from=&yardNum=51",
+      "numberOnSale": null
+    },
+    {
+      "location": "MN - St. Cloud",
+      "saleDate": "2026-02-16",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/52/2026-02-16?location=MN - St. Cloud&saleDate=1771264800000&liveAuction=false&from=&yardNum=52",
+      "numberOnSale": null
+    },
+    {
+      "location": "MO - Sikeston",
+      "saleDate": "2026-02-16",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/141/2026-02-16?location=MO - Sikeston&saleDate=1771264800000&liveAuction=false&from=&yardNum=141",
+      "numberOnSale": null
+    },
+    {
+      "location": "TN - Nashville",
+      "saleDate": "2026-02-16",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/63/2026-02-16?location=TN - Nashville&saleDate=1771264800000&liveAuction=false&from=&yardNum=63",
+      "numberOnSale": null
+    },
+    {
+      "location": "TX - Dallas",
+      "saleDate": "2026-02-16",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/12/2026-02-16?location=TX - Dallas&saleDate=1771264800000&liveAuction=false&from=&yardNum=12",
+      "numberOnSale": null
+    },
+    {
+      "location": "TX - Houston East",
+      "saleDate": "2026-02-16",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/357/2026-02-16?location=TX - Houston East&saleDate=1771264800000&liveAuction=false&from=&yardNum=357",
+      "numberOnSale": null
+    },
+    {
+      "location": "TX - Longview",
+      "saleDate": "2026-02-16",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/14/2026-02-16?location=TX - Longview&saleDate=1771264800000&liveAuction=false&from=&yardNum=14",
+      "numberOnSale": null
+    },
+    {
+      "location": "TX - Lufkin",
+      "saleDate": "2026-02-16",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/13/2026-02-16?location=TX - Lufkin&saleDate=1771264800000&liveAuction=false&from=&yardNum=13",
+      "numberOnSale": null
+    },
+    {
+      "location": "WI - Appleton",
+      "saleDate": "2026-02-16",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/191/2026-02-16?location=WI - Appleton&saleDate=1771264800000&liveAuction=false&from=&yardNum=191",
+      "numberOnSale": null
+    },
+    {
+      "location": "AL - Birmingham",
+      "saleDate": "2026-02-17",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/136/2026-02-17?location=AL - Birmingham&saleDate=1771351200000&liveAuction=false&from=&yardNum=136",
+      "numberOnSale": null
+    },
+    {
+      "location": "KS - Kansas City",
+      "saleDate": "2026-02-17",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/369/2026-02-17?location=KS - Kansas City&saleDate=1771351200000&liveAuction=false&from=&yardNum=369",
+      "numberOnSale": null
+    },
+    {
+      "location": "LA - Baton Rouge",
+      "saleDate": "2026-02-17",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/50/2026-02-17?location=LA - Baton Rouge&saleDate=1771351200000&liveAuction=false&from=&yardNum=50",
+      "numberOnSale": null
+    },
+    {
+      "location": "MN - Minneapolis North",
+      "saleDate": "2026-02-17",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/80/2026-02-17?location=MN - Minneapolis North&saleDate=1771351200000&liveAuction=false&from=&yardNum=80",
+      "numberOnSale": null
+    },
+    {
+      "location": "MO - St. Louis",
+      "saleDate": "2026-02-17",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/20/2026-02-17?location=MO - St. Louis&saleDate=1771351200000&liveAuction=false&from=&yardNum=20",
+      "numberOnSale": null
+    },
+    {
+      "location": "NE - Lincoln",
+      "saleDate": "2026-02-17",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/123/2026-02-17?location=NE - Lincoln&saleDate=1771351200000&liveAuction=false&from=&yardNum=123",
+      "numberOnSale": null
+    },
+    {
+      "location": "OK - Oklahoma City",
+      "saleDate": "2026-02-17",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/18/2026-02-17?location=OK - Oklahoma City&saleDate=1771351200000&liveAuction=false&from=&yardNum=18",
+      "numberOnSale": null
+    },
+    {
+      "location": "TN - Memphis",
+      "saleDate": "2026-02-17",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/22/2026-02-17?location=TN - Memphis&saleDate=1771351200000&liveAuction=false&from=&yardNum=22",
+      "numberOnSale": null
+    },
+    {
+      "location": "TX - Corpus Christi",
+      "saleDate": "2026-02-17",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/96/2026-02-17?location=TX - Corpus Christi&saleDate=1771351200000&liveAuction=false&from=&yardNum=96",
+      "numberOnSale": null
+    },
+    {
+      "location": "TX - Ft. Worth",
+      "saleDate": "2026-02-17",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/98/2026-02-17?location=TX - Ft. Worth&saleDate=1771351200000&liveAuction=false&from=&yardNum=98",
+      "numberOnSale": null
+    },
+    {
+      "location": "AL - Tanner",
+      "saleDate": "2026-02-18",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/66/2026-02-18?location=AL - Tanner&saleDate=1771437600000&liveAuction=false&from=&yardNum=66",
+      "numberOnSale": null
+    },
+    {
+      "location": "Drive Wholesale Canada",
+      "saleDate": "2026-02-18",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/292/2026-02-18?location=Drive Wholesale Canada&saleDate=1771437600000&liveAuction=false&from=&yardNum=292",
+      "numberOnSale": null
+    },
+    {
+      "location": "IA - Cedar Rapids",
+      "saleDate": "2026-02-18",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/398/2026-02-18?location=IA - Cedar Rapids&saleDate=1771437600000&liveAuction=false&from=&yardNum=398",
+      "numberOnSale": null
+    },
+    {
+      "location": "WI - Milwaukee North",
+      "saleDate": "2026-02-18",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/339/2026-02-18?location=WI - Milwaukee North&saleDate=1771437600000&liveAuction=false&from=&yardNum=339",
+      "numberOnSale": null
+    },
+    {
+      "location": "AL - Dothan",
+      "saleDate": "2026-02-19",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/341/2026-02-19?location=AL - Dothan&saleDate=1771524000000&liveAuction=false&from=&yardNum=341",
+      "numberOnSale": null
+    },
+    {
+      "location": "KY - Earlington",
+      "saleDate": "2026-02-19",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/345/2026-02-19?location=KY - Earlington&saleDate=1771524000000&liveAuction=false&from=&yardNum=345",
+      "numberOnSale": null
+    },
+    {
+      "location": "LA - Shreveport",
+      "saleDate": "2026-02-19",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/84/2026-02-19?location=LA - Shreveport&saleDate=1771524000000&liveAuction=false&from=&yardNum=84",
+      "numberOnSale": null
+    },
+    {
+      "location": "TN - Memphis",
+      "saleDate": "2026-02-19",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/22/2026-02-19?location=TN - Memphis&saleDate=1771524000000&liveAuction=false&from=&yardNum=22",
+      "numberOnSale": null
+    },
+    {
+      "location": "TX - Dallas",
+      "saleDate": "2026-02-19",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/12/2026-02-19?location=TX - Dallas&saleDate=1771524000000&liveAuction=false&from=&yardNum=12",
+      "numberOnSale": null
+    },
+    {
+      "location": "TX - Houston East",
+      "saleDate": "2026-02-19",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/357/2026-02-19?location=TX - Houston East&saleDate=1771524000000&liveAuction=false&from=&yardNum=357",
+      "numberOnSale": null
+    },
+    {
+      "location": "TX - San Antonio",
+      "saleDate": "2026-02-19",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/74/2026-02-19?location=TX - San Antonio&saleDate=1771524000000&liveAuction=false&from=&yardNum=74",
+      "numberOnSale": null
+    },
+    {
+      "location": "MO - St. Louis",
+      "saleDate": "2026-02-20",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/20/2026-02-20?location=MO - St. Louis&saleDate=1771610400000&liveAuction=false&from=&yardNum=20",
+      "numberOnSale": null
+    },
+    {
+      "location": "TX - Ft. Worth",
+      "saleDate": "2026-02-20",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/98/2026-02-20?location=TX - Ft. Worth&saleDate=1771610400000&liveAuction=false&from=&yardNum=98",
+      "numberOnSale": null
+    },
+    {
+      "location": "TX - Houston",
+      "saleDate": "2026-02-20",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/11/2026-02-20?location=TX - Houston&saleDate=1771610400000&liveAuction=false&from=&yardNum=11",
+      "numberOnSale": null
+    },
+    {
+      "location": "CO - Denver South",
+      "saleDate": "2026-02-16",
+      "saleTime": "07:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/193/2026-02-16?location=CO - Denver South&saleDate=1771268400000&liveAuction=false&from=&yardNum=193",
+      "numberOnSale": null
+    },
+    {
+      "location": "MT - Billings",
+      "saleDate": "2026-02-16",
+      "saleTime": "07:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/122/2026-02-16?location=MT - Billings&saleDate=1771268400000&liveAuction=false&from=&yardNum=122",
+      "numberOnSale": null
+    },
+    {
+      "location": "NM - Albuquerque",
+      "saleDate": "2026-02-16",
+      "saleTime": "07:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/75/2026-02-16?location=NM - Albuquerque&saleDate=1771268400000&liveAuction=false&from=&yardNum=75",
+      "numberOnSale": null
+    },
+    {
+      "location": "AB - Calgary",
+      "saleDate": "2026-02-17",
+      "saleTime": "07:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/203/2026-02-17?location=AB - Calgary&saleDate=1771354800000&liveAuction=false&from=&yardNum=203",
+      "numberOnSale": null
+    },
+    {
+      "location": "CO - Colorado Springs",
+      "saleDate": "2026-02-18",
+      "saleTime": "07:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/118/2026-02-18?location=CO - Colorado Springs&saleDate=1771441200000&liveAuction=false&from=&yardNum=118",
+      "numberOnSale": null
+    },
+    {
+      "location": "WY - Casper",
+      "saleDate": "2026-02-18",
+      "saleTime": "07:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/328/2026-02-18?location=WY - Casper&saleDate=1771441200000&liveAuction=false&from=&yardNum=328",
+      "numberOnSale": null
+    },
+    {
+      "location": "AB - Edmonton",
+      "saleDate": "2026-02-19",
+      "saleTime": "07:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/204/2026-02-19?location=AB - Edmonton&saleDate=1771527600000&liveAuction=false&from=&yardNum=204",
+      "numberOnSale": null
+    },
+    {
+      "location": "NM - Albuquerque",
+      "saleDate": "2026-02-19",
+      "saleTime": "07:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/75/2026-02-19?location=NM - Albuquerque&saleDate=1771527600000&liveAuction=false&from=&yardNum=75",
+      "numberOnSale": null
+    },
+    {
+      "location": "CA - Adelanto",
+      "saleDate": "2026-02-16",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/309/2026-02-16?location=CA - Adelanto&saleDate=1771272000000&liveAuction=false&from=&yardNum=309",
+      "numberOnSale": null
+    },
+    {
+      "location": "CA - Los Angeles",
+      "saleDate": "2026-02-16",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/10/2026-02-16?location=CA - Los Angeles&saleDate=1771272000000&liveAuction=false&from=&yardNum=10",
+      "numberOnSale": null
+    },
+    {
+      "location": "OR - Portland South",
+      "saleDate": "2026-02-16",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/134/2026-02-16?location=OR - Portland South&saleDate=1771272000000&liveAuction=false&from=&yardNum=134",
+      "numberOnSale": null
+    },
+    {
+      "location": "CA - Antelope",
+      "saleDate": "2026-02-17",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/151/2026-02-17?location=CA - Antelope&saleDate=1771358400000&liveAuction=false&from=&yardNum=151",
+      "numberOnSale": null
+    },
+    {
+      "location": "CA - Rancho Cucamonga",
+      "saleDate": "2026-02-17",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/97/2026-02-17?location=CA - Rancho Cucamonga&saleDate=1771358400000&liveAuction=false&from=&yardNum=97",
+      "numberOnSale": null
+    },
+    {
+      "location": "NV - Las Vegas",
+      "saleDate": "2026-02-17",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/57/2026-02-17?location=NV - Las Vegas&saleDate=1771358400000&liveAuction=false&from=&yardNum=57",
+      "numberOnSale": null
+    },
+    {
+      "location": "OR - Eugene",
+      "saleDate": "2026-02-17",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/104/2026-02-17?location=OR - Eugene&saleDate=1771358400000&liveAuction=false&from=&yardNum=104",
+      "numberOnSale": null
+    },
+    {
+      "location": "CA - Martinez",
+      "saleDate": "2026-02-18",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/78/2026-02-18?location=CA - Martinez&saleDate=1771444800000&liveAuction=false&from=&yardNum=78",
+      "numberOnSale": null
+    },
+    {
+      "location": "CA - Fresno",
+      "saleDate": "2026-02-19",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/4/2026-02-19?location=CA - Fresno&saleDate=1771531200000&liveAuction=false&from=&yardNum=4",
+      "numberOnSale": null
+    },
+    {
+      "location": "CA - Rancho Cucamonga",
+      "saleDate": "2026-02-19",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/97/2026-02-19?location=CA - Rancho Cucamonga&saleDate=1771531200000&liveAuction=false&from=&yardNum=97",
+      "numberOnSale": null
+    },
+    {
+      "location": "CA - Sacramento",
+      "saleDate": "2026-02-19",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/2/2026-02-19?location=CA - Sacramento&saleDate=1771531200000&liveAuction=false&from=&yardNum=2",
+      "numberOnSale": null
+    },
+    {
+      "location": "CA - San Jose",
+      "saleDate": "2026-02-19",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/6/2026-02-19?location=CA - San Jose&saleDate=1771531200000&liveAuction=false&from=&yardNum=6",
+      "numberOnSale": null
+    },
+    {
+      "location": "NV - Reno",
+      "saleDate": "2026-02-19",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/100/2026-02-19?location=NV - Reno&saleDate=1771531200000&liveAuction=false&from=&yardNum=100",
+      "numberOnSale": null
+    },
+    {
+      "location": "CA - Redding",
+      "saleDate": "2026-02-20",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/343/2026-02-20?location=CA - Redding&saleDate=1771617600000&liveAuction=false&from=&yardNum=343",
+      "numberOnSale": null
+    },
+    {
+      "location": "FL - Jacksonville North",
+      "saleDate": "2026-02-23",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/163/2026-02-23?location=FL - Jacksonville North&saleDate=1771858800000&liveAuction=false&from=&yardNum=163",
+      "numberOnSale": null
+    },
+    {
+      "location": "FL - Orlando North",
+      "saleDate": "2026-02-23",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/153/2026-02-23?location=FL - Orlando North&saleDate=1771858800000&liveAuction=false&from=&yardNum=153",
+      "numberOnSale": null
+    },
+    {
+      "location": "NY - Albany",
+      "saleDate": "2026-02-23",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/94/2026-02-23?location=NY - Albany&saleDate=1771858800000&liveAuction=false&from=&yardNum=94",
+      "numberOnSale": null
+    },
+    {
+      "location": "NY - Long Island",
+      "saleDate": "2026-02-23",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/30/2026-02-23?location=NY - Long Island&saleDate=1771858800000&liveAuction=false&from=&yardNum=30",
+      "numberOnSale": null
+    },
+    {
+      "location": "NY - Rochester",
+      "saleDate": "2026-02-23",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/35/2026-02-23?location=NY - Rochester&saleDate=1771858800000&liveAuction=false&from=&yardNum=35",
+      "numberOnSale": null
+    },
+    {
+      "location": "GA - Atlanta West",
+      "saleDate": "2026-02-24",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/15/2026-02-24?location=GA - Atlanta West&saleDate=1771945200000&liveAuction=false&from=&yardNum=15",
+      "numberOnSale": null
+    },
+    {
+      "location": "MI - Detroit",
+      "saleDate": "2026-02-24",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/61/2026-02-24?location=MI - Detroit&saleDate=1771945200000&liveAuction=false&from=&yardNum=61",
+      "numberOnSale": null
+    },
+    {
+      "location": "Ontario Auction",
+      "saleDate": "2026-02-24",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/294/2026-02-24?location=Ontario Auction&saleDate=1771945200000&liveAuction=false&from=&yardNum=294",
+      "numberOnSale": null
+    },
+    {
+      "location": "NY - Albany",
+      "saleDate": "2026-02-25",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/94/2026-02-25?location=NY - Albany&saleDate=1772031600000&liveAuction=false&from=&yardNum=94",
+      "numberOnSale": null
+    },
+    {
+      "location": "NY - Long Island",
+      "saleDate": "2026-02-25",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/30/2026-02-25?location=NY - Long Island&saleDate=1772031600000&liveAuction=false&from=&yardNum=30",
+      "numberOnSale": null
+    },
+    {
+      "location": "Ontario Auction",
+      "saleDate": "2026-02-26",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/294/2026-02-26?location=Ontario Auction&saleDate=1772118000000&liveAuction=false&from=&yardNum=294",
+      "numberOnSale": null
+    },
+    {
+      "location": "RI - Exeter",
+      "saleDate": "2026-02-26",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/199/2026-02-26?location=RI - Exeter&saleDate=1772118000000&liveAuction=false&from=&yardNum=199",
+      "numberOnSale": null
+    },
+    {
+      "location": "FL - Tampa South",
+      "saleDate": "2026-02-27",
+      "saleTime": "03:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/34/2026-02-27?location=FL - Tampa South&saleDate=1772204400000&liveAuction=false&from=&yardNum=34",
+      "numberOnSale": null
+    },
+    {
+      "location": "Wholesale Auction",
+      "saleDate": "2026-02-24",
+      "saleTime": "05:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/855/2026-02-24?location=Wholesale Auction&saleDate=1771952400000&liveAuction=false&from=&yardNum=855",
+      "numberOnSale": null
+    },
+    {
+      "location": "Medium Duty Specialty Sale",
+      "saleDate": "2026-02-25",
+      "saleTime": "05:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/835/2026-02-25?location=Medium Duty Specialty Sale&saleDate=1772038800000&liveAuction=false&from=&yardNum=835",
+      "numberOnSale": null
+    },
+    {
+      "location": "IL - Peoria",
+      "saleDate": "2026-02-23",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/51/2026-02-23?location=IL - Peoria&saleDate=1771869600000&liveAuction=false&from=&yardNum=51",
+      "numberOnSale": null
+    },
+    {
+      "location": "WI - Milwaukee South",
+      "saleDate": "2026-02-23",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/371/2026-02-23?location=WI - Milwaukee South&saleDate=1771869600000&liveAuction=false&from=&yardNum=371",
+      "numberOnSale": null
+    },
+    {
+      "location": "KS - Kansas City",
+      "saleDate": "2026-02-24",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/369/2026-02-24?location=KS - Kansas City&saleDate=1771956000000&liveAuction=false&from=&yardNum=369",
+      "numberOnSale": null
+    },
+    {
+      "location": "MO - St. Louis",
+      "saleDate": "2026-02-24",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/20/2026-02-24?location=MO - St. Louis&saleDate=1771956000000&liveAuction=false&from=&yardNum=20",
+      "numberOnSale": null
+    },
+    {
+      "location": "TN - Memphis",
+      "saleDate": "2026-02-24",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/22/2026-02-24?location=TN - Memphis&saleDate=1771956000000&liveAuction=false&from=&yardNum=22",
+      "numberOnSale": null
+    },
+    {
+      "location": "Drive Wholesale Canada",
+      "saleDate": "2026-02-25",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/292/2026-02-25?location=Drive Wholesale Canada&saleDate=1772042400000&liveAuction=false&from=&yardNum=292",
+      "numberOnSale": null
+    },
+    {
+      "location": "IA - Cedar Rapids",
+      "saleDate": "2026-02-25",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/398/2026-02-25?location=IA - Cedar Rapids&saleDate=1772042400000&liveAuction=false&from=&yardNum=398",
+      "numberOnSale": null
+    },
+    {
+      "location": "WI - Milwaukee North",
+      "saleDate": "2026-02-25",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/339/2026-02-25?location=WI - Milwaukee North&saleDate=1772042400000&liveAuction=false&from=&yardNum=339",
+      "numberOnSale": null
+    },
+    {
+      "location": " CrashedToys Powersport Auction",
+      "saleDate": "2026-02-26",
+      "saleTime": "06:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/841/2026-02-26?location= CrashedToys Powersport Auction&saleDate=1772128800000&liveAuction=false&from=&yardNum=841",
+      "numberOnSale": null
+    },
+    {
+      "location": "AZ - Phoenix",
+      "saleDate": "2026-02-23",
+      "saleTime": "07:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/47/2026-02-23?location=AZ - Phoenix&saleDate=1771873200000&liveAuction=false&from=&yardNum=47",
+      "numberOnSale": null
+    },
+    {
+      "location": "AB - Calgary",
+      "saleDate": "2026-02-24",
+      "saleTime": "07:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/203/2026-02-24?location=AB - Calgary&saleDate=1771959600000&liveAuction=false&from=&yardNum=203",
+      "numberOnSale": null
+    },
+    {
+      "location": "AB - Edmonton",
+      "saleDate": "2026-02-26",
+      "saleTime": "07:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/204/2026-02-26?location=AB - Edmonton&saleDate=1772132400000&liveAuction=false&from=&yardNum=204",
+      "numberOnSale": null
+    },
+    {
+      "location": "CA - Martinez",
+      "saleDate": "2026-02-23",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/78/2026-02-23?location=CA - Martinez&saleDate=1771876800000&liveAuction=false&from=&yardNum=78",
+      "numberOnSale": null
+    },
+    {
+      "location": "OR - Eugene",
+      "saleDate": "2026-02-24",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/104/2026-02-24?location=OR - Eugene&saleDate=1771963200000&liveAuction=false&from=&yardNum=104",
+      "numberOnSale": null
+    },
+    {
+      "location": "CA - Hayward",
+      "saleDate": "2026-02-26",
+      "saleTime": "08:00 PM",
+      "viewSalesLink": "https://www.copart.com/saleListResult/3/2026-02-26?location=CA - Hayward&saleDate=1772136000000&liveAuction=false&from=&yardNum=3",
+      "numberOnSale": null
+    }
+  ]
+}
