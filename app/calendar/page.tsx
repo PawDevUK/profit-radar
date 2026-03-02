@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import marchSale from '../../results/calendar_March.json';
+import marchSale from '../results/calendar_March.json';
 import CalendarList from './list';
 import Calendar from './calendar';
 
