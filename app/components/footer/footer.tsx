@@ -1,7 +1,7 @@
 export default function Footer() {
 	return (
 		<footer
-			className='py-8 border border-gray-200 shadow-lg'
+			className='py-8 border border-gray-200 shadow-lg '
 			style={{
 				background: `center/cover, var(--background-mongo)`,
 			}}>

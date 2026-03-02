@@ -7,6 +7,7 @@
   --mongo-green-light: #00ED64;
   --background-mongo: #F9FBFA;
   --header-text: #001e2bc8;
+  --paragraph-text: #3e404199;
 }
 
 .header {
@@ -51,7 +52,7 @@ body {
 }
 
 .footer-header {
-  color: #F9FAFB;
+  color: var(--header-text);
   font-size: 16px;
   font-weight: 500;
 }
