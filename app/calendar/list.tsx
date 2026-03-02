@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import febSale from '@/results/calendar_March.json';
+import febSale from '../results/calendar_March.json';
 
 type Sale = {
 	location: string;
