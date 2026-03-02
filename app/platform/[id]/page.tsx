@@ -38,7 +38,7 @@ export default async function PlatformPage({ params }: PageProps) {
 				</p>
 			</div>
 
-			<Calendar></Calendar>
+			{/* <Calendar></Calendar> */}
 
 			{/* Status & Login Section */}
 			<div className='grid grid-cols-1 md:grid-cols-2 gap-4 mb-6'>
