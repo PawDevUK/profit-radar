@@ -1,5 +1,5 @@
 import AuctionsClient from './AuctionsClient';
-import auctionFeb from '@/results/calendar_February.json';
+// import auctionFeb from '@/results/calendar_February.json';
 
 // Helper to resolve base URL for server-side fetch
 // async function resolveBaseUrl() {
@@ -17,7 +17,7 @@ import auctionFeb from '@/results/calendar_February.json';
 export default async function AuctionsPage() {
 	return (
 		<section className='p-6 space-y-4'>
-			<AuctionsClient initialData={auctionFeb.auctions} />
+			{/* <AuctionsClient initialData={auctionFeb.auctions} /> */}
 			<h1 className='text-2xl font-semibold'>Auctions</h1>
 			<p className='text-sm text-gray-500'>Server-fetched with revalidate=60 and tag=&quot;auctions&quot;</p>
 		</section>
