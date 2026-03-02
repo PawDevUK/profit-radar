@@ -16,7 +16,7 @@ type CalendarAuction = {
 	saleDate: string;
 	saleTime?: string;
 	viewSalesLink: string;
-	numberOnSale?: number;
+	numberOnSale?: number | null;
 };
 
 type CalendarDay = {
