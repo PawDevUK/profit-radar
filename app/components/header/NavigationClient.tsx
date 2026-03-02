@@ -61,7 +61,6 @@ export default function NavigationClient() {
 		{ href: '/inventory', label: 'Inventory' },
 		{ href: '/calendar', label: 'Auctions' },
 		{ href: '/locations', label: 'Locations' },
-		{ href: '/sell-your-car', label: 'Sell your car' },
 		{ href: '/services-support', label: 'Services & support' },
 	];
 
