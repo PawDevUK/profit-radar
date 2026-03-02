@@ -74,7 +74,7 @@ export default function Calendar({ sales }: { sales: CalendarAuction[] }) {
 		time: sale.saleTime,
 		date: sale.saleDate,
 		location: sale.location,
-		image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80', // placeholder
+		image: '',
 	}));
 
 	const [currentDate, setCurrentDate] = useState(new Date());
@@ -157,7 +157,7 @@ export default function Calendar({ sales }: { sales: CalendarAuction[] }) {
 				<ol className='divide-y divide-gray-200'>
 					{events.slice(0, 5).map((event) => (
 						<li key={event.id} className='flex items-center space-x-4 py-4'>
-							<img src={event.image} alt='' className='h-10 w-10 rounded-full' />
+							{/* <img src={event.image} alt="" className="h-10 w-10 rounded-full" /> */}
 							<div className='flex-1'>
 								<h3 className='text-sm font-medium text-gray-900'>{event.title}</h3>
 								<dl className='mt-1 flex space-x-4 text-xs text-gray-500'>
