@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import febSale from '@/results/calendar_March.json';
+import marchSale from '@/results/calendar_March.json';
 import CalendarList from './list';
 import Calendar from './calendar';
 
@@ -16,7 +16,7 @@ type Sale = {
 
 export default function CalendarPage() {
 	const router = useRouter();
-	const [sales, setSales] = useState<Sale[]>(febSale.auctions);
+	const [sales, setSales] = useState<Sale[]>(marchSale.auctions);
 	const [isRefreshing, setIsRefreshing] = useState(false);
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState<string | null>(null);
