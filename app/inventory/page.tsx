@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { SquareChevronRight, SquareChevronLeft } from 'lucide-react';
 import SideSearch from './sideSearchComponent/sideSearch';
+import SaleListResultsPage from '../saleListResults/[id]/page';
 
 const ToggleButton = ({ open, toggleFilters }: { open: boolean; toggleFilters: () => void }) => {
 	const IconSize = 32;
@@ -68,7 +69,7 @@ export default function Page() {
 				</aside>
 			)}
 
-			<div className=''>{/* <Results>{filteredCars}</Results> */}</div>
+			<div className=''>{<SaleListResultsPage />}</div>
 		</div>
 	);
 }
