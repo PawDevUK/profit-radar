@@ -8,7 +8,7 @@ export type SaleList = {
 	vin?: string;
 	images: string[];
 	lotNumber: number;
-	odometer: number;
+	odometer: number | string;
 	odometerStatus: string;
 	estimateRetail: string;
 	titleCode: string;
