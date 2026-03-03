@@ -69,19 +69,24 @@ const LotDetailsSchema = new Schema<LotDetails>(
 const SaleListSchema = new Schema<SaleList>(
 	{
 		title: { type: String },
-		lotNr: { type: String },
-		odometer: { type: String },
+		year: { type: Schema.Types.Mixed },
+		make: { type: String },
+		model: { type: String },
+		vin: { type: String },
+		images: { type: [String], default: [] },
+		lotNumber: { type: Number },
+		odometer: { type: Schema.Types.Mixed },
 		odometerStatus: { type: String },
-		EstimateRetail: { type: String },
-		conditionTitle: { type: String },
-		damage: { type: String },
-		keys: { type: String },
+		estimateRetail: { type: String },
+		titleCode: { type: String },
+		primaryDamage: { type: String },
+		hasKey: { type: Boolean },
 		location: { type: String },
-		yardLocation: { type: String },
-		item: { type: String },
-		actionCountDown: { type: String },
-		currentBid: { type: String },
-		buyItNow: { type: String },
+		saleName: { type: String },
+		laneItem: { type: String },
+		auctionCountdown: { type: String },
+		currentBid: { type: Schema.Types.Mixed },
+		buyItNow: { type: Schema.Types.Mixed },
 		details: { type: LotDetailsSchema },
 	},
 	{ _id: false },
@@ -176,12 +181,11 @@ export async function incrementalAttachSaleListByLink(viewSalesLink: string, new
 
 	const existingList: SaleList[] = (doc.auctions[idx].saleList || []) as SaleList[];
 
-	// Build index by stable identifier (prefer lotNr, then VIN, then lotNumber)
+	// Build index by stable identifier (prefer lotNumber, then VIN, then lotNumber)
 	const keyOf = (s: SaleList) => {
-		const vin = s?.details?.vin || '';
-		const lotNumber = String(s?.details?.lotNumber || '').trim();
-		const lotNr = String(s?.lotNr || '').trim();
-		return (lotNr && `lotNr:${lotNr}`) || (vin && `vin:${vin}`) || (lotNumber && `lot:${lotNumber}`) || `title:${(s.title || '').trim()}`;
+		const vin = s?.vin || s?.details?.vin || '';
+		const lotNumber = String(s?.lotNumber || s?.details?.lotNumber || '').trim();
+		return (lotNumber && `lot:${lotNumber}`) || (vin && `vin:${vin}`) || `title:${(s.title || '').trim()}`;
 	};
 
 	const existingMap = new Map<string, SaleList>();
@@ -201,7 +205,7 @@ export async function incrementalAttachSaleListByLink(viewSalesLink: string, new
 		}
 
 		// Rolling fields that can be updated even if present
-		const rollingFields: (keyof SaleList)[] = ['currentBid', 'buyItNow', 'actionCountDown'];
+		const rollingFields: (keyof SaleList)[] = ['currentBid', 'buyItNow', 'auctionCountdown'];
 		for (const f of rollingFields) {
 			const nv = n[f];
 			const ev = e[f];
@@ -213,7 +217,22 @@ export async function incrementalAttachSaleListByLink(viewSalesLink: string, new
 		}
 
 		// Enrich missing top-level fields
-		const enrichTop: (keyof SaleList)[] = ['odometer', 'odometerStatus', 'EstimateRetail', 'conditionTitle', 'damage', 'keys', 'location', 'yardLocation', 'item'];
+		const enrichTop: (keyof SaleList)[] = [
+			'odometer',
+			'odometerStatus',
+			'estimateRetail',
+			'titleCode',
+			'primaryDamage',
+			'hasKey',
+			'location',
+			'saleName',
+			'laneItem',
+			'year',
+			'make',
+			'model',
+			'vin',
+			'images',
+		];
 		function setSaleListField(obj: SaleList, key: keyof SaleList, value: string) {
 			// Only assign to string fields
 			(obj[key] as unknown as string) = value;
