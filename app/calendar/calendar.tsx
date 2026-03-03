@@ -148,6 +148,7 @@ export default function Calendar({ sales }: { sales: CalendarAuction[] }) {
 						<div className='mt-2 grid grid-cols-7 gap-1'>
 							{days.map((day) => (
 								<button
+									onClick={() => setDayEvents(day.date, events, setDisplayDay)}
 									key={day.date.toISOString()}
 									type='button'
 									className={`relative flex h-9 w-full items-center justify-center rounded-md text-sm font-medium ${
@@ -164,7 +165,7 @@ export default function Calendar({ sales }: { sales: CalendarAuction[] }) {
 				</div>
 				<div className='border-t border-gray-200 px-6 py-4'>
 					<ol className='divide-y divide-gray-200'>
-						{events.slice(0, 5).map((event) => (
+						{displayDay.map((event) => (
 							<li key={event.id} className='flex items-center space-x-4 py-4'>
 								{/* <img src={event.image} alt="" className="h-10 w-10 rounded-full" /> */}
 								<div className='flex-1'>
