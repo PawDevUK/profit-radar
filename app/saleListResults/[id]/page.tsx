@@ -4,13 +4,14 @@ import { useParams, useRouter } from 'next/navigation';
 import { useState, useEffect, useRef } from 'react';
 import { LotDetails } from '@/lib/types/lot-details';
 import Image from 'next/image';
-// import { dummySaleListings } from '@/lib/results/saleListtemplates';
+import saleList from '@/app/results/saleList.json';
+import { SaleList } from '@/lib/types/saleList';
 
 export default function SaleListResultsPage() {
 	const params = useParams();
 	const router = useRouter();
 	const saleId = params.id as string;
-	const [cars, setCars] = useState<LotDetails[]>([]);
+	const [cars, setCars] = useState<SaleList[]>(saleList);
 	const [loading, setLoading] = useState(true);
 	const [fetching, setFetching] = useState(false);
 	const [error, setError] = useState<string | null>(null);
@@ -18,145 +19,142 @@ export default function SaleListResultsPage() {
 	const [saleMeta, setSaleMeta] = useState<{ location?: string; saleDate?: string; saleTime?: string } | null>(null);
 	const fetchingRef = useRef(false); // Prevent duplicate fetching
 
-	useEffect(() => {
-		// Prevent duplicate execution
-		if (fetchingRef.current) return;
-		fetchingRef.current = true;
+	// useEffect(() => {
+	// 	// Prevent duplicate execution
+	// 	if (fetchingRef.current) return;
+	// 	fetchingRef.current = true;
 
-		const loadOrScrapeData = async () => {
-			try {
-				// Get the full URL and sale metadata from sessionStorage
-				const auctionUrl = sessionStorage.getItem(`auction_${saleId}_url`);
-				const location = sessionStorage.getItem(`auction_${saleId}_location`) || saleId;
-				const storedSaleDate = sessionStorage.getItem(`auction_${saleId}_saleDate`) || '';
-				const storedSaleTime = sessionStorage.getItem(`auction_${saleId}_saleTime`) || '';
-				const storedSaleName = sessionStorage.getItem(`auction_${saleId}_name`);
+	// 	const loadOrScrapeData = async () => {
+	// 		try {
+	// 			// Get the full URL and sale metadata from sessionStorage
+	// 			const auctionUrl = sessionStorage.getItem(`auction_${saleId}_url`);
+	// 			const location = sessionStorage.getItem(`auction_${saleId}_location`) || saleId;
+	// 			const storedSaleDate = sessionStorage.getItem(`auction_${saleId}_saleDate`) || '';
+	// 			const storedSaleTime = sessionStorage.getItem(`auction_${saleId}_saleTime`) || '';
+	// 			const storedSaleName = sessionStorage.getItem(`auction_${saleId}_name`);
 
-				// Set header display values
-				setSaleName(storedSaleName || null);
-				setSaleMeta({ location, saleDate: storedSaleDate || undefined, saleTime: storedSaleTime || undefined });
+	// 			// Set header display values
+	// 			setSaleName(storedSaleName || null);
+	// 			setSaleMeta({ location, saleDate: storedSaleDate || undefined, saleTime: storedSaleTime || undefined });
 
-				if (!auctionUrl) {
-					setError('Missing auction URL. Please navigate from the calendar page.');
-					setLoading(false);
-					return;
-				}
+	// 			if (!auctionUrl) {
+	// 				setError('Missing auction URL. Please navigate from the calendar page.');
+	// 				setLoading(false);
+	// 				return;
+	// 			}
 
-				console.log('Using auction URL:', auctionUrl);
+	// 			console.log('Using auction URL:', auctionUrl);
 
-				// Check if auction exists in consolidated auctions.json
-				const auctionResponse = await fetch(`/api/auctions?auctionId=${saleId}`);
+	// 			// Check if auction exists in consolidated auctions.json
+	// 			const auctionResponse = await fetch(`/api/auctions?auctionId=${saleId}`);
 
-				if (auctionResponse.ok) {
-					const auctionData = await auctionResponse.json();
-					if (auctionData && auctionData.cars && auctionData.cars.length > 0) {
-						console.log(`Loaded ${auctionData.cars.length} cars from auctions.json`);
-						setCars(auctionData.cars);
-						setLoading(false);
-						return;
-					} else if (auctionData && auctionData.cars && auctionData.cars.length === 0) {
-						console.log('Auction exists but cars array is empty, fetching data...');
-					}
-				} else {
-					console.log('Auction not found in auctions.json, fetching data...');
-				}
+	// 			if (auctionResponse.ok) {
+	// 				const auctionData = await auctionResponse.json();
+	// 				if (auctionData && auctionData.cars && auctionData.cars.length > 0) {
+	// 					console.log(`Loaded ${auctionData.cars.length} cars from auctions.json`);
+	// 					setCars(auctionData.cars);
+	// 					setLoading(false);
+	// 					return;
+	// 				} else if (auctionData && auctionData.cars && auctionData.cars.length === 0) {
+	// 					console.log('Auction exists but cars array is empty, fetching data...');
+	// 				}
+	// 			} else {
+	// 				console.log('Auction not found in auctions.json, fetching data...');
+	// 			}
 
-				// Auction doesn't exist or has empty cars array, fetch data
-				console.log('Auction URL:', auctionUrl);
-				console.log('Location:', location);
-				setFetching(true);
-				setLoading(false);
+	// 			// Auction doesn't exist or has empty cars array, fetch data
+	// 			console.log('Auction URL:', auctionUrl);
+	// 			console.log('Location:', location);
+	// 			setFetching(true);
+	// 			setLoading(false);
 
-				// Fetch auction data from the API
-				const fetchResponse = await fetch('/api/scrape-sale-list', {
-					method: 'POST',
-					headers: { 'Content-Type': 'application/json' },
-					body: JSON.stringify({
-						auctionUrl,
-						auctionId: saleId,
-						location,
-					}),
-				});
+	// 			// Fetch auction data from the API
+	// 			const fetchResponse = await fetch('/api/scrape-sale-list', {
+	// 				method: 'POST',
+	// 				headers: { 'Content-Type': 'application/json' },
+	// 				body: JSON.stringify({
+	// 					auctionUrl,
+	// 					auctionId: saleId,
+	// 					location,
+	// 				}),
+	// 			});
 
-				if (!fetchResponse.ok) {
-					const errorData = await fetchResponse.json();
-					throw new Error(errorData.details || 'Failed to fetch auction data');
-				}
+	// 			if (!fetchResponse.ok) {
+	// 				const errorData = await fetchResponse.json();
+	// 				throw new Error(errorData.details || 'Failed to fetch auction data');
+	// 			}
 
-				// const fetchResult = await fetchResponse.json();
-				// console.log('Data fetch complete:', fetchResult);
+	// 			// const fetchResult = await fetchResponse.json();
+	// 			// console.log('Data fetch complete:', fetchResult);
 
-				// Load the newly fetched data from auctions.json
-				const updatedAuctionResponse = await fetch(`/api/auctions?auctionId=${saleId}`);
-				if (updatedAuctionResponse.ok) {
-					const auctionData = await updatedAuctionResponse.json();
-					if (auctionData && auctionData.cars) {
-						if (auctionData.cars.length === 0) {
-							setError('No cars found in this auction. The auction may be empty or not available at this time. Please try refreshing the page.');
-						} else {
-							setCars(auctionData.cars);
-						}
-					}
-				} else {
-					setError('Failed to load data after fetching completed');
-				}
+	// 			// Load the newly fetched data from auctions.json
+	// 			const updatedAuctionResponse = await fetch(`/api/auctions?auctionId=${saleId}`);
+	// 			if (updatedAuctionResponse.ok) {
+	// 				const auctionData = await updatedAuctionResponse.json();
+	// 				if (auctionData && auctionData.cars) {
+	// 					if (auctionData.cars.length === 0) {
+	// 						setError('No cars found in this auction. The auction may be empty or not available at this time. Please try refreshing the page.');
+	// 					} else {
+	// 						setCars(auctionData.cars);
+	// 					}
+	// 				}
+	// 			} else {
+	// 				setError('Failed to load data after fetching completed');
+	// 			}
 
-				setFetching(false);
-			} catch (error) {
-				console.error('Error loading/fetching data:', error);
-				setError(error instanceof Error ? error.message : 'Unknown error');
-				setLoading(false);
-				setFetching(false);
-			}
-		};
+	// 			setFetching(false);
+	// 		} catch (error) {
+	// 			console.error('Error loading/fetching data:', error);
+	// 			setError(error instanceof Error ? error.message : 'Unknown error');
+	// 			setLoading(false);
+	// 			setFetching(false);
+	// 		}
+	// 	};
 
-		loadOrScrapeData();
-	}, [saleId]);
+	// 	loadOrScrapeData();
+	// }, [saleId]);
 
-	const handleRowClick = (lotNumber: string | number) => {
-		router.push(`/saleListResults/${saleId}/lot/${lotNumber}`);
-	};
+	// const handleRowClick = (lotNumber: string | number) => {
+	// 	router.push(`/saleListResults/${saleId}/lot/${lotNumber}`);
+	// };
 
-	if (loading || fetching) {
-		return (
-			<div className='min-h-screen bg-gray-50 flex items-center justify-center'>
-				<div className='text-center'>
-					<div className='animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4'></div>
-					<p className='text-gray-600'>{fetching ? 'Fetching auction data...' : 'Loading cars...'}</p>
-					{fetching && <p className='text-sm text-gray-500 mt-2'>This may take up to 2 minutes</p>}
-				</div>
-			</div>
-		);
-	}
+	// if (loading || fetching) {
+	// 	return (
+	// 		<div className='min-h-screen bg-gray-50 flex items-center justify-center'>
+	// 			<div className='text-center'>
+	// 				<div className='animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4'></div>
+	// 				<p className='text-gray-600'>{fetching ? 'Fetching auction data...' : 'Loading cars...'}</p>
+	// 				{fetching && <p className='text-sm text-gray-500 mt-2'>This may take up to 2 minutes</p>}
+	// 			</div>
+	// 		</div>
+	// 	);
+	// }
 
-	if (error) {
-		return (
-			<div className='min-h-screen bg-gray-50 flex items-center justify-center'>
-				<div className='text-center max-w-lg'>
-					<div className='text-red-600 text-xl mb-4'>⚠️ Error</div>
-					<p className='text-gray-700 mb-4'>{error}</p>
-					<div className='flex gap-4 justify-center'>
-						<button onClick={() => router.back()} className='px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700'>
-							Go Back
-						</button>
-						<button onClick={() => window.location.reload()} className='px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700'>
-							Try Again
-						</button>
-					</div>
-					<p className='text-sm text-gray-500 mt-4'>Note: If a verification window appears, please complete it to continue.</p>
-				</div>
-			</div>
-		);
-	}
+	// if (error) {
+	// 	return (
+	// 		<div className='min-h-screen bg-gray-50 flex items-center justify-center'>
+	// 			<div className='text-center max-w-lg'>
+	// 				<div className='text-red-600 text-xl mb-4'>⚠️ Error</div>
+	// 				<p className='text-gray-700 mb-4'>{error}</p>
+	// 				<div className='flex gap-4 justify-center'>
+	// 					<button onClick={() => router.back()} className='px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700'>
+	// 						Go Back
+	// 					</button>
+	// 					<button onClick={() => window.location.reload()} className='px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700'>
+	// 						Try Again
+	// 					</button>
+	// 				</div>
+	// 				<p className='text-sm text-gray-500 mt-4'>Note: If a verification window appears, please complete it to continue.</p>
+	// 			</div>
+	// 		</div>
+	// 	);
+	// }
 
 	return (
 		<div className='min-h-screen bg-gray-50 py-6 px-4 sm:px-6 lg:px-8'>
 			<div className='max-w-[1400px] mx-auto'>
 				<div className='mb-6'>
-					<button onClick={() => router.back()} className='text-blue-600 hover:text-blue-800 font-medium mb-4'>
-						← Back to Sales
-					</button>
-					<h1 className='text-3xl font-bold text-gray-900 mb-1'>Sale List Results</h1>
+					<h1 className='text-xl font-bold text-gray-900 mb-1'>Sale List Results</h1>
 					{saleName ? (
 						<p className='text-gray-700 text-sm mb-1'>{saleName}</p>
 					) : (
@@ -186,7 +184,7 @@ export default function SaleListResultsPage() {
 						{cars.map((car, index) => (
 							<div
 								key={index}
-								onClick={() => handleRowClick(car.lotNumber)}
+								// onClick={() => handleRowClick(car.lotNumber)}
 								className='grid grid-cols-[200px_120px_1fr_140px_120px_110px_110px] gap-4 px-4 py-2 hover:bg-gray-50 transition-colors cursor-pointer items-center h-[145px]'>
 								{/* Image */}
 								<div className='relative w-[180px] h-[125px] bg-gray-200 rounded overflow-hidden'>
