@@ -18,7 +18,7 @@ export type SaleList = {
 	saleName: string;
 	laneItem: string;
 	auctionCountdown: string;
-	currentBid: number;
-	buyItNow: number | null;
+	currentBid: number | string;
+	buyItNow: number | null | string;
 	details: LotDetails | null;
 };
