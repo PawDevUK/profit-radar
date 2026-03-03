@@ -66,6 +66,18 @@ const buildMonthGrid = (anchor: Date, events: CalendarEvent[]): CalendarDay[] =>
 
 	return days;
 };
+const getTodaysEvents = (events: CalendarEvent[]) => {
+	const todayIso = formatIsoDate(new Date());
+	return events.filter((evt) => evt.date === todayIso);
+};
+
+const setDayEvents = (date: Date, events: CalendarEvent[], setDisplayDay: React.Dispatch<React.SetStateAction<CalendarEvent[]>>) => {
+	const iso = formatIsoDate(date);
+
+	const filteredEvents = events.filter((evt) => evt.date === iso);
+
+	setDisplayDay(filteredEvents);
+};
 
 export default function Calendar({ sales }: { sales: CalendarAuction[] }) {
 	const events: CalendarEvent[] = sales.map((sale) => ({
