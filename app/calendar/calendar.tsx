@@ -90,6 +90,7 @@ export default function Calendar({ sales }: { sales: CalendarAuction[] }) {
 	}));
 
 	const [currentDate, setCurrentDate] = useState(new Date());
+	const [displayDay, setDisplayDay] = useState<CalendarEvent[]>(getTodaysEvents(events));
 
 	const monthLabel = useMemo(() => {
 		return new Intl.DateTimeFormat('en', { month: 'long', year: 'numeric' }).format(currentDate);
