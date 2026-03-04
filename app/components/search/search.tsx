@@ -42,16 +42,8 @@ export default function SearchBar({ handleOnChange }: { handleOnChange?: (query:
 
 			{/* Submit button */}
 			{!handleOnChange ? (
-				<button
-					type='submit'
-					className={`
-		  inline-flex items-center gap-1.5 rounded-lg 
-		  bg-blue-600 px-5 py-2.5 text-sm font-medium text-white 
-		  shadow-sm hover:bg-blue-700 active:bg-blue-800 
-		  focus:ring-4 focus:ring-blue-300 focus:outline-none 
-		  transition-all whitespace-nowrap
-		`}>
-					<svg className='h-4 w-4' aria-hidden='true' xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24'>
+				<button type='submit' className='button-blue'>
+					<svg className='h-4 w-4 mr-1' aria-hidden='true' xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24'>
 						<path stroke='currentColor' strokeLinecap='round' strokeWidth='2' d='m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z' />
 					</svg>
 					Search
