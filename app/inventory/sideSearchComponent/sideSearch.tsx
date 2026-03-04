@@ -63,7 +63,7 @@ export default function SideSearch({ filteredSaleResults, resetAll }: SideSearch
 	}, [resetAll]);
 
 	return (
-		<div className='flex flex-col min-h-screen '>
+		<div className='flex flex-col '>
 			<CheckBoxList title='Make' options={makes} selected={selectedMakes} onChange={setSelectedMakes} scrollable />
 			<CheckBoxList title='Model' options={makes} selected={selectedModels} onChange={setSelectedModels} scrollable />
 			<CheckBoxList title='Vehicle title type' options={titleType} selected={selectedTitleType} onChange={setSelectedTitleType} />
