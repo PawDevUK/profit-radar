@@ -1,14 +1,7 @@
 import type { Metadata } from 'next';
-import { Roboto } from 'next/font/google';
 import Navigation from './components/header/NavigationClient';
 import Footer from './components/footer/footer';
 import './globals.css';
-
-const roboto = Roboto({
-	subsets: ['latin'],
-	weight: ['400', '500', '700'],
-	display: 'swap',
-});
 
 export const metadata: Metadata = {
 	title: 'Profit Radar',
@@ -25,7 +18,7 @@ export default function RootLayout({
 			<head>
 				<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css' />
 			</head>
-			<body className={roboto.className}>
+			<body>
 				<Navigation />
 
 				{/* Main Content */}
