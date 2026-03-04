@@ -14,7 +14,7 @@ export default async function PlatformPage({ params }: PageProps) {
 
 	if (!data) {
 		return (
-			<div className='mainPading py-6'>
+			<div className='mainPadding py-6'>
 				<h1 className='text-2xl font-semibold text-amazon mb-4'>Platform Not Found</h1>
 				<p className='text-gray-600'>The platform you&apos;re looking for doesn&apos;t exist.</p>
 				<Link href='/dashboard' className='text-blue-600 hover:underline mt-4 inline-block'>
@@ -29,7 +29,7 @@ export default async function PlatformPage({ params }: PageProps) {
 	const statusBg = platform.isActive ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200';
 
 	return (
-		<div className='mainPading py-6 mt-6'>
+		<div className='mainPadding py-6 mt-6'>
 			{/* Header */}
 			<div className='mb-6'>
 				<h1 className='text-3xl font-bold text-amazon'>{platform.name}</h1>
