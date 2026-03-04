@@ -10,9 +10,10 @@ type CheckboxListProps = {
 	onChange: (cars: string[]) => void;
 	title?: string;
 	scrollable?: boolean;
+	icon?: React.ReactNode;
 };
 
-export default function CheckBoxList({ options, selected, onChange, title, scrollable }: CheckboxListProps) {
+export default function CheckBoxList({ options, selected, onChange, title, scrollable, icon }: CheckboxListProps) {
 	const [searchOptions, setSearchOptions] = useState<string[]>(options);
 
 	const handleChange = (option: string) => {
@@ -36,7 +37,7 @@ export default function CheckBoxList({ options, selected, onChange, title, scrol
 	};
 
 	return (
-		<CollapseCard title={title || ''} resetOptions={resetOptions}>
+		<CollapseCard title={title || ''} resetOptions={resetOptions} icon={icon}>
 			<SearchBar handleOnChange={handleSearchChange} />
 			<div className={` ${scrollable ? 'max-h-64 overflow-y-auto' : ''}`}>
 				{searchOptions.map((option) => (

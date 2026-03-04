@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import './style.css';
 
-export default function CollapseCard({ children, title, resetOptions }: { children: React.ReactNode; title: string; resetOptions?: () => void }) {
+export default function CollapseCard({ children, title, resetOptions, icon }: { children: React.ReactNode; title: string; resetOptions?: () => void; icon?: React.ReactNode }) {
 	const [open, setOpen] = useState(false);
 
 	return (
@@ -11,7 +11,10 @@ export default function CollapseCard({ children, title, resetOptions }: { childr
 				Reset
 			</button>
 			<button className='w-full flex items-center justify-between px-5 py-2 font-semibold text-black focus:outline-none' onClick={() => setOpen((prev) => !prev)}>
-				<span className='header'>{title}</span>
+				<div className='flex flex-row'>
+					{icon && <span className='icon'>{icon}</span>}
+					<span className='header ml-2'>{title}</span>
+				</div>
 				<svg
 					className={`transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
 					width='23'
