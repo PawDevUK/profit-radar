@@ -1,34 +1,45 @@
 'use client';
-import { useState } from 'react';
-import { SquareChevronRight, SquareChevronLeft } from 'lucide-react';
-import SideSearch from './sideSearchComponent/sideSearch';
+import { lazy, memo, Suspense, useState, useTransition } from 'react';
+import { CircleX, SlidersHorizontal } from 'lucide-react';
 import SaleListResultsPage from '../saleListResults/[id]/page';
 
-const ToggleButton = ({ open, toggleFilters }: { open: boolean; toggleFilters: () => void }) => {
-	const IconSize = 32;
+const SideSearch = lazy(() => import('./sideSearchComponent/sideSearch'));
+const MemoizedSaleListResultsPage = memo(SaleListResultsPage);
+
+const ToggleButton = ({ toggleFilters }: { toggleFilters: () => void }) => {
+	const IconSize = 22;
+	return (
+		<button className='button-blue' onClick={toggleFilters}>
+			{<SlidersHorizontal className='ml-1 text-white mr-1' size={IconSize}></SlidersHorizontal>}
+			Filter and sort
+		</button>
+	);
+};
+const CloseButton = ({ toggleFilters }: { toggleFilters: () => void }) => {
+	const IconSize = 28;
 	return (
 		<button className='' onClick={toggleFilters}>
-			{open ? <SquareChevronLeft className='ml-2 text-(--mongo-green)' size={IconSize} /> : <SquareChevronRight className='ml-2 text-(--header-text)' size={IconSize} />}
+			{<CircleX className='ml-2 text-(--paragraph-text)' size={IconSize} />}
 		</button>
 	);
 };
 
 export default function Page() {
-	const [open, setOpen] = useState(true);
-	const [showSidebar, setShowSidebar] = useState(true);
+	const [open, setOpen] = useState(false);
 	const [resetAll, setResetAll] = useState(false);
-	// const [filteredCars, setFilteredCars] = useState<string[]>([]);
+	const [, startTransition] = useTransition();
 
 	const toggleFilters = () => {
-		setOpen((prev) => !prev);
-		if (!open) {
-			setShowSidebar(false);
-		}
+		startTransition(() => {
+			setOpen((prev) => !prev);
+		});
 	};
 
-	const getFilteredLot = (cars: string[]) => {
+	const getFilteredLot = (_cars: string[]) => {
+		void _cars;
 		// setFilteredCars(cars);
 	};
+
 	const resetAllClick = () => {
 		setResetAll(true);
 		setTimeout(() => {
@@ -37,39 +48,35 @@ export default function Page() {
 	};
 
 	return (
-		<div className='flex flex-row'>
-			{open ? (
-				<aside
-					className='w-100 md-w-80 bg-white  min-h-screen sticky top-0 flex flex-col transition-all duration-500 ease-in-out'
-					onTransitionEnd={() => {
-						setShowSidebar(true);
-					}}>
-					<>
-						<div className='px-4 py-3 flex *:items-center justify-between'>
-							{showSidebar ? (
-								<div className='flex items-center justify-between w-45'>
-									<h2 className='text-[18px] font-bold text-(--header-text)'>Search filters</h2>
-									<button onClick={resetAllClick} className='resetButton'>
-										Reset All
-									</button>
-								</div>
-							) : (
-								<div></div>
-							)}
-							<ToggleButton open={open} toggleFilters={toggleFilters} />
+		<div className='relative min-h-screen flex flex-col'>
+			<div className='h-15 w-full bg-white'>
+				<div className='px-4 py-3 flex justify-end'>
+					<ToggleButton toggleFilters={toggleFilters} />
+				</div>
+				{open ? (
+					<aside className='flex flex-col relative z-20 left-0 -top-30 w-120 lg:w-150 mx-auto h-screen bg-white rounded-lg shadow-lg md:shadow-none overflow-y-auto'>
+						<div className='px-4 py-3 flex items-center justify-between'>
+							<h2 className='text-[18px] font-bold text-(--header-text)'>Filter and sort</h2>
+							<div className='flex items-center gap-2'>
+								<button onClick={resetAllClick} className='resetButton'>
+									Reset All
+								</button>
+								<CloseButton toggleFilters={toggleFilters} />
+							</div>
 						</div>
-						{showSidebar ? <SideSearch resetAll={resetAll} filteredSaleResults={getFilteredLot} /> : <div></div>}
-					</>
-				</aside>
-			) : (
-				<aside className='w-15 bg-white  border-gray-200 h-screen sticky top-0 flex flex-col transition-all duration-500 ease-in-out'>
-					<div className='px-4 py-3 flex justify-end'>
-						<ToggleButton open={open} toggleFilters={toggleFilters} />
-					</div>
-				</aside>
-			)}
+						<Suspense fallback={<div className='p-4 text-gray-500'>Loading filters...</div>}>
+							<SideSearch resetAll={resetAll} filteredSaleResults={getFilteredLot} />
+						</Suspense>
+					</aside>
+				) : (
+					<div></div>
+				)}
 
-			<div className=''>{<SaleListResultsPage />}</div>
+				{open && <div className='fixed  inset-0 z-10 bg-black/50' onClick={() => startTransition(() => setOpen(false))} />}
+			</div>
+			<div className='w-full  md:ml-0'>
+				<MemoizedSaleListResultsPage />
+			</div>
 		</div>
 	);
 }
