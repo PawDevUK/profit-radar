@@ -16,12 +16,13 @@ export default function CollapseCard({ children, title, resetOptions, icon }: { 
 					<span className='header ml-2'>{title}</span>
 				</div>
 				<svg
+					id='chevron'
 					className={`transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
 					width='23'
 					height='23'
 					fill='none'
 					stroke='currentColor'
-					strokeWidth='1'
+					strokeWidth='2'
 					strokeLinecap='round'
 					strokeLinejoin='round'
 					viewBox='0 0 24 24'>
