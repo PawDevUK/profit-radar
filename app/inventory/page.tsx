@@ -10,16 +10,15 @@ const ToggleButton = ({ toggleFilters }: { toggleFilters: () => void }) => {
 	const IconSize = 22;
 	return (
 		<button className='button-blue' onClick={toggleFilters}>
-			{<SlidersHorizontal className='ml-1 text-white mr-1' size={IconSize}></SlidersHorizontal>}
+			{<SlidersHorizontal id='slidersIcon' className='ml-1 text-white mr-1' size={IconSize}></SlidersHorizontal>}
 			Filter and sort
 		</button>
 	);
 };
 const CloseButton = ({ toggleFilters }: { toggleFilters: () => void }) => {
-	const IconSize = 28;
 	return (
-		<button className='' onClick={toggleFilters}>
-			{<CircleX className='ml-2 text-(--paragraph-text)' size={IconSize} />}
+		<button className='w-[32px] h-[32px]' onClick={toggleFilters}>
+			{<CircleX id='closeButton' className='ml-2 checkboxIcon' />}
 		</button>
 	);
 };
