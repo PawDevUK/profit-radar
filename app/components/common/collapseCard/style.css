@@ -22,3 +22,7 @@
 .resetButton:hover {
     text-decoration: underline;
 }
+
+#chevron {
+    color: var(--filter-icons) !important;
+}
