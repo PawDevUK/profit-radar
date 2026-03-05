@@ -1,5 +1,5 @@
 export const bodyType = ['Sedan', 'Coupe', 'Hatchback', 'SUV', 'Wagon', 'Convertible', 'Pickup', 'Van', 'Minivan', 'Crossover', 'Roadster', 'Truck', 'Other'];
-
+export const sort = ['Relevance', 'Price (low to high)', 'Price (high to low)', 'Distance', 'Mileage', 'Age (newest)', 'Age (oldest)', 'Most recent'];
 export const auctionName = ['Copart', 'IAAI', 'Manheim', 'Adesa', 'Insurance Auto Auctions', 'Salvage World', 'Other'];
 export const cylinderType = ['2 Cylinder', '3 Cylinder', '4 Cylinder', '5 Cylinder', '6 Cylinder', '8 Cylinder', '10 Cylinder', '12 Cylinder', '16 Cylinder', 'Other'];
 export const driveTrain = ['FWD', 'RWD', 'AWD', '4WD', 'Part-Time 4WD', 'Full-Time 4WD', 'Other'];
