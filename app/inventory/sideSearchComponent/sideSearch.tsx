@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import CheckBoxList from './search/checkBoxList';
-import { MapPin, Car, Gavel, Fuel, KeySquare, CarFront, List } from 'lucide-react';
+import { MapPin, Car, Gavel, Fuel, KeySquare, CarFront, ListTodo, ArrowDownUp } from 'lucide-react';
 import './style.css';
 import {
+	sort,
 	makes,
 	titleType,
 	conditionType,
@@ -72,7 +73,89 @@ const Gears = () => {
 		</svg>
 	);
 };
+const VehicleType = ({ size, color }: { size: number; color: string }) => {
+	return (
+		<svg
+			xmlns='http://www.w3.org/2000/svg'
+			width={`${size}`}
+			height={`${size}`}
+			viewBox='0 0 24 24'
+			fill='none'
+			stroke={`${color}`}
+			strokeWidth='2'
+			strokeLinecap='round'
+			strokeLinejoin='round'>
+			<path d='M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2' />
+			<circle cx='7' cy='17' r='2' />
+			<path d='M9 17h6' />
+			<circle cx='17' cy='17' r='2' />
+			<g transform='translate(-2,-7)'>
+				<path d='M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3' />
+				<path d='M12 17h.01' />
+			</g>
+		</svg>
+	);
+};
+
+const CarCondition = ({ size, color }: { size: number; color: string }) => {
+	return (
+		<svg
+			xmlns='http://www.w3.org/2000/svg'
+			height={`${size}`}
+			width={`${size}`}
+			viewBox='0 0 24 24'
+			fill='none'
+			stroke={`${color}`}
+			stroke-width='2'
+			stroke-linecap='round'
+			stroke-linejoin='round'>
+			<path d='M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2' />
+			<circle cx='7' cy='17' r='2' />
+			<path d='M9 17h6' />
+			<circle cx='17' cy='17' r='2' />
+			<path d='m7 10 2.5 2.5L15 8' stroke={`${color}`} stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round' />
+		</svg>
+	);
+};
+
+const DriveType = ({ size, color }: { size: number; color: string }) => {
+	return (
+		<svg
+			data-gui='atds-icon-drive-type-filter'
+			xmlns='http://www.w3.org/2000/svg'
+			height={`${size}`}
+			width={`${size}`}
+			viewBox='0 0 24 24'
+			fill={`${color}`}
+			className='atds-icon-svg'>
+			<title>Drive type filter</title>
+			<path d='M12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4ZM12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2Z'></path>
+			<path d='M12 5.5C8.42 5.5 5.5 8.42 5.5 12C5.5 15.58 8.42 18.5 12 18.5C15.58 18.5 18.5 15.58 18.5 12C18.5 8.42 15.58 5.5 12 5.5ZM7.5 12C7.5 10.87 7.93 9.84 8.63 9.05L10.18 11.19C10.12 11.32 10.08 11.45 10.05 11.58L7.54 12.39C7.53 12.26 7.5 12.13 7.5 12ZM13.95 11.58C13.92 11.44 13.88 11.31 13.82 11.19L15.37 9.05C16.06 9.84 16.5 10.87 16.5 12C16.5 12.13 16.47 12.26 16.46 12.39L13.95 11.58ZM13.76 7.86L12.2 10.02C12.13 10.02 12.07 10 12 10C11.93 10 11.87 10.01 11.8 10.02L10.24 7.86C10.78 7.63 11.38 7.5 12.01 7.5C12.64 7.5 13.23 7.63 13.78 7.86H13.76ZM8.15 14.29L10.67 13.48C10.77 13.57 10.88 13.65 11 13.72V16.38C9.79 16.1 8.77 15.33 8.15 14.3V14.29ZM13 16.37V13.71C13.12 13.64 13.23 13.56 13.33 13.47L15.85 14.28C15.23 15.32 14.21 16.09 13 16.36V16.37Z'></path>
+		</svg>
+	);
+};
+
+const V8Icon = ({ size, color }: { size: number; color: string }) => {
+	return (
+		<svg
+			xmlns='http://www.w3.org/2000/svg'
+			viewBox='0 0 24 24'
+			fill='none'
+			stroke={`${color}`}
+			strokeWidth='2'
+			strokeLinecap='round'
+			strokeLinejoin='round'
+			height={`${size}`}
+			width={`${size}`}>
+			<path d='M4 8l8 12 8-12' />
+			<circle cx='12' cy='3' r='2' />
+			<circle cx='12' cy='8.5' r='3' />
+		</svg>
+	);
+};
+
 export default function SideSearch({ filteredSaleResults, resetAll }: SideSearchProps) {
+	const [selectedSort, setSelectedSort] = useState<string[]>([]);
 	const [selectedMakes, setSelectedMakes] = useState<string[]>([]);
 	const [selectedModels, setSelectedModels] = useState<string[]>([]);
 	const [selectedTitleType, setSelectedTitleType] = useState<string[]>([]);
@@ -88,6 +171,7 @@ export default function SideSearch({ filteredSaleResults, resetAll }: SideSearch
 	const [selectedBodyType, setSelectedBodyType] = useState<string[]>([]);
 
 	const resetAllFilters = () => {
+		setSelectedSort([]);
 		setSelectedMakes([]);
 		setSelectedModels([]);
 		setSelectedTitleType([]);
@@ -116,13 +200,15 @@ export default function SideSearch({ filteredSaleResults, resetAll }: SideSearch
 
 	return (
 		<div className='flex flex-col '>
+			<CheckBoxList title='Sort' options={sort} selected={selectedSort} onChange={setSelectedSort} icon={<ArrowDownUp strokeWidth={stroke} className='checkboxIcon' />} />
 			<CheckBoxList
 				title='Make'
 				options={makes}
 				selected={selectedMakes}
 				onChange={setSelectedMakes}
 				scrollable
-				icon={<KeySquare strokeWidth={stroke} className='checkboxIcon' />}
+				searchable
+				icon={<CarFront strokeWidth={stroke} className='checkboxIcon' />}
 			/>
 			<CheckBoxList
 				title='Model'
@@ -130,11 +216,32 @@ export default function SideSearch({ filteredSaleResults, resetAll }: SideSearch
 				selected={selectedModels}
 				onChange={setSelectedModels}
 				scrollable
-				icon={<CarFront strokeWidth={stroke} className='checkboxIcon' />}
+				searchable
+				icon={<KeySquare strokeWidth={stroke} className='checkboxIcon' />}
 			/>
-			<CheckBoxList title='Vehicle title type' options={titleType} selected={selectedTitleType} onChange={setSelectedTitleType} />
-			<CheckBoxList title='Vehicle condition type' options={conditionType} selected={selectedConditionType} onChange={setSelectedConditionType} />
-			<CheckBoxList title='Vehicle type' options={vehicleType} selected={selectedVehicleType} onChange={setSelectedVehicleType} scrollable />
+			<CheckBoxList
+				title='Vehicle title type'
+				options={titleType}
+				selected={selectedTitleType}
+				onChange={setSelectedTitleType}
+				icon={<ListTodo strokeWidth={stroke} className='checkboxIcon' />}
+			/>
+			<CheckBoxList
+				title='Vehicle condition type'
+				options={conditionType}
+				selected={selectedConditionType}
+				onChange={setSelectedConditionType}
+				icon={<CarCondition size={size} color={color} />}
+			/>
+			<CheckBoxList
+				title='Vehicle type'
+				options={vehicleType}
+				selected={selectedVehicleType}
+				onChange={setSelectedVehicleType}
+				scrollable
+				searchable
+				icon={<VehicleType size={size} color={color} />}
+			/>
 			<CheckBoxList title='Engine type' options={engineType} selected={selectedEngineType} onChange={setSelectedEngineType} icon={<Engine />} />
 			<CheckBoxList title='Transmission' options={transmissionType} selected={selectedTransmissionType} onChange={setSelectedTransmissionType} icon={<Gears />} />
 			<CheckBoxList
@@ -144,8 +251,8 @@ export default function SideSearch({ filteredSaleResults, resetAll }: SideSearch
 				onChange={setSelectedFuelType}
 				icon={<Fuel strokeWidth={stroke} className='checkboxIcon' />}
 			/>
-			<CheckBoxList title='Drive train' options={driveTrain} selected={selectedDriveTrain} onChange={setSelectedDriveTrain} />
-			<CheckBoxList title='Cylinder' options={cylinderType} selected={selectedCylinderType} onChange={setSelectedCylinderType} />
+			<CheckBoxList title='Drive train' options={driveTrain} selected={selectedDriveTrain} onChange={setSelectedDriveTrain} icon={<DriveType size={size} color={color} />} />
+			<CheckBoxList title='Cylinder' options={cylinderType} selected={selectedCylinderType} onChange={setSelectedCylinderType} icon={<V8Icon size={size} color={color} />} />
 			<CheckBoxList
 				title='Auction name'
 				options={auctionName}
