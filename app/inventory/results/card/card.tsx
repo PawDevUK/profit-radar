@@ -10,11 +10,11 @@ function Card({ ...props }) {
 	}, [width]);
 
 	return (
-		<div className='w-full max-w-sm md:w-[30%] lg:w-[20%] xl:w-[18%] m-2.5 bg-neutral-primary-soft p-6 border border-gray-300 rounded-base shadow-md rounded-lg'>
+		<div className='w-full max-w-sm md:w-[30%] lg:w-[20%] xl:w-[18%] m-2.5 bg-neutral-primary-soft border border-gray-300 rounded-base shadow-md rounded-lg'>
 			<a href='#'>
-				<Image className='rounded-base mb-6' src={props.item.images?.[0] || '/placeholder-image.png'} alt='lot image' width={300} height={300} />
+				<Image className='rounded-t-lg w-full' src={props.item.images?.[0] || '/placeholder-image.png'} alt='lot image' width={300} height={300} />
 			</a>
-			<div>
+			<div className='p-2'>
 				<div className='flex items-center space-x-3 mb-1'>
 					<span>Lot number:</span>
 					<span className='border border-brand-subtle text-(--main-blue)  text-xs font-medium px-1.5 py-0.5 rounded-sm'>{props.item.lotNumber}</span>
