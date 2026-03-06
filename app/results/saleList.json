@@ -14,7 +14,7 @@
 		"auctionCountdown": "Auction in 0D 16H 19min",
 		"currentBid": 8800,
 		"buyItNow": 8985,
-		"images": [],
+		"images": ["https://picsum.photos/200"],
 		"details": null
 	},
 	{
@@ -32,7 +32,7 @@
 		"auctionCountdown": "Auction in 1D 8H 45min",
 		"currentBid": 12500,
 		"buyItNow": 13200,
-		"images": [],
+		"images": ["https://picsum.photos/200"],
 		"details": null
 	},
 	{
@@ -50,7 +50,7 @@
 		"auctionCountdown": "Auction in 2D 12H 30min",
 		"currentBid": 5200,
 		"buyItNow": 5800,
-		"images": [],
+		"images": ["https://picsum.photos/200"],
 		"details": null
 	},
 	{
@@ -68,7 +68,7 @@
 		"auctionCountdown": "Auction in 0D 4H 15min",
 		"currentBid": 15000,
 		"buyItNow": 16500,
-		"images": [],
+		"images": ["https://picsum.photos/200"],
 		"details": null
 	},
 	{
@@ -86,7 +86,7 @@
 		"auctionCountdown": "Auction in 3D 6H 20min",
 		"currentBid": 9800,
 		"buyItNow": 10500,
-		"images": [],
+		"images": ["https://picsum.photos/200"],
 		"details": null
 	},
 	{
@@ -104,7 +104,7 @@
 		"auctionCountdown": "Auction in 1D 14H 10min",
 		"currentBid": 18200,
 		"buyItNow": 19000,
-		"images": [],
+		"images": ["https://picsum.photos/200"],
 		"details": null
 	},
 	{
@@ -122,7 +122,7 @@
 		"auctionCountdown": "Auction in 2D 9H 55min",
 		"currentBid": 11300,
 		"buyItNow": 12100,
-		"images": [],
+		"images": ["https://picsum.photos/200"],
 		"details": null
 	},
 	{
@@ -140,7 +140,7 @@
 		"auctionCountdown": "Auction in 0D 22H 40min",
 		"currentBid": 7500,
 		"buyItNow": 8200,
-		"images": [],
+		"images": ["https://picsum.photos/200"],
 		"details": null
 	},
 	{
@@ -158,7 +158,7 @@
 		"auctionCountdown": "Auction in 4D 2H 25min",
 		"currentBid": 13700,
 		"buyItNow": 14400,
-		"images": [],
+		"images": ["https://picsum.photos/200"],
 		"details": null
 	},
 	{
@@ -176,7 +176,7 @@
 		"auctionCountdown": "Auction in 1D 18H 5min",
 		"currentBid": 4100,
 		"buyItNow": 4600,
-		"images": [],
+		"images": ["https://picsum.photos/200"],
 		"details": null
 	}
 ]
