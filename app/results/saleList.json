@@ -1,13 +1,14 @@
 [
 	{
-		"title": "2019 FORD TRANSIT - REFRIGERATED DELIVERY VAN",
+		"year": 2019,
+		"title": "FORD TRANSIT - REFRIGERATED DELIVERY VAN",
 		"lotNumber": 99970785,
 		"odometer": 116628,
 		"odometerStatus": "ACTUAL",
 		"estimateRetail": "$29,850",
 		"titleCode": "Salvage Title (SV - TX)",
 		"primaryDamage": "Front End Damage",
-		"hasKey": true,
+		"hasKey": false,
 		"location": "TX - HOUSTON",
 		"saleName": "TX - HOUSTON",
 		"laneItem": "0",
@@ -18,7 +19,8 @@
 		"details": null
 	},
 	{
-		"title": "2020 CHEVROLET SILVERADO 1500 - CREW CAB",
+		"year": 2020,
+		"title": "CHEVROLET SILVERADO 1500 - CREW CAB",
 		"lotNumber": 99970786,
 		"odometer": 45230,
 		"odometerStatus": "ACTUAL",
@@ -36,14 +38,15 @@
 		"details": null
 	},
 	{
-		"title": "2018 HONDA CIVIC - SEDAN",
+		"year": 2018,
+		"title": "HONDA CIVIC - SEDAN",
 		"lotNumber": 99970787,
 		"odometer": 78341,
 		"odometerStatus": "ACTUAL",
 		"estimateRetail": "$18,500",
 		"titleCode": "Salvage Title (SV - FL)",
 		"primaryDamage": "Rear End Damage",
-		"hasKey": false,
+		"hasKey": true,
 		"location": "FL - MIAMI",
 		"saleName": "FL - MIAMI",
 		"laneItem": "2",
@@ -54,7 +57,8 @@
 		"details": null
 	},
 	{
-		"title": "2021 TOYOTA CAMRY - HYBRID",
+		"year": 2021,
+		"title": "TOYOTA CAMRY - HYBRID",
 		"lotNumber": 99970788,
 		"odometer": 28950,
 		"odometerStatus": "ACTUAL",
@@ -72,7 +76,8 @@
 		"details": null
 	},
 	{
-		"title": "2017 FORD F-150 - SUPERCREW",
+		"year": 2017,
+		"title": "FORD F-150 - SUPERCREW",
 		"lotNumber": 99970789,
 		"odometer": 156789,
 		"odometerStatus": "ACTUAL",
@@ -90,7 +95,8 @@
 		"details": null
 	},
 	{
-		"title": "2019 BMW X3 - SUV",
+		"year": 2019,
+		"title": "BMW X3 - SUV",
 		"lotNumber": 99970790,
 		"odometer": 67890,
 		"odometerStatus": "ACTUAL",
@@ -108,7 +114,8 @@
 		"details": null
 	},
 	{
-		"title": "2020 JEEP GRAND CHEROKEE - LIMITED",
+		"year": 2020,
+		"title": "JEEP GRAND CHEROKEE - LIMITED",
 		"lotNumber": 99970791,
 		"odometer": 54321,
 		"odometerStatus": "ACTUAL",
@@ -126,7 +133,8 @@
 		"details": null
 	},
 	{
-		"title": "2016 MERCEDES-BENZ C-CLASS - SEDAN",
+		"year": 2016,
+		"title": "MERCEDES-BENZ C-CLASS - SEDAN",
 		"lotNumber": 99970792,
 		"odometer": 98765,
 		"odometerStatus": "ACTUAL",
@@ -144,7 +152,8 @@
 		"details": null
 	},
 	{
-		"title": "2022 NISSAN ALTIMA - SEDAN",
+		"year": 2022,
+		"title": "NISSAN ALTIMA - SEDAN",
 		"lotNumber": 99970793,
 		"odometer": 12345,
 		"odometerStatus": "ACTUAL",
@@ -162,7 +171,8 @@
 		"details": null
 	},
 	{
-		"title": "2015 VOLKSWAGEN JETTA - SEDAN",
+		"year": 2015,
+		"title": "VOLKSWAGEN JETTA - SEDAN",
 		"lotNumber": 99970794,
 		"odometer": 145678,
 		"odometerStatus": "ACTUAL",
