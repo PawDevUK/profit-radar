@@ -4,11 +4,6 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 
 function Card({ ...props }) {
-	const [width, setWidth] = useState(window.innerWidth);
-	useEffect(() => {
-		window.addEventListener('resize', () => setWidth(window.innerWidth));
-	}, [width]);
-
 	return (
 		<div className='w-full max-w-sm md:w-[30%] lg:w-[20%] xl:w-[18%] m-2.5 bg-neutral-primary-soft border border-gray-300 rounded-base shadow-md rounded-lg'>
 			<a href='#'>
