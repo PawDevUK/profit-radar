@@ -1,50 +1,53 @@
 'use client';
-import { expand } from 'img';
-import Button from 'components/common/Button';
-import React, { useEffect, useState } from 'react';
-import { cardTextLength } from 'factory/factory';
-import Stack from './Stack';
-import Header from '../common/Header';
+
+import { useEffect, useState } from 'react';
+import Image from 'next/image';
 
 function Card({ ...props }) {
-	const [textLength, setTextLength] = useState(0);
 	const [width, setWidth] = useState(window.innerWidth);
-
 	useEffect(() => {
 		window.addEventListener('resize', () => setWidth(window.innerWidth));
-		setTextLength(cardTextLength(width));
 	}, [width]);
 
 	return (
-		<div className='group relative z-[1000] mt-10 mr-0 md:mr-10 mx-auto md:mx-0 w-[90%] sm:w-[65%] lg:w-[42%] lg:even:mr-0 flex flex-col items-end bg-white border border-[#dbdbdb] rounded-[20px] shadow-[0_4px_12px_rgba(0,0,0,0.08)]'>
-			<img src={props.item.src} alt={props.item.alt} className='block w-full h-full rounded-t-[20px]' />
-			{width >= 650 ? <Stack stack={props.stack}></Stack> : null}
-
-			<div className='relative w-full flex mx-auto'>
-				<div className='w-full text-center'>
-					<Header>
-						{props.item.title}
-						<div className='absolute h-px w-full opacity-0 group-hover:opacity-100 bg-[#172a3f96] rounded-[5px] left-0 bottom-[-1px] transition-opacity duration-300' />
-					</Header>
+		<div className='w-full max-w-sm md:w-[30%] lg:w-[20%] xl:w-[18%] m-2.5 bg-neutral-primary-soft p-6 border border-gray-300 rounded-base shadow-md rounded-lg'>
+			<a href='#'>
+				<Image className='rounded-base mb-6' src={props.item.images?.[0] || '/placeholder-image.png'} alt='lot image' width={300} height={300} />
+			</a>
+			<div>
+				<div className='flex items-center space-x-3 mb-1'>
+					<span>Lot number:</span>
+					<span className='border border-brand-subtle text-(--main-blue)  text-xs font-medium px-1.5 py-0.5 rounded-sm'>{props.item.lotNumber}</span>
 				</div>
-			</div>
-
-			<div className='z-[10000] text-center mx-5 mb-[5px]'>
-				<p className='text-base' style={{ lineHeight: `${props.p_line_height}px` }}>
-					{props.item.text}
-				</p>
-			</div>
-
-			<div className='flex justify-between sm:justify-between w-[80%] sm:w-[300px] mx-auto mb-[10px]'>
-				<a
-					href={props.item.webHref.href}
-					target='_blank'
-					className={`block m-[5px] sm:m-[10px] hover:no-underline ${!props.item.webHref.href ? 'pointer-events-none opacity-50 cursor-not-allowed' : ''}`}>
-					<Button light>{props.item.webHref.button}</Button>
+				<a href='#'>
+					<h5 className='text-xl text-heading font-semibold tracking-tight'>{props.item.title}</h5>
 				</a>
-				<a href={props.item.githubHref} target='_blank' className='block m-[5px] sm:m-[10px] hover:no-underline'>
-					<Button light>Github Repo</Button>
-				</a>
+				<div className='flex items-center justify-between mt-6'>
+					<div className='flex flex-row space-x-4'>
+						<div className='flex flex-col'>
+							<span className='text-[12px]'>Current Bid</span>
+							<span className='text-3xl font-extrabold text-heading'>$599</span>
+						</div>
+						<div className='flex flex-col'>
+							<span className='text-[12px]'>Buy it now</span>
+							<span className='text-3xl font-extrabold text-heading'>$599</span>
+						</div>
+					</div>
+					{/* <button
+						type='button'
+						className='inline-flex items-center  text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-3 py-2 focus:outline-none'>
+						<svg className='w-4 h-4 me-1.5' aria-hidden='true' xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' viewBox='0 0 24 24'>
+							<path
+								stroke='currentColor'
+								stroke-linecap='round'
+								stroke-linejoin='round'
+								stroke-width='2'
+								d='M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312'
+							/>
+						</svg>
+						Add to cart
+					</button> */}
+				</div>
 			</div>
 		</div>
 	);
