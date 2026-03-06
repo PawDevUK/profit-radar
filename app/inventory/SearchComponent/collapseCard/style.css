@@ -12,7 +12,7 @@
 }
 
 .resetButton {
-    color: var(--main-blue);
+    color: var(--small-text-blue);
     cursor: pointer;
     font-size: 0.75rem;
     margin-top: 0.125rem;
