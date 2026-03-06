@@ -1,5 +1,5 @@
 'use client';
-import CollapseCard from '@/app/components/common/collapseCard/collapseCard';
+import CollapseCard from '@/app/inventory/SearchComponent/collapseCard/collapseCard';
 import SearchBar from '@/app/components/search/search';
 import { useState } from 'react';
 
