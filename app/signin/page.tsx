@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { authService } from '../../lib/auth';
-import ManiLayout from '../components/common/maniLayout';
+import ManiLayout from '../components/common/pageWrapper';
 
 export default function LoginPage() {
 	const [email, setEmail] = useState('');

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import CheckBoxList from './search/checkBoxList';
+import CheckBoxList from './checkBoxList';
 import { MapPin, Car, Gavel, Fuel, KeySquare, CarFront, ListTodo, ArrowDownUp } from 'lucide-react';
 import './style.css';
 import {

@@ -3,7 +3,7 @@ import { lazy, memo, Suspense, useState, useTransition } from 'react';
 import { CircleX, SlidersHorizontal } from 'lucide-react';
 import SaleListResultsPage from '../saleListResults/[id]/page';
 
-const SideSearch = lazy(() => import('./sideSearchComponent/sideSearch'));
+const SideSearch = lazy(() => import('./SearchComponent/Search'));
 const MemoizedSaleListResultsPage = memo(SaleListResultsPage);
 
 const ToggleButton = ({ toggleFilters }: { toggleFilters: () => void }) => {

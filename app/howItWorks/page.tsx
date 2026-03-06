@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { bmw535, tiguan, chargergt } from '@/img';
-import ManiLayout from '../components/common/maniLayout';
+import ManiLayout from '../components/common/pageWrapper';
 import LogButton from '../components/common/buttons/logButton';
 
 export default function HowItWorks() {
