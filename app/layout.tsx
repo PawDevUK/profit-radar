@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Navigation from './components/header/NavigationClient';
 import Footer from './components/footer/footer';
 import './globals.css';
+import './components/common/buttons/buttons.css';
 
 export const metadata: Metadata = {
 	title: 'Profit Radar',

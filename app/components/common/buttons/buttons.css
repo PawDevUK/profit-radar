@@ -30,7 +30,7 @@
     justify-content: center;
     color: #fff;
     /* fallback color if --bg-button is not set */
-    background: var(--button-blue);
+    background: var(--main-blue);
     padding-left: 1rem;
     padding-right: 1rem;
     border-radius: 10px;
@@ -40,7 +40,7 @@
 }
 
 .button-blue:hover {
-    background: var(--button-blue-hover);
+    background: var(--main-blue-hover);
 
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
 
