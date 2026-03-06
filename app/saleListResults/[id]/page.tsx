@@ -152,7 +152,7 @@ export default function SaleListResultsPage() {
 
 	return (
 		<div className='w-full min-h-screen bg-gray-50 py-6 px-4 sm:px-6 lg:px-8'>
-			<div className='max-w-[1400px] mx-auto'>
+			<div className='max-w-(--max-app-width) mx-auto'>
 				<div className='mb-6'>
 					<h1 className='text-xl font-bold text-gray-900 mb-1'>Sale List Results</h1>
 					{saleName ? (
@@ -168,18 +168,6 @@ export default function SaleListResultsPage() {
 				</div>
 
 				<div className='bg-white rounded-lg shadow overflow-hidden'>
-					{/* Header */}
-					<div className='grid grid-cols-[200px_120px_1fr_140px_120px_110px_110px] gap-4 px-4 py-3 bg-gray-100 border-b-2 border-gray-300 font-semibold text-gray-900 text-sm'>
-						<div>IMAGE</div>
-						<div>LOT #</div>
-						<div>VEHICLE INFO</div>
-						<div>DAMAGE</div>
-						<div>ODOMETER</div>
-						<div>CURRENT BID</div>
-						<div>BUY IT NOW</div>
-					</div>
-
-					{/* Rows */}
 					<div className='divide-y divide-gray-200'>
 						{cars.map((car, index) => (
 							<div
