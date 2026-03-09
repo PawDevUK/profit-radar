@@ -1,7 +1,7 @@
 [
 	{
 		"year": 2019,
-		"title": "FORD TRANSIT - REFRIGERATED DELIVERY VAN",
+		"title": "FORD TRANSIT",
 		"lotNumber": 99970785,
 		"odometer": 116628,
 		"odometerStatus": "ACTUAL",
@@ -20,7 +20,7 @@
 	},
 	{
 		"year": 2020,
-		"title": "CHEVROLET SILVERADO 1500 - CREW CAB",
+		"title": "CHEVROLET SILVERADO 1500",
 		"lotNumber": 99970786,
 		"odometer": 45230,
 		"odometerStatus": "ACTUAL",
@@ -39,7 +39,7 @@
 	},
 	{
 		"year": 2018,
-		"title": "HONDA CIVIC - SEDAN",
+		"title": "HONDA CIVIC",
 		"lotNumber": 99970787,
 		"odometer": 78341,
 		"odometerStatus": "ACTUAL",
@@ -58,7 +58,7 @@
 	},
 	{
 		"year": 2021,
-		"title": "TOYOTA CAMRY - HYBRID",
+		"title": "TOYOTA CAMRY",
 		"lotNumber": 99970788,
 		"odometer": 28950,
 		"odometerStatus": "ACTUAL",
@@ -77,7 +77,7 @@
 	},
 	{
 		"year": 2017,
-		"title": "FORD F-150 - SUPERCREW",
+		"title": "FORD F-150",
 		"lotNumber": 99970789,
 		"odometer": 156789,
 		"odometerStatus": "ACTUAL",
@@ -96,7 +96,7 @@
 	},
 	{
 		"year": 2019,
-		"title": "BMW X3 - SUV",
+		"title": "BMW X3",
 		"lotNumber": 99970790,
 		"odometer": 67890,
 		"odometerStatus": "ACTUAL",
@@ -115,7 +115,7 @@
 	},
 	{
 		"year": 2020,
-		"title": "JEEP GRAND CHEROKEE - LIMITED",
+		"title": "JEEP GRAND CHEROKEE",
 		"lotNumber": 99970791,
 		"odometer": 54321,
 		"odometerStatus": "ACTUAL",
@@ -134,7 +134,7 @@
 	},
 	{
 		"year": 2016,
-		"title": "MERCEDES-BENZ C-CLASS - SEDAN",
+		"title": "MERCEDES-BENZ C-CLASS",
 		"lotNumber": 99970792,
 		"odometer": 98765,
 		"odometerStatus": "ACTUAL",
@@ -153,7 +153,7 @@
 	},
 	{
 		"year": 2022,
-		"title": "NISSAN ALTIMA - SEDAN",
+		"title": "NISSAN ALTIMA",
 		"lotNumber": 99970793,
 		"odometer": 12345,
 		"odometerStatus": "ACTUAL",
@@ -172,7 +172,7 @@
 	},
 	{
 		"year": 2015,
-		"title": "VOLKSWAGEN JETTA - SEDAN",
+		"title": "VOLKSWAGEN JETTA",
 		"lotNumber": 99970794,
 		"odometer": 145678,
 		"odometerStatus": "ACTUAL",
