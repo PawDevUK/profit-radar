@@ -4,12 +4,17 @@ import './buttons.css';
 export default function LogButton({ item, onclick }: { item: { href: string; label: string; fontSize?: number }; onclick?: () => void }) {
 	return (
 		<div className=''>
-			<Link
-				key={item.href}
-				href={item.href}
-				className="log-button"
-				style={item.fontSize ? { fontSize: `${item.fontSize}px` } : undefined}
-			>
+			<Link key={item.href} href={item.href} className='log-button' style={item.fontSize ? { fontSize: `${item.fontSize}px` } : undefined}>
+				<button onClick={onclick}>{item.label}</button>
+			</Link>
+		</div>
+	);
+}
+
+export function SearchChipButton({ item, onclick }: { item: { href: string; label: string; fontSize?: number }; onclick?: () => void }) {
+	return (
+		<div className='w-auto'>
+			<Link key={item.href} href={item.href} className='log-button chip-button' style={item.fontSize ? { fontSize: `${item.fontSize}px` } : undefined}>
 				<button onClick={onclick}>{item.label}</button>
 			</Link>
 		</div>
