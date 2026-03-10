@@ -49,15 +49,15 @@ export default function SearchFilters() {
 	};
 
 	return (
-		<div className='flex items-center h-10'>
+		<div className='my-1 flex items-center h-10'>
 			<div className='flex mx-3 z-10 w-31.75 shrink-0 justify-center'>Featured items:</div>
-			<div className='flex flex-row items-center w-full'>
-				<button title='Scroll to Left' className='  z-110 bg-white border border-gray-300 rounded-full p-1 shadow-md hover:bg-gray-50' onClick={scrollLeft}>
+			<div className='my-1 flex flex-row items-center w-full'>
+				<button title='Scroll to Left' className='mr-2  bg-white border border-gray-300 rounded-full p-1 shadow-md hover:bg-gray-50' onClick={scrollLeft}>
 					<svg className='w-4 h-4' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
 						<path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M15 19l-7-7 7-7' />
 					</svg>
 				</button>
-				<div className='relative flex overflow-hidden '>
+				<div className='w-[200px] flex overflow-hidden flex-1 my-1'>
 					<div ref={scrollRef} className='flex w-full overflow-hidden scroll-smooth' tabIndex={0} style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
 						<style jsx>{`
 							div::-webkit-scrollbar {
@@ -71,7 +71,7 @@ export default function SearchFilters() {
 						))}
 					</div>
 				</div>
-				<button title='Scroll to Right' className='absolute z-10 bg-white border border-gray-300 rounded-full p-1 shadow-md hover:bg-gray-50' onClick={scrollRight}>
+				<button title='Scroll to Right' className='ml-2 z-10 bg-white border border-gray-300 rounded-full p-1 shadow-md hover:bg-gray-50' onClick={scrollRight}>
 					<svg className='w-4 h-4' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
 						<path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M9 5l7 7-7 7' />
 					</svg>

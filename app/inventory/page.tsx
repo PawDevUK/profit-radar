@@ -52,7 +52,7 @@ export default function Page() {
 		<div className='relative min-h-screen flex flex-col'>
 			<div className='h-15 w-full bg-white'>
 				<div className='px-4 py-3 flex flex-row justify-center items-center'>
-					<div className='w-[70%] hidden md:block'>
+					<div className='w-[70%] mr-4 pyhidden md:block overflow-hidden'>
 						<SearchChipsFilters />
 					</div>
 					<div className='w-[159px] flex justify-end'>
