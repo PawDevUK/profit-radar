@@ -3,6 +3,8 @@ import { lazy, memo, Suspense, useState, useTransition } from 'react';
 import { CircleX, SlidersHorizontal } from 'lucide-react';
 import SaleListResultsPage from '../saleListResults/[id]/page';
 
+import SearchChipsFilters from './searchChipsFilters/searchChipsFilters';
+
 const SideSearch = lazy(() => import('./SearchComponent/Search'));
 const MemoizedSaleListResultsPage = memo(SaleListResultsPage);
 
@@ -49,8 +51,13 @@ export default function Page() {
 	return (
 		<div className='relative min-h-screen flex flex-col'>
 			<div className='h-15 w-full bg-white'>
-				<div className='px-4 py-3 flex justify-end'>
-					<ToggleButton toggleFilters={toggleFilters} />
+				<div className='px-4 py-3 flex flex-row justify-center items-center'>
+					<div className='w-[70%] hidden md:block'>
+						<SearchChipsFilters />
+					</div>
+					<div className='w-[159px] flex justify-end'>
+						<ToggleButton toggleFilters={toggleFilters} />
+					</div>
 				</div>
 				{open ? (
 					<aside className='flex flex-col relative z-20 left-0 -top-30 w-[calc(100vw-20px)] lg:w-150 mx-auto h-screen bg-white rounded-lg shadow-lg md:shadow-none overflow-y-auto'>
