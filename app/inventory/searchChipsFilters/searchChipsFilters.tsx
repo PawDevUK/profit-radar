@@ -33,7 +33,7 @@ const Items: Item[] = [
 	{ label: 'Specialty Vehicles', id: 'specialty-vehicles' },
 ];
 
-export default function SearchsFilters() {
+export default function SearchFilters() {
 	const scrollRef = useRef<HTMLDivElement>(null);
 
 	const scrollLeft = () => {
@@ -49,35 +49,33 @@ export default function SearchsFilters() {
 	};
 
 	return (
-		<div>
-			<div className='flex items-baseline h-10 w-full'>
-				<div className='mx-3 z-10 flex flex-row w-[127px] '>Featured items:</div>
-				<div className='flex flex-row shrink-0 items-center items-baseline w-full'>
-					<button title='Scroll to Left' className='  z-110 bg-white border border-gray-300 rounded-full p-1 shadow-md hover:bg-gray-50' onClick={scrollLeft}>
-						<svg className='w-4 h-4' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-							<path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M15 19l-7-7 7-7' />
-						</svg>
-					</button>
-					<div className='relative flex overflow-hidden '>
-						<div ref={scrollRef} className='flex w-full overflow-hidden scroll-smooth' tabIndex={0} style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-							<style jsx>{`
+		<div className='flex items-center h-10'>
+			<div className='flex mx-3 z-10 w-31.75 shrink-0 justify-center'>Featured items:</div>
+			<div className='flex flex-row items-center w-full'>
+				<button title='Scroll to Left' className='  z-110 bg-white border border-gray-300 rounded-full p-1 shadow-md hover:bg-gray-50' onClick={scrollLeft}>
+					<svg className='w-4 h-4' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+						<path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M15 19l-7-7 7-7' />
+					</svg>
+				</button>
+				<div className='relative flex overflow-hidden '>
+					<div ref={scrollRef} className='flex w-full overflow-hidden scroll-smooth' tabIndex={0} style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+						<style jsx>{`
 							div::-webkit-scrollbar {
 								display: none;
 							}
 						`}</style>
-							{Items.map((item) => (
-								<div key={item.id} className='cursor-pointer ml-2 '>
-									<SearchChipButton item={{ href: `#${item.id}`, label: item.label }} />
-								</div>
-							))}
-						</div>
+						{Items.map((item) => (
+							<div key={item.id} className='cursor-pointer ml-2 '>
+								<SearchChipButton item={{ href: `#${item.id}`, label: item.label }} />
+							</div>
+						))}
 					</div>
-					<button title='Scroll to Right' className='absolute z-10 bg-white border border-gray-300 rounded-full p-1 shadow-md hover:bg-gray-50' onClick={scrollRight}>
-						<svg className='w-4 h-4' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-							<path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M9 5l7 7-7 7' />
-						</svg>
-					</button>
 				</div>
+				<button title='Scroll to Right' className='absolute z-10 bg-white border border-gray-300 rounded-full p-1 shadow-md hover:bg-gray-50' onClick={scrollRight}>
+					<svg className='w-4 h-4' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+						<path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M9 5l7 7-7 7' />
+					</svg>
+				</button>
 			</div>
 		</div>
 	);
