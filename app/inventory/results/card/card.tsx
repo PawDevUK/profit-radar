@@ -12,7 +12,7 @@ function Card({ ...props }) {
 					<span className='border border-brand-subtle text-(--main-blue)  text-xs font-medium px-1.5 py-0.5 rounded-sm'>{item.lotNumber}</span>
 				</div>
 				<a href='#' className=''>
-					<Image className='rounded-base rounded-bl-lg' src={item.images?.[0] || '/placeholder-image.png'} alt='lot image' width={300} height={300} />
+					<Image className='rounded-base rounded-bl-lg md:rounded-bl-none' src={item.images?.[0] || '/placeholder-image.png'} alt='lot image' width={300} height={300} />
 				</a>
 			</div>
 
