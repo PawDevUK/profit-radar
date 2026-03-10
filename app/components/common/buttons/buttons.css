@@ -46,6 +46,13 @@
 
 }
 
+.chip-button {
+    font-size: 0.875rem;
+    font-weight: 500;
+    height: 1.5rem;
+    white-space: nowrap;
+}
+
 
 .nav-button {
     display: flex;
