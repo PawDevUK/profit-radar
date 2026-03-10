@@ -20,7 +20,7 @@ export default function SaleListResultsPage() {
 	return (
 		<div className='w-full min-h-screen bg-gray-50 py-6 px-4 sm:px-6 lg:px-8'>
 			<div className='max-w-(--max-app-width) mx-auto'>
-				<div className='mb-2 flex flex-row items-baseline justify-between'>
+				{/* <div className='mb-2 flex flex-row items-baseline justify-between'>
 					<h1 className='text-xl font-bold text-gray-900 mb-1'>Sale List Results</h1>
 					{saleName ? (
 						<p className='text-gray-700 text-sm mb-1'>{saleName}</p>
@@ -32,7 +32,7 @@ export default function SaleListResultsPage() {
 						</p>
 					)}
 					<p className='text-gray-600'> {cars.length} lots for sale</p>
-				</div>
+				</div> */}
 
 				<div className='flex flex-wrap justify-center'>
 					{cars.map((car, index) => (
