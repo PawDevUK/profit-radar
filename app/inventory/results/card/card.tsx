@@ -19,7 +19,7 @@ function Card({ ...props }) {
 			<div className='p-2 flex flex-col justify-between flex-1 md:w-full w-1/2'>
 				<div className='flex flex-col'>
 					<a className='flex flex-row justify-center' href='#'>
-						<h5 className='text-lg text-heading font-semibold tracking-tight'>{item.title}</h5>
+						<h5 className='text-[16px] text-heading font-semibold tracking-tight'>{item.title}</h5>
 					</a>
 				</div>
 				<div className='flex flex-col items-center mt-1 '>
@@ -39,11 +39,11 @@ function Card({ ...props }) {
 					<div className='flex flex-row space-x-4 mt-1'>
 						<div className='flex flex-col'>
 							<span className='text-[12px]'>Current Bid</span>
-							<span className='text-xl font-extrabold text-heading'>${item.currentBid}</span>
+							<span className='text-lg font-extrabold text-heading'>${item.currentBid}</span>
 						</div>
 						<div className='flex flex-col'>
 							<span className='text-[12px]'>Buy it now</span>
-							<span className='text-xl font-extrabold text-heading'>${item.buyItNow}</span>
+							<span className='text-lg font-extrabold text-heading'>${item.buyItNow}</span>
 						</div>
 					</div>
 				</div>
