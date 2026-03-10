@@ -49,10 +49,13 @@
 .chip-button {
     font-size: 0.875rem;
     font-weight: 500;
-
     white-space: nowrap;
 }
 
+.chip-button-selected {
+    background-color: var(--mongo-green-selected);
+    color: var(--mongo-green);
+}
 
 .nav-button {
     display: flex;

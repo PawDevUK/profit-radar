@@ -1,7 +1,7 @@
 'use client';
 
 import { SearchChipButton } from '@/app/components/common/buttons/logButton';
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 
 interface Item {
 	label: string;
@@ -35,6 +35,7 @@ const Items: Item[] = [
 
 export default function SearchFilters() {
 	const scrollRef = useRef<HTMLDivElement>(null);
+	const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
 
 	const scrollLeft = () => {
 		if (scrollRef.current) {
@@ -46,6 +47,12 @@ export default function SearchFilters() {
 		if (scrollRef.current) {
 			scrollRef.current.scrollBy({ left: 200, behavior: 'smooth' });
 		}
+	};
+
+	useEffect(() => {}, [selectedOptions]);
+
+	const toggleSelection = (itemId: string) => {
+		setSelectedOptions((prevSelected) => (prevSelected.includes(itemId) ? prevSelected.filter((id) => id !== itemId) : [...prevSelected, itemId]));
 	};
 
 	return (
@@ -65,9 +72,12 @@ export default function SearchFilters() {
 							}
 						`}</style>
 						{Items.map((item) => (
-							<div key={item.id} className='cursor-pointer ml-2 '>
-								<SearchChipButton item={{ href: `#${item.id}`, label: item.label }} />
-							</div>
+							<SearchChipButton
+								key={item.id}
+								onclick={() => toggleSelection(item.id)}
+								item={{ href: ``, label: item.label }}
+								selected={selectedOptions.includes(item.id)}
+							/>
 						))}
 					</div>
 				</div>
