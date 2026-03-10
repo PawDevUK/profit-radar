@@ -1,5 +1,5 @@
 'use client';
-import { lazy, memo, Suspense, useState, useTransition } from 'react';
+import { lazy, memo, Suspense, useEffect, useState, useTransition } from 'react';
 import { CircleX, SlidersHorizontal } from 'lucide-react';
 import SaleListResultsPage from '../saleListResults/[id]/page';
 
@@ -7,6 +7,8 @@ import SearchChipsFilters from './searchChipsFilters/searchChipsFilters';
 
 const SideSearch = lazy(() => import('./SearchComponent/Search'));
 const MemoizedSaleListResultsPage = memo(SaleListResultsPage);
+
+import { chipFiltersStore } from '@/lib/chipFiltersStore';
 
 const ToggleButton = ({ toggleFilters }: { toggleFilters: () => void }) => {
 	const IconSize = 22;
@@ -26,6 +28,7 @@ const CloseButton = ({ toggleFilters }: { toggleFilters: () => void }) => {
 };
 
 export default function Page() {
+	const { selectedFilters } = chipFiltersStore();
 	const [open, setOpen] = useState(false);
 	const [resetAll, setResetAll] = useState(false);
 	const [, startTransition] = useTransition();
@@ -47,6 +50,10 @@ export default function Page() {
 			setResetAll(false);
 		}, 100);
 	};
+
+	useEffect(() => {
+		console.log(selectedFilters);
+	}, [selectedFilters]);
 
 	return (
 		<div className='relative min-h-screen flex flex-col'>

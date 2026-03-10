@@ -1,7 +1,9 @@
 'use client';
 
+import { chipFiltersStore } from '@/lib/chipFiltersStore';
+
 import { SearchChipButton } from '@/app/components/common/buttons/logButton';
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 
 interface Item {
 	label: string;
@@ -34,8 +36,8 @@ const Items: Item[] = [
 ];
 
 export default function SearchFilters() {
+	const { selectedFilters, toggleFilter } = chipFiltersStore();
 	const scrollRef = useRef<HTMLDivElement>(null);
-	const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
 
 	const scrollLeft = () => {
 		if (scrollRef.current) {
@@ -49,11 +51,7 @@ export default function SearchFilters() {
 		}
 	};
 
-	useEffect(() => {}, [selectedOptions]);
-
-	const toggleSelection = (itemId: string) => {
-		setSelectedOptions((prevSelected) => (prevSelected.includes(itemId) ? prevSelected.filter((id) => id !== itemId) : [...prevSelected, itemId]));
-	};
+	useEffect(() => {}, [selectedFilters]);
 
 	return (
 		<div className='my-1 flex items-center h-10'>
@@ -74,9 +72,9 @@ export default function SearchFilters() {
 						{Items.map((item) => (
 							<SearchChipButton
 								key={item.id}
-								onclick={() => toggleSelection(item.id)}
+								onclick={() => toggleFilter(item.id)}
 								item={{ href: ``, label: item.label }}
-								selected={selectedOptions.includes(item.id)}
+								selected={selectedFilters.includes(item.id)}
 							/>
 						))}
 					</div>
