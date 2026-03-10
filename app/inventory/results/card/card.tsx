@@ -7,7 +7,7 @@ function Card({ ...props }) {
 	return (
 		<div className='md:max-h-112.5 w-full max-w-lg md:w-[30%] lg:w-[22%] xl:w-[18%] m-2.5 bg-neutral-primary-soft border border-gray-300 rounded-base shadow-md rounded-lg flex flex-row md:flex-col'>
 			<div className='flex flex-col justify-between md:w-full w-1/3'>
-				<div className=' flex items-center justify-center space-x-3 m-1'>
+				<div className=' flex items-center justify-center space-x-3 m-2'>
 					<span>Lot:</span>
 					<span className='border border-brand-subtle text-(--main-blue)  text-xs font-medium px-1.5 py-0.5 rounded-sm'>{item.lotNumber}</span>
 				</div>
