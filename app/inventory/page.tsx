@@ -51,11 +51,11 @@ export default function Page() {
 	return (
 		<div className='relative min-h-screen flex flex-col'>
 			<div className='h-15 w-full bg-white'>
-				<div className='px-4 py-3 flex flex-row justify-center items-center'>
-					<div className='w-[70%] mr-4 pyhidden md:block overflow-hidden'>
+				<div className='px-4 py-3 flex flex-row justify-end md:justify-center items-center'>
+					<div className='w-[70%] mr-4 hidden md:block overflow-hidden'>
 						<SearchChipsFilters />
 					</div>
-					<div className='w-[159px] flex justify-end'>
+					<div className='w-[159px] flex '>
 						<ToggleButton toggleFilters={toggleFilters} />
 					</div>
 				</div>
@@ -80,7 +80,7 @@ export default function Page() {
 
 				{open && <div className='fixed  inset-0 z-10 bg-black/50' onClick={() => startTransition(() => setOpen(false))} />}
 			</div>
-			<div className='w-full  md:ml-0'>
+			<div className='w-full  md:ml-0 '>
 				<MemoizedSaleListResultsPage />
 			</div>
 		</div>

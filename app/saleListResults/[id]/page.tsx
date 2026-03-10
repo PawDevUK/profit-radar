@@ -18,22 +18,8 @@ export default function SaleListResultsPage() {
 	const fetchingRef = useRef(false); // Prevent duplicate fetching
 
 	return (
-		<div className='w-full min-h-screen bg-gray-50 py-6 px-4 sm:px-6 lg:px-8'>
+		<div className='w-full min-h-screen bg-gray-50 py-3 px-4 sm:px-6 lg:px-8'>
 			<div className='max-w-(--max-app-width) mx-auto'>
-				{/* <div className='mb-2 flex flex-row items-baseline justify-between'>
-					<h1 className='text-xl font-bold text-gray-900 mb-1'>Sale List Results</h1>
-					{saleName ? (
-						<p className='text-gray-700 text-sm mb-1'>{saleName}</p>
-					) : (
-						<p className='text-gray-700 text-sm mb-1'>
-							{saleMeta?.location || 'Unknown location'}
-							{saleMeta?.saleDate ? ` — ${saleMeta.saleDate}` : ''}
-							{saleMeta?.saleTime ? ` ${saleMeta.saleTime}` : ''}
-						</p>
-					)}
-					<p className='text-gray-600'> {cars.length} lots for sale</p>
-				</div> */}
-
 				<div className='flex flex-wrap justify-center'>
 					{cars.map((car, index) => (
 						<Card key={index} item={car}></Card>
