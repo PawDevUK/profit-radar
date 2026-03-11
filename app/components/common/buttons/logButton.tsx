@@ -22,14 +22,13 @@ export function SearchChipButton({
 }) {
 	return (
 		<div className='w-auto mx-2'>
-			<Link
+			<button
 				onClick={() => onclick?.(item)}
 				key={item.href}
-				href={item.href}
 				className={`log-button chip-button ${selected ? 'chip-button-selected' : ''}`}
 				style={item.fontSize ? { fontSize: `${item.fontSize}px` } : undefined}>
-				<button>{item.label}</button>
-			</Link>
+				{item.label}
+			</button>
 		</div>
 	);
 }
