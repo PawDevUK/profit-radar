@@ -1,6 +1,6 @@
 'use client';
 
-import { chipFiltersStore } from '@/lib/chipFiltersStore';
+import { chipFilters_State } from '@/lib/state/chipFiltersStore';
 
 import { SearchChipButton } from '@/app/components/common/buttons/logButton';
 import { useRef, useEffect } from 'react';
@@ -36,7 +36,7 @@ const Items: Item[] = [
 ];
 
 export default function SearchFilters() {
-	const { selectedFilters, toggleFilter } = chipFiltersStore();
+	const { selectedFilters, toggleFilter } = chipFilters_State();
 	const scrollRef = useRef<HTMLDivElement>(null);
 
 	const scrollLeft = () => {
