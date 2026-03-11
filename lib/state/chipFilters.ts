@@ -2,15 +2,10 @@ import { create } from 'zustand';
 
 interface ChipFiltersState {
 	selectedFilters: string[];
-}
-
-interface ChipFiltersActions {
 	toggleFilter: (filter: string) => void;
 }
 
-type ChipFiltersStore = ChipFiltersState & ChipFiltersActions;
-
-export const chipFiltersStore = create<ChipFiltersStore>((set) => ({
+export const chipFilters_State = create<ChipFiltersState>((set) => ({
 	selectedFilters: [],
 	toggleFilter: (filter: string) =>
 		set((state) => ({
