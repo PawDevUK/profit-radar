@@ -1,7 +1,8 @@
 'use client';
 import CollapseCard from '@/app/inventory/SearchComponent/collapseCard/collapseCard';
 import SearchBar from '@/app/components/search/search';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { selectOne_State } from '@/lib/state/searchFilters';
 
 // Reusable CheckboxList component
 type CheckboxListProps = {
@@ -12,20 +13,32 @@ type CheckboxListProps = {
 	scrollable?: boolean;
 	icon?: React.ReactNode;
 	searchable?: boolean;
+	multiSelect?: boolean;
 };
 
-export default function CheckBoxList({ options, selected, onChange, title, scrollable, icon, searchable }: CheckboxListProps) {
+export default function CheckBoxList({ options, selected, onChange, title, scrollable, icon, searchable, multiSelect }: CheckboxListProps) {
 	const [searchOptions, setSearchOptions] = useState<string[]>(options);
+	const { setSelectOneFilter } = selectOne_State();
 
 	const handleChange = (option: string) => {
-		if (selected.includes(option)) {
-			onChange(selected.filter((o) => o !== option));
+		if (multiSelect) {
+			if (selected.includes(option)) {
+				onChange(selected.filter((o) => o !== option));
+			} else {
+				onChange([...selected, option]);
+			}
 		} else {
-			onChange([...selected, option]);
+			if (selected.includes(option)) {
+				onChange([]);
+				setSelectOneFilter('', title || '');
+			} else {
+				onChange([option]);
+				setSelectOneFilter(option, title || '');
+			}
 		}
 	};
+
 	const handleSearchChange = (query: string) => {
-		// Implement search logic here, e.g., filter options based on the query
 		const filteredOptions = options.filter((option) => option.toLowerCase().includes(query.toLowerCase()));
 		setSearchOptions(filteredOptions);
 		if (!query.trim()) {
