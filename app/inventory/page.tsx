@@ -67,7 +67,7 @@ export default function Page() {
 					</div>
 				</div>
 				{open ? (
-					<aside className='flex flex-col relative z-20 left-0 -top-30 w-[calc(100vw-20px)] lg:w-150 mx-auto h-screen bg-white rounded-lg shadow-lg md:shadow-none overflow-y-auto'>
+					<aside className='flex flex-col relative z-20 left-0 -top-50 w-[calc(100vw-20px)] lg:w-150 mx-auto h-screen bg-white rounded-lg shadow-lg md:shadow-none overflow-y-auto'>
 						<div className='px-4 py-3 flex items-center justify-between'>
 							<h2 className='text-[18px] font-bold text-(--header-text)'>Filter and sort</h2>
 							<div className='flex items-center gap-2'>
