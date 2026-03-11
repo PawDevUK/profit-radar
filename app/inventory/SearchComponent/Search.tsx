@@ -18,7 +18,9 @@ import {
 	bodyType,
 } from '@/app/inventory/options';
 
-import { BodyTypeIcon, Engine, Gears, VehicleType, CarCondition, DriveType, V8Icon, sizeIcons, strokeIcons, colorIcons } from './searchIcons';
+import { selectOne_State } from '@/lib/state/searchFilters';
+
+import { Engine, Gears, VehicleType, CarCondition, DriveType, V8Icon, sizeIcons, strokeIcons, colorIcons } from './searchIcons';
 
 interface SideSearchProps {
 	filteredSaleResults: (cars: string[]) => void;
@@ -58,6 +60,12 @@ export default function SideSearch({ filteredSaleResults, resetAll }: SideSearch
 		setSelectedBodyType([]);
 	};
 
+	const { selectedOneFilter } = selectOne_State();
+
+	useEffect(() => {
+		console.log(selectedOneFilter);
+	}, [selectedOneFilter]);
+
 	useEffect(() => {
 		filteredSaleResults(selectedMakes);
 	}, [selectedMakes]);
@@ -88,6 +96,7 @@ export default function SideSearch({ filteredSaleResults, resetAll }: SideSearch
 				icon={<CarFront strokeWidth={strokeIcons} className='checkboxIcon' />}
 			/>
 			<CheckBoxList
+				multiSelect
 				title='Model'
 				options={makes}
 				selected={selectedModels}
@@ -97,6 +106,7 @@ export default function SideSearch({ filteredSaleResults, resetAll }: SideSearch
 				icon={<KeySquare strokeWidth={strokeIcons} className='checkboxIcon' />}
 			/>
 			<CheckBoxList
+				multiSelect
 				title='Vehicle title type'
 				options={titleType}
 				selected={selectedTitleType}
@@ -111,6 +121,7 @@ export default function SideSearch({ filteredSaleResults, resetAll }: SideSearch
 				icon={<CarCondition size={sizeIcons} color={colorIcons} />}
 			/>
 			<CheckBoxList
+				multiSelect
 				title='Vehicle type'
 				options={vehicleType}
 				selected={selectedVehicleType}
@@ -119,9 +130,10 @@ export default function SideSearch({ filteredSaleResults, resetAll }: SideSearch
 				searchable
 				icon={<VehicleType size={sizeIcons} color={colorIcons} />}
 			/>
-			<CheckBoxList title='Engine type' options={engineType} selected={selectedEngineType} onChange={setSelectedEngineType} icon={<Engine />} />
-			<CheckBoxList title='Transmission' options={transmissionType} selected={selectedTransmissionType} onChange={setSelectedTransmissionType} icon={<Gears />} />
+			<CheckBoxList multiSelect title='Engine type' options={engineType} selected={selectedEngineType} onChange={setSelectedEngineType} icon={<Engine />} />
+			<CheckBoxList multiSelect title='Transmission' options={transmissionType} selected={selectedTransmissionType} onChange={setSelectedTransmissionType} icon={<Gears />} />
 			<CheckBoxList
+				multiSelect
 				title='Fuel type'
 				options={fuelType}
 				selected={selectedFuelType}
@@ -129,6 +141,7 @@ export default function SideSearch({ filteredSaleResults, resetAll }: SideSearch
 				icon={<Fuel strokeWidth={strokeIcons} className='checkboxIcon' />}
 			/>
 			<CheckBoxList
+				multiSelect
 				title='Drive train'
 				options={driveTrain}
 				selected={selectedDriveTrain}
@@ -136,6 +149,7 @@ export default function SideSearch({ filteredSaleResults, resetAll }: SideSearch
 				icon={<DriveType size={sizeIcons} color={colorIcons} />}
 			/>
 			<CheckBoxList
+				multiSelect
 				title='Cylinder'
 				options={cylinderType}
 				selected={selectedCylinderType}
@@ -143,6 +157,7 @@ export default function SideSearch({ filteredSaleResults, resetAll }: SideSearch
 				icon={<V8Icon size={sizeIcons} color={colorIcons} />}
 			/>
 			<CheckBoxList
+				multiSelect
 				title='Auction name'
 				options={auctionName}
 				selected={selectedAuctionName}
@@ -150,6 +165,7 @@ export default function SideSearch({ filteredSaleResults, resetAll }: SideSearch
 				icon={<Gavel strokeWidth={strokeIcons} className='checkboxIcon' />}
 			/>
 			<CheckBoxList
+				multiSelect
 				title='Location'
 				options={location}
 				selected={selectedLocation}
@@ -158,6 +174,7 @@ export default function SideSearch({ filteredSaleResults, resetAll }: SideSearch
 				icon={<MapPin strokeWidth={strokeIcons} className='checkboxIcon' />}
 			/>
 			<CheckBoxList
+				multiSelect
 				title='Body style'
 				options={bodyType}
 				selected={selectedBodyType}
