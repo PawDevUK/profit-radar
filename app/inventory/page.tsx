@@ -51,10 +51,6 @@ export default function Page() {
 		}, 100);
 	};
 
-	useEffect(() => {
-		console.log(selectedFilters);
-	}, [selectedFilters]);
-
 	return (
 		<div className='relative min-h-screen flex flex-col'>
 			<div className='h-15 w-full bg-white'>
