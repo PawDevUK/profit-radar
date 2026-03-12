@@ -7,7 +7,7 @@ import { selectOne_State } from '@/lib/state/searchFilters';
 // Reusable CheckboxList component
 type CheckboxListProps = {
 	options: string[];
-	selected: string[];
+	selected?: string[] | string;
 	onChange: (cars: string[]) => void;
 	title?: string;
 	scrollable?: boolean;
@@ -16,24 +16,24 @@ type CheckboxListProps = {
 	multiSelect?: boolean;
 };
 
-export default function CheckBoxList({ options, selected, onChange, title, scrollable, icon, searchable, multiSelect }: CheckboxListProps) {
+export default function CheckBoxList({ options, selected = [], onChange, title, scrollable, icon, searchable, multiSelect }: CheckboxListProps) {
 	const [searchOptions, setSearchOptions] = useState<string[]>(options);
-	const { setSelectOneFilter } = selectOne_State();
+	const { SETselectOneFilter } = selectOne_State();
 
 	const handleChange = (option: string) => {
 		if (multiSelect) {
 			if (selected.includes(option)) {
-				onChange(selected.filter((o) => o !== option));
+				onChange(Array.isArray(selected) ? selected.filter((o) => o !== option) : []);
 			} else {
 				onChange([...selected, option]);
 			}
 		} else {
 			if (selected.includes(option)) {
 				onChange([]);
-				setSelectOneFilter('', title || '');
+				SETselectOneFilter('', title || '');
 			} else {
 				onChange([option]);
-				setSelectOneFilter(option, title || '');
+				SETselectOneFilter(option, title || '');
 			}
 		}
 	};
@@ -54,7 +54,7 @@ export default function CheckBoxList({ options, selected, onChange, title, scrol
 		<CollapseCard title={title || ''} resetOptions={resetOptions} icon={icon}>
 			{searchable && <SearchBar handleOnChange={handleSearchChange} />}
 			<div className={` ${scrollable ? 'max-h-64 overflow-y-auto' : ''}`}>
-				{searchOptions.map((option) => (
+				{options.map((option) => (
 					<div key={option} className='flex flex-row mx-2 my-1'>
 						<div className='inline-flex items-center'>
 							<label className='flex items-center cursor-pointer relative'>
