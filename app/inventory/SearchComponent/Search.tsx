@@ -78,14 +78,14 @@ export default function SideSearch({ filteredSaleResults, resetAll }: SideSearch
 			<CheckBoxList
 				title='Sort'
 				options={sort}
-				selected={selectedOneFilter.Sort?.selected}
+				selected={selectedOneFilter.sort}
 				onChange={setSelectedSort}
 				icon={<ArrowDownUp strokeWidth={strokeIcons} className='checkboxIcon' />}
 			/>
 			<CheckBoxList
 				title='Make'
 				options={makes}
-				selected={selectedOneFilter.Make?.selected}
+				selected={selectedOneFilter.make}
 				onChange={setSelectedMakes}
 				scrollable
 				searchable
