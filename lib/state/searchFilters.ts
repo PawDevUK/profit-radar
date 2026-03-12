@@ -11,10 +11,8 @@ type MultiSelectState = {
 };
 
 type SelectOneState = {
-	selectedOneFilter: {
-		[label: string]: string;
-	};
-	setSelectOneFilter: (filters: string, label: string) => void;
+	selectedOneFilter: { Sort: { label: string; selected: string }; Make: { label: string; selected: string } };
+	SETselectOneFilter: (filters: string, label: string) => void;
 };
 
 export const sortState = create<SortState>((set) => ({
@@ -28,15 +26,15 @@ export const multiSelect_State = create<MultiSelectState>((set) => ({
 }));
 
 export const selectOne_State = create<SelectOneState>((set) => ({
-	selectedOneFilter: {
-		label: '',
-		selected: '',
-	},
-	setSelectOneFilter: (filters: string, label: string) =>
-		set({
+	selectedOneFilter: { Sort: { label: '', selected: '' }, Make: { label: '', selected: '' } },
+	SETselectOneFilter: (filters: string, label: string) =>
+		set((state) => ({
 			selectedOneFilter: {
-				label,
-				selected: filters,
+				...state.selectedOneFilter,
+				[label]: {
+					label: label,
+					selected: filters,
+				},
 			},
-		}),
+		})),
 }));
