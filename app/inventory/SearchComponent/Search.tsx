@@ -63,10 +63,6 @@ export default function SideSearch({ filteredSaleResults, resetAll }: SideSearch
 	const { selectedOneFilter } = selectOne_State();
 
 	useEffect(() => {
-		console.log(selectedOneFilter);
-	}, [selectedOneFilter]);
-
-	useEffect(() => {
 		filteredSaleResults(selectedMakes);
 	}, [selectedMakes]);
 
@@ -82,20 +78,20 @@ export default function SideSearch({ filteredSaleResults, resetAll }: SideSearch
 			<CheckBoxList
 				title='Sort'
 				options={sort}
-				selected={selectedSort}
+				selected={selectedOneFilter.Sort?.selected}
 				onChange={setSelectedSort}
 				icon={<ArrowDownUp strokeWidth={strokeIcons} className='checkboxIcon' />}
 			/>
 			<CheckBoxList
 				title='Make'
 				options={makes}
-				selected={selectedMakes}
+				selected={selectedOneFilter.Make?.selected}
 				onChange={setSelectedMakes}
 				scrollable
 				searchable
 				icon={<CarFront strokeWidth={strokeIcons} className='checkboxIcon' />}
 			/>
-			<CheckBoxList
+			{/* <CheckBoxList
 				multiSelect
 				title='Model'
 				options={makes}
@@ -180,7 +176,7 @@ export default function SideSearch({ filteredSaleResults, resetAll }: SideSearch
 				selected={selectedBodyType}
 				onChange={setSelectedBodyType}
 				icon={<Car strokeWidth={strokeIcons} className='checkboxIcon' />}
-			/>
+			/> */}
 		</div>
 	);
 }
