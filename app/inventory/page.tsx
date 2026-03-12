@@ -8,7 +8,7 @@ import SearchChipsFilters from './searchChipsFilters/searchChipsFilters';
 const SideSearch = lazy(() => import('./SearchComponent/Search'));
 const MemoizedSaleListResultsPage = memo(SaleListResultsPage);
 
-import { chipFiltersStore } from '@/lib/chipFiltersStore';
+import { chipFilters_State } from '@/lib/state/chipFilters';
 
 const ToggleButton = ({ toggleFilters }: { toggleFilters: () => void }) => {
 	const IconSize = 22;
@@ -28,7 +28,7 @@ const CloseButton = ({ toggleFilters }: { toggleFilters: () => void }) => {
 };
 
 export default function Page() {
-	const { selectedFilters } = chipFiltersStore();
+	const { selectedFilters } = chipFilters_State();
 	const [open, setOpen] = useState(false);
 	const [resetAll, setResetAll] = useState(false);
 	const [, startTransition] = useTransition();
