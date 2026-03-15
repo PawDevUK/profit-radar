@@ -1,5 +1,4 @@
 import type { SaleList } from '@/lib/types/saleList';
-import type { LotDetails } from '@/lib/types/lot-details';
 
 export const dummySaleListings: SaleList[] = [
 	{
