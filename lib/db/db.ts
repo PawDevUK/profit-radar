@@ -4,7 +4,7 @@ import 'dotenv/config';
 const MONGODB_URI = process.env.MONGODB_URI;
 import { CalendarAuction, CalendarMonthDoc } from '../types/calendar';
 import { SaleList } from '../types/saleList';
-import { LotDetails } from '../types/lot-details';
+import { LotDetails } from '../types/lotDetails';
 
 let cachedConnection: typeof mongoose | null = null;
 

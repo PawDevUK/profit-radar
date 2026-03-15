@@ -1,4 +1,4 @@
-import { LotDetails } from './lot-details';
+import { LotDetails } from './lotDetails';
 
 export type SaleList = {
 	title: string;
