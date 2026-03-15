@@ -1,4 +1,4 @@
-import { OdometerUnit } from './lotDetails';
+import { OdometerUnit } from './lotDetails-type';
 
 export interface Select_Filters {
 	sort: string;
