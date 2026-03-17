@@ -40,6 +40,15 @@ export async function POST(request: NextRequest) {
 		if (fs.existsSync(resultFile)) {
 			const scrapedData = JSON.parse(fs.readFileSync(resultFile, 'utf-8'));
 
+			const toNumber = (value: string | number | undefined): number => {
+				if (typeof value === 'number') return Number.isFinite(value) ? value : 0;
+				if (typeof value === 'string') {
+					const parsed = parseInt(value.replace(/[^\d.-]/g, ''), 10);
+					return Number.isFinite(parsed) ? parsed : 0;
+				}
+				return 0;
+			};
+
 			// Define the type for scraped car objects
 			type ScrapedCar = {
 				title?: string;
@@ -64,43 +73,50 @@ export async function POST(request: NextRequest) {
 			};
 
 			// Map scrapedData into LotDetails[] (best-effort mapping)
-			const LotDetails: LotDetails[] = Array.isArray(scrapedData)
+			const lotDetails: LotDetails[] = Array.isArray(scrapedData)
 				? scrapedData.map((car: ScrapedCar) => ({
 						title: car.title || `${car.year ?? ''} ${car.make ?? ''} ${car.model ?? ''}`.trim(),
-						year: car.year,
-						make: car.make,
-						model: car.model,
-						vin: undefined,
-						images: [],
-						lotNumber: typeof car.lotNumber === 'string' ? parseInt(car.lotNumber, 10) : car.lotNumber || 0,
-						odometer: typeof car.odometer === 'string' ? parseInt(car.odometer, 10) : car.odometer || 0,
-						odometerStatus: car.odometerStatus || '',
-						estimateRetail: car.estimateRetail || '',
-						titleCode: car.conditionTitle || '',
-						primaryDamage: car.damage || '',
-						hasKey: typeof car.hasKey === 'boolean' ? car.hasKey : car.keys === 'Yes',
-						location: car.location || location || '',
-						saleName: car.yardLocation || '',
+						year: toNumber(car.year),
+						make: car.make || '',
+						model: car.model || '',
+						trim: '',
+						bodyStyle: '',
+						runAndDrive: false,
+						vin: '',
+						lotNumber: toNumber(car.lotNumber),
 						laneItem: car.laneItem || '',
+						saleName: car.yardLocation || '',
+						location: car.location || location || '',
+						engineVerified: false,
+						engineVerifiedNote: '',
+						engineStatus: '',
+						transmissionEngages: false,
+						transmissionNote: '',
+						titleCode: car.conditionTitle || '',
+						vehicleTitleType: '',
+						odometer: toNumber(car.odometer),
+						odometerUnit: 'mi',
+						odometerStatus: car.odometerStatus || '',
+						primaryDamage: car.damage || '',
+						cylinders: '',
+						color: '',
+						hasKey: typeof car.hasKey === 'boolean' ? car.hasKey : car.keys === 'Yes',
+						engineType: '',
+						transmission: '',
+						vehicleType: '',
+						driveTrain: '',
+						fuelType: '',
+						saleDate: '',
+						highlights: [],
+						notes: '',
+						lastUpdated: new Date().toISOString(),
+						currentBid: toNumber(car.currentBid) || toNumber(car.price),
+						buyItNow: typeof car.buyItNow === 'undefined' ? null : toNumber(car.buyItNow),
+						auctionName: auctionId,
 						auctionCountdown: car.auctionCountdown || '',
-						currentBid: typeof car.currentBid === 'string' ? parseInt(car.currentBid, 10) : car.currentBid || car.price ? parseInt(String(car.price), 10) : 0,
-						buyItNow: car.buyItNow ? parseInt(String(car.buyItNow), 10) : null,
-						details: null,
+						images: [],
 					}))
 				: [];
-
-			if (LotDetails.length > 0) {
-				try {
-					const modified = await attachLotDetailsToAuctionByLink(auctionUrl, LotDetails);
-					console.log(`Attached ${LotDetails.length} sale list items to auction in DB (modified=${modified}).`);
-				} catch (dbErr: unknown) {
-					if (dbErr && typeof dbErr === 'object' && 'message' in dbErr) {
-						console.warn('Failed to attach sale list to DB:', (dbErr as { message?: string }).message);
-					} else {
-						console.warn('Failed to attach sale list to DB:', dbErr);
-					}
-				}
-			}
 
 			// Save to consolidated auctions.json (debug/backup)
 			if (scrapedData && scrapedData.length > 0) {
@@ -124,8 +140,8 @@ export async function POST(request: NextRequest) {
 					location: location || 'Unknown',
 					viewSalesLink: auctionUrl,
 					scrapedAt: new Date().toISOString(),
-					numberOnSale: scrapedData.length,
-					cars: scrapedData,
+					numberOnSale: lotDetails.length,
+					cars: lotDetails,
 				};
 
 				fs.writeFileSync(auctionsFile, JSON.stringify(allAuctions, null, 2), 'utf-8');
