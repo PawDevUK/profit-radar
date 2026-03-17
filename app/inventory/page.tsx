@@ -74,8 +74,7 @@ export default function Page() {
 							</div>
 						</div>
 						<Suspense fallback={<div className='p-4 text-gray-500'>Loading filters...</div>}>
-							<SideSearch resetAll={resetAll} filteredSaleResults={getFilteredLot} />
-						</Suspense>
+							<SideSearch resetAll={resetAll} />
 					</aside>
 				) : (
 					<div></div>
