@@ -78,8 +78,6 @@ export const filter_Results_State = create<FilterResultsState>((set) => ({
 	searchFilters: initialSearchFilters,
 	SET_Filter: (filters: string, label: string) => {
 		const labelCamelCase = _.camelCase(label);
-		console.log('Title:', label, '----- >', labelCamelCase, 'Option:', filters);
-
 		if (!isSearchFilterKey(labelCamelCase)) {
 			console.warn(`Invalid search filter key: ${labelCamelCase}`);
 			return;
