@@ -1,14 +1,14 @@
 import { create } from 'zustand';
-import { Select_Filters } from '@/lib/types/searchFilters-type';
+import { SearchFilters } from '@/lib/types/searchFilters-type';
 import _ from 'lodash';
 
-type SearchFilterKey = keyof Select_Filters;
+type SearchFilterKey = keyof SearchFilters;
 
 const isSearchFilterKey = (key: string): key is SearchFilterKey => {
 	return key in initialSearchFilters;
 };
 
-const selectToggle = <T extends Select_Filters[SearchFilterKey]>(option: string, currentValue: T): T => {
+const selectToggle = <T extends SearchFilters[SearchFilterKey]>(option: string, currentValue: T): T => {
 	if (Array.isArray(currentValue)) {
 		const exists = currentValue.some((item) => String(item) === option);
 		if (exists) {
@@ -24,7 +24,7 @@ const selectToggle = <T extends Select_Filters[SearchFilterKey]>(option: string,
 	return currentValue;
 };
 
-const initialSearchFilters: Select_Filters = {
+const initialSearchFilters: SearchFilters = {
 	sort: 'Relevance',
 	title: [],
 	year: [],
@@ -70,7 +70,7 @@ const initialSearchFilters: Select_Filters = {
 };
 
 interface FilterResultsState {
-	searchFilters: Select_Filters;
+	searchFilters: SearchFilters;
 	SET_Filter: (filters: string, label: string) => void;
 }
 

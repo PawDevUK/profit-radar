@@ -1,6 +1,6 @@
 import { OdometerUnit } from './lotDetails-type';
 
-export interface Select_Filters {
+export interface SearchFilters {
 	sort: string;
 	title: string[];
 	year: number[]; // Or a range type if preferred
