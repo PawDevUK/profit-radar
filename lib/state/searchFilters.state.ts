@@ -8,7 +8,7 @@ const isSearchFilterKey = (key: string): key is SearchFilterKey => {
 	return key in initialSearchFilters;
 };
 
-const selectToggle = <T extends SearchFilters[SearchFilterKey]>(option: string, currentValue: T): T => {
+const selectToggle = <T extends SearchFilters[SearchFilterKey]>(option: string, currentValue: T, title: string): T => {
 	if (Array.isArray(currentValue)) {
 		const exists = currentValue.some((item) => String(item) === option);
 		if (exists) {
@@ -17,7 +17,9 @@ const selectToggle = <T extends SearchFilters[SearchFilterKey]>(option: string, 
 		return [...currentValue, option as unknown as (typeof currentValue)[number]] as T;
 	}
 
-	if (typeof currentValue === 'string') {
+	if (typeof currentValue === 'string' && title === 'Sort') {
+		return option as T;
+	} else if (typeof currentValue === 'string') {
 		return (currentValue === option ? '' : option) as T;
 	}
 
@@ -86,7 +88,7 @@ export const filter_Results_State = create<FilterResultsState>((set) => ({
 		set((state) => ({
 			searchFilters: {
 				...state.searchFilters,
-				[labelCamelCase]: selectToggle(filters, state.searchFilters[labelCamelCase]),
+				[labelCamelCase]: selectToggle(filters, state.searchFilters[labelCamelCase], label),
 			},
 		}));
 	},
