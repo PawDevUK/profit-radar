@@ -1,8 +1,9 @@
 'use client';
 import CollapseCard from '@/app/inventory/SearchComponent/collapseCard/collapseCard';
 import SearchBar from '@/app/components/search/search';
-import React, { useState, useCallback, memo } from 'react';
+import React, { useState, useCallback, useMemo, memo } from 'react';
 import { filter_Results_State } from '@/lib/state/searchFilters.state';
+import { selectSetFilter } from '@/lib/state/selectors/searchFilters.selectors';
 
 type CheckboxListProps = {
 	options: string[];
@@ -16,7 +17,10 @@ type CheckboxListProps = {
 
 function CheckBoxListComponent({ options, selected = [], title, scrollable, icon, searchable }: CheckboxListProps) {
 	const [searchOptions, setSearchOptions] = useState<string[]>(options);
-	const { SET_Filter } = filter_Results_State();
+	const SET_Filter = filter_Results_State(selectSetFilter);
+	const selectedSet = useMemo(() => {
+		return Array.isArray(selected) ? new Set(selected) : new Set([selected]);
+	}, [selected]);
 
 	const handleSearchChange = useCallback(
 		(query: string) => {
@@ -45,7 +49,7 @@ function CheckBoxListComponent({ options, selected = [], title, scrollable, icon
 			{searchable && <SearchBar handleOnChange={handleSearchChange} />}
 			<div className={` ${scrollable ? 'max-h-64 overflow-y-auto' : ''}`}>
 				{searchOptions.map((option) => (
-					<Memo_CheckboxItem key={option} option={option} isSelected={selected.includes(option)} onChangeHandler={handleCheckboxChange} />
+					<Memo_CheckboxItem key={option} option={option} isSelected={selectedSet.has(option)} onChangeHandler={handleCheckboxChange} />
 				))}
 			</div>
 		</CollapseCard>
