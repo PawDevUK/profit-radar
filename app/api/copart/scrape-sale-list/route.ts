@@ -3,8 +3,7 @@ import { exec } from 'child_process';
 import { promisify } from 'util';
 import fs from 'fs';
 import path from 'path';
-import { attachSaleListToAuctionByLink } from '@/lib/db/db';
-import type { SaleList } from '@/lib/types/saleList';
+import { LotDetails } from '@/lib/types/lotDetails-type';
 
 const execAsync = promisify(exec);
 
@@ -64,8 +63,8 @@ export async function POST(request: NextRequest) {
 				buyItNow?: string | number;
 			};
 
-			// Map scrapedData into SaleList[] (best-effort mapping)
-			const saleList: SaleList[] = Array.isArray(scrapedData)
+			// Map scrapedData into LotDetails[] (best-effort mapping)
+			const LotDetails: LotDetails[] = Array.isArray(scrapedData)
 				? scrapedData.map((car: ScrapedCar) => ({
 						title: car.title || `${car.year ?? ''} ${car.make ?? ''} ${car.model ?? ''}`.trim(),
 						year: car.year,
@@ -90,10 +89,10 @@ export async function POST(request: NextRequest) {
 					}))
 				: [];
 
-			if (saleList.length > 0) {
+			if (LotDetails.length > 0) {
 				try {
-					const modified = await attachSaleListToAuctionByLink(auctionUrl, saleList);
-					console.log(`Attached ${saleList.length} sale list items to auction in DB (modified=${modified}).`);
+					const modified = await attachLotDetailsToAuctionByLink(auctionUrl, LotDetails);
+					console.log(`Attached ${LotDetails.length} sale list items to auction in DB (modified=${modified}).`);
 				} catch (dbErr: unknown) {
 					if (dbErr && typeof dbErr === 'object' && 'message' in dbErr) {
 						console.warn('Failed to attach sale list to DB:', (dbErr as { message?: string }).message);
@@ -113,7 +112,7 @@ export async function POST(request: NextRequest) {
 						viewSalesLink: string;
 						scrapedAt: string;
 						numberOnSale: number;
-						cars: SaleList[];
+						cars: LotDetails[];
 					}
 				> = {};
 

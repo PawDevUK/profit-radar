@@ -120,20 +120,20 @@ export async function getCalendarMonth(month: string, year: number) {
 }
 
 // Attach sale list to a specific auction by matching its viewSalesLink
-export async function attachSaleListToAuctionByLink(viewSalesLink: string, LotDetails: LotDetails[]) {
-	await connectDB();
-	const res = await CalendarMonth.updateOne(
-		{ 'auctions.viewSalesLink': viewSalesLink },
-		{
-			$set: {
-				'auctions.$.LotDetails': LotDetails,
-				'auctions.$.numberOnSale': Array.isArray(LotDetails) ? LotDetails.length : undefined,
-			},
-		},
-		{ upsert: false },
-	);
-	return res.modifiedCount || res.upsertedCount || 0;
-}
+// export async function attachSaleListToAuctionByLink(viewSalesLink: string, LotDetails: LotDetails[]) {
+// 	await connectDB();
+// 	const res = await CalendarMonth.updateOne(
+// 		{ 'auctions.viewSalesLink': viewSalesLink },
+// 		{
+// 			$set: {
+// 				'auctions.$.LotDetails': LotDetails,
+// 				'auctions.$.numberOnSale': Array.isArray(LotDetails) ? LotDetails.length : undefined,
+// 			},
+// 		},
+// 		{ upsert: false },
+// 	);
+// 	return res.modifiedCount || res.upsertedCount || 0;
+// }
 
 // // Incremental merge: update only missing fields and rolling fields for sale list items
 // export async function incrementalAttachSaleListByLink(viewSalesLink: string, newSaleList: LotDetails[]) {
