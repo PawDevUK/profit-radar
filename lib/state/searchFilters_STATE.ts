@@ -8,15 +8,20 @@ const isSearchFilterKey = (key: string): key is SearchFilterKey => {
 	return key in initialSearchFilters;
 };
 
-const selectToggle = (option: string, array: string[] | string): string[] | string => {
-	if (Array.isArray(array)) {
-		if (array.includes(option)) {
-			return array.filter((item: string) => item !== option);
+const selectToggle = <T extends Select_Filters[SearchFilterKey]>(option: string, currentValue: T): T => {
+	if (Array.isArray(currentValue)) {
+		const exists = currentValue.some((item) => String(item) === option);
+		if (exists) {
+			return currentValue.filter((item) => String(item) !== option) as T;
 		}
-		return [...array, option];
+		return [...currentValue, option as unknown as (typeof currentValue)[number]] as T;
 	}
 
-	return array === option ? '' : option;
+	if (typeof currentValue === 'string') {
+		return (currentValue === option ? '' : option) as T;
+	}
+
+	return currentValue;
 };
 
 const initialSearchFilters: Select_Filters = {
