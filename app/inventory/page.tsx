@@ -8,7 +8,7 @@ import SearchChipsFilters from './searchChipsFilters/searchChipsFilters';
 const SideSearch = lazy(() => import('./SearchComponent/Search'));
 const MemoizedSaleListResultsPage = memo(SaleListResultsPage);
 
-import { chipFilters_State } from '@/lib/state/chipFilters_STATE';
+import { chipFilters_State } from '@/lib/state/chipFilters.state';
 
 const ToggleButton = ({ toggleFilters }: { toggleFilters: () => void }) => {
 	const IconSize = 22;

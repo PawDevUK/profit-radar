@@ -3,7 +3,7 @@ import Card from '@/app/inventory/results/card/card';
 import { useState } from 'react';
 import saleList from '@/app/results/saleList.json';
 import { LotDetails } from '@/lib/types/lotDetails-type';
-import { filter_Results_State } from '@/lib/state/searchFilters_STATE';
+import { filter_Results_State } from '@/lib/state/searchFilters.state';
 
 export default function SaleListResultsPage() {
 	const { searchFilters } = filter_Results_State();

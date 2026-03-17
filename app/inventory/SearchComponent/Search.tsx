@@ -18,7 +18,7 @@ import {
 	bodyType,
 } from '@/app/inventory/options';
 
-import { filter_Results_State } from '@/lib/state/searchFilters_STATE';
+import { filter_Results_State } from '@/lib/state/searchFilters.state';
 
 import { Engine, Gears, VehicleType, CarCondition, DriveType, V8Icon, sizeIcons, strokeIcons, colorIcons } from './searchIcons';
 

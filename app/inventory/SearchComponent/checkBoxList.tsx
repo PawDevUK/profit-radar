@@ -2,7 +2,7 @@
 import CollapseCard from '@/app/inventory/SearchComponent/collapseCard/collapseCard';
 import SearchBar from '@/app/components/search/search';
 import React, { useState, useCallback, memo } from 'react';
-import { filter_Results_State } from '@/lib/state/searchFilters_STATE';
+import { filter_Results_State } from '@/lib/state/searchFilters.state';
 
 type CheckboxListProps = {
 	options: string[];
