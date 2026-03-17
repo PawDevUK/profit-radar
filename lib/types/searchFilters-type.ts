@@ -7,6 +7,7 @@ export interface Select_Filters {
 	make: string;
 	model: string[];
 	trim: string[];
+	bodyStyle: string[];
 	runAndDrive: boolean[]; // Might not make sense as array; consider boolean or null
 	vin: string[];
 	lotNumber: number[];
@@ -19,19 +20,20 @@ export interface Select_Filters {
 	transmissionEngages: boolean[];
 	transmissionNote: string[];
 	titleCode: string[];
-	titleStatus: string[];
+	vehicleTitleType: string[];
+	vehicleConditionType: string[];
 	odometer: number[]; // Or range
 	odometerUnit: OdometerUnit[];
 	odometerStatus: string[];
 	primaryDamage: string[];
-	cylinders: number[];
+	cylinders: string[];
 	color: string[];
 	hasKey: boolean[];
 	engineType: string[];
 	transmission: string[];
 	vehicleType: string[];
-	drivetrain: string[];
-	fuel: string[];
+	driveTrain: string[];
+	fuelType: string[];
 	saleDate: string[]; // Or date range
 	highlights: string[][]; // Array of arrays if needed
 	notes: string[];
@@ -39,6 +41,7 @@ export interface Select_Filters {
 	currentBid: number[]; // Or range
 	buyItNow: number[] | null[]; // Or range
 	auctionCountdown: string[];
+	auctionName: string[];
 	images: string[]; // Array of arrays if needed
 }
 export interface SelectOneFilters {
@@ -71,8 +74,8 @@ export interface SelectOneFilters {
 	engineType: string;
 	transmission: string;
 	vehicleType: string;
-	drivetrain: string;
-	fuel: string;
+	driveTrain: string;
+	fuelType: string;
 	saleDate: string;
 	highlights: string;
 	notes: string;
