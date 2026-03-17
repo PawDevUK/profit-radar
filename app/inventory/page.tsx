@@ -8,7 +8,7 @@ import SearchChipsFilters from './searchChipsFilters/searchChipsFilters';
 const SideSearch = lazy(() => import('./SearchComponent/Search'));
 const MemoizedSaleListResultsPage = memo(SaleListResultsPage);
 
-import { chipFilters_State } from '@/lib/state/chipFilters';
+import { chipFilters_State } from '@/lib/state/chipFilters_STATE';
 
 const ToggleButton = ({ toggleFilters }: { toggleFilters: () => void }) => {
 	const IconSize = 22;
@@ -75,6 +75,7 @@ export default function Page() {
 						</div>
 						<Suspense fallback={<div className='p-4 text-gray-500'>Loading filters...</div>}>
 							<SideSearch resetAll={resetAll} />
+						</Suspense>
 					</aside>
 				) : (
 					<div></div>
