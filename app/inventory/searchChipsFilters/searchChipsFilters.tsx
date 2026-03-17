@@ -1,6 +1,6 @@
 'use client';
 
-import { chipFilters_State } from '@/lib/state/chipFilters';
+import { chipFilters_State } from '@/lib/state/chipFilters_STATE';
 
 import { SearchChipButton } from '@/app/components/common/buttons/logButton';
 import { useRef, useEffect } from 'react';
