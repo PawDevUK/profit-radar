@@ -42,8 +42,8 @@ const calendarMonth = {
         primaryDamage: "Front end",
         color: "Blue",
         hasKey: true,
-        drivetrain: "FWD",
-        fuel: "Petrol",
+        driveTrain: "FWD",
+        fuelType: "Petrol",
         highlights: ["Run & Drive"],
         images: ["https://example.com/imgs/12345-1.jpg"]
       }
