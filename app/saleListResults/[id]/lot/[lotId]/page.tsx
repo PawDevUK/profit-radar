@@ -3,32 +3,7 @@
 import { useParams, useRouter } from 'next/navigation';
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
-
-type Car = {
-	lotNumber: string;
-	title: string;
-	price: string;
-	buyItNowPrice?: string;
-	estimatedRetailValue?: string;
-	damage: string;
-	odometer: string;
-	year: string;
-	make: string;
-	model: string;
-	vin: string;
-	imageUrl: string;
-	images?: string[];
-	detailsLink: string;
-	bodyType?: string;
-	color?: string;
-	transmission?: string;
-	titleCode?: string;
-	engineStarts?: string;
-	transmissionEngages?: string;
-	hasKey?: string;
-	highlights?: string[];
-	notes?: string;
-};
+import { LotDetails } from '@/lib/types/lotDetails-type';
 
 type OtomotoCheckResult = {
 	lotNumber: string;
@@ -47,7 +22,7 @@ export default function LotDetailsPage() {
 	const router = useRouter();
 	const saleId = params.id as string;
 	const lotId = params.lotId as string;
-	const [car, setCar] = useState<Car | null>(null);
+	const [car, setCar] = useState<LotDetails | null>(null);
 	const [loading, setLoading] = useState(true);
 	const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 	const [otomotoResult, setOtomotoResult] = useState<OtomotoCheckResult | null>(null);
@@ -62,7 +37,7 @@ export default function LotDetailsPage() {
 				if (response.ok) {
 					const auctionData = await response.json();
 					if (auctionData && auctionData.cars) {
-						const foundCar = auctionData.cars.find((c: Car) => c.lotNumber === lotId);
+						const foundCar = auctionData.cars.find((c: LotDetails) => String(c.lotNumber) === lotId);
 						if (foundCar) {
 							setCar(foundCar);
 							setSelectedImageIndex(0);
@@ -184,7 +159,7 @@ export default function LotDetailsPage() {
 						← Back to Sale List
 					</button>
 					<div className='text-center py-12'>
-						<p className='text-gray-500 text-lg'>Car not found</p>
+						<p className='text-gray-500 text-lg'>LotDetails not found</p>
 					</div>
 				</div>
 			</div>
