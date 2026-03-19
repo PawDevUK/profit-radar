@@ -10,7 +10,7 @@ export interface SearchFilters {
 	bodyStyle: string[];
 	runAndDrive: boolean[]; // Might not make sense as array; consider boolean or null
 	vin: string[];
-	lotNumber: number[];
+	lotNumber: string[];
 	laneItem: string[];
 	saleName: string[];
 	location: string[];

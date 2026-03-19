@@ -30,7 +30,7 @@ const LotDetailsSchema = new Schema<LotDetails>(
 		bodyStyle: { type: String, required: true },
 		runAndDrive: { type: Boolean, default: false },
 		vin: { type: String, required: true },
-		lotNumber: { type: Number },
+		lotNumber: { type: String },
 		laneItem: { type: String },
 		saleName: { type: String },
 		location: { type: String },

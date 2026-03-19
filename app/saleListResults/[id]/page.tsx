@@ -7,7 +7,7 @@ import { filter_Results_State } from '@/lib/state/searchFilters.state';
 
 export default function SaleListResultsPage() {
 	const { searchFilters } = filter_Results_State();
-	const [cars] = useState<LotDetails[]>(saleList);
+	const [cars] = useState<LotDetails[]>(() => saleList.map((car) => ({ ...car, lotNumber: String(car.lotNumber) })));
 
 	const filterResults = (selected: string, cars: LotDetails[]) => {
 		return cars.filter((car) => car.make === selected);

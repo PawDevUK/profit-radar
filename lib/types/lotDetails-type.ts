@@ -9,7 +9,7 @@ export interface LotDetails {
 	bodyStyle: string;
 	runAndDrive: boolean;
 	vin: string;
-	lotNumber: number;
+	lotNumber: string;
 	laneItem: string; // e.g. "-/-"
 	saleName: string;
 	location: string;
