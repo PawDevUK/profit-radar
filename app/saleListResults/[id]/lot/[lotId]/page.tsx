@@ -17,6 +17,12 @@ type OtomotoCheckResult = {
 	error?: string;
 };
 
+type OtomotoCheckRecord = {
+	lotNumber: string;
+	listed_otomoto: boolean;
+	listing_count: number;
+};
+
 export default function LotDetailsPage() {
 	const params = useParams();
 	const router = useRouter();
@@ -69,7 +75,7 @@ export default function LotDetailsPage() {
 					const response = await fetch('/api/otomoto-listing-check?action=load');
 					if (response.ok) {
 						const data = await response.json();
-						const carCheck = data.results?.find((r: any) => r.lotNumber === car.lotNumber);
+						const carCheck = data.results?.find((r: OtomotoCheckRecord) => r.lotNumber === car.lotNumber);
 						if (carCheck) {
 							const searchQuery = `${car.make} ${car.model}`.toLowerCase();
 							setOtomotoResult({
@@ -256,10 +262,10 @@ export default function LotDetailsPage() {
 											</div>
 										</div>
 									</>
-								) : car.imageUrl ? (
+								) : car.images[0] ? (
 									<div className='relative w-full h-[400px] bg-gray-200 rounded overflow-hidden'>
 										<img
-											src={car.imageUrl}
+											src={car.images[0]}
 											alt={car.title}
 											className='w-full h-full object-contain'
 											onError={(e) => {
@@ -278,8 +284,8 @@ export default function LotDetailsPage() {
 								)}
 							</div>
 
-							{car.detailsLink && (
-								<a href={car.detailsLink} target='_blank' rel='noopener noreferrer' className='inline-block text-blue-600 hover:text-blue-800 font-medium mb-6'>
+							{car.copartLink && (
+								<a href={car.copartLink} target='_blank' rel='noopener noreferrer' className='inline-block text-blue-600 hover:text-blue-800 font-medium mb-6'>
 									📷 View Full Gallery on Copart →
 								</a>
 							)}
@@ -303,7 +309,7 @@ export default function LotDetailsPage() {
 								</div>
 								<div>
 									<p className='text-sm text-gray-600'>Body Type</p>
-									<p className='font-medium text-gray-900'>{car.bodyType || 'N/A'}</p>
+									<p className='font-medium text-gray-900'>{car.bodyStyle || 'N/A'}</p>
 								</div>
 								<div>
 									<p className='text-sm text-gray-600'>Color</p>
@@ -325,13 +331,13 @@ export default function LotDetailsPage() {
 									<p className='text-sm text-gray-600'>Primary Damage</p>
 									<span
 										className={`inline-block px-3 py-1 rounded text-sm font-medium ${
-											car.damage === 'Clean Title'
+											car.primaryDamage === 'Clean Title'
 												? 'bg-green-100 text-green-800'
-												: car.damage?.includes('Water') || car.damage?.includes('Fire')
+												: car.primaryDamage?.includes('Water') || car.primaryDamage?.includes('Fire')
 													? 'bg-red-100 text-red-800'
 													: 'bg-yellow-100 text-yellow-800'
 										}`}>
-										{car.damage || 'N/A'}
+										{car.primaryDamage || 'N/A'}
 									</span>
 								</div>
 								{car.vin && (
@@ -348,26 +354,24 @@ export default function LotDetailsPage() {
 							<h2 className='text-xl font-bold text-gray-900 mb-4'>Vehicle Condition</h2>
 							<div className='grid grid-cols-2 gap-4'>
 								<div className='flex items-center gap-2'>
-									<span
-										className={`w-3 h-3 rounded-full ${car.engineStarts === 'Yes' ? 'bg-green-500' : car.engineStarts === 'No' ? 'bg-red-500' : 'bg-gray-300'}`}></span>
+									<span className={`w-3 h-3 rounded-full ${car.runAndDrive ? 'bg-green-500' : 'bg-red-500'}`}></span>
 									<div>
 										<p className='text-sm text-gray-600'>Engine Starts</p>
-										<p className='font-medium text-gray-900'>{car.engineStarts || 'Unknown'}</p>
+										<p className='font-medium text-gray-900'>{car.engineStatus || (car.runAndDrive ? 'Yes' : 'No')}</p>
 									</div>
 								</div>
 								<div className='flex items-center gap-2'>
-									<span
-										className={`w-3 h-3 rounded-full ${car.transmissionEngages === 'Yes' ? 'bg-green-500' : car.transmissionEngages === 'No' ? 'bg-red-500' : 'bg-gray-300'}`}></span>
+									<span className={`w-3 h-3 rounded-full ${car.transmissionEngages ? 'bg-green-500' : 'bg-red-500'}`}></span>
 									<div>
 										<p className='text-sm text-gray-600'>Transmission Engages</p>
-										<p className='font-medium text-gray-900'>{car.transmissionEngages || 'Unknown'}</p>
+										<p className='font-medium text-gray-900'>{car.transmissionEngages ? 'Yes' : 'No'}</p>
 									</div>
 								</div>
 								<div className='flex items-center gap-2'>
-									<span className={`w-3 h-3 rounded-full ${car.hasKey === 'Yes' ? 'bg-green-500' : car.hasKey === 'No' ? 'bg-red-500' : 'bg-gray-300'}`}></span>
+									<span className={`w-3 h-3 rounded-full ${car.hasKey ? 'bg-green-500' : 'bg-red-500'}`}></span>
 									<div>
 										<p className='text-sm text-gray-600'>Keys Available</p>
-										<p className='font-medium text-gray-900'>{car.hasKey || 'Unknown'}</p>
+										<p className='font-medium text-gray-900'>{car.hasKey ? 'Yes' : 'No'}</p>
 									</div>
 								</div>
 							</div>
@@ -395,18 +399,12 @@ export default function LotDetailsPage() {
 							<div className='space-y-4'>
 								<div>
 									<h3 className='font-semibold text-gray-600 text-sm mb-1'>Current Bid</h3>
-									<p className='text-3xl font-bold text-blue-600'>{car.price || 'N/A'}</p>
+									<p className='text-3xl font-bold text-blue-600'>{car.currentBid ? `$${car.currentBid.toLocaleString()}` : 'N/A'}</p>
 								</div>
-								{car.estimatedRetailValue && (
-									<div className='pt-4 border-t border-gray-200'>
-										<h3 className='font-semibold text-gray-600 text-sm mb-1'>Estimated Retail Value</h3>
-										<p className='text-3xl font-bold text-purple-600'>{car.estimatedRetailValue}</p>
-									</div>
-								)}
-								{car.buyItNowPrice && (
+								{car.buyItNow !== null && (
 									<div className='pt-4 border-t border-gray-200'>
 										<h3 className='font-semibold text-gray-600 text-sm mb-1'>Buy It Now Price</h3>
-										<p className='text-3xl font-bold text-green-600'>{car.buyItNowPrice}</p>
+										<p className='text-3xl font-bold text-green-600'>${car.buyItNow.toLocaleString()}</p>
 										<p className='text-xs text-gray-500 mt-2'>End the auction immediately at this price</p>
 									</div>
 								)}
@@ -476,7 +474,7 @@ export default function LotDetailsPage() {
 								</div>
 							) : (
 								<div className='text-center py-3'>
-									<p className='text-gray-600 text-sm'>Click "Check Now" to verify on Otomoto</p>
+									<p className='text-gray-600 text-sm'>Click &quot;Check Now&quot; to verify on Otomoto</p>
 								</div>
 							)}
 						</div>
