@@ -41,4 +41,5 @@ export interface LotDetails {
 	auctionName: string;
 	auctionCountdown: string; // e.g. "0D 16H 10min"
 	images: string[]; // image URLs
+	copartLink: string;
 }
