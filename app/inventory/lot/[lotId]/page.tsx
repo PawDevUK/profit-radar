@@ -114,6 +114,10 @@ export default function LotDetailsPage() {
 		}
 	}, [car]);
 
+	const handleBack = () => {
+		router.push(`/inventory`);
+	};
+
 	// Function to run Otomoto verification for this car
 	const runOtomotoVerification = async () => {
 		if (!car) return;
@@ -171,7 +175,11 @@ export default function LotDetailsPage() {
 		return (
 			<div className='min-h-screen bg-gray-50 py-6 px-4 sm:px-6 lg:px-8'>
 				<div className='max-w-7xl mx-auto'>
-					<button onClick={() => router.back()} className='text-blue-600 hover:text-blue-800 font-medium mb-4'>
+					<button
+						onClick={() => {
+							handleBack();
+						}}
+						className='text-blue-600 hover:text-blue-800 font-medium mb-4'>
 						← Back to Sale List
 					</button>
 					<div className='text-center py-12'>
@@ -185,7 +193,7 @@ export default function LotDetailsPage() {
 	return (
 		<div className='min-h-screen bg-gray-50 py-6 px-4 sm:px-6 lg:px-8'>
 			<div className='max-w-7xl mx-auto'>
-				<button onClick={() => router.back()} className='text-blue-600 hover:text-blue-800 font-medium mb-4'>
+				<button onClick={() => handleBack()} className='text-blue-600 hover:text-blue-800 font-medium mb-4'>
 					← Back to Sale List
 				</button>
 
