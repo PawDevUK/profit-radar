@@ -1,4 +1,5 @@
 'use client';
+import { useRouter, useParams } from 'next/navigation';
 import Card from '@/app/inventory/results/card/card';
 import { useState } from 'react';
 import saleList from '@/app/results/saleList.json';
@@ -8,6 +9,8 @@ import { filter_Results_State } from '@/lib/state/searchFilters.state';
 export default function SaleListResultsPage() {
 	const { searchFilters } = filter_Results_State();
 	const [cars] = useState<LotDetails[]>(saleList);
+	const router = useRouter();
+	const params = useParams();
 
 	const filterResults = (selected: string, cars: LotDetails[]) => {
 		return cars.filter((car) => car.make === selected);
@@ -18,7 +21,13 @@ export default function SaleListResultsPage() {
 			<div className='max-w-(--max-app-width) mx-auto'>
 				<div className='flex flex-wrap justify-center'>
 					{cars.map((car, index) => (
-						<Card key={index} item={car}></Card>
+						<Card
+							key={index}
+							item={car}
+							onClick={() => {
+								console.log('Clicked');
+								router.push(`/inventory/lot/${car.lotNumber}`);
+							}}></Card>
 					))}
 				</div>
 

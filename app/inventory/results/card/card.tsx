@@ -1,11 +1,12 @@
 'use client';
-
 import Image from 'next/image';
 
 function Card({ ...props }) {
-	const { item } = props;
+	const { item, onClick } = props;
 	return (
-		<div className='md:max-h-115.5 w-full max-w-lg md:w-[30%] lg:w-[22%] xl:w-[18%] m-1.5 bg-neutral-primary-soft border border-gray-300 rounded-base shadow-md rounded-lg flex flex-row md:flex-col'>
+		<div
+			className='md:max-h-115.5 w-full max-w-lg md:w-[30%] lg:w-[22%] xl:w-[18%] m-1.5 bg-neutral-primary-soft border border-gray-300 rounded-base shadow-md rounded-lg flex flex-row md:flex-col'
+			onClick={onClick}>
 			<div className='flex flex-col justify-between md:w-full w-1/3'>
 				<div className=' flex items-center justify-center space-x-3 m-2'>
 					<span>Lot:</span>

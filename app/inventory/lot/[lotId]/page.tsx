@@ -4,6 +4,7 @@ import { useParams, useRouter } from 'next/navigation';
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { LotDetails } from '@/lib/types/lotDetails-type';
+import saleList from '@/app/results/saleList.json';
 
 type OtomotoCheckResult = {
 	lotNumber: string;
@@ -38,18 +39,27 @@ export default function LotDetailsPage() {
 	useEffect(() => {
 		const loadCarData = async () => {
 			try {
-				// Load basic data from auctions.json using the saleId
-				const response = await fetch(`/api/auctions?auctionId=${saleId}`);
-				if (response.ok) {
-					const auctionData = await response.json();
-					if (auctionData && auctionData.cars) {
-						const foundCar = auctionData.cars.find((c: LotDetails) => String(c.lotNumber) === lotId);
-						if (foundCar) {
-							setCar(foundCar);
-							setSelectedImageIndex(0);
-						} else {
-							console.error('Lot not found in auction data');
-						}
+				// // Load basic data from auctions.json using the saleId
+				// const response = await fetch(`/api/auctions?auctionId=${saleId}`);
+				// if (response.ok) {
+				// 	const auctionData = await response.json();
+				// 	if (auctionData && auctionData.cars) {
+				// 		const foundCar = auctionData.cars.find((c: LotDetails) => String(c.lotNumber) === lotId);
+				// 		if (foundCar) {
+				// 			setCar(foundCar);
+				// 			setSelectedImageIndex(0);
+				// 		} else {
+				// 			console.error('Lot not found in auction data');
+				// 		}
+				// 	}
+
+				if (saleList && saleList.length > 0) {
+					const foundCar = saleList.find((c: LotDetails) => String(c.lotNumber) === lotId);
+					if (foundCar) {
+						setCar(foundCar);
+						setSelectedImageIndex(0);
+					} else {
+						console.error('Lot not found in sale list');
 					}
 				} else {
 					console.error('Failed to load auction data');

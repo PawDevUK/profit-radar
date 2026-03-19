@@ -6,5 +6,6 @@
 - [x] Add selectOne function to checkBox component for search filter which need to select only one option.
 - [x] update naming to follow conventions.
 - [x] Improve performance by adding useCallback and useMemo
-- [ ] Add data base for scraped lots
+- [x] Add onClick to lot card so on click it should open new page with detailed info of the sinlge lot.
+- [ ] Add database for scraped lots
 - [ ]
