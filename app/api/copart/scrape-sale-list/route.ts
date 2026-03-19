@@ -121,6 +121,7 @@ export async function POST(request: NextRequest) {
 						auctionName: auctionId,
 						auctionCountdown: car.auctionCountdown || '',
 						images: [],
+						copartLink: '',
 					}))
 				: [];
 

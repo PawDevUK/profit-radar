@@ -8,7 +8,7 @@
 		"bodyStyle": "",
 		"runAndDrive": true,
 		"vin": "",
-		"lotNumber": 99970785,
+		"lotNumber": "99970785",
 		"laneItem": "0",
 		"saleName": "TX - HOUSTON",
 		"location": "TX - HOUSTON",
@@ -39,7 +39,8 @@
 		"buyItNow": 8985,
 		"auctionName": "",
 		"auctionCountdown": "Auction in 0D 16H 19min",
-		"images": ["https://picsum.photos/200"]
+		"images": ["https://picsum.photos/200"],
+		"copartLink": ""
 	},
 	{
 		"title": "CHEVROLET SILVERADO 1500",
@@ -50,7 +51,7 @@
 		"bodyStyle": "",
 		"runAndDrive": true,
 		"vin": "",
-		"lotNumber": 99970786,
+		"lotNumber": "99970786",
 		"laneItem": "1",
 		"saleName": "CA - LOS ANGELES",
 		"location": "CA - LOS ANGELES",
@@ -81,7 +82,8 @@
 		"buyItNow": 13200,
 		"auctionName": "",
 		"auctionCountdown": "Auction in 1D 8H 45min",
-		"images": ["https://picsum.photos/200"]
+		"images": ["https://picsum.photos/200"],
+		"copartLink": ""
 	},
 	{
 		"title": "HONDA CIVIC",
@@ -92,7 +94,7 @@
 		"bodyStyle": "",
 		"runAndDrive": true,
 		"vin": "",
-		"lotNumber": 99970787,
+		"lotNumber": "99970787",
 		"laneItem": "2",
 		"saleName": "FL - MIAMI",
 		"location": "FL - MIAMI",
@@ -123,7 +125,8 @@
 		"buyItNow": 5800,
 		"auctionName": "",
 		"auctionCountdown": "Auction in 2D 12H 30min",
-		"images": ["https://picsum.photos/200"]
+		"images": ["https://picsum.photos/200"],
+		"copartLink": ""
 	},
 	{
 		"title": "TOYOTA CAMRY",
@@ -134,7 +137,7 @@
 		"bodyStyle": "",
 		"runAndDrive": true,
 		"vin": "",
-		"lotNumber": 99970788,
+		"lotNumber": "99970788",
 		"laneItem": "3",
 		"saleName": "NY - NEW YORK",
 		"location": "NY - NEW YORK",
@@ -165,7 +168,8 @@
 		"buyItNow": 16500,
 		"auctionName": "",
 		"auctionCountdown": "Auction in 0D 4H 15min",
-		"images": ["https://picsum.photos/200"]
+		"images": ["https://picsum.photos/200"],
+		"copartLink": ""
 	},
 	{
 		"title": "FORD F-150",
@@ -176,7 +180,7 @@
 		"bodyStyle": "",
 		"runAndDrive": true,
 		"vin": "",
-		"lotNumber": 99970789,
+		"lotNumber": "99970789",
 		"laneItem": "4",
 		"saleName": "TX - DALLAS",
 		"location": "TX - DALLAS",
@@ -207,7 +211,8 @@
 		"buyItNow": 10500,
 		"auctionName": "",
 		"auctionCountdown": "Auction in 3D 6H 20min",
-		"images": ["https://picsum.photos/200"]
+		"images": ["https://picsum.photos/200"],
+		"copartLink": ""
 	},
 	{
 		"title": "BMW X3",
@@ -218,7 +223,7 @@
 		"bodyStyle": "",
 		"runAndDrive": true,
 		"vin": "",
-		"lotNumber": 99970790,
+		"lotNumber": "99970790",
 		"laneItem": "5",
 		"saleName": "IL - CHICAGO",
 		"location": "IL - CHICAGO",
@@ -249,7 +254,8 @@
 		"buyItNow": 19000,
 		"auctionName": "",
 		"auctionCountdown": "Auction in 1D 14H 10min",
-		"images": ["https://picsum.photos/200"]
+		"images": ["https://picsum.photos/200"],
+		"copartLink": ""
 	},
 	{
 		"title": "JEEP GRAND CHEROKEE",
@@ -260,7 +266,7 @@
 		"bodyStyle": "",
 		"runAndDrive": true,
 		"vin": "",
-		"lotNumber": 99970791,
+		"lotNumber": "99970791",
 		"laneItem": "6",
 		"saleName": "GA - ATLANTA",
 		"location": "GA - ATLANTA",
@@ -291,7 +297,8 @@
 		"buyItNow": 12100,
 		"auctionName": "",
 		"auctionCountdown": "Auction in 2D 9H 55min",
-		"images": ["https://picsum.photos/200"]
+		"images": ["https://picsum.photos/200"],
+		"copartLink": ""
 	},
 	{
 		"title": "MERCEDES-BENZ C-CLASS",
@@ -302,7 +309,7 @@
 		"bodyStyle": "",
 		"runAndDrive": true,
 		"vin": "",
-		"lotNumber": 99970792,
+		"lotNumber": "99970792",
 		"laneItem": "7",
 		"saleName": "CA - SAN FRANCISCO",
 		"location": "CA - SAN FRANCISCO",
@@ -333,7 +340,8 @@
 		"buyItNow": 8200,
 		"auctionName": "",
 		"auctionCountdown": "Auction in 0D 22H 40min",
-		"images": ["https://picsum.photos/200"]
+		"images": ["https://picsum.photos/200"],
+		"copartLink": ""
 	},
 	{
 		"title": "NISSAN ALTIMA",
@@ -344,7 +352,7 @@
 		"bodyStyle": "",
 		"runAndDrive": true,
 		"vin": "",
-		"lotNumber": 99970793,
+		"lotNumber": "99970793",
 		"laneItem": "8",
 		"saleName": "TX - SAN ANTONIO",
 		"location": "TX - SAN ANTONIO",
@@ -375,7 +383,8 @@
 		"buyItNow": 14400,
 		"auctionName": "",
 		"auctionCountdown": "Auction in 4D 2H 25min",
-		"images": ["https://picsum.photos/200"]
+		"images": ["https://picsum.photos/200"],
+		"copartLink": ""
 	},
 	{
 		"title": "VOLKSWAGEN JETTA",
@@ -386,7 +395,7 @@
 		"bodyStyle": "",
 		"runAndDrive": true,
 		"vin": "",
-		"lotNumber": 99970794,
+		"lotNumber": "99970794",
 		"laneItem": "9",
 		"saleName": "FL - ORLANDO",
 		"location": "FL - ORLANDO",
@@ -417,6 +426,7 @@
 		"buyItNow": 4600,
 		"auctionName": "",
 		"auctionCountdown": "Auction in 1D 18H 5min",
-		"images": ["https://picsum.photos/200"]
+		"images": ["https://picsum.photos/200"],
+		"copartLink": ""
 	}
 ]
