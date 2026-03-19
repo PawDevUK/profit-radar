@@ -49,6 +49,12 @@ export async function POST(request: NextRequest) {
 				return 0;
 			};
 
+			const toStringValue = (value: string | number | undefined): string => {
+				if (typeof value === 'string') return value.trim();
+				if (typeof value === 'number' && Number.isFinite(value)) return String(value);
+				return '';
+			};
+
 			// Define the type for scraped car objects
 			type ScrapedCar = {
 				title?: string;
@@ -83,7 +89,7 @@ export async function POST(request: NextRequest) {
 						bodyStyle: '',
 						runAndDrive: false,
 						vin: '',
-						lotNumber: toNumber(car.lotNumber),
+						lotNumber: toStringValue(car.lotNumber),
 						laneItem: car.laneItem || '',
 						saleName: car.yardLocation || '',
 						location: car.location || location || '',
