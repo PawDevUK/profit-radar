@@ -1,6 +1,6 @@
 'use client';
 import { lazy, memo, Suspense, useEffect, useState, useTransition } from 'react';
-import { CircleX, SlidersHorizontal } from 'lucide-react';
+import { X, SlidersHorizontal } from 'lucide-react';
 import SaleListResultsPage from '../saleListResults/[id]/page';
 
 import SearchChipsFilters from './searchChipsFilters/searchChipsFilters';
@@ -21,8 +21,8 @@ const ToggleButton = ({ toggleFilters }: { toggleFilters: () => void }) => {
 };
 const CloseButton = ({ toggleFilters }: { toggleFilters: () => void }) => {
 	return (
-		<button className='w-[32px] h-[32px]' onClick={toggleFilters}>
-			{<CircleX id='closeButton' className='ml-2 checkboxIcon' />}
+		<button className='w-8 h-8' onClick={toggleFilters}>
+			{<X id='closeButton' className='ml-2 checkboxIcon' />}
 		</button>
 	);
 };
@@ -58,7 +58,7 @@ export default function Page() {
 					<div className='w-[70%] mr-4 hidden md:block overflow-hidden'>
 						<SearchChipsFilters />
 					</div>
-					<div className='w-[159px] flex '>
+					<div className='w-39.75 flex '>
 						<ToggleButton toggleFilters={toggleFilters} />
 					</div>
 				</div>
