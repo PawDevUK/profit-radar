@@ -20,23 +20,23 @@ export default function HowItWorks() {
 								</div>
 								<div className='space-y-5'>
 									<h3 className='text-2xl font-bold text-gray-700 sm:text-3xl mb-10'>
-										Discover 500,000+ Vehicles for Sale
+										Scan Auction Inventory at Scale
 										<br />
-										In All Conditions
+										Compare with the Polish Market
 									</h3>
 
 									<p className='text-lg leading-relaxed text-gray-700'>
-										Profit Radar connects buying Members and sellers of all types of vehicles in all conditions through our{' '}
-										<span className='font-semibold'>100% online auction platform</span>. You’ll also find tools to check out, bid on, pay for, and receive the
-										vehicles that meet your needs.
+										ProfitRadar automatically scans Copart auction data across calendars, sale lists, and lot details to track vehicles in real time. The
+										platform normalises key fields like VIN, year, make, model, condition, odometer, damage, and pricing so you can review opportunities faster.
 									</p>
 
 									<p className='text-lg leading-relaxed text-gray-700'>
-										We hold regular auctions at our <span className='font-semibold'>275+ Locations</span> in 11 countries, and national
-										<span className='font-semibold'> spotlight auctions</span> that make it easy to find a specific type of vehicle.
+										Each lot is then compared with listings from at the moment Polish market (planned to extend it to international markets) to estimate resale
+										potential and highlight the
+										<span className='font-semibold'> best deal candidates</span> based on market spread.
 									</p>
 									<div className='md:w-90 py-5'>
-										<LogButton item={{ href: '/inventory', label: 'Shop Our Inventory', fontSize: 18 }}></LogButton>
+										<LogButton item={{ href: '/inventory', label: 'Start Deal Search', fontSize: 18 }}></LogButton>
 									</div>
 								</div>
 							</div>
@@ -61,13 +61,13 @@ export default function HowItWorks() {
 				</section>
 				<section className='bg-white my-5'>
 					<div className='space-y-5 pr-card'>
-						<h3 className='text-2xl font-bold text-blue-600 sm:text-3xl'>Get Started</h3>
+						<h3 className='text-2xl font-bold text-blue-600 sm:text-3xl'>Get Started in Minutes</h3>
 						<p className='text-lg leading-relaxed text-gray-700'>
-							Register for an account, then purchase a Basic or Premier Membership. You can get a full refund for up to seven days if you change your mind as long as
-							you don’t use your Member benefits*, so it’s risk free.
+							Choose your target vehicles, budget, and auction filters. ProfitRadar keeps the data fresh, compares auction prices with Polish market benchmarks, and
+							helps you focus only on listings with the strongest margin potential.
 						</p>
 						<div className='md:w-90 py-5'>
-							<LogButton item={{ href: '/signup', label: 'Register Now', fontSize: 18 }}></LogButton>
+							<LogButton item={{ href: '/signup', label: 'Create Account', fontSize: 18 }}></LogButton>
 						</div>
 						{/* <Link
 							href='/signup'
@@ -80,17 +80,17 @@ export default function HowItWorks() {
 					<div className=' w-full pr-card'>
 						{/* Heading */}
 						<div className='text-center '>
-							<h2 className='text-2xl font-bold text-blue-600 sm:text-3xl'>After You&#39;ve Registered:</h2>
+							<h2 className='text-2xl font-bold text-blue-600 sm:text-3xl'>How ProfitRadar Finds Opportunities</h2>
 							<p className='mt-4 text-lg text-gray-600'>
-								Credentials to buy a vehicle in a specific state, search for No License Required vehicles or work with a Broker.
+								From auction ingestion to Polish market comparison, every step is designed to help you spot profitable imports faster.
 							</p>
 						</div>
 
 						{/* Three-column grid */}
 						<div className='grid gap-10 md:grid-cols-3 md:gap-8 lg:gap-12 p-4'>
-							{/* Column 1: Upload License & Join Auctions */}
+							{/* Column 1: Data collection pipeline */}
 							<div className='space-y-6'>
-								{/* Upload License(s) */}
+								{/* Scan Auction Calendar */}
 								<div className='text-center md:text-left h-[50%]'>
 									<div className='mx-auto md:mx-0 mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-blue-100 text-blue-600'>
 										{/* Cloud Upload Icon */}
@@ -103,24 +103,24 @@ export default function HowItWorks() {
 											/>
 										</svg>
 									</div>
-									<h3 className='text-xl font-semibold text-blue-600'>Upload License(s)</h3>
+									<h3 className='text-xl font-semibold text-blue-600'>Scan Auction Calendar</h3>
 									<p className='mt-3 text-gray-600'>
-										Scan a government-issued ID and upload any business licenses required in states where you want to buy vehicles.
+										Track auction events across 275+ locations and monitor upcoming sale dates so you never miss relevant inventory.
 									</p>
 									<div className='mt-4 space-y-1 text-sm'>
-										<Link href='#' className='block text-blue-600 hover:underline'>
-											Document Uploader →
+										<Link href='/calendar' className='block text-blue-600 hover:underline'>
+											Auction Calendar →
 										</Link>
-										<Link href='#' className='block text-blue-600 hover:underline'>
-											State Licensing Overview →
+										<Link href='/auctions' className='block text-blue-600 hover:underline'>
+											Auctions Overview →
 										</Link>
-										<Link href='#' className='block text-blue-600 hover:underline'>
-											Limited Power of Attorney →
+										<Link href='/documentation' className='block text-blue-600 hover:underline'>
+											Data Flow Notes →
 										</Link>
 									</div>
 								</div>
 
-								{/* Join Auctions */}
+								{/* Ingest Sale Lists */}
 								<div className='text-center md:text-left h-[50%]'>
 									<div className='mx-auto md:mx-0 mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-blue-100 text-blue-600'>
 										{/* Calendar Icon */}
@@ -133,28 +133,27 @@ export default function HowItWorks() {
 											/>
 										</svg>
 									</div>
-									<h3 className='text-xl font-semibold text-blue-600'>Join Auctions</h3>
+									<h3 className='text-xl font-semibold text-blue-600'>Ingest Sale Lists</h3>
 									<p className='mt-3 text-gray-600'>
-										Join the fun and action of our live auctions under the options in the Auctions tab, like Today&#39;s Auctions, Auction Calendar and Join An
-										Auction.
+										Collect live listing data at scale, including photos, bid signals, and lot metadata, then merge updates to keep the feed current.
 									</p>
 									<div className='mt-4 space-y-1 text-sm'>
-										<Link href='#' className='block text-blue-600 hover:underline'>
-											Auction Calendar →
+										<Link href='/inventory' className='block text-blue-600 hover:underline'>
+											Inventory Search →
 										</Link>
-										<Link href='#' className='block text-blue-600 hover:underline'>
-											Today&apos;s Auctions →
+										<Link href='/dashboard' className='block text-blue-600 hover:underline'>
+											Tracking Dashboard →
 										</Link>
-										<Link href='#' className='block text-blue-600 hover:underline'>
-											Join An Auction →
+										<Link href='/auctions' className='block text-blue-600 hover:underline'>
+											Auction Feed →
 										</Link>
 									</div>
 								</div>
 							</div>
 
-							{/* Column 2: No License & Other Ways */}
+							{/* Column 2: Analysis pipeline */}
 							<div className='space-y-10'>
-								{/* No License Is No Problem */}
+								{/* Examine Lot Details */}
 								<div className='text-center md:text-left h-[50%]'>
 									<div className='mx-auto md:mx-0 mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-blue-100 text-blue-600'>
 										{/* Document Check Icon */}
@@ -168,22 +167,21 @@ export default function HowItWorks() {
 											<path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M9 12l2 2 4-4' />
 										</svg>
 									</div>
-									<h3 className='text-xl font-semibold text-blue-600'>No License Is No Problem</h3>
+									<h3 className='text-xl font-semibold text-blue-600'>Examine Lot Details</h3>
 									<p className='mt-3 text-gray-600'>
-										If you don&apos;t have a dealer&apos;s license or other required credentials to buy a vehicle in a specific state, search for No License
-										Required vehicles or work with a Broker.
+										Open a lot to review VIN, title, engine and transmission status, damage notes, odometer, images, and buy-now or bid data in one place.
 									</p>
 									<div className='mt-4 space-y-1 text-sm'>
-										<Link href='#' className='block text-blue-600 hover:underline'>
-											Broker →
+										<Link href='/inventory' className='block text-blue-600 hover:underline'>
+											Lot Explorer →
 										</Link>
-										<Link href='#' className='block text-blue-600 hover:underline'>
-											No License Required →
+										<Link href='/documentation' className='block text-blue-600 hover:underline'>
+											Lot Data Fields →
 										</Link>
 									</div>
 								</div>
 
-								{/* Other Ways to Win */}
+								{/* Compare with Polish Market */}
 								<div className='text-center md:text-left h-[50%]'>
 									<div className='mx-auto md:mx-0 mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-blue-100 text-blue-600'>
 										{/* Gavel / Bid Icon placeholder */}
@@ -191,25 +189,24 @@ export default function HowItWorks() {
 											<path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6' />
 										</svg>
 									</div>
-									<h3 className='text-xl font-semibold text-blue-600'>Other Ways to Win</h3>
+									<h3 className='text-xl font-semibold text-blue-600'>Compare with Polish Market</h3>
 									<p className='mt-3 text-gray-600'>
-										Set a Max Bid and our system will incrementally bid for you up to your top price. Purchase Buy It Now vehicles... or make counteroffers with
-										Make An Offer.
+										ProfitRadar matches auction lots with Otomoto references to estimate market value in Poland and reveal the strongest arbitrage spread.
 									</p>
 									<div className='mt-4 space-y-1 text-sm'>
-										<Link href='#' className='block text-blue-600 hover:underline'>
-											Max Bids →
+										<Link href='/otomoto-checker' className='block text-blue-600 hover:underline'>
+											Otomoto Checker →
 										</Link>
-										<Link href='#' className='block text-blue-600 hover:underline'>
-											Buy It Now →
+										<Link href='/inventory' className='block text-blue-600 hover:underline'>
+											Compare Candidate Lots →
 										</Link>
 									</div>
 								</div>
 							</div>
 
-							{/* Column 3: Search & Receive */}
+							{/* Column 3: Decision workflow */}
 							<div className='space-y-10 h-full'>
-								{/* Search, Save & Set Alerts */}
+								{/* Find and Prioritise Best Deals */}
 								<div className='text-center md:text-left h-[50%] '>
 									<section className=''>
 										<div className='mx-auto md:mx-0 mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-blue-100 text-blue-600'>
@@ -231,28 +228,27 @@ export default function HowItWorks() {
 										</div>
 									</section>
 									<section className=''>
-										<h3 className='text-xl font-semibold text-blue-600'>Search, Save & Set Alerts</h3>
+										<h3 className='text-xl font-semibold text-blue-600'>Find and Prioritise Best Deals</h3>
 										<p className='mt-3 text-gray-600'>
-											Search & filter our huge selection to find the vehicles that fit your needs. Save your common searches. Track vehicles... and set
-											Vehicle Alerts.
+											Use filters, sorting, and saved searches to focus on vehicles with the best expected margin instead of manually checking every listing.
 										</p>
 									</section>
 									<section className=''>
 										<div className='h-full mt-4 space-y-1 text-sm'>
-											<Link href='#' className='block text-blue-600 hover:underline'>
+											<Link href='/inventory' className='block text-blue-600 hover:underline'>
 												Vehicle Finder Tool →
 											</Link>
-											<Link href='#' className='block text-blue-600 hover:underline'>
-												Set a Vehicle Alert →
+											<Link href='/notifications' className='block text-blue-600 hover:underline'>
+												Alerts & Tracking →
 											</Link>
-											<Link href='#' className='block text-blue-600 hover:underline'>
-												Save a Search →
+											<Link href='/inventory' className='block text-blue-600 hover:underline'>
+												Saved Filters →
 											</Link>
 										</div>
 									</section>
 								</div>
 
-								{/* Receive Your Vehicles */}
+								{/* Final Review and Next Actions */}
 								<div className='text-center md:text-left h-[50%]'>
 									<div className='mx-auto md:mx-0 mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-blue-100 text-blue-600'>
 										{/* Truck Delivery Icon */}
@@ -265,17 +261,19 @@ export default function HowItWorks() {
 											/>
 										</svg>
 									</div>
-									<h3 className='text-xl font-semibold text-blue-600'>Receive Your Vehicles</h3>
-									<p className='mt-3 text-gray-600'>Order delivery through Copart, dispatch your own transporter, or pick vehicles up in person.</p>
+									<h3 className='text-xl font-semibold text-blue-600'>Validate and Execute</h3>
+									<p className='mt-3 text-gray-600'>
+										Review top-ranked opportunities, verify lot photos and damage notes, then move to your preferred bidding and logistics workflow.
+									</p>
 									<div className='mt-4 space-y-1 text-sm'>
-										<Link href='#' className='block text-blue-600 hover:underline'>
-											Payment & Pickup →
+										<Link href='/howItWorks' className='block text-blue-600 hover:underline'>
+											Workflow Overview →
 										</Link>
-										<Link href='#' className='block text-blue-600 hover:underline'>
-											International Delivery →
+										<Link href='/documentation' className='block text-blue-600 hover:underline'>
+											Platform Documentation →
 										</Link>
-										<Link href='#' className='block text-blue-600 hover:underline'>
-											Domestic Delivery →
+										<Link href='/dashboard' className='block text-blue-600 hover:underline'>
+											Decision Dashboard →
 										</Link>
 									</div>
 								</div>
