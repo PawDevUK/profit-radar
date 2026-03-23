@@ -139,8 +139,8 @@ export default function Calendar({ sales }: { sales: CalendarAuction[] }) {
 							</div>
 						</div>
 						<div className='mt-6 grid grid-cols-7 gap-1 text-center text-xs font-medium uppercase tracking-wide text-gray-500'>
-							{dayLabels.map((label) => (
-								<div key={label} className='py-2'>
+							{dayLabels.map((label, i) => (
+								<div key={i} className='py-2'>
 									{label}
 								</div>
 							))}
