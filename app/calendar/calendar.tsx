@@ -102,8 +102,8 @@ export default function Calendar({ sales }: { sales: CalendarAuction[] }) {
 	const goToNextMonth = () => setCurrentDate((d) => new Date(d.getFullYear(), d.getMonth() + 1, 1));
 
 	return (
-		<div className='flex justify-center'>
-			<div className='rounded-xl border border-slate-200 bg-white shadow-sm lg:w-225 md:w-175 '>
+		<div className='flex justify-center w-full'>
+			<div className='rounded-xl border border-slate-200 bg-white shadow-sm w-[80vw] lg:w-225 '>
 				<div className='px-6 py-4'>
 					<h2 className='text-lg font-semibold text-gray-900'>Upcoming Auctions</h2>
 					<div className='mt-6'>
