@@ -25,7 +25,7 @@ export default function ServicesSupport() {
 			<div className='space-y-5 pb-10'>
 				<section className='overflow-hidden rounded-2xl bg-linear-to-r from-blue-700 via-blue-600 to-sky-500 px-6 py-14 text-white md:px-10'>
 					<div className='mx-auto max-w-6xl'>
-						<h1 className='text-3xl font-bold sm:text-4xl lg:text-5xl'>Copart Vehicle Reports</h1>
+						<h1 className='text-3xl font-bold sm:text-4xl lg:text-5xl'>Vehicle Reports</h1>
 						<h2 className='mt-4 max-w-3xl text-lg text-blue-100 sm:text-2xl'>
 							Review a vehicle&apos;s history with AutoCheck, condition reports, and lot-level insights before you commit.
 						</h2>
