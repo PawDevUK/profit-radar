@@ -61,7 +61,7 @@ export default function NavigationClient() {
 		{ href: '/inventory', label: 'Inventory' },
 		{ href: '/calendar', label: 'Auctions' },
 		{ href: '/locations', label: 'Locations' },
-		{ href: '/services-support', label: 'Services & support' },
+		{ href: '/servicesSupport', label: 'Services & support' },
 	];
 
 	const authItems = [
