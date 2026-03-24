@@ -1,17 +1,25 @@
-import React from 'react';
-
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { location as auctionLocations } from '@/app/inventory/options';
 import { fixedLocationCoordinates } from '@/app/locations/locations';
 import { loadMap } from './loadMap';
+import { statesMap } from '@/img';
+import Image from 'next/image';
+
 interface MapProps {
 	selectedLocation?: string;
 }
 export default function Map({ selectedLocation }: MapProps) {
 	const mapRef = useRef<HTMLDivElement>(null);
+	const [mapFailed, setMapFailed] = useState(false);
 
 	useEffect(() => {
-		if (!selectedLocation || !mapRef.current) return;
+		const handleMapFailed = () => setMapFailed(true);
+		window.addEventListener('gm-authfailure', handleMapFailed);
+		return () => window.removeEventListener('gm-authfailure', handleMapFailed);
+	}, []);
+
+	useEffect(() => {
+		if (!selectedLocation || !mapRef.current || mapFailed) return;
 
 		const position = fixedLocationCoordinates[selectedLocation];
 		if (!position) return;
@@ -30,7 +38,7 @@ export default function Map({ selectedLocation }: MapProps) {
 		return () => {
 			marker.setMap(null);
 		};
-	}, [selectedLocation]);
+	}, [selectedLocation, mapFailed]);
 
 	useEffect(() => {
 		let isMounted = true;
@@ -38,9 +46,14 @@ export default function Map({ selectedLocation }: MapProps) {
 		const initMap = async () => {
 			if (!mapRef.current) return;
 
-			await loadMap();
+			// loadMap() must be called FIRST before using google.maps
+			const { ok } = await loadMap();
+			if (!ok) {
+				setMapFailed(true);
+				return;
+			}
 
-			if (!isMounted || !mapRef.current || !window.google?.maps) return;
+			if (!isMounted || !mapRef.current) return;
 
 			const { Map } = (await window.google.maps.importLibrary('maps')) as google.maps.MapsLibrary;
 
@@ -56,10 +69,7 @@ export default function Map({ selectedLocation }: MapProps) {
 				if (!isMounted) return;
 
 				const position = fixedLocationCoordinates[rawLocation];
-
-				if (!position) {
-					continue;
-				}
+				if (!position) continue;
 
 				const marker = new window.google.maps.Marker({
 					map,
@@ -86,6 +96,7 @@ export default function Map({ selectedLocation }: MapProps) {
 
 		initMap().catch((error) => {
 			console.error('Google Maps initialization failed:', error);
+			setMapFailed(true);
 		});
 
 		return () => {
@@ -93,5 +104,5 @@ export default function Map({ selectedLocation }: MapProps) {
 		};
 	}, []);
 
-	return <div ref={mapRef} style={{ width: '80%', height: '100vh' }} />;
+	return <div>{!mapFailed ? <div ref={mapRef} style={{ width: '100%', height: '100vh', zIndex: 1 }} /> : <Image src={statesMap} alt='US States Map' className='w-full' />}</div>;
 }
