@@ -3,7 +3,13 @@
 import { useState, FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
 
-export default function SearchBar({ handleOnChange }: { handleOnChange?: (query: string) => void }) {
+interface searchBarTypes {
+	handleOnChange?: (query: string) => void;
+	placeholderText?: string;
+	options?: string[];
+}
+
+export default function SearchBar({ handleOnChange, placeholderText }: searchBarTypes) {
 	const [query, setQuery] = useState('');
 	const router = useRouter();
 
@@ -11,6 +17,9 @@ export default function SearchBar({ handleOnChange }: { handleOnChange?: (query:
 		e.preventDefault();
 		if (!query.trim()) return;
 		router.push('/inventory');
+	};
+	const returnPlaceholder = () => {
+		return placeholderText ? placeholderText : 'Enter Make, Model, Damage, Color, VIN, and more...';
 	};
 
 	return (
@@ -35,7 +44,7 @@ export default function SearchBar({ handleOnChange }: { handleOnChange?: (query:
 			shadow-sm transition-all outline-none
 			group-focus-within:shadow-md
           `}
-					placeholder={handleOnChange ? `Search...` : 'Enter Make, Model, Damage, Color, VIN, and more...'}
+					placeholder={placeholderText}
 					required
 				/>
 			</div>
