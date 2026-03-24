@@ -18,9 +18,6 @@ export default function SearchBar({ handleOnChange, placeholderText }: searchBar
 		if (!query.trim()) return;
 		router.push('/inventory');
 	};
-	const returnPlaceholder = () => {
-		return placeholderText ? placeholderText : 'Enter Make, Model, Damage, Color, VIN, and more...';
-	};
 
 	return (
 		<form onSubmit={handleSubmit} className='mx-auto flex w-full max-w-lg items-center gap-2 sm:gap-3 px-1'>
