@@ -14,6 +14,7 @@ export default function SearchBar({ handleOnChange, placeholderText, targetRoute
 	const [query, setQuery] = useState('');
 	const router = useRouter();
 	const datalistId = useId();
+	const [selectedOptionPlaceholder, setSelectedOptionPlaceholder] = useState('');
 
 	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
@@ -37,8 +38,8 @@ export default function SearchBar({ handleOnChange, placeholderText, targetRoute
 					autoComplete='off'
 					onChange={(e) => {
 						const value = e.target.value;
-						setQuery(value);
 						handleOnChange?.(value);
+						setSelectedOptionPlaceholder(value);
 					}}
 					className={`
 						${handleOnChange ? 'h-7.5 mb-1.25' : ''}
@@ -49,7 +50,7 @@ export default function SearchBar({ handleOnChange, placeholderText, targetRoute
 			shadow-sm transition-all outline-none
 			group-focus-within:shadow-md
           `}
-					placeholder={placeholderText}
+					placeholder={selectedOptionPlaceholder ? selectedOptionPlaceholder : placeholderText}
 					required
 				/>
 
