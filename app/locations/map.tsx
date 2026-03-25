@@ -139,7 +139,11 @@ export default function Map({ selectedLocation }: MapProps) {
 
 	return (
 		<div className='h-150 md:h-screen'>
-			{!mapFailed ? <div ref={mapRef} style={{ width: '100%', height: '100%', zIndex: 1 }} /> : <Image src={statesMap} alt='US States Map' className='w-full' />}
+			{!mapFailed ? (
+				<div ref={mapRef} style={{ width: '100%', height: '100%', zIndex: 1, borderRadius: '8px' }} />
+			) : (
+				<Image src={statesMap} alt='US States Map' className='w-full rounded-lg' />
+			)}
 		</div>
 	);
 }
