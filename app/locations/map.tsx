@@ -137,5 +137,9 @@ export default function Map({ selectedLocation }: MapProps) {
 		};
 	}, []);
 
-	return <div>{!mapFailed ? <div ref={mapRef} style={{ width: '100%', height: '100vh', zIndex: 1 }} /> : <Image src={statesMap} alt='US States Map' className='w-full' />}</div>;
+	return (
+		<div className='h-150 md:h-screen'>
+			{!mapFailed ? <div ref={mapRef} style={{ width: '100%', height: '100%', zIndex: 1 }} /> : <Image src={statesMap} alt='US States Map' className='w-full' />}
+		</div>
+	);
 }

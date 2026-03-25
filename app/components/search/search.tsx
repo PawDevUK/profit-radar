@@ -8,14 +8,14 @@ interface searchBarTypes {
 	placeholderText?: string;
 	options?: string[];
 	targetRoute?: string;
+	locationListSelected?: string;
 }
 
-export default function SearchBar({ handleOnChange, placeholderText, targetRoute, options }: searchBarTypes) {
+export default function SearchBar({ handleOnChange, placeholderText, targetRoute, options, locationListSelected }: searchBarTypes) {
 	const [query, setQuery] = useState('');
 	const router = useRouter();
 	const datalistId = useId();
 	const [selectedOptionPlaceholder, setSelectedOptionPlaceholder] = useState('');
-
 	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		if (!query.trim()) return;
@@ -55,7 +55,7 @@ export default function SearchBar({ handleOnChange, placeholderText, targetRoute
 			shadow-sm transition-all outline-none
 			group-focus-within:shadow-md
           `}
-					placeholder={selectedOptionPlaceholder ? selectedOptionPlaceholder : placeholderText}
+					placeholder={selectedOptionPlaceholder || locationListSelected || placeholderText}
 					required
 				/>
 
