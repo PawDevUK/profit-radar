@@ -12,7 +12,7 @@ export default function Locations() {
 	const [selectedLocation, setSelectedLocation] = useState<string | undefined>(undefined);
 
 	return (
-		<div className='flex flex-col h-full w-full relative p-5 '>
+		<div className='flex flex-col h-screen w-full relative p-5 '>
 			<div className='z-10 flex flex-row absolute top-20 left-7 md:top-15 md:left-2 w-[70%]'>
 				<SearchBar
 					locationListSelected={selectedLocation}
