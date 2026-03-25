@@ -8,10 +8,10 @@ interface LocationTypes {
 
 export default function LocationsList({ selectLocation }: LocationTypes) {
 	return (
-		<div className={`flex max-h-60 flex-col overflow-y-auto select-none cursor-pointer md:hidden mt-5`}>
+		<div className={`flex w-full max-w-full max-h-60 flex-col overflow-y-auto overflow-x-hidden select-none cursor-pointer md:hidden mt-5`}>
 			<ul>
 				{Object.keys(locationDetails).map((location, i) => (
-					<li key={i} onClick={() => selectLocation(location)}>
+					<li key={i} className='wrap-break-word' onClick={() => selectLocation(location)}>
 						{location}
 					</li>
 				))}
