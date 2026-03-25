@@ -23,6 +23,7 @@ export default function SearchBar({ handleOnChange, placeholderText, targetRoute
 		if (targetRoute) {
 			router.push(`/${targetRoute}`);
 		}
+		setQuery('');
 	};
 
 	return (
@@ -38,8 +39,12 @@ export default function SearchBar({ handleOnChange, placeholderText, targetRoute
 					autoComplete='off'
 					onChange={(e) => {
 						const value = e.target.value;
+						setQuery(value);
 						handleOnChange?.(value);
 						setSelectedOptionPlaceholder(value);
+						if (options && options.includes(value)) {
+							setQuery('');
+						}
 					}}
 					className={`
 						${handleOnChange ? 'h-7.5 mb-1.25' : ''}
