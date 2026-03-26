@@ -36,7 +36,7 @@ export default function Locations() {
 					}}></SearchBar>
 			</div>
 			<Map selectedLocation={selectedLocation}></Map>
-			<LocationsList selectLocation={setSelectedLocation}></LocationsList>
+			{/* <LocationsList selectLocation={setSelectedLocation}></LocationsList> */}
 		</div>
 	);
 }
