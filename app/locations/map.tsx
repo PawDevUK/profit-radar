@@ -17,6 +17,10 @@ export default function Map({ selectedLocation }: MapProps) {
 	const selectedInfoWindowRef = useRef<google.maps.InfoWindow | null>(null);
 	const [mapFailed, setMapFailed] = useState(false);
 
+	const getInfoCard = (location: string, address: string) => {
+		return `<div style="min-width:220px; height:60px;"><strong>${location}</strong><br/><span>${address}</span></div>`;
+	};
+
 	useEffect(() => {
 		const handleMapFailed = () => setMapFailed(true);
 		window.addEventListener('gm-authfailure', handleMapFailed);
@@ -50,7 +54,7 @@ export default function Map({ selectedLocation }: MapProps) {
 		});
 
 		const infoWindow = new window.google.maps.InfoWindow({
-			content: `<div style="min-width:220px"><strong>${selectedLocation}</strong><br/><span>${address}</span></div>`,
+			content: getInfoCard(selectedLocation, address),
 		});
 
 		marker.addListener('click', () => {
@@ -105,7 +109,7 @@ export default function Map({ selectedLocation }: MapProps) {
 				});
 
 				const infoWindow = new window.google.maps.InfoWindow({
-					content: `<div style="min-width:220px"><strong>${rawLocation}</strong><br/><span>${address}</span></div>`,
+					content: getInfoCard(rawLocation, address),
 				});
 
 				marker.addListener('click', () => {
