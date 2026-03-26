@@ -25,12 +25,13 @@ export default function Locations() {
 	}, []);
 
 	return (
-		<div className='flex flex-col h-full w-screen overflow-x-hidden'>
-			<div className='z-10 absolute top-40 left-0 right-0 px-5 md:top-50 md:px-2'>
+		<div className='relative flex flex-col h-full w-screen overflow-x-hidden '>
+			<div className='z-10 absolute top-15 left-0 right-0 px-5 md:top-10 md:px-2 h-40'>
 				<SearchBar
 					locationListSelected={selectedLocation}
 					placeholderText='Search location'
 					options={returnlocationArray(locationDetails)}
+					componentType='locationList'
 					handleOnChange={(query) => {
 						setSelectedLocation(query);
 					}}></SearchBar>
