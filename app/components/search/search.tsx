@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 
 interface searchBarTypes {
-	handleOnChange?: (query: string) => void;
+	handleOnChange?: (query: string | undefined) => void;
 	placeholderText?: string;
 	options?: string[];
 	targetRoute?: string;
@@ -78,7 +78,7 @@ export default function SearchBar({ handleOnChange, placeholderText, targetRoute
 								className='w-full h-full flex flex-row justify-start'
 								onClick={() => {
 									setQuery('');
-									handleOnChange?.('');
+									handleOnChange?.(undefined);
 									setSelectedOptionPlaceholder('');
 									setOptionsDropdownOpen(false);
 								}}>

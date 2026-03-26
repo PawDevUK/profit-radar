@@ -13,6 +13,8 @@ interface MapProps {
 export default function Map({ selectedLocation }: MapProps) {
 	const mapRef = useRef<HTMLDivElement>(null);
 	const googleMapRef = useRef<google.maps.Map | null>(null);
+	const allMarkersRef = useRef<google.maps.Marker[]>([]);
+	const allBoundsRef = useRef<google.maps.LatLngBounds | null>(null);
 	const selectedMarkerRef = useRef<google.maps.Marker | null>(null);
 	const selectedInfoWindowRef = useRef<google.maps.InfoWindow | null>(null);
 	const [mapFailed, setMapFailed] = useState(false);
@@ -28,19 +30,30 @@ export default function Map({ selectedLocation }: MapProps) {
 	}, []);
 
 	useEffect(() => {
-		if (!selectedLocation || !googleMapRef.current) return;
-
-		const detail = locationDetails[selectedLocation];
-		if (!detail) return;
-
-		const { address, lat, lng } = detail;
-		const coord = { lat, lng };
+		if (!googleMapRef.current) return;
 
 		const map = googleMapRef.current;
 
 		// Clean up previous selection
 		selectedInfoWindowRef.current?.close();
 		selectedMarkerRef.current?.setMap(null);
+		selectedInfoWindowRef.current = null;
+		selectedMarkerRef.current = null;
+
+		if (!selectedLocation) {
+			allMarkersRef.current.forEach((marker) => marker.setMap(map));
+			if (allBoundsRef.current && !allBoundsRef.current.isEmpty()) {
+				map.fitBounds(allBoundsRef.current);
+			}
+			map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
+			return;
+		}
+
+		const detail = locationDetails[selectedLocation];
+		if (!detail) return;
+
+		const { address, lat, lng } = detail;
+		const coord = { lat, lng };
 
 		// Pan to and zoom on the selected location
 		map.panTo(coord);
@@ -125,6 +138,9 @@ export default function Map({ selectedLocation }: MapProps) {
 				markers.push(marker);
 				bounds.extend(coord);
 			}
+
+			allMarkersRef.current = markers;
+			allBoundsRef.current = bounds;
 
 			if (!bounds.isEmpty()) {
 				map.fitBounds(bounds);
