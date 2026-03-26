@@ -30,7 +30,7 @@ export default function SearchBar({ handleOnChange, placeholderText, targetRoute
 	};
 
 	return (
-		<form onSubmit={handleSubmit} className='mx-auto flex w-full max-w-lg items-center gap-2 sm:gap-3 px-1 '>
+		<form onSubmit={handleSubmit} className='pointer-events-auto mx-auto flex w-full max-w-lg items-center gap-2 sm:gap-3 px-1 '>
 			{/* Input wrapper */}
 			<div className='group relative w-full'>
 				{/* Input */}
