@@ -23,12 +23,13 @@ function CheckBoxListComponent({ options, selected = [], title, scrollable, icon
 	}, [selected]);
 
 	const handleSearchChange = useCallback(
-		(query: string) => {
+		(query: string | undefined) => {
+			if (!query) {
+				setSearchOptions(options);
+				return;
+			}
 			const filteredOptions = options.filter((option) => option.toLowerCase().includes(query.toLowerCase()));
 			setSearchOptions(filteredOptions);
-			if (!query.trim()) {
-				setSearchOptions(options);
-			}
 		},
 		[options],
 	);
