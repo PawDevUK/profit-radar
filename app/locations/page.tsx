@@ -26,7 +26,7 @@ export default function Locations() {
 
 	return (
 		<div className='flex flex-col h-full w-screen overflow-x-hidden'>
-			<div className='z-10 absolute top-20 left-0 right-0 px-5 md:top-15 md:px-2'>
+			<div className='z-10 absolute top-40 left-0 right-0 px-5 md:top-50 md:px-2'>
 				<SearchBar
 					locationListSelected={selectedLocation}
 					placeholderText='Search location'
