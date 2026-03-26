@@ -73,16 +73,19 @@ export default function SearchBar({ handleOnChange, placeholderText, targetRoute
 
 				{optionsDropdownOpen && options?.length ? (
 					<ul className='absolute right-0 top-full mt-1 w-max max-h-60 overflow-auto rounded-md  bg-frosted-glass shadow-lg z-10'>
-						<button
-							className='w-full h-7 flex flex-row justify-start ml-4 mt-4'
-							onClick={() => {
-								setQuery('');
-								handleOnChange?.('');
-								setSelectedOptionPlaceholder('');
-								setOptionsDropdownOpen(false);
-							}}>
-							All LOCATIONS
-						</button>
+						<div className='hover:bg-gray-100 h-10 pt-2 pl-4.25 pb-2'>
+							<button
+								className='w-full h-full flex flex-row justify-start'
+								onClick={() => {
+									setQuery('');
+									handleOnChange?.('');
+									setSelectedOptionPlaceholder('');
+									setOptionsDropdownOpen(false);
+								}}>
+								All LOCATIONS
+							</button>
+						</div>
+
 						{options.map((option) => (
 							<li
 								key={option}
