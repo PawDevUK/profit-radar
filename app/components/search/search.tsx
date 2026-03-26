@@ -2,6 +2,7 @@
 
 import { useState, FormEvent, useId } from 'react';
 import { useRouter } from 'next/navigation';
+import { ChevronDown, ChevronUp } from 'lucide-react';
 
 interface searchBarTypes {
 	handleOnChange?: (query: string) => void;
@@ -9,10 +10,12 @@ interface searchBarTypes {
 	options?: string[];
 	targetRoute?: string;
 	locationListSelected?: string;
+	componentType?: 'searchBar' | 'locationList';
 }
 
-export default function SearchBar({ handleOnChange, placeholderText, targetRoute, options, locationListSelected }: searchBarTypes) {
+export default function SearchBar({ handleOnChange, placeholderText, targetRoute, options, locationListSelected, componentType }: searchBarTypes) {
 	const [query, setQuery] = useState('');
+	const [optionsDropdownOpen, setOptionsDropdownOpen] = useState(false);
 	const router = useRouter();
 	const datalistId = useId();
 	const [selectedOptionPlaceholder, setSelectedOptionPlaceholder] = useState('');
@@ -27,7 +30,7 @@ export default function SearchBar({ handleOnChange, placeholderText, targetRoute
 	};
 
 	return (
-		<form onSubmit={handleSubmit} className='mx-auto flex w-full max-w-lg items-center gap-2 sm:gap-3 px-1'>
+		<form onSubmit={handleSubmit} className='mx-auto flex w-full max-w-lg items-center gap-2 sm:gap-3 px-1 '>
 			{/* Input wrapper */}
 			<div className='group relative w-full'>
 				{/* Input */}
@@ -48,6 +51,9 @@ export default function SearchBar({ handleOnChange, placeholderText, targetRoute
 					}}
 					className={`
 						${handleOnChange ? 'h-7.5 mb-1.25' : ''}
+						${componentType === 'locationList' ? 'h-9' : ''}
+						
+						bg-frosted-glass
 			block w-full rounded-lg border border-gray-300 bg-white/80 
 			pl-3 pr-10 py-2.5 text-sm text-gray-900 
 			placeholder:text-gray-500 
@@ -59,12 +65,28 @@ export default function SearchBar({ handleOnChange, placeholderText, targetRoute
 					required
 				/>
 
-				{options?.length ? (
-					<datalist id={datalistId}>
+				{options ? (
+					<button type='button' className='absolute right-4 top-2' onClick={() => setOptionsDropdownOpen((prev) => !prev)}>
+						{optionsDropdownOpen ? <ChevronUp /> : <ChevronDown />}
+					</button>
+				) : null}
+
+				{optionsDropdownOpen && options?.length ? (
+					<ul className='absolute right-0 top-full mt-1 w-max max-h-60 overflow-auto rounded-md  bg-frosted-glass shadow-lg z-10'>
 						{options.map((option) => (
-							<option key={option} value={option} />
+							<li
+								key={option}
+								className='cursor-pointer px-4 py-2 hover:bg-gray-100'
+								onClick={() => {
+									setQuery(option);
+									handleOnChange?.(option);
+									setSelectedOptionPlaceholder(option);
+									setOptionsDropdownOpen(false);
+								}}>
+								{option}
+							</li>
 						))}
-					</datalist>
+					</ul>
 				) : null}
 			</div>
 
