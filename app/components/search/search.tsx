@@ -66,13 +66,23 @@ export default function SearchBar({ handleOnChange, placeholderText, targetRoute
 				/>
 
 				{options ? (
-					<button type='button' className='absolute right-4 top-2' onClick={() => setOptionsDropdownOpen((prev) => !prev)}>
+					<button type='button' className='absolute right-4 top-1.75 w-1/8' onClick={() => setOptionsDropdownOpen((prev) => !prev)}>
 						{optionsDropdownOpen ? <ChevronUp /> : <ChevronDown />}
 					</button>
 				) : null}
 
 				{optionsDropdownOpen && options?.length ? (
 					<ul className='absolute right-0 top-full mt-1 w-max max-h-60 overflow-auto rounded-md  bg-frosted-glass shadow-lg z-10'>
+						<button
+							className='w-full h-7 flex flex-row justify-start ml-4 mt-4'
+							onClick={() => {
+								setQuery('');
+								handleOnChange?.('');
+								setSelectedOptionPlaceholder('');
+								setOptionsDropdownOpen(false);
+							}}>
+							All LOCATIONS
+						</button>
 						{options.map((option) => (
 							<li
 								key={option}
