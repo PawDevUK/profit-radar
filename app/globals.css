@@ -62,6 +62,12 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 /* "pr" class stands for profit radar */
 
 .bg-mongo {

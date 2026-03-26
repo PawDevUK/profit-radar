@@ -1,104 +1,505 @@
-export type FixedLocationCoordinates = Record<string, { lat: number; lng: number }>;
+export type LocationDetail = { address: string; lat: number; lng: number };
+export type LocationDetailsMap = Record<string, LocationDetail>;
 
-export const fixedLocationCoordinates: FixedLocationCoordinates = {
-	'AL - BIRMINGHAM': { lat: 33.5206824, lng: -86.8024326 },
-	'AL - MOBILE': { lat: 30.6913462, lng: -88.0437509 },
-	'AL - MONTGOMERY': { lat: 32.3777111, lng: -86.3090775 },
-	'AL - TANNER': { lat: 34.7314787, lng: -86.9705632 },
-	'AR - FAYETTEVILLE': { lat: 36.0625843, lng: -94.1574328 },
-	'AR - LITTLE ROCK': { lat: 34.7465071, lng: -92.2896267 },
-	'AZ - PHOENIX': { lat: 33.4484367, lng: -112.074141 },
-	'CA - ADELANTO': { lat: 34.5838077, lng: -117.4082453 },
-	'CA - MARTINEZ': { lat: 38.0138934, lng: -122.1338674 },
-	'CA - MENTONE': { lat: 34.05884, lng: -117.1084432 },
-	'CA - RANCHO CUCAMONGA': { lat: 34.1033192, lng: -117.575173 },
-	'CA - SAN BERNARDINO': { lat: 34.1083449, lng: -117.2897652 },
-	'CA - SAN DIEGO': { lat: 32.7174202, lng: -117.162772 },
-	'CA - SAN JOSE': { lat: 37.3361663, lng: -121.890591 },
-	'CA - SUN VALLEY': { lat: 34.2204227, lng: -118.3878945 },
-	'CA - VAN NUYS': { lat: 34.1866193, lng: -118.4486675 },
-	'CO - COLORADO SPRINGS': { lat: 38.8339578, lng: -104.825348 },
-	'CO - DENVER': { lat: 39.7392364, lng: -104.984862 },
-	'CO - DENVER CENTRAL': { lat: 39.7392358, lng: -104.990251 },
-	'CO - DENVER SOUTH': { lat: 39.613321, lng: -104.953499 },
-	'CT - HARTFORD': { lat: 41.764582, lng: -72.6908547 },
-	'CT - HARTFORD SPRINGFIELD': { lat: 41.9784, lng: -72.6779 },
-	'DC - WASHINGTON DC': { lat: 38.9071923, lng: -77.0368707 },
-	'DE - SEAFORD': { lat: 38.6413452, lng: -75.6114584 },
-	'FL - CLEWISTON': { lat: 26.7542264, lng: -80.9342307 },
-	'FL - JACKSONVILLE NORTH': { lat: 30.3935, lng: -81.6614 },
-	'FL - ORLANDO NORTH': { lat: 28.6186, lng: -81.3792 },
-	'FL - ORLANDO SOUTH': { lat: 28.457, lng: -81.3722 },
-	'FL - TAMPA SOUTH': { lat: 27.8845, lng: -82.5069 },
-	'GA - ATLANTA EAST': { lat: 33.7415, lng: -84.3455 },
-	'GA - ATLANTA SOUTH': { lat: 33.6407, lng: -84.4464 },
-	'GA - ATLANTA WEST': { lat: 33.7839, lng: -84.5955 },
-	'HI - HONOLULU': { lat: 21.304547, lng: -157.855676 },
-	'IL - CHICAGO NORTH': { lat: 41.979, lng: -87.7705 },
-	'IL - CHICAGO SOUTH': { lat: 41.7508, lng: -87.605 },
-	'IL - PEORIA': { lat: 40.6938609, lng: -89.5891008 },
-	'IL - SOUTHERN ILLINOIS': { lat: 37.7273, lng: -89.2168 },
-	'IN - CICERO': { lat: 40.1323222, lng: -86.0137897 },
-	'IN - DYER': { lat: 41.4942021, lng: -87.5217068 },
-	'IN - FORT WAYNE': { lat: 41.0799898, lng: -85.1386015 },
-	'IN - INDIANAPOLIS': { lat: 39.7683331, lng: -86.1583502 },
-	'KS - KANSAS CITY': { lat: 39.1134562, lng: -94.626497 },
-	'KS - WICHITA': { lat: 37.6922361, lng: -97.3375448 },
-	'KY - EARLINGTON': { lat: 37.2742117, lng: -87.5119435 },
-	'KY - LEXINGTON EAST': { lat: 38.0406, lng: -84.458 },
-	'KY - LEXINGTON WEST': { lat: 38.053, lng: -84.5775 },
-	'KY - LOUISVILLE': { lat: 38.2542376, lng: -85.759407 },
-	'LA - BATON ROUGE': { lat: 30.4494155, lng: -91.1869659 },
-	'LA - NEW ORLEANS': { lat: 29.9561422, lng: -90.0733934 },
-	'LA - SHREVEPORT': { lat: 32.5135356, lng: -93.7477839 },
-	'MA - FREETOWN': { lat: 41.7948769, lng: -71.0675348 },
-	'MA - NORTH BOSTON': { lat: 42.4668, lng: -70.9495 },
-	'MD - BALTIMORE': { lat: 39.2908816, lng: -76.610759 },
-	'MD - BALTIMORE EAST': { lat: 39.3149769, lng: -76.6037275 },
-	'ME - WINDHAM': { lat: 43.7894155, lng: -70.4083434 },
-	'MI - DETROIT': { lat: 42.3315509, lng: -83.0466403 },
-	'MI - FLINT': { lat: 43.0161693, lng: -83.6900211 },
-	'MI - IONIA': { lat: 42.9828, lng: -85.0711 },
-	'MI - WAYLAND': { lat: 42.6745321, lng: -85.6457663 },
-	'MN - MINNEAPOLIS NORTH': { lat: 45.0105, lng: -93.288 },
-	'MN - ST. CLOUD': { lat: 45.574643, lng: -94.1205808 },
-	'MO - SPRINGFIELD': { lat: 37.2081729, lng: -93.2922715 },
-	'MO - ST. LOUIS': { lat: 38.6254063, lng: -90.190009 },
-	'MS - JACKSON': { lat: 32.2998686, lng: -90.1830408 },
-	'MT - HELENA': { lat: 46.5927425, lng: -112.036277 },
-	'NC - RALEIGH': { lat: 35.7803977, lng: -78.6390989 },
-	'NE - LINCOLN': { lat: 40.8088861, lng: -96.7077751 },
-	'NH - CANDIA': { lat: 43.077916, lng: -71.277237 },
-	'NJ - GLASSBORO EAST': { lat: 39.702892, lng: -75.111843 },
-	'NJ - SOMERVILLE': { lat: 40.5742696, lng: -74.60988 },
-	'NJ - TRENTON': { lat: 40.2203074, lng: -74.7659 },
-	'NM - ALBUQUERQUE': { lat: 35.0841034, lng: -106.650985 },
-	'NV - LAS VEGAS': { lat: 36.1674263, lng: -115.1484131 },
-	'NV - LAS VEGAS WEST': { lat: 36.17497, lng: -115.21567 },
-	'NY - LONG ISLAND': { lat: 40.8514971, lng: -73.0994297 },
-	'NY - NEWBURGH': { lat: 41.5000767, lng: -74.0098299 },
-	'OH - DAYTON': { lat: 39.7589478, lng: -84.1916069 },
-	'OK - OKLAHOMA CITY': { lat: 35.4729886, lng: -97.5170536 },
-	'OK - TULSA': { lat: 36.1563122, lng: -95.9927516 },
-	'OR - PORTLAND NORTH': { lat: 45.5938, lng: -122.7552 },
-	'PA - PHILADELPHIA': { lat: 39.9527237, lng: -75.1635262 },
-	'QC - MONTREAL': { lat: 45.5031824, lng: -73.5698065 },
-	'RI - EXETER': { lat: 41.5774793, lng: -71.5376881 },
-	'SC - COLUMBIA': { lat: 34.000754, lng: -81.0352313 },
-	'SC - NORTH CHARLESTON': { lat: 32.8546197, lng: -79.9748103 },
-	'SC - SPARTANBURG': { lat: 34.9498007, lng: -81.9320157 },
-	'TN - KNOXVILLE': { lat: 35.9603948, lng: -83.9210261 },
-	'TN - MEMPHIS': { lat: 35.1460249, lng: -90.0517638 },
-	'TN - NASHVILLE': { lat: 36.1622767, lng: -86.7742984 },
-	'TX - DALLAS': { lat: 32.7762719, lng: -96.7968559 },
-	'TX - DALLAS SOUTH': { lat: 32.69, lng: -96.82 },
-	'TX - FT. WORTH': { lat: 32.753177, lng: -97.3327459 },
-	'TX - HOUSTON': { lat: 29.7589382, lng: -95.3676974 },
-	'TX - HOUSTON EAST': { lat: 29.77, lng: -95.26 },
-	'TX - NORTH AUSTIN': { lat: 30.4083, lng: -97.6789 },
-	'TX - SAN ANTONIO': { lat: 29.4246002, lng: -98.4951405 },
-	'UT - SALT LAKE CITY': { lat: 40.7596198, lng: -111.886797 },
-	'VA - FREDERICKSBURG': { lat: 38.3031837, lng: -77.4605399 },
-	'WA - GRAHAM': { lat: 47.0395996, lng: -122.2785729 },
-	'WI - MILWAUKEE SOUTH': { lat: 42.9597, lng: -87.949 },
+export const locationDetails: LocationDetailsMap = {
+  "AL - BIRMINGHAM": {
+    "address": "3101 DAVEY ALLISON BLVD, HUEYTOWN, AL 35023",
+    "lat": 33.4374887,
+    "lng": -86.96676099999999
+  },
+  "AL - MOBILE": {
+    "address": "4763 LOTT ROAD, EIGHT MILE, AL 36613",
+    "lat": 30.7884211,
+    "lng": -88.21770939999999
+  },
+  "AL - MONTGOMERY": {
+    "address": "6044 TROY HIGHWAY, MONTGOMERY, AL 36116",
+    "lat": 32.2858245,
+    "lng": -86.1866301
+  },
+  "AL - TANNER": {
+    "address": "20760 SANDY ROAD, TANNER, AL 35671",
+    "lat": 34.6411339,
+    "lng": -86.9551389
+  },
+  "AR - FAYETTEVILLE": {
+    "address": "15976 BILL CAMPBELL ROAD, PRAIRIE GROVE, AR 72753",
+    "lat": 35.9683356,
+    "lng": -94.34900669999999
+  },
+  "AR - LITTLE ROCK": {
+    "address": "703 MAIN ST, CONWAY, AR 72032",
+    "lat": 35.08273,
+    "lng": -92.289109
+  },
+  "AZ - PHOENIX": {
+    "address": "615 SO. 51ST AVENUE, PHOENIX, AZ 85043",
+    "lat": 33.4465808,
+    "lng": -112.1691542
+  },
+  "CA - ADELANTO": {
+    "address": "10429 PANSY RD, ADELANTO, CA 92301",
+    "lat": 34.5460326,
+    "lng": -117.4357031
+  },
+  "CA - MARTINEZ": {
+    "address": "2701 WATERFRONT ROAD, MARTINEZ, CA 94553",
+    "lat": 38.0307806,
+    "lng": -122.0972364
+  },
+  "CA - MENTONE": {
+    "address": "1203 S. RANCHO AVENUE, COLTON, CA 92324",
+    "lat": 34.0495373,
+    "lng": -117.3316692
+  },
+  "CA - RANCHO CUCAMONGA": {
+    "address": "12167 ARROW ROUTE, RANCHO CUCAMONGA, CA 91739",
+    "lat": 34.0955186,
+    "lng": -117.5385777
+  },
+  "CA - SAN BERNARDINO": {
+    "address": "1203 S. RANCHO AVENUE, COLTON, CA 92324",
+    "lat": 34.0495373,
+    "lng": -117.3316692
+  },
+  "CA - SAN DIEGO": {
+    "address": "7847 AIRWAY ROAD, SAN DIEGO, CA 92154",
+    "lat": 32.5640771,
+    "lng": -117.0132999
+  },
+  "CA - SAN JOSE": {
+    "address": "13895 LLAGAS AVENUE, SAN MARTIN, CA 95046",
+    "lat": 37.092915,
+    "lng": -121.6129778
+  },
+  "CA - SUN VALLEY": {
+    "address": "11409 PENROSE STREET, SUN VALLEY, CA 91352",
+    "lat": 34.2234716,
+    "lng": -118.3802519
+  },
+  "CA - VAN NUYS": {
+    "address": "7519 WOODMAN AVENUE, VAN NUYS, CA 91405",
+    "lat": 34.20739100000001,
+    "lng": -118.4332413
+  },
+  "CO - COLORADO SPRINGS": {
+    "address": "3701 N. NEVADA AVE, COLORADO SPRINGS, CO 80907",
+    "lat": 38.8871923,
+    "lng": -104.8158052
+  },
+  "CO - DENVER": {
+    "address": "6464 DOWNING STREET, DENVER, CO 80229",
+    "lat": 39.8138882,
+    "lng": -104.9717426
+  },
+  "CO - DENVER CENTRAL": {
+    "address": "6464 DOWNING STREET, DENVER, CO 80229",
+    "lat": 39.8138882,
+    "lng": -104.9717426
+  },
+  "CO - DENVER SOUTH": {
+    "address": "8300 BLAKELAND DRIVE, LITTLETON, CO 80125",
+    "lat": 39.5582003,
+    "lng": -105.0423754
+  },
+  "CT - HARTFORD": {
+    "address": "138 CHRISTIAN LANE, NEW BRITAIN, CT 06051",
+    "lat": 41.6504889,
+    "lng": -72.7505686
+  },
+  "CT - HARTFORD SPRINGFIELD": {
+    "address": "49 RUSSELL ROAD, EAST GRANBY, CT 06026",
+    "lat": 41.9414024,
+    "lng": -72.6997138
+  },
+  "DC - WASHINGTON DC": {
+    "address": "11055 BILLINGSLEY ROAD, WALDORF, MD 20602",
+    "lat": 38.5892491,
+    "lng": -76.9323354
+  },
+  "DE - SEAFORD": {
+    "address": "26029 BETHEL CONCORD ROAD, SEAFORD, DE 19973",
+    "lat": 38.6301811,
+    "lng": -75.5633316
+  },
+  "FL - CLEWISTON": {
+    "address": "7876 W BELVEDERE ROADE, WEST PALM BEACH, FL 33411",
+    "lat": 26.6912946,
+    "lng": -80.1725101
+  },
+  "FL - JACKSONVILLE NORTH": {
+    "address": "10200 ALTON BOX RD, JACKSONVILLE, FL 32218",
+    "lat": 30.4223596,
+    "lng": -81.6492043
+  },
+  "FL - ORLANDO NORTH": {
+    "address": "307 EAST LANDSTREET ROAD, ORLANDO, FL 32824",
+    "lat": 28.4380539,
+    "lng": -81.369261
+  },
+  "FL - ORLANDO SOUTH": {
+    "address": "307 EAST LANDSTREET ROAD, ORLANDO, FL 32824",
+    "lat": 28.4380539,
+    "lng": -81.369261
+  },
+  "FL - TAMPA SOUTH": {
+    "address": "12020 US HIGHWAY 301 SOUTH, RIVERVIEW, FL 33578",
+    "lat": 27.8236758,
+    "lng": -82.3301522
+  },
+  "GA - ATLANTA EAST": {
+    "address": "761 CLARK DRIVE, ELLENWOOD, GA 30294",
+    "lat": 33.6258587,
+    "lng": -84.2456603
+  },
+  "GA - ATLANTA SOUTH": {
+    "address": "6737 ROOSEVELT HWY, FAIRBURN, GA 30213",
+    "lat": 33.5481314,
+    "lng": -84.6074979
+  },
+  "GA - ATLANTA WEST": {
+    "address": "2568 OLD ALABAMA ROAD, AUSTELL, GA 30168",
+    "lat": 33.7988412,
+    "lng": -84.62808079999999
+  },
+  "HI - HONOLULU": {
+    "address": "91-542 AWAKUMOKO ST, KAPOLEI, HI 96707",
+    "lat": 21.3190602,
+    "lng": -158.1169966
+  },
+  "IL - CHICAGO NORTH": {
+    "address": "110 EAST PALATINE ROAD, WHEELING, IL 60090",
+    "lat": 42.1113928,
+    "lng": -87.91369449999999
+  },
+  "IL - CHICAGO SOUTH": {
+    "address": "89 E SAUK TRAIL, CHICAGO HEIGHTS, IL 60411",
+    "lat": 41.4820429,
+    "lng": -87.6303932
+  },
+  "IL - PEORIA": {
+    "address": "350 VETERANS DRIVE, PEKIN, IL 61554",
+    "lat": 40.529073,
+    "lng": -89.6569123
+  },
+  "IL - SOUTHERN ILLINOIS": {
+    "address": "99 RACEHORSE DRIVE, ALORTON, IL 62207",
+    "lat": 38.5775336,
+    "lng": -90.0951214
+  },
+  "IN - CICERO": {
+    "address": "1461 E 226TH STREET, CICERO, IN 46034",
+    "lat": 40.1144708,
+    "lng": -86.13224269999999
+  },
+  "IN - DYER": {
+    "address": "641 JOLIET ST, DYER, IN 46311",
+    "lat": 41.4958313,
+    "lng": -87.51240589999999
+  },
+  "IN - FORT WAYNE": {
+    "address": "3600 E. WASHINGTON BLVD., FORT WAYNE, IN 46803",
+    "lat": 41.0732717,
+    "lng": -85.0940019
+  },
+  "IN - INDIANAPOLIS": {
+    "address": "4040 OFFICE PLAZA BLVD, INDIANAPOLIS, IN 46254",
+    "lat": 39.8293306,
+    "lng": -86.2473636
+  },
+  "KS - KANSAS CITY": {
+    "address": "6211 KANSAS AVE, KANSAS CITY, KS 66111",
+    "lat": 39.084566,
+    "lng": -94.7243872
+  },
+  "KS - WICHITA": {
+    "address": "4510 S MADISON, WICHITA, KS 67216",
+    "lat": 37.6122006,
+    "lng": -97.3067702
+  },
+  "KY - EARLINGTON": {
+    "address": "700 N SANDCUT RD, EARLINGTON, KY 42410",
+    "lat": 37.2728431,
+    "lng": -87.4929415
+  },
+  "KY - LEXINGTON EAST": {
+    "address": "5801 KASP CT, LEXINGTON, KY 40509",
+    "lat": 37.9604839,
+    "lng": -84.3727608
+  },
+  "KY - LEXINGTON WEST": {
+    "address": "5801 KASP CT, LEXINGTON, KY 40509",
+    "lat": 37.9604839,
+    "lng": -84.3727608
+  },
+  "KY - LOUISVILLE": {
+    "address": "3100 POND STATION RD, LOUISVILLE, KY 40272",
+    "lat": 38.1097914,
+    "lng": -85.8203181
+  },
+  "LA - BATON ROUGE": {
+    "address": "21595 GREENWELL SPRINGS RD, GREENWELL SPRINGS, LA 70739",
+    "lat": 30.5603078,
+    "lng": -90.9882123
+  },
+  "LA - NEW ORLEANS": {
+    "address": "14600 OLD GENTILLY RD, NEW ORLEANS, LA 70129",
+    "lat": 30.0328459,
+    "lng": -89.9096551
+  },
+  "LA - SHREVEPORT": {
+    "address": "5235 GREENWOOD RD, SHREVEPORT, LA 71109",
+    "lat": 32.4652493,
+    "lng": -93.8366277
+  },
+  "MA - FREETOWN": {
+    "address": "82 CAPE ROAD, MENDON, MA 01756",
+    "lat": 42.0897073,
+    "lng": -71.4984911
+  },
+  "MA - NORTH BOSTON": {
+    "address": "55R HIGH ST, NORTH BILLERICA, MA 01682",
+    "lat": 42.5804664,
+    "lng": -71.2712815
+  },
+  "MD - BALTIMORE": {
+    "address": "601 W PATAPSCO AVE, BALTIMORE, MD 21225",
+    "lat": 39.2404725,
+    "lng": -76.6265414
+  },
+  "MD - BALTIMORE EAST": {
+    "address": "601 W PATAPSCO AVE, BALTIMORE, MD 21225",
+    "lat": 39.2404725,
+    "lng": -76.6265414
+  },
+  "ME - WINDHAM": {
+    "address": "136 KENNEBUNK POND ROAD, ALFRED, ME 04002",
+    "lat": 43.4883699,
+    "lng": -70.63156409999999
+  },
+  "MI - DETROIT": {
+    "address": "21000 HAYDEN DRIVE, WOODHAVEN, MI 48183",
+    "lat": 42.1212734,
+    "lng": -83.2359505
+  },
+  "MI - FLINT": {
+    "address": "5000 N STATE ROAD, DAVISON, MI 48243",
+    "lat": 43.0775112,
+    "lng": -83.511685
+  },
+  "MI - IONIA": {
+    "address": "3902 SOUTH CANAL RD, LANSING, MI 48917",
+    "lat": 42.6926501,
+    "lng": -84.6630666
+  },
+  "MI - WAYLAND": {
+    "address": "3902 SOUTH CANAL RD, LANSING, MI 48917",
+    "lat": 42.6926501,
+    "lng": -84.6630666
+  },
+  "MN - MINNEAPOLIS NORTH": {
+    "address": "10588 CENTRAL AVE NE, BLAINE, MN 55434",
+    "lat": 45.1623436,
+    "lng": -93.2364563
+  },
+  "MN - ST. CLOUD": {
+    "address": "200 COUNTY ROAD 159, AVON, MN 56310",
+    "lat": 45.6039965,
+    "lng": -94.43664729999999
+  },
+  "MO - SPRINGFIELD": {
+    "address": "2889 E US HIGHWAY 60, ROGERSVILLE, MO 65742",
+    "lat": 37.1197676,
+    "lng": -93.01331619999999
+  },
+  "MO - ST. LOUIS": {
+    "address": "13033 TAUSSIG AVE, BRIDGETON, MO 63044",
+    "lat": 38.7796929,
+    "lng": -90.42249679999999
+  },
+  "MS - JACKSON": {
+    "address": "205 S RANKIN INDUSTRIAL DRIVE, FLORENCE, MS 39073",
+    "lat": 32.18554,
+    "lng": -90.1322689
+  },
+  "MT - HELENA": {
+    "address": "3333 BOZEMAN AVENUE, HELENA, MT 59601",
+    "lat": 46.5980764,
+    "lng": -111.9728063
+  },
+  "NC - RALEIGH": {
+    "address": "310 COPART ROAD, DUNN, NC 28334",
+    "lat": 35.2670394,
+    "lng": -78.6198981
+  },
+  "NE - LINCOLN": {
+    "address": "13603 238TH ST, GREENWOOD, NE 68366",
+    "lat": 40.975423,
+    "lng": -96.39058519999999
+  },
+  "NH - CANDIA": {
+    "address": "134 RAYMOND RD, CANDIA, NH 03034",
+    "lat": 43.06066149999999,
+    "lng": -71.2786417
+  },
+  "NJ - GLASSBORO EAST": {
+    "address": "200 GROVE ST, GLASSBORO, NJ 08028",
+    "lat": 39.6966095,
+    "lng": -75.1066433
+  },
+  "NJ - SOMERVILLE": {
+    "address": "2124 WEST CAMPLAIN ROAD, HILLSBOROUGH, NJ 08844",
+    "lat": 40.5366815,
+    "lng": -74.6046314
+  },
+  "NJ - TRENTON": {
+    "address": "2124 WEST CAMPLAIN ROAD, HILLSBOROUGH, NJ 08844",
+    "lat": 40.5366815,
+    "lng": -74.6046314
+  },
+  "NM - ALBUQUERQUE": {
+    "address": "7705 BROADWAY SE, ALBUQUERQUE, NM 87105",
+    "lat": 34.9850763,
+    "lng": -106.6562918
+  },
+  "NV - LAS VEGAS": {
+    "address": "4810 N LAMB BLVD, LAS VEGAS, NV 89115",
+    "lat": 36.2480535,
+    "lng": -115.0790236
+  },
+  "NV - LAS VEGAS WEST": {
+    "address": "4810 N LAMB BLVD, LAS VEGAS, NV 89115",
+    "lat": 36.2480535,
+    "lng": -115.0790236
+  },
+  "NY - LONG ISLAND": {
+    "address": "1983 MONTAUK HIGHWAY, BROOKHAVEN, NY 11719",
+    "lat": 40.777668,
+    "lng": -72.9309616
+  },
+  "NY - NEWBURGH": {
+    "address": "91 RIVERVIEW DRIVE, MARLBORO, NY 12542",
+    "lat": 41.6222013,
+    "lng": -73.9579377
+  },
+  "OH - DAYTON": {
+    "address": "4691 SPRINGBORO PIKE, MORAINE, OH 45439",
+    "lat": 39.694419,
+    "lng": -84.2206341
+  },
+  "OK - OKLAHOMA CITY": {
+    "address": "2829 SE 15TH STREET, OKLAHOMA CITY, OK 73129",
+    "lat": 35.4521965,
+    "lng": -97.4604487
+  },
+  "OK - TULSA": {
+    "address": "2408 W 21ST STREET, TULSA, OK 74107",
+    "lat": 36.1324188,
+    "lng": -96.0200012
+  },
+  "OR - PORTLAND NORTH": {
+    "address": "6900 NE CORNFOOT DRIVE, PORTLAND, OR 97218",
+    "lat": 45.5727276,
+    "lng": -122.5915449
+  },
+  "PA - PHILADELPHIA": {
+    "address": "77 BRISTOL ROAD, CHALFONT, PA 18914",
+    "lat": 40.2915992,
+    "lng": -75.1928403
+  },
+  "QC - MONTREAL": {
+    "address": "6900 MARIEN AVENUE, MONTREAL, QC H1B 4W3",
+    "lat": 45.6401793,
+    "lng": -73.53000279999999
+  },
+  "RI - EXETER": {
+    "address": "10 INDUSTRIAL DRIVE, EXETER, RI 02822",
+    "lat": 41.5707063,
+    "lng": -71.65802959999999
+  },
+  "SC - COLUMBIA": {
+    "address": "4324 HIGHWAY 321 SOUTH, GASTON, SC 29053",
+    "lat": 33.8642668,
+    "lng": -81.084434
+  },
+  "SC - NORTH CHARLESTON": {
+    "address": "120 COMMERCE AVE, HARLEYVILLE, SC 29448",
+    "lat": 33.1989326,
+    "lng": -80.44956599999999
+  },
+  "SC - SPARTANBURG": {
+    "address": "1922 NAZARETH CHURCH ROAD, SPARTANBURG, SC 29301",
+    "lat": 34.9274675,
+    "lng": -82.05923729999999
+  },
+  "TN - KNOXVILLE": {
+    "address": "6355 B HIGHWAY 411, MADISONVILLE, TN 37354",
+    "lat": 35.4550129,
+    "lng": -84.43518639999999
+  },
+  "TN - MEMPHIS": {
+    "address": "5545 SWINNEA RD, MEMPHIS, TN 38118",
+    "lat": 35.0009342,
+    "lng": -89.97277199999999
+  },
+  "TN - NASHVILLE": {
+    "address": "865 STUMPY LANE, LEBANON, TN 37090",
+    "lat": 36.1657055,
+    "lng": -86.2951111
+  },
+  "TX - DALLAS": {
+    "address": "7777 JOHN W CARPENTER FREEWAY, DALLAS, TX 75247",
+    "lat": 32.818487,
+    "lng": -96.8747101
+  },
+  "TX - DALLAS SOUTH": {
+    "address": "7777 JOHN W CARPENTER FREEWAY, DALLAS, TX 75247",
+    "lat": 32.818487,
+    "lng": -96.8747101
+  },
+  "TX - FT. WORTH": {
+    "address": "950 BLUE MOUND ROAD WEST, HASLET, TX 76052",
+    "lat": 32.9455003,
+    "lng": -97.37966019999999
+  },
+  "TX - HOUSTON": {
+    "address": "1655 RANKIN ROAD, HOUSTON, TX 77073",
+    "lat": 29.9730462,
+    "lng": -95.374326
+  },
+  "TX - HOUSTON EAST": {
+    "address": "1655 RANKIN ROAD, HOUSTON, TX 77073",
+    "lat": 29.9730462,
+    "lng": -95.374326
+  },
+  "TX - NORTH AUSTIN": {
+    "address": "7201 N GENERAL BRUCE DR, TEMPLE, TX 76501",
+    "lat": 31.1630867,
+    "lng": -97.317567
+  },
+  "TX - SAN ANTONIO": {
+    "address": "11130 APPLEWHITE RD, SAN ANTONIO, TX 78224",
+    "lat": 29.3082492,
+    "lng": -98.54703880000001
+  },
+  "UT - SALT LAKE CITY": {
+    "address": "7320 WEST 2100 SOUTH, MAGNA, UT 84044",
+    "lat": 40.7261374,
+    "lng": -112.0660047
+  },
+  "VA - FREDERICKSBURG": {
+    "address": "4717 MASSAPONAX CHURCH ROAD, FREDERICKSBURG, VA 22408",
+    "lat": 38.194589,
+    "lng": -77.4969838
+  },
+  "WA - GRAHAM": {
+    "address": "21421 MERIDIAN E, GRAHAM, WA 98338",
+    "lat": 47.06183790000001,
+    "lng": -122.2933278
+  },
+  "WI - MILWAUKEE SOUTH": {
+    "address": "4825 S WHITNALL AVE, CUDAHY, WI 53110",
+    "lat": 42.9568145,
+    "lng": -87.873244
+  }
 };

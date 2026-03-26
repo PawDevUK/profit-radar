@@ -1,18 +1,17 @@
 'use client';
 
-import { fixedLocationCoordinates } from '@/app/locations/locations';
-
+// import { locationAddresses } from './locationAddresses';
+import { locationDetails } from '@/app/locations/locations';
 interface LocationTypes {
-	selectLocation: (location: string) => void;
+	selectLocation: (location: string | undefined) => void;
 }
 
 export default function LocationsList({ selectLocation }: LocationTypes) {
 	return (
-		<div className={`flex max-h-screen flex-col overflow-y-auto select-none cursor-pointer`}>
-			<div>Locations List</div>
+		<div className={`flex w-screen -mx-5 px-5 max-h-60 flex-col overflow-y-auto overflow-x-hidden select-none cursor-pointer md:hidden mt-5`}>
 			<ul>
-				{Object.keys(fixedLocationCoordinates).map((location, i) => (
-					<li key={i} onClick={() => selectLocation(location)}>
+				{Object.keys(locationDetails).map((location, i) => (
+					<li key={i} className='wrap-break-word' onClick={() => selectLocation(location)}>
 						{location}
 					</li>
 				))}

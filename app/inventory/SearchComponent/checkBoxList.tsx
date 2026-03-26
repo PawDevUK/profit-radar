@@ -46,7 +46,7 @@ function CheckBoxListComponent({ options, selected = [], title, scrollable, icon
 
 	return (
 		<CollapseCard title={title || ''} resetOptions={resetOptions} icon={icon}>
-			{searchable && <SearchBar handleOnChange={handleSearchChange} />}
+			{searchable && <SearchBar placeholderText={`Search ${title || ''}...`} handleOnChange={handleSearchChange} />}
 			<div className={` ${scrollable ? 'max-h-64 overflow-y-auto' : ''}`}>
 				{searchOptions.map((option) => (
 					<Memo_CheckboxItem key={option} option={option} isSelected={selectedSet.has(option)} onChangeHandler={handleCheckboxChange} />

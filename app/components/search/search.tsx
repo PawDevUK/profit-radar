@@ -1,16 +1,29 @@
 'use client';
 
-import { useState, FormEvent } from 'react';
+import { useState, FormEvent, useId } from 'react';
 import { useRouter } from 'next/navigation';
 
-export default function SearchBar({ handleOnChange }: { handleOnChange?: (query: string) => void }) {
+interface searchBarTypes {
+	handleOnChange?: (query: string) => void;
+	placeholderText?: string;
+	options?: string[];
+	targetRoute?: string;
+	locationListSelected?: string;
+}
+
+export default function SearchBar({ handleOnChange, placeholderText, targetRoute, options, locationListSelected }: searchBarTypes) {
 	const [query, setQuery] = useState('');
 	const router = useRouter();
-
+	const datalistId = useId();
+	const [selectedOptionPlaceholder, setSelectedOptionPlaceholder] = useState('');
 	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		if (!query.trim()) return;
-		router.push('/inventory');
+
+		if (targetRoute) {
+			router.push(`/${targetRoute}`);
+		}
+		setQuery('');
 	};
 
 	return (
@@ -22,9 +35,16 @@ export default function SearchBar({ handleOnChange }: { handleOnChange?: (query:
 					type='text'
 					id='voice-search'
 					value={query}
+					list={options?.length ? datalistId : undefined}
+					autoComplete='off'
 					onChange={(e) => {
-						setQuery(e.target.value);
-						handleOnChange?.(e.target.value);
+						const value = e.target.value;
+						setQuery(value);
+						handleOnChange?.(value);
+						setSelectedOptionPlaceholder(value);
+						if (options && options.includes(value)) {
+							setQuery('');
+						}
 					}}
 					className={`
 						${handleOnChange ? 'h-7.5 mb-1.25' : ''}
@@ -35,9 +55,17 @@ export default function SearchBar({ handleOnChange }: { handleOnChange?: (query:
 			shadow-sm transition-all outline-none
 			group-focus-within:shadow-md
           `}
-					placeholder={handleOnChange ? `Search...` : 'Enter Make, Model, Damage, Color, VIN, and more...'}
+					placeholder={selectedOptionPlaceholder || locationListSelected || placeholderText}
 					required
 				/>
+
+				{options?.length ? (
+					<datalist id={datalistId}>
+						{options.map((option) => (
+							<option key={option} value={option} />
+						))}
+					</datalist>
+				) : null}
 			</div>
 
 			{/* Submit button */}
