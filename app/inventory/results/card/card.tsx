@@ -7,13 +7,18 @@ function Card({ ...props }) {
 		<div
 			className='md:max-h-115.5 w-full max-w-lg md:w-[30%] lg:w-[22%] xl:w-[18%] m-1.5 bg-neutral-primary-soft border border-gray-300 rounded-base shadow-md rounded-lg flex flex-row md:flex-col'
 			onClick={onClick}>
-			<div className='flex flex-col justify-between md:w-full w-1/3'>
-				<div className=' flex items-center justify-center space-x-3 m-2'>
-					<span>Lot:</span>
-					<span className='border border-brand-subtle text-(--main-blue)  text-xs font-medium px-1.5 py-0.5 rounded-sm'>{item.lotNumber}</span>
-				</div>
-				<a href='#' className=''>
-					<Image className='rounded-base rounded-bl-lg md:rounded-bl-none' src={item.images?.[0] || '/placeholder-image.png'} alt='lot image' width={300} height={300} />
+			<div className='flex flex-col justify-between md:w-full w-1/3 relative h-full md:h-40 '>
+				<a href='#' className='w-full h-full '>
+					<span className='absolute top-1 left-1 z-10 border border-brand-subtle text-(--main-blue)  text-xs font-medium px-1.5 py-0.5 rounded-sm bg-white'>
+						{item.lotNumber}
+					</span>
+					<Image
+						className='absolute top-0 left-0 z-1 rounded-base rounded-bl-lg rounded-tl-lg md:rounded-bl-none md:rounded-tr-lg h-full w-full object-cover'
+						src={item.images?.[0] || '/placeholder-image.png'}
+						alt='lot image'
+						width={300}
+						height={300}
+					/>
 				</a>
 			</div>
 
