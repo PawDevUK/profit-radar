@@ -138,7 +138,7 @@ export default function Map({ selectedLocation }: MapProps) {
 	}, []);
 
 	return (
-		<div className='h-150 md:h-screen'>
+		<div className='h-150 md:h-screen w-full'>
 			{!mapFailed ? (
 				<div ref={mapRef} style={{ width: '100%', height: '100%', zIndex: 1, borderRadius: '8px' }} />
 			) : (
