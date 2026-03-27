@@ -1,17 +1,13 @@
 .checkboxIcon {
+    width: 26px;
+    height: 26px;
+    stroke-width: 2;
     color: var(--filter-icons);
 }
 
 #closeButton {
     width: 32px;
     height: 32px;
-}
-
-.lucide {
-    width: 22px;
-    height: 22px;
-    stroke-width: 2;
-    color: var(--filter-icons);
 }
 
 #slidersIcon {
