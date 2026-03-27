@@ -20,19 +20,20 @@ import {
 import { filter_Results_State } from '@/lib/state/searchFilters.state';
 import { selectSearchFilterByKey } from '@/lib/state/selectors/searchFilters.selectors';
 
-import { Engine, Gears, VehicleType, CarCondition, DriveType, V8Icon, sizeIcons, strokeIcons, colorIcons } from './searchIcons';
+import { Engine, Gears, VehicleType, CarCondition, DriveType, V8Icon, strokeIcons, colorIcons } from './searchIcons';
+
+const engineTypeIcon = <Engine />;
+const transmissionIcon = <Gears />;
+const driveTrainIcon = <DriveType />;
+const cylindersIcon = <V8Icon />;
+const vehicleConditionIcon = <CarCondition />;
+const vehicleTypeIcon = <VehicleType />;
 
 const sortIcon = <ArrowDownUp strokeWidth={strokeIcons} className='checkboxIcon' />;
 const makeIcon = <CarFront strokeWidth={strokeIcons} className='checkboxIcon' />;
 const modelIcon = <KeySquare strokeWidth={strokeIcons} className='checkboxIcon' />;
 const titleTypeIcon = <ListTodo strokeWidth={strokeIcons} className='checkboxIcon' />;
-const vehicleConditionIcon = <CarCondition size={sizeIcons} color={colorIcons} />;
-const vehicleTypeIcon = <VehicleType size={sizeIcons} color={colorIcons} />;
-const engineTypeIcon = <Engine />;
-const transmissionIcon = <Gears />;
 const fuelTypeIcon = <Fuel strokeWidth={strokeIcons} className='checkboxIcon' />;
-const driveTrainIcon = <DriveType size={sizeIcons} color={colorIcons} />;
-const cylindersIcon = <V8Icon size={sizeIcons} color={colorIcons} />;
 const auctionNameIcon = <Gavel strokeWidth={strokeIcons} className='checkboxIcon' />;
 const locationIcon = <MapPin strokeWidth={strokeIcons} className='checkboxIcon' />;
 const bodyStyleIcon = <Car strokeWidth={strokeIcons} className='checkboxIcon' />;
