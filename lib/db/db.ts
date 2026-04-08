@@ -1,7 +1,7 @@
 import mongoose, { Schema, Model } from 'mongoose';
 import 'dotenv/config';
 
-const MONGODB_URI = process.env.MONGODB_URI;
+const MONGODB_PROFIT_RADAR_URI = process.env.MONGODB_PROFIT_RADAR_URI;
 import { CalendarAuction, CalendarMonthDoc } from '../types/calendar-type';
 import { LotDetails } from '../types/lotDetails-type';
 
@@ -9,9 +9,9 @@ let cachedConnection: typeof mongoose | null = null;
 
 export async function connectDB() {
 	if (cachedConnection && mongoose.connection.readyState === 1) return cachedConnection;
-	const uri = MONGODB_URI;
+	const uri = MONGODB_PROFIT_RADAR_URI;
 	if (!uri) {
-		throw new Error('MONGODB_URI environment variable is not defined');
+		throw new Error('MONGODB_PROFIT_RADAR_URI environment variable is not defined');
 	}
 	cachedConnection = await mongoose.connect(uri, {
 		dbName: process.env.MONGODB_DB || 'profit_radar',
