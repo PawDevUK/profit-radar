@@ -2,6 +2,7 @@ import fs from 'fs';
 import puppeteer, { Browser, Page } from 'puppeteer';
 // Update the import path below to the correct relative path if needed
 import { proxyConfig, ProxyConfig } from '@/lib/scrapers/proxy/proxy-config';
+import { scrapeLot } from '@/lib/scrapers/copart/lot/lotScraper';
 
 // Define LotDetails type (adjust fields as needed)
 export interface LotDetails {
@@ -17,6 +18,7 @@ export interface LotDetails {
 	detailsLink: string;
 	auctionUrl: string;
 	imageUrl: string;
+	imageUrls?: string[];
 	price: string;
 	buyItNowPrice: string;
 	estimatedRetailValue: string;
@@ -46,6 +48,8 @@ export interface CopartSaleListScraperConfig {
 	proxy?: ProxyConfig;
 	carsPerPage?: number;
 	limit?: number;
+	scrapeLotDetails?: boolean;
+	interLotDelayMs?: number;
 }
 
 export class CopartSaleListScraper {
@@ -182,7 +186,6 @@ export class CopartSaleListScraper {
 	 * Scrape list of cars from auction page
 	 */
 	async scrapeSaleList(auctionUrl: string, options: { carsPerPage?: number; limit?: number } = {}): Promise<LotDetails[]> {
-		const carsPerPage = options.carsPerPage || 20;
 		const limit = options.limit || null;
 
 		if (!this.page) {
@@ -260,10 +263,222 @@ export class CopartSaleListScraper {
 
 		// Parse the cars from the page
 		console.log('Parsing cars from page...');
-		const cars = await this.parseAuctionCars(limit);
+		let cars = await this.parseAuctionCars(limit);
+
+		// Fallback/expansion: collect all lot links after scroll and merge into parsed list
+		const lotLinks = await this.collectAllLotLinks(limit);
+		if (lotLinks.length > 0) {
+			const existingByLot = new Map<string, LotDetails>();
+			for (const car of cars) {
+				if (car.lotNumber && car.lotNumber !== 'Unknown') existingByLot.set(car.lotNumber, car);
+			}
+
+			for (const link of lotLinks) {
+				const lotMatch = link.match(/\/lot\/(\d{7,})/i);
+				const lotNumber = lotMatch?.[1] || '';
+				if (lotNumber && existingByLot.has(lotNumber)) {
+					const existing = existingByLot.get(lotNumber)!;
+					existing.detailsLink = existing.detailsLink || link;
+					continue;
+				}
+
+				cars.push({
+					lotNumber: lotNumber || 'Unknown',
+					title: 'Unknown',
+					year: '',
+					make: '',
+					model: '',
+					ymm: 'Unknown',
+					damage: '',
+					saleDate: '',
+					saleTime: '',
+					detailsLink: link,
+					auctionUrl,
+					imageUrl: '',
+					imageUrls: [],
+					price: '',
+					buyItNowPrice: '',
+					estimatedRetailValue: '',
+					odometer: '',
+					vin: '',
+					bodyType: '',
+					color: '',
+					transmission: '',
+					titleCode: '',
+					engineStarts: '',
+					transmissionEngages: '',
+					hasKey: '',
+					highlights: [],
+					notes: '',
+				});
+			}
+		}
+
+		// Ensure uniqueness by lot number / details link
+		cars = this.dedupeCars(cars);
+
+		const shouldScrapeLotDetails = (options as CopartSaleListScraperConfig).scrapeLotDetails !== false;
+		if (shouldScrapeLotDetails) {
+			cars = await this.enrichCarsWithLotDetails(cars, {
+				limit,
+				interLotDelayMs: (options as CopartSaleListScraperConfig).interLotDelayMs || 1000,
+			});
+		}
 
 		console.log(`Found ${cars.length} cars in auction`);
 		return cars;
+	}
+
+	private dedupeCars(cars: LotDetails[]): LotDetails[] {
+		const byKey = new Map<string, LotDetails>();
+		for (const car of cars) {
+			const key = (car.lotNumber && car.lotNumber !== 'Unknown' && `lot:${car.lotNumber}`) || (car.detailsLink && `url:${car.detailsLink}`) || '';
+			if (!key) continue;
+
+			if (!byKey.has(key)) {
+				byKey.set(key, car);
+				continue;
+			}
+
+			const existing = byKey.get(key)!;
+			byKey.set(key, {
+				...existing,
+				...car,
+				title: existing.title !== 'Unknown' ? existing.title : car.title,
+				ymm: existing.ymm !== 'Unknown' ? existing.ymm : car.ymm,
+				detailsLink: existing.detailsLink || car.detailsLink,
+				imageUrl: existing.imageUrl || car.imageUrl,
+			});
+		}
+
+		return Array.from(byKey.values());
+	}
+
+	private async collectAllLotLinks(limit: number | null = null): Promise<string[]> {
+		if (!this.page) throw new Error('Scraper not initialized. Call initialize() first.');
+
+		const seen = new Set<string>();
+		let unchangedIterations = 0;
+
+		for (let i = 0; i < 24; i++) {
+			const links = await this.page.evaluate(() => {
+				const normalize = (href: string) => {
+					if (!href) return '';
+					if (href.startsWith('http')) return href;
+					return `https://www.copart.com${href}`;
+				};
+
+				const candidates = new Set<string>();
+
+				for (const a of Array.from(document.querySelectorAll('a[href]'))) {
+					const href = (a as HTMLAnchorElement).getAttribute('href') || '';
+					if (/\/lot\/\d{7,}/i.test(href)) candidates.add(normalize(href));
+				}
+
+				for (const el of Array.from(document.querySelectorAll('[data-url]'))) {
+					const val = el.getAttribute('data-url') || '';
+					if (/\/lot\/\d{7,}/i.test(val)) candidates.add(normalize(val));
+				}
+
+				return Array.from(candidates);
+			});
+
+			const before = seen.size;
+			for (const link of links) seen.add(link);
+			const after = seen.size;
+
+			if (limit && after >= limit) break;
+
+			if (after === before) {
+				unchangedIterations++;
+			} else {
+				unchangedIterations = 0;
+			}
+
+			if (unchangedIterations >= 4) break;
+
+			await this.page.evaluate(() => {
+				window.scrollBy({ top: window.innerHeight * 2, behavior: 'auto' });
+			});
+			await new Promise((resolve) => setTimeout(resolve, 1200));
+
+			const loadMoreButton = await this.page.$('button[aria-label*="more"], button[class*="load-more"], button[data-testid*="load-more"]');
+			if (loadMoreButton) {
+				try {
+					await loadMoreButton.click();
+					await new Promise((resolve) => setTimeout(resolve, 1200));
+				} catch {
+					// ignore click failures, continue scroll strategy
+				}
+			}
+		}
+
+		const allLinks = Array.from(seen);
+		return limit ? allLinks.slice(0, limit) : allLinks;
+	}
+
+	private async enrichCarsWithLotDetails(cars: LotDetails[], options: { limit: number | null; interLotDelayMs: number }): Promise<LotDetails[]> {
+		if (!this.browser) return cars;
+		const slice = options.limit ? cars.slice(0, options.limit) : cars;
+
+		console.log(`Enriching ${slice.length} lots with individual lot-page details...`);
+
+		for (let i = 0; i < slice.length; i++) {
+			const car = slice[i];
+			if (!car.detailsLink) continue;
+
+			try {
+				const detailPage = await this.browser.newPage();
+				await detailPage.setViewport({ width: 1600, height: 1000 });
+				await detailPage.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
+				await detailPage.setExtraHTTPHeaders({
+					'Accept-Language': 'en-US,en;q=0.9',
+				});
+
+				if (this.proxy?.enabled && this.proxy?.username && this.proxy?.password) {
+					await detailPage.authenticate({
+						username: this.proxy.username,
+						password: this.proxy.password,
+					});
+				}
+
+				const lot = await scrapeLot(detailPage, car.detailsLink);
+				await detailPage.close();
+
+				const lotTitle = (lot.title || '').trim();
+				const title = car.title && car.title !== 'Unknown' ? car.title : lotTitle || car.title;
+				const year = car.year || (lot.year ? String(lot.year) : '');
+				const make = car.make || lot.make || '';
+				const model = car.model || lot.model || '';
+				const lotNumber = car.lotNumber !== 'Unknown' ? car.lotNumber : lot.lotNumber || car.lotNumber;
+
+				slice[i] = {
+					...car,
+					title,
+					year,
+					make,
+					model,
+					lotNumber,
+					vin: car.vin || lot.vin || '',
+					imageUrl: car.imageUrl || lot.images?.[0] || '',
+					imageUrls: lot.images?.length ? lot.images : car.imageUrls || (car.imageUrl ? [car.imageUrl] : []),
+					saleDate: car.saleDate || lot.saleDate || '',
+					price: car.price || lot.currentBid || '',
+					highlights: car.highlights || [],
+					notes: car.notes || '',
+				};
+
+				console.log(`  ✓ [${i + 1}/${slice.length}] ${slice[i].lotNumber} scraped`);
+			} catch (error) {
+				console.log(`  ⚠️ [${i + 1}/${slice.length}] Failed lot scrape: ${car.detailsLink}`, error);
+			}
+
+			if (options.interLotDelayMs > 0) {
+				await new Promise((resolve) => setTimeout(resolve, options.interLotDelayMs));
+			}
+		}
+
+		return slice;
 	}
 
 	/**
@@ -466,6 +681,7 @@ export class CopartSaleListScraper {
 						detailsLink: detailsLink || '',
 						auctionUrl: window.location.href,
 						imageUrl: imageUrl || '',
+						imageUrls: imageUrl ? [imageUrl] : [],
 						// Default/placeholder values for other expected fields
 						price: '',
 						buyItNowPrice: '',
