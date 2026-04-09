@@ -28,7 +28,7 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 
 function SectionWrapper({ children }: { children: React.ReactNode }) {
 	return (
-		<section className='bg-white'>
+		<section className=''>
 			<div className='grid grid-cols-1 gap-2 md:grid-cols-2 '>{children}</div>
 		</section>
 	);
@@ -40,9 +40,9 @@ export default function LotDetailsSection({ lotData }: { lotData: LotDetails }) 
 			<SectionWrapper>
 				<Section title='Vehicle Overview'>
 					{/* <Row label='Title' value={lotData.title} /> */}
-					<Row label='Year' value={lotData.year} />
 					<Row label='Make' value={lotData.make} />
 					<Row label='Model' value={lotData.model} />
+					<Row label='Year' value={lotData.year} />
 					<Row label='Trim' value={lotData.trim} />
 					<Row label='Body Style' value={lotData.bodyStyle} />
 					<Row label='Vehicle Type' value={lotData.vehicleType} />
