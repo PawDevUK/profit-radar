@@ -24,6 +24,35 @@
     color: var(--mongo-green);
 }
 
+.image-orginal-button {
+
+    color: var(--small-text-blue);
+    border: 1px solid var(--small-text-blue);
+    background: transparent;
+}
+
+.image-orginal-button:hover {
+    color: var(--main-blue);
+    border: 1px solid var(--main-blue);
+}
+
+.image-ai-button {
+
+    color: #fff;
+    border: 1px solid #00684b50;
+    background: var(--color-green-600);
+}
+
+.image-ai-button:hover {
+
+    color: #fff
+}
+
+.image-ai-button::selection {
+    background: var(--color-green-600);
+}
+
+
 .button-blue {
     display: flex;
     align-items: center;
