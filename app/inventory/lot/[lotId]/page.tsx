@@ -2,11 +2,11 @@
 
 import { useParams, useRouter } from 'next/navigation';
 import { useState, useEffect, useRef } from 'react';
-import Image from 'next/image';
 import { LotDetails } from '@/lib/types/lotDetails-type';
 import saleList from '@/app/results/saleList.json';
 import LogButton from '@/app/components/common/buttons/logButton';
 import LotDetailsSection from '@/app/inventory/lot/lotDetails';
+import BidBuy from '../BidBuy';
 
 type OtomotoCheckResult = {
 	lotNumber: string;
@@ -77,45 +77,45 @@ export default function LotDetailsPage() {
 		loadCarData();
 	}, [lotId, saleId]);
 
-	// Load Otomoto listing check result
-	useEffect(() => {
-		if (car && !otomotoCheckRef.current) {
-			otomotoCheckRef.current = true;
+	// // Load Otomoto listing check result
+	// useEffect(() => {
+	// 	if (car && !otomotoCheckRef.current) {
+	// 		otomotoCheckRef.current = true;
 
-			const loadOtomotoListingCheck = async () => {
-				setOtomotoLoading(true);
-				try {
-					const response = await fetch('/api/otomoto-listing-check?action=load');
-					if (response.ok) {
-						const data = await response.json();
-						const carCheck = data.results?.find((r: OtomotoCheckRecord) => r.lotNumber === car.lotNumber);
-						if (carCheck) {
-							const searchQuery = `${car.make} ${car.model}`.toLowerCase();
-							setOtomotoResult({
-								lotNumber: car.lotNumber,
-								title: car.title,
-								make: car.make,
-								model: car.model,
-								searchQuery: searchQuery,
-								url: `https://www.otomoto.pl/osobowe/${car.make.toLowerCase().replace(/\s+/g, '-')}/${car.model.toLowerCase().replace(/\s+/g, '-')}`,
-								found: carCheck.listed_otomoto,
-								count: carCheck.listing_count,
-							});
-						} else {
-							// If car not in check results, run verification automatically
-							await runOtomotoVerification();
-						}
-					}
-				} catch (error) {
-					console.error('Error loading Otomoto listing check:', error);
-				} finally {
-					setOtomotoLoading(false);
-				}
-			};
+	// 		const loadOtomotoListingCheck = async () => {
+	// 			setOtomotoLoading(true);
+	// 			try {
+	// 				const response = await fetch('/api/otomoto-listing-check?action=load');
+	// 				if (response.ok) {
+	// 					const data = await response.json();
+	// 					const carCheck = data.results?.find((r: OtomotoCheckRecord) => r.lotNumber === car.lotNumber);
+	// 					if (carCheck) {
+	// 						const searchQuery = `${car.make} ${car.model}`.toLowerCase();
+	// 						setOtomotoResult({
+	// 							lotNumber: car.lotNumber,
+	// 							title: car.title,
+	// 							make: car.make,
+	// 							model: car.model,
+	// 							searchQuery: searchQuery,
+	// 							url: `https://www.otomoto.pl/osobowe/${car.make.toLowerCase().replace(/\s+/g, '-')}/${car.model.toLowerCase().replace(/\s+/g, '-')}`,
+	// 							found: carCheck.listed_otomoto,
+	// 							count: carCheck.listing_count,
+	// 						});
+	// 					} else {
+	// 						// If car not in check results, run verification automatically
+	// 						await runOtomotoVerification();
+	// 					}
+	// 				}
+	// 			} catch (error) {
+	// 				console.error('Error loading Otomoto listing check:', error);
+	// 			} finally {
+	// 				setOtomotoLoading(false);
+	// 			}
+	// 		};
 
-			loadOtomotoListingCheck();
-		}
-	}, [car]);
+	// 		loadOtomotoListingCheck();
+	// 	}
+	// }, [car]);
 
 	const handleBack = () => {
 		router.push(`/inventory`);
@@ -208,7 +208,7 @@ export default function LotDetailsPage() {
 					{/* Left Column - Main Info */}
 					<div className='lg:col-span-2'>
 						{/* Images */}
-						<div className='bg-white rounded-lg shadow p-6 mb-6'>
+						<div className='bg-white rounded-lg shadow p-6 mb-2'>
 							{/* Main Image with Navigation */}
 							<div className='mb-4'>
 								{car.images && car.images.length > 0 ? (
@@ -319,99 +319,7 @@ export default function LotDetailsPage() {
 					</div>
 
 					{/* Right Column - Bidding Info */}
-					<div>
-						{/* Price Information */}
-						<div className='bg-white rounded-lg shadow p-6 mb-6'>
-							<div className='space-y-4'>
-								<div>
-									<h3 className='font-semibold text-gray-600 text-sm mb-1'>Current Bid</h3>
-									<p className='text-3xl font-bold text-blue-600'>{car.currentBid ? `$${car.currentBid.toLocaleString()}` : 'N/A'}</p>
-								</div>
-								{car.buyItNow !== null && (
-									<div className='pt-4 border-t border-gray-200'>
-										<h3 className='font-semibold text-gray-600 text-sm mb-1'>Buy It Now Price</h3>
-										<p className='text-3xl font-bold text-green-600'>${car.buyItNow.toLocaleString()}</p>
-										<p className='text-xs text-gray-500 mt-2'>End the auction immediately at this price</p>
-									</div>
-								)}
-							</div>
-						</div>
-
-						{/* Action Buttons */}
-						<div className='space-y-3 mb-6'>
-							<button className='w-full bg-blue-600 text-white py-3 rounded-lg font-bold hover:bg-blue-700 transition'>Place Bid</button>
-							<button className='w-full bg-green-600 text-white py-3 rounded-lg font-bold hover:bg-green-700 transition'>Buy It Now</button>
-							<button className='w-full bg-gray-200 text-gray-900 py-3 rounded-lg font-bold hover:bg-gray-300 transition'>Add to Watchlist</button>
-						</div>
-
-						{/* Otomoto Check */}
-						<div className='bg-white rounded-lg shadow p-6 mb-6'>
-							<div className='flex items-center justify-between mb-4'>
-								<h3 className='font-bold text-gray-900 flex items-center gap-2'>
-									<span>🚗</span> Otomoto Check
-								</h3>
-								<button
-									onClick={runOtomotoVerification}
-									disabled={otomotoLoading}
-									className='px-3 py-1 bg-blue-600 text-white text-sm font-medium rounded hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition'>
-									{otomotoLoading ? 'Checking...' : 'Check Now'}
-								</button>
-							</div>
-							{otomotoLoading ? (
-								<div className='text-center py-4'>
-									<div className='flex items-center justify-center gap-2 mb-2'>
-										<div className='animate-spin rounded-full h-4 w-4 border-b-2 border-blue-600'></div>
-										<span className='text-gray-600'>Checking Otomoto...</span>
-									</div>
-									<p className='text-xs text-gray-500'>This may take a moment</p>
-								</div>
-							) : otomotoResult ? (
-								<div className='space-y-3'>
-									{otomotoResult.found ? (
-										<div className='bg-green-50 border border-green-300 rounded p-3'>
-											<div className='flex items-center gap-2'>
-												<span className='text-xl'>✓</span>
-												<div>
-													<p className='font-semibold text-green-900'>Found on Otomoto!</p>
-													<p className='text-sm text-green-700'>
-														{otomotoResult.count} listing{otomotoResult.count !== 1 ? 's' : ''} found
-													</p>
-													<a
-														href={otomotoResult.url}
-														target='_blank'
-														rel='noopener noreferrer'
-														className='text-sm text-green-600 hover:text-green-800 mt-2 inline-block'>
-														View on Otomoto →
-													</a>
-												</div>
-											</div>
-										</div>
-									) : (
-										<div className='bg-red-50 border border-red-300 rounded p-3'>
-											<div className='flex items-center gap-2'>
-												<span className='text-xl'>✗</span>
-												<div>
-													<p className='font-semibold text-red-900'>Not found on Otomoto</p>
-													<p className='text-sm text-red-700'>No listings match this make/model</p>
-												</div>
-											</div>
-										</div>
-									)}
-								</div>
-							) : (
-								<div className='text-center py-3'>
-									<p className='text-gray-600 text-sm'>Click &quot;Check Now&quot; to verify on Otomoto</p>
-								</div>
-							)}
-						</div>
-
-						{/* Disclaimer */}
-						<div className='bg-yellow-50 border border-yellow-200 rounded-lg p-4'>
-							<p className='text-sm text-yellow-800'>
-								<strong>Note:</strong> All bids are legally binding and all sales are final. Please review all vehicle information before bidding.
-							</p>
-						</div>
-					</div>
+					<BidBuy car={car}></BidBuy>
 				</div>
 			</div>
 		</div>
