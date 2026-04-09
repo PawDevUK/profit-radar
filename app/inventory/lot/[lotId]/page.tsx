@@ -5,6 +5,7 @@ import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { LotDetails } from '@/lib/types/lotDetails-type';
 import saleList from '@/app/results/saleList.json';
+import LogButton from '@/app/components/common/buttons/logButton';
 
 type OtomotoCheckResult = {
 	lotNumber: string;
@@ -35,6 +36,7 @@ export default function LotDetailsPage() {
 	const [otomotoResult, setOtomotoResult] = useState<OtomotoCheckResult | null>(null);
 	const [otomotoLoading, setOtomotoLoading] = useState(false);
 	const otomotoCheckRef = useRef(false); // Prevent duplicate otomoto checks
+	const [AiImage, setAiImage] = useState(false);
 
 	useEffect(() => {
 		const loadCarData = async () => {
@@ -118,6 +120,10 @@ export default function LotDetailsPage() {
 		router.push(`/inventory`);
 	};
 
+	const toggleAIimage = () => {
+		setAiImage(!AiImage);
+	};
+
 	// Function to run Otomoto verification for this car
 	const runOtomotoVerification = async () => {
 		if (!car) return;
@@ -193,31 +199,45 @@ export default function LotDetailsPage() {
 	return (
 		<div className='min-h-screen bg-gray-50 py-6 px-4 sm:px-6 lg:px-8'>
 			<div className='max-w-7xl mx-auto'>
-				<button onClick={() => handleBack()} className='text-blue-600 hover:text-blue-800 font-medium mb-4'>
+				<button onClick={() => handleBack()} className='text-var(--header-text) hover:text-[var(--mongo-green)] font-medium mb-5'>
 					← Back to Sale List
 				</button>
 
 				<div className='grid grid-cols-1 lg:grid-cols-3 gap-6'>
 					{/* Left Column - Main Info */}
 					<div className='lg:col-span-2'>
-						{/* Title Section */}
-						<div className='bg-white rounded-lg shadow p-6 mb-6'>
-							<h1 className='text-3xl font-bold text-gray-900 mb-2'>{car.title}</h1>
-							<div className='flex items-center gap-4 text-sm text-gray-600'>
-								<span>Lot #{car.lotNumber}</span>
-								{car.vin && <span>VIN: {car.vin}</span>}
-							</div>
-						</div>
-
 						{/* Images */}
 						<div className='bg-white rounded-lg shadow p-6 mb-6'>
-							<h2 className='text-xl font-bold text-gray-900 mb-4'>Vehicle Images</h2>
-
 							{/* Main Image with Navigation */}
 							<div className='mb-4'>
 								{car.images && car.images.length > 0 ? (
 									<>
-										<div className='relative w-full h-[400px] bg-gray-200 rounded overflow-hidden mb-4 group'>
+										<div className='flex flex-row justify-between'>
+											<div className='w-45 mb-4'>
+												{!AiImage ? (
+													<LogButton
+														onclick={() => setAiImage(!AiImage)}
+														item={{
+															href: '',
+															label: 'Orginal Image',
+															fontSize: undefined,
+															class: 'image-orginal-button',
+														}}></LogButton>
+												) : (
+													<LogButton
+														onclick={() => setAiImage(!AiImage)}
+														item={{
+															href: '',
+															label: 'AI Visualisation',
+															fontSize: undefined,
+															class: 'image-ai-button',
+														}}></LogButton>
+												)}
+											</div>
+											<div className='w-45 mb-4'></div>
+										</div>
+										<div
+											className={`relative w-full h-[400px] bg-gray-200 rounded overflow-hidden mb-4 group  border-4 ${AiImage ? 'border-[var(--color-green-600)] ' : 'border-white'}`}>
 											<img
 												src={car.images[selectedImageIndex]}
 												className='w-full h-full object-contain'
@@ -225,13 +245,6 @@ export default function LotDetailsPage() {
 													e.currentTarget.src = '/images/placeholder.png';
 												}}
 											/>
-
-											{/* Image Counter */}
-											<div className='absolute top-3 right-3 bg-black bg-opacity-70 text-white px-3 py-1 rounded text-sm font-medium'>
-												{selectedImageIndex + 1} / {car.images.length}
-											</div>
-
-											{/* Navigation Arrows */}
 											{car.images.length > 1 && (
 												<>
 													<button
@@ -247,12 +260,7 @@ export default function LotDetailsPage() {
 												</>
 											)}
 										</div>
-
-										{/* Thumbnails Grid */}
 										<div>
-											<p className='text-sm text-gray-600 mb-3 font-semibold'>
-												{car.images.length} image{car.images.length !== 1 ? 's' : ''} available
-											</p>
 											<div className='grid grid-cols-6 gap-2'>
 												{car.images.map((imgUrl, idx) => (
 													<button
@@ -272,9 +280,6 @@ export default function LotDetailsPage() {
 																e.currentTarget.src = '/images/placeholder.png';
 															}}
 														/>
-														<span className='absolute -top-1 -right-1 bg-blue-600 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center'>
-															{idx + 1}
-														</span>
 													</button>
 												))}
 											</div>
