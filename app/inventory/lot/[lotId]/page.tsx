@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { LotDetails } from '@/lib/types/lotDetails-type';
 import saleList from '@/app/results/saleList.json';
 import LogButton from '@/app/components/common/buttons/logButton';
+import LotDetailsSection from '@/app/inventory/lot/lotDetails';
 
 type OtomotoCheckResult = {
 	lotNumber: string;
@@ -314,105 +315,7 @@ export default function LotDetailsPage() {
 							)}
 						</div>
 
-						{/* Vehicle Details */}
-						<div className='bg-white rounded-lg shadow p-6 mb-6'>
-							<h2 className='text-xl font-bold text-gray-900 mb-4'>Vehicle Details</h2>
-							<div className='grid grid-cols-2 gap-4'>
-								<div>
-									<p className='text-sm text-gray-600'>Year</p>
-									<p className='font-medium text-gray-900'>{car.year || 'N/A'}</p>
-								</div>
-								<div>
-									<p className='text-sm text-gray-600'>Make</p>
-									<p className='font-medium text-gray-900'>{car.make || 'N/A'}</p>
-								</div>
-								<div>
-									<p className='text-sm text-gray-600'>Model</p>
-									<p className='font-medium text-gray-900'>{car.model || 'N/A'}</p>
-								</div>
-								<div>
-									<p className='text-sm text-gray-600'>Body Type</p>
-									<p className='font-medium text-gray-900'>{car.bodyStyle || 'N/A'}</p>
-								</div>
-								<div>
-									<p className='text-sm text-gray-600'>Color</p>
-									<p className='font-medium text-gray-900'>{car.color || 'N/A'}</p>
-								</div>
-								<div>
-									<p className='text-sm text-gray-600'>Transmission</p>
-									<p className='font-medium text-gray-900'>{car.transmission || 'N/A'}</p>
-								</div>
-								<div>
-									<p className='text-sm text-gray-600'>Odometer</p>
-									<p className='font-medium text-gray-900'>{car.odometer ? `${car.odometer} mi` : 'N/A'}</p>
-								</div>
-								<div>
-									<p className='text-sm text-gray-600'>Title Code</p>
-									<p className='font-medium text-gray-900'>{car.titleCode || 'N/A'}</p>
-								</div>
-								<div className='col-span-2'>
-									<p className='text-sm text-gray-600'>Primary Damage</p>
-									<span
-										className={`inline-block px-3 py-1 rounded text-sm font-medium ${
-											car.primaryDamage === 'Clean Title'
-												? 'bg-green-100 text-green-800'
-												: car.primaryDamage?.includes('Water') || car.primaryDamage?.includes('Fire')
-													? 'bg-red-100 text-red-800'
-													: 'bg-yellow-100 text-yellow-800'
-										}`}>
-										{car.primaryDamage || 'N/A'}
-									</span>
-								</div>
-								{car.vin && (
-									<div className='col-span-2'>
-										<p className='text-sm text-gray-600'>VIN</p>
-										<p className='font-medium text-gray-900 font-mono'>{car.vin}</p>
-									</div>
-								)}
-							</div>
-						</div>
-
-						{/* Vehicle Condition Report */}
-						<div className='bg-white rounded-lg shadow p-6 mb-6'>
-							<h2 className='text-xl font-bold text-gray-900 mb-4'>Vehicle Condition</h2>
-							<div className='grid grid-cols-2 gap-4'>
-								<div className='flex items-center gap-2'>
-									<span className={`w-3 h-3 rounded-full ${car.runAndDrive ? 'bg-green-500' : 'bg-red-500'}`}></span>
-									<div>
-										<p className='text-sm text-gray-600'>Engine Starts</p>
-										<p className='font-medium text-gray-900'>{car.engineStatus || (car.runAndDrive ? 'Yes' : 'No')}</p>
-									</div>
-								</div>
-								<div className='flex items-center gap-2'>
-									<span className={`w-3 h-3 rounded-full ${car.transmissionEngages ? 'bg-green-500' : 'bg-red-500'}`}></span>
-									<div>
-										<p className='text-sm text-gray-600'>Transmission Engages</p>
-										<p className='font-medium text-gray-900'>{car.transmissionEngages ? 'Yes' : 'No'}</p>
-									</div>
-								</div>
-								<div className='flex items-center gap-2'>
-									<span className={`w-3 h-3 rounded-full ${car.hasKey ? 'bg-green-500' : 'bg-red-500'}`}></span>
-									<div>
-										<p className='text-sm text-gray-600'>Keys Available</p>
-										<p className='font-medium text-gray-900'>{car.hasKey ? 'Yes' : 'No'}</p>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						{/* Highlights */}
-						{car.highlights && car.highlights.length > 0 && (
-							<div className='bg-white rounded-lg shadow p-6 mb-6'>
-								<h2 className='text-xl font-bold text-gray-900 mb-4'>Highlights</h2>
-								<div className='flex flex-wrap gap-2'>
-									{car.highlights.map((highlight, index) => (
-										<span key={index} className='bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium'>
-											{highlight}
-										</span>
-									))}
-								</div>
-							</div>
-						)}
+						<LotDetailsSection lotData={car}></LotDetailsSection>
 					</div>
 
 					{/* Right Column - Bidding Info */}
