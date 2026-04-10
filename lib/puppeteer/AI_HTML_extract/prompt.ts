@@ -1,4 +1,5 @@
-export const prompt = `You are an expert in DOM analysis and Puppeteer scraping.
+export const prompt = function (html: string): string {
+	return `You are an expert in DOM analysis and Puppeteer scraping.
 
 You will receive input for the same Copart lot-details page:
 
@@ -547,6 +548,7 @@ Field-specific requirements:
 Assets:
 
 HTML body snapshot:
-[PASTE HTML SNAPSHOT HERE]`;
+${html}`;
+};
 
 export default prompt;
