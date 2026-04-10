@@ -1,20 +1,21 @@
+import 'dotenv/config';
 import OpenAI from 'openai';
 
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY || '' });
+export default async function callOpenAI(Prompt: string) {
+	const apiKey = process.env.OPENAI_API_KEY;
 
-const systemPrompt = function (html: string) {
-	return ``;
-};
+	if (!apiKey) {
+		throw new Error('OPENAI_API_KEY environment variable is not defined');
+	}
 
-export async function callOpenAI(systemPrompt: string, html: string) {
+	const openai = new OpenAI({ apiKey });
+
 	const completion = await openai.chat.completions.create({
 		model: 'gpt-4o-mini',
-		messages: [
-			{ role: 'system', content: systemPrompt },
-			{ role: 'user', content: getUserPrompt(article) },
-		],
-		max_tokens: 800,
-		temperature: 0.2,
+		messages: [{ role: 'user', content: Prompt }],
+		response_format: { type: 'json_object' },
+		max_tokens: 4000,
+		temperature: 0,
 	});
 
 	if (!completion || !completion.choices || completion.choices.length === 0) {
@@ -27,6 +28,6 @@ export async function callOpenAI(systemPrompt: string, html: string) {
 		console.error('No content in OpenAI response:', completion.choices[0]);
 		throw new Error('No content received from OpenAI API');
 	}
-	return content;
 	console.log(`Received OpenAI response, parsing JSON...`);
+	return content;
 }
