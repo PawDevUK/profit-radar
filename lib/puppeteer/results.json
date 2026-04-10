@@ -1,76 +1,31 @@
 {
-  "0": {
-    "label": "Title code:",
-    "value": "MD -\nCert Of Salvage > 75% Damage "
-  },
-  "1": {
-    "label": "Odometer:",
-    "value": "0 mi\nNot Actual "
-  },
-  "2": {
-    "label": "Primary damage:",
-    "value": "Front End"
-  },
-  "3": {
-    "label": "Estimated retail value:",
-    "value": "$13,578.00USD"
-  },
-  "4": {
-    "label": "Cylinders:",
-    "value": "4"
-  },
-  "5": {
-    "label": "Color:",
-    "value": "Charcoal"
-  },
-  "6": {
-    "label": "Has key:",
-    "value": "No"
-  },
-  "7": {
-    "label": "Engine type:",
-    "value": "2.0L 4"
-  },
-  "8": {
-    "label": "Transmission:",
-    "value": "Manual"
-  },
-  "9": {
-    "label": "Vehicle type:",
-    "value": "Automobile"
-  },
-  "10": {
-    "label": "Drivetrain:",
-    "value": "ALL WHEEL DRIVE"
-  },
-  "11": {
-    "label": "Fuel:",
-    "value": "Gas"
-  },
-  "12": {
-    "label": "Sale date:",
-    "value": "Fri. Apr 17, 2026 03:00 PM GMT+1 "
-  },
-  "13": {
-    "label": "Highlights:",
-    "value": "Enhanced Vehicles"
-  },
-  "14": {
-    "label": "Notes:",
-    "value": "There are no notes for this lot"
-  },
-  "images": [
-    "https://cs.copart.com/v1/AUTH_svc.pdoc00001/ids-c-prod-lpp/0126/8a3d6caee22440768ccdc8e05a410a27_ful.jpg",
-    "https://cs.copart.com/v1/AUTH_svc.pdoc00001/ids-c-prod-lpp/0126/e9ceccb0c95343c49f6792b39c016b0a_ful.jpg",
-    "https://cs.copart.com/v1/AUTH_svc.pdoc00001/ids-c-prod-lpp/0126/f97ef0fa38c144c5a7e6d1b948bcdc03_ful.jpg",
-    "https://cs.copart.com/v1/AUTH_svc.pdoc00001/ids-c-prod-lpp/0126/a6e9b0c02dd14040ace7b966046d9fbd_ful.jpg",
-    "https://cs.copart.com/v1/AUTH_svc.pdoc00001/ids-c-prod-lpp/0126/1fe40e168a7d4f88af448cb4c3ff5052_ful.jpg",
-    "https://cs.copart.com/v1/AUTH_svc.pdoc00001/ids-c-prod-lpp/0126/8f8f352017bd4684be225a320e354a66_ful.jpg",
-    "https://cs.copart.com/v1/AUTH_svc.pdoc00001/ids-c-prod-lpp/0126/27bbe8ca602a485282363cc4695635e6_ful.jpg",
-    "https://cs.copart.com/v1/AUTH_svc.pdoc00001/ids-c-prod-lpp/0126/d892a0dd4ce64e9fb694db0e3d45c49c_ful.jpg",
-    "https://cs.copart.com/v1/AUTH_svc.pdoc00001/ids-c-prod-lpp/0126/9960242f5e3549faa96f81a457eca460_ful.jpg",
-    "https://cs.copart.com/v1/AUTH_svc.pdoc00001/ids-c-prod-lpp/0126/9d8e04a7648841f8ada0cf59c5c2c712_ful.jpg",
-    "https://cs.copart.com/v1/AUTH_svc.pdoc00001/ids-c-prod-lpp/0126/c87f0fba0c1f4e4aaa9d2a0d2b9c29cc_ful.jpg",
-    "https://cs.copart.com/v1/AUTH_svc.pdoc00001/ids-c-prod-lpp/0126/bd0c9da122c24ff195c8c2c10cdbe878_ful.jpg"
-  ]
+	"Title code:": "MD -\nCert Of Salvage > 75% Damage ",
+	"Odometer:": "0 mi\nNot Actual ",
+	"Primary damage:": "Front End",
+	"Estimated retail value:": "$13,578.00USD",
+	"Cylinders:": "4",
+	"Color:": "Charcoal",
+	"Has key:": "No",
+	"Engine type:": "2.0L 4",
+	"Transmission:": "Manual",
+	"Vehicle type:": "Automobile",
+	"Drivetrain:": "ALL WHEEL DRIVE",
+	"Fuel:": "Gas",
+	"Sale date:": "Fri. Apr 17, 2026 03:00 PM GMT+1 ",
+	"Highlights:": "Enhanced Vehicles",
+	"Notes:": "There are no notes for this lot",
+	"images": [
+		"https://cs.copart.com/v1/AUTH_svc.pdoc00001/ids-c-prod-lpp/0126/8a3d6caee22440768ccdc8e05a410a27_ful.jpg",
+		"https://cs.copart.com/v1/AUTH_svc.pdoc00001/ids-c-prod-lpp/0126/e9ceccb0c95343c49f6792b39c016b0a_ful.jpg",
+		"https://cs.copart.com/v1/AUTH_svc.pdoc00001/ids-c-prod-lpp/0126/f97ef0fa38c144c5a7e6d1b948bcdc03_ful.jpg",
+		"https://cs.copart.com/v1/AUTH_svc.pdoc00001/ids-c-prod-lpp/0126/a6e9b0c02dd14040ace7b966046d9fbd_ful.jpg",
+		"https://cs.copart.com/v1/AUTH_svc.pdoc00001/ids-c-prod-lpp/0126/1fe40e168a7d4f88af448cb4c3ff5052_ful.jpg",
+		"https://cs.copart.com/v1/AUTH_svc.pdoc00001/ids-c-prod-lpp/0126/8f8f352017bd4684be225a320e354a66_ful.jpg",
+		"https://cs.copart.com/v1/AUTH_svc.pdoc00001/ids-c-prod-lpp/0126/27bbe8ca602a485282363cc4695635e6_ful.jpg",
+		"https://cs.copart.com/v1/AUTH_svc.pdoc00001/ids-c-prod-lpp/0126/d892a0dd4ce64e9fb694db0e3d45c49c_ful.jpg",
+		"https://cs.copart.com/v1/AUTH_svc.pdoc00001/ids-c-prod-lpp/0126/9960242f5e3549faa96f81a457eca460_ful.jpg",
+		"https://cs.copart.com/v1/AUTH_svc.pdoc00001/ids-c-prod-lpp/0126/9d8e04a7648841f8ada0cf59c5c2c712_ful.jpg",
+		"https://cs.copart.com/v1/AUTH_svc.pdoc00001/ids-c-prod-lpp/0126/c87f0fba0c1f4e4aaa9d2a0d2b9c29cc_ful.jpg",
+		"https://cs.copart.com/v1/AUTH_svc.pdoc00001/ids-c-prod-lpp/0126/bd0c9da122c24ff195c8c2c10cdbe878_ful.jpg"
+	]
 }
