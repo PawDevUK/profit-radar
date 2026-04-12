@@ -1,4 +1,4 @@
-import callOpenAI from '../../openAI/callOpenAI.js';
+import callOpenAI from '../../../../openAI/callOpenAI.js';
 import prompt from './prompt.js';
 // import stripHTML, { splitHtmlInTwo } from './stripHTML.js';
 import { readFile } from 'node:fs/promises';
