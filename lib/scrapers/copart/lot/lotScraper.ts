@@ -1,55 +1,73 @@
-import type { Page } from 'puppeteer';
+import puppeteer from 'puppeteer';
+import convertLotImgURL from './parseImgUrls.js';
+import response from './AI_HTML_extract/response.json' with {type: 'json'};
 
-export type CopartLot = {
-	url: string;
-	lotNumber?: string;
-	title?: string;
-	vin?: string;
-	make?: string;
-	model?: string;
-	year?: number;
-	location?: string;
-	saleDate?: string;
-	currentBid?: string;
-	images?: string[];
+import fs from 'fs';
+// import { lotDetails as lotDetailsTypes } from '@/lib/types/lotDetails-type.ts';
+const pageUrl = 'https://www.copart.com/lot/99763515/salvage-2017-subaru-wrx-dc-washington-dc';
+const options = {
+    headless: false,
+    args: ['--no-sandbox', '--disable-setuid-sandbox']
+};
+const pageOptions = {
+    waitUntil: 'networkidle0',
+    timeout: 0
 };
 
-export async function scrapeLot(page: Page, lotUrl: string): Promise<CopartLot> {
-	await page.goto(lotUrl, { waitUntil: 'domcontentloaded', timeout: 20000 });
-	// Give client-side scripts a moment
-	await new Promise((resolve) => setTimeout(resolve, 2000));
+(async function launch(options) {
+    const browser = await puppeteer.launch(options);
+    const page = await browser.newPage();
+    await page.goto(pageUrl, pageOptions);
+    console.log('Launching page:', pageUrl);
+    await page.content();
+    await page.waitForSelector('.img-responsive.p-galleria-img-thumbnail');
 
-	const lot = await page.evaluate(() => {
-		const getText = (sel: string) => document.querySelector(sel)?.textContent?.trim() || undefined;
-		const getAttr = (sel: string, attr: string) => document.querySelector(sel)?.getAttribute(attr) || undefined;
+    const Title = await page.$eval(response.fields.title.selector, el => el.innerText);
+    const Year = await page.$eval(response.fields.year.selector, el => el.innerText);
 
-		const images = Array.from(document.querySelectorAll('img[src*="copart"]'))
-			.map((i) => i.getAttribute('src'))
-			.filter(Boolean) as string[];
+    // extract image URLs
+    const imageUrls = await page.$$eval(
+        '.img-responsive.p-galleria-img-thumbnail',
+        (images) => images.map((img) => img.getAttribute('src') || '').filter(Boolean)
+    );
+    if (imageUrls.length > 0) {
+        console.log('Image URLs extracted successfully');
+    }
+    // extract lot title
+    const title = await page.$eval('.ldp-header-title', el => {
+        return { Title: el.innerText }
+    });
+    const vin = await page.$eval('.ng-star-inserted', el => {
+        return { VIN: el.innerText }
+    });
 
-		const title = getText('h1, h2');
-		const lotNumber = getText('[data-testid*="lot-number"], .lot-number, [class*="lotNumber"]') || getText('span:has(> b:contains("Lot"))');
-		const vin = getText('[data-testid*="vin"], .vin, [class*="vin"]');
-		const makeModelYear = getText('[data-testid*="vehicle-title"], .vehicle-title') || title;
+    const lotDetails = await page.evaluate(() => {
+        let lotListing = {};
 
-		let make: string | undefined;
-		let model: string | undefined;
-		let year: number | undefined;
-		if (makeModelYear) {
-			const m = makeModelYear.match(/(\d{4})\s+([A-Za-z0-9\-]+)\s+(.*)/);
-			if (m) {
-				year = parseInt(m[1], 10);
-				make = m[2];
-				model = m[3];
-			}
-		}
+        // Extract lot details by matching labels and values
+        Array.from(document.getElementsByClassName('lot-details-information-label')).map(el => {
+            lotListing = {
+                ...lotListing, [el.innerText]: ''
+            }
+        });
 
-		const location = getText('[data-testid*="location"], .location, [class*="location"]');
-		const saleDate = getText('[data-testid*="sale-date"], .sale-date, [class*="saleDate"]');
-		const currentBid = getText('[data-testid*="current-bid"], .current-bid, [class*="bid"]');
+        Array.from(document.getElementsByClassName('lot-details-information-value')).map((el, i) => {
+            const prevEl = el.previousElementSibling;
+            lotListing = {
+                ...lotListing, [prevEl ? prevEl.innerText : i]: el.innerText
+            }
+        });
 
-		return { title, lotNumber, vin, make, model, year, location, saleDate, currentBid, images };
-	});
+        return {
+            ...lotListing
+        };
+    });
 
-	return { url: lotUrl, ...lot };
-}
+    if (lotDetails) {
+        console.log('Created new lot object');
+    } else { console.log('Failed to create lot object!!!') }
+
+    fs.writeFileSync('results.json', JSON.stringify({ ...lotDetails, Title, Year, images: [...convertLotImgURL(imageUrls)], ...title, ...vin }, null, 2));
+    await browser.close();
+    console.log('----Scrapper closed!----');
+})(options);
