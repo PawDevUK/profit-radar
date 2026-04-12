@@ -12,7 +12,7 @@
 		"title": {
 			"selector": "h1.ldp-header-title",
 			"strategy": "direct",
-			"label": null,
+			"label": "Title",
 			"container": ".lot-details-header-block",
 			"method": "$eval",
 			"extract": "node.innerText.trim()",
