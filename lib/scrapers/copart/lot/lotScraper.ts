@@ -25,6 +25,14 @@ const pageOptions: GoToOptions = {
 	const Title = await page.$eval(response.fields.title.selector, (el) => el.textContent?.trim() ?? '');
 	const Year = await page.$eval(response.fields.year.selector, (el) => el.textContent?.trim() ?? '');
 
+	let lotObj = {};
+	for (const field of Object.values(response.fields)) {
+		await page.waitForSelector(field.selector);
+		const value = await page.$eval(field.selector, (el) => el.textContent?.trim() ?? '');
+		const label = field.label || '';
+		lotObj = { ...lotObj, [label]: value };
+	}
+
 	// extract image URLs
 	const imageUrls = await page.$$eval('.img-responsive.p-galleria-img-thumbnail', (images) => images.map((img) => img.getAttribute('src') || '').filter(Boolean));
 	if (imageUrls.length > 0) {
@@ -61,7 +69,7 @@ const pageOptions: GoToOptions = {
 		console.log('Failed to create lot object!!!');
 	}
 
-	fs.writeFileSync('results.json', JSON.stringify({ ...lotDetails, Title, Year, images: [...convertLotImgURL(imageUrls)] }, null, 2));
+	fs.writeFileSync('results.json', JSON.stringify({ ...lotDetails, ...lotObj, Title, Year, images: [...convertLotImgURL(imageUrls)] }, null, 2));
 	await browser.close();
 	console.log('----Scrapper closed!----');
 })(options);
