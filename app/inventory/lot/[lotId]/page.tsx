@@ -1,8 +1,9 @@
 'use client';
 
+import scrapedSaleList from '@/lib/scrapers/copart/saleList/scrapedSaleList.json' with { type: 'json' };
 import { useParams, useRouter } from 'next/navigation';
 import { useState, useEffect, useRef } from 'react';
-import { LotDetails } from '@/lib/types/lotDetails-type';
+import { scrapedDataType, LotDetails } from '@/lib/types/lotDetails-type';
 import saleList from '@/app/results/saleList.json';
 import LogButton from '@/app/components/common/buttons/logButton';
 import LotDetailsSection from '@/app/inventory/lot/lotDetails';
@@ -56,10 +57,10 @@ export default function LotDetailsPage() {
 				// 		}
 				// 	}
 
-				if (saleList && saleList.length > 0) {
-					const foundCar = saleList.find((c: LotDetails) => String(c.lotNumber) === lotId);
+				if (scrapedSaleList && scrapedSaleList.length > 0) {
+					const foundCar = scrapedSaleList.find((c: scrapedDataType) => String(c.scrapedLotObj.lotNumber) === lotId);
 					if (foundCar) {
-						setCar(foundCar);
+						setCar(foundCar.scrapedLotObj);
 						setSelectedImageIndex(0);
 					} else {
 						console.error('Lot not found in sale list');
@@ -126,46 +127,46 @@ export default function LotDetailsPage() {
 	};
 
 	// Function to run Otomoto verification for this car
-	const runOtomotoVerification = async () => {
-		if (!car) return;
-		setOtomotoLoading(true);
-		try {
-			// Send car details to API for verification
-			const response = await fetch('/api/otomoto-listing-check', {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({
-					make: car.make,
-					model: car.model,
-					lotNumber: car.lotNumber,
-					year: car.year,
-					odometer: car.odometer,
-				}),
-			});
+	// const runOtomotoVerification = async () => {
+	// 	if (!car) return;
+	// 	setOtomotoLoading(true);
+	// 	try {
+	// 		// Send car details to API for verification
+	// 		const response = await fetch('/api/otomoto-listing-check', {
+	// 			method: 'POST',
+	// 			headers: { 'Content-Type': 'application/json' },
+	// 			body: JSON.stringify({
+	// 				make: car.make,
+	// 				model: car.model,
+	// 				lotNumber: car.lotNumber,
+	// 				year: car.year,
+	// 				odometer: car.odometer,
+	// 			}),
+	// 		});
 
-			if (response.ok) {
-				const data = await response.json();
-				if (data.result) {
-					setOtomotoResult({
-						lotNumber: car.lotNumber,
-						title: car.title,
-						make: car.make,
-						model: car.model,
-						searchQuery: `${car.make} ${car.model}`.toLowerCase(),
-						url: `https://www.otomoto.pl/osobowe/${car.make.toLowerCase().replace(/\s+/g, '-')}/${car.model.toLowerCase().replace(/\s+/g, '-')}`,
-						found: data.result.listed_otomoto,
-						count: data.result.listing_count,
-					});
-				}
-			} else {
-				console.error('API error:', await response.text());
-			}
-		} catch (error) {
-			console.error('Error running Otomoto verification:', error);
-		} finally {
-			setOtomotoLoading(false);
-		}
-	};
+	// 		if (response.ok) {
+	// 			const data = await response.json();
+	// 			if (data.result) {
+	// 				setOtomotoResult({
+	// 					lotNumber: car.lotNumber,
+	// 					title: car.title,
+	// 					make: car.make,
+	// 					model: car.model,
+	// 					searchQuery: `${car.make} ${car.model}`.toLowerCase(),
+	// 					url: `https://www.otomoto.pl/osobowe/${car.make.toLowerCase().replace(/\s+/g, '-')}/${car.model.toLowerCase().replace(/\s+/g, '-')}`,
+	// 					found: data.result.listed_otomoto,
+	// 					count: data.result.listing_count,
+	// 				});
+	// 			}
+	// 		} else {
+	// 			console.error('API error:', await response.text());
+	// 		}
+	// 	} catch (error) {
+	// 		console.error('Error running Otomoto verification:', error);
+	// 	} finally {
+	// 		setOtomotoLoading(false);
+	// 	}
+	// };
 
 	if (loading) {
 		return (
