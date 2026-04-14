@@ -6,7 +6,7 @@ import scrapeLot from '../lot/lotScraper';
 
 const salesListUrl =
 	'https://www.copart.com/saleListResult/10/2026-04-16?location=CA%20-%20Los%20Angeles&saleDate=1776366000000&liveAuction=false&from=%2FsalesListResult&yardNum=10&qId=1a813ad6-7f82-46c2-bf32-efdc71e1a1f1-1776157018819';
-const scrapedListSizeNum = 5;
+const scrapedListSizeNum = 30;
 const pageOptions: GoToOptions = {
 	waitUntil: 'networkidle0',
 	timeout: 0,
