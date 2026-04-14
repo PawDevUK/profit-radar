@@ -1,45 +1,55 @@
 export type OdometerUnit = 'mi' | 'km';
 
 export interface LotDetails {
-	title: string;
-	year: number;
-	make: string;
-	model: string;
-	trim: string;
-	bodyStyle: string;
-	runAndDrive: boolean;
-	vin: string;
-	lotNumber: string;
-	laneItem: string; // e.g. "-/-"
-	saleName: string;
-	location: string;
-	engineVerified: boolean;
-	engineVerifiedNote: string; // e.g. "Copart verified that the engine starts."
-	engineStatus: string; // e.g. "Engine Starts"
-	transmissionEngages: boolean;
-	transmissionNote: string; // e.g. "Copart verified that the transmission engages."
-	titleCode: string; // e.g. "PA - Cert Of Title"
-	vehicleTitleType: string; // e.g. "Title Absent"
-	odometer: number;
-	odometerUnit: string;
-	odometerStatus: string; // e.g. "Not Actual"
-	primaryDamage: string; // e.g. "Normal Wear"
-	cylinders: string;
-	color: string;
-	hasKey: boolean;
-	engineType: string; // e.g. "2.0L 4"
-	transmission: string; // e.g. "Automatic"
-	vehicleType: string; // e.g. "Medium Duty/box Trucks"
-	driveTrain: string; // e.g. "Rear-wheel drive"
-	fuelType: string; // e.g. "Diesel"
-	saleDate: string; // e.g. "Thu. Feb 05, 2026 02:00 AM GMT"
-	highlights: string[];
-	notes: string;
-	lastUpdated: string; // e.g. "02/03/2026 12:27 am"
-	currentBid: number;
-	buyItNow: number | null;
-	auctionName: string;
-	auctionCountdown: string; // e.g. "0D 16H 10min"
-	images: string[]; // image URLs
-	copartLink: string;
+	title: string | null;
+	year: string | null;
+	make: string | null;
+	model: string | null;
+	trim: string | null;
+	bodyStyle: string | null;
+	runAndDrive: string | null;
+	vin: string | null;
+	lotNumber: string | null;
+	laneItem: string | null; // e.g. "-/-"
+	saleName: string | null;
+	location: string | null;
+	engineVerified: string | null;
+	engineVerifiedNote: string | null; // e.g. "Copart verified that the engine starts."
+	engineStatus: string | null; // e.g. "Engine Starts"
+	transmissionEngages: string | null;
+	transmissionNote: string | null; // e.g. "Copart verified that the transmission engages."
+	titleCode: string | null; // e.g. "PA - Cert Of Title"
+	vehicleTitleType: string | null; // e.g. "Title Absent"
+	odometer: string | null;
+	odometerUnit: string | null;
+	odometerStatus: string | null; // e.g. "Not Actual"
+	primaryDamage: string | null; // e.g. "Normal Wear"
+	cylinders: string | null;
+	color: string | null;
+	hasKey: string | null;
+	engineType: string | null; // e.g. "2.0L 4"
+	transmission: string | null; // e.g. "Automatic"
+	vehicleType: string | null; // e.g. "Medium Duty/box Trucks"
+	driveTrain: string | null; // e.g. "Rear-wheel drive"
+	fuelType: string | null; // e.g. "Diesel"
+	saleDate: string | null; // e.g. "Thu. Feb 05, 2026 02:00 AM GMT"
+	highlights: string | null;
+	notes: string | null;
+	lastUpdated: string | null; // e.g. "02/03/2026 12:27 am"
+	currentBid: string | null;
+	buyItNow: string | null;
+	auctionName: string | null;
+	auctionCountdown: string | null; // e.g. "0D 16H 10min"
+	images: string | string[] | null; // image URLs
+	copartLink: string | null;
+}
+
+export interface scrapedDataType {
+	scrapedLotObj: LotDetails;
+	scrapingInfo: {
+		Success: number;
+		Failed: number;
+		failedSelectors: string[];
+		Url: string;
+	};
 }
