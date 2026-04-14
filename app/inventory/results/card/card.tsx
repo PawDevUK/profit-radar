@@ -49,7 +49,7 @@ function Card({ ...props }) {
 						</div>
 						<div className='flex flex-col'>
 							<span className='text-[12px]'>Buy it now</span>
-							<span className='text-lg font-extrabold text-heading'>${item.buyItNow}</span>
+							<span className='text-lg font-extrabold text-heading'>${item.buyItNow ? item.buyItNow : '0'}</span>
 						</div>
 					</div>
 				</div>
