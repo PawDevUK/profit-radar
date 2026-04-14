@@ -2,6 +2,56 @@ import puppeteer, { type GoToOptions } from 'puppeteer';
 import convertLotImgURL from './parseImgUrls.js';
 import scraperHTMLtags from './AI_HTML_extract/AIresponse.json' with { type: 'json' };
 import _ from 'lodash';
+import type { LotDetails } from '@/lib/types/lotDetails-type';
+
+type ScrapedLotDetails = {
+	[K in keyof LotDetails]: LotDetails[K] | null;
+};
+
+const createEmptyLotDetails = (): ScrapedLotDetails => ({
+	title: null,
+	year: null,
+	make: null,
+	model: null,
+	trim: null,
+	bodyStyle: null,
+	runAndDrive: null,
+	vin: null,
+	lotNumber: null,
+	laneItem: null,
+	saleName: null,
+	location: null,
+	engineVerified: null,
+	engineVerifiedNote: null,
+	engineStatus: null,
+	transmissionEngages: null,
+	transmissionNote: null,
+	titleCode: null,
+	vehicleTitleType: null,
+	odometer: null,
+	odometerUnit: null,
+	odometerStatus: null,
+	primaryDamage: null,
+	cylinders: null,
+	color: null,
+	hasKey: null,
+	engineType: null,
+	transmission: null,
+	vehicleType: null,
+	driveTrain: null,
+	fuelType: null,
+	saleDate: null,
+	highlights: null,
+	notes: null,
+	lastUpdated: null,
+	currentBid: null,
+	buyItNow: null,
+	auctionName: null,
+	auctionCountdown: null,
+	images: null,
+	copartLink: null,
+});
+
 const pageOptions: GoToOptions = {
 	waitUntil: 'networkidle0',
 	timeout: 0,
@@ -12,21 +62,22 @@ export default async function scrapeLot(pageUrls: string[] | string) {
 		await page.goto(pageUrls, pageOptions);
 		console.log('Launching page:', pageUrls);
 		await page.content();
-		let lotObj = {};
+		const lotObj = createEmptyLotDetails();
+		const mutableLotObj = lotObj as Record<string, unknown>;
 		let Success = 0;
 		let failedScraped = 0;
-		const failedSelectors = [];
+		const failedSelectors: string[] = [];
 
 		for (const field of Object.values(scraperHTMLtags.fields)) {
 			if (field.selector) {
 				try {
-					Success += 1;
 					await page.waitForSelector(field.selector, { timeout: 1000 });
 					const value = await page.$eval(field.selector, (el) => el.textContent?.trim() ?? '');
 					const label = field.label || '';
 					const camelCaseLabel = _.camelCase(label);
-					if (field.label !== 'Images') {
-						lotObj = { ...lotObj, [camelCaseLabel]: value };
+					if (field.label !== 'Images' && Object.prototype.hasOwnProperty.call(lotObj, camelCaseLabel)) {
+						mutableLotObj[camelCaseLabel] = value;
+						Success += 1;
 					}
 				} catch {
 					// selector not present within 1 second, skip to next field
@@ -48,12 +99,11 @@ export default async function scrapeLot(pageUrls: string[] | string) {
 			console.log('Image URLs extracted successfully');
 		}
 		const convertedImage = convertLotImgURL(imageUrls);
+		lotObj.images = convertedImage.length > 0 ? convertedImage : null;
+		lotObj.copartLink = pageUrls;
 
 		return {
-			scrapedLotObj: {
-				...lotObj,
-				Images: convertedImage,
-			},
+			scrapedLotObj: lotObj,
 			scrapingInfo: {
 				Success,
 				Failed: failedScraped,
