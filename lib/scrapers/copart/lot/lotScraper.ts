@@ -59,7 +59,7 @@ export default async function scrapeLot(pageUrls: string[] | string) {
 				Success,
 				Failed: failedScraped,
 				failedSelectors,
-				Url: pageUrls.length > 1 ? pageUrls[0] : pageUrls,
+				Url: pageUrls,
 			},
 		};
 	}
@@ -70,18 +70,16 @@ export default async function scrapeLot(pageUrls: string[] | string) {
 
 	const browser = await puppeteer.launch(options);
 	const page = await browser.newPage();
-	let scrapedData = {};
+	const scrapedData = [];
 	if (pageUrls && typeof pageUrls === 'string') {
 		const pageUrl = pageUrls;
-		scrapedData = await getData(pageUrl);
+		const Data = await getData(pageUrl);
+		scrapedData.push(Data);
 	} else if (Array.isArray(pageUrls)) {
 		console.log('Number of Urls to scrape -- >', pageUrls.length);
 		for (const url of pageUrls) {
 			const Data = await getData(url);
-			scrapedData = {
-				...scrapedData,
-				Data,
-			};
+			scrapedData.push(Data);
 		}
 	}
 
