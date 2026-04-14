@@ -3,7 +3,6 @@ import 'dotenv/config';
 
 const MONGODB_PROFIT_RADAR_URI = process.env.MONGODB_PROFIT_RADAR_URI;
 import { CalendarAuction, CalendarMonthDoc } from '../types/calendar-type';
-import { LotDetails } from '../types/lotDetails-type';
 
 let cachedConnection: typeof mongoose | null = null;
 
@@ -20,7 +19,7 @@ export async function connectDB() {
 }
 
 // Lot details schema mirrors lib/types/lot-details.ts
-const LotDetailsSchema = new Schema<LotDetails>(
+const LotDetailsSchema = new Schema(
 	{
 		title: { type: String, required: true },
 		year: { type: Number, required: true },
