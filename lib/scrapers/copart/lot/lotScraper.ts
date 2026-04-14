@@ -98,9 +98,38 @@ export default async function scrapeLot(pageUrls: string[] | string) {
 		if (imageUrls.length > 0) {
 			console.log('Image URLs extracted successfully');
 		}
-		const convertedImage = convertLotImgURL(imageUrls);
-		lotObj.images = convertedImage.length > 0 ? convertedImage : null;
+
+		lotObj.year = lotObj.title ? lotObj.title?.substring(0, 4).trim() : null;
+		lotObj.title = lotObj.title ? lotObj.title.substring(4).trim() : null;
+
+		lotObj.images = convertLotImgURL(imageUrls);
 		lotObj.copartLink = pageUrls;
+
+		function remove$(key: string) {
+			const value = mutableLotObj[key];
+			if (typeof value === 'string') {
+				mutableLotObj[key] = value.replace('$', '');
+			}
+		}
+
+		remove$('buyItNow');
+		remove$('currentBid');
+
+		if (lotObj.odometer?.includes('km')) {
+			lotObj.odometerUnit = 'km';
+		} else if (lotObj.odometer?.includes('mi') || lotObj.odometer?.includes('miles')) {
+			lotObj.odometerUnit = 'miles';
+		}
+
+		if (lotObj.odometer?.includes('Not')) {
+			lotObj.odometerStatus = 'Not Actual';
+		} else if (lotObj.odometer?.includes('Actual')) {
+			lotObj.odometerStatus = 'Actual';
+		}
+
+		if (typeof lotObj.odometer === 'string') {
+			lotObj.odometer = lotObj.odometer.match(/[\d,]+/)?.[0] ?? null;
+		}
 
 		return {
 			scrapedLotObj: lotObj,
