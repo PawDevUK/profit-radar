@@ -56,7 +56,7 @@ export default function LotDetailsSection({ lotData }: { lotData: LotDetails }) 
 					<Row label='Location' value={lotData.location} />
 					<Row label='Sale Date' value={lotData.saleDate} />
 					<Row label='Auction Name' value={lotData.auctionName} />
-					<Row label='Current Bid' value={lotData.currentBid} />
+					<Row label='Current Bid' value={`$${lotData.currentBid}`} />
 					{/* <Row label='Buy It Now' value={lotData.buyItNow} /> */}
 					<Row label='Auction Countdown' value={lotData.auctionCountdown} />
 					{/* <Row label='Copart Link' value={lotData.copartLink} /> */}
