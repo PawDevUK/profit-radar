@@ -1,18 +1,18 @@
 import puppeteer, { type GoToOptions } from 'puppeteer';
 import convertLotImgURL from './parseImgUrls.js';
-import response from './AI_HTML_extract/response.json' with { type: 'json' };
-import fs from 'fs';
+import scraperHTMLtags from './AI_HTML_extract/AIresponse.json' with { type: 'json' };
 const pageUrl = 'https://www.copart.com/lot/99763515/salvage-2017-subaru-wrx-dc-washington-dc';
-const options = {
-	headless: false,
-	args: ['--no-sandbox', '--disable-setuid-sandbox'],
-};
+
 const pageOptions: GoToOptions = {
 	waitUntil: 'networkidle0',
 	timeout: 0,
 };
 
-(async function launch(options) {
+export default async function scrapeLot(pageUrl: string) {
+	const options = {
+		headless: false,
+		args: ['--no-sandbox', '--disable-setuid-sandbox'],
+	};
 	const browser = await puppeteer.launch(options);
 	const page = await browser.newPage();
 	await page.goto(pageUrl, pageOptions);
@@ -22,7 +22,7 @@ const pageOptions: GoToOptions = {
 	let lotObj = {};
 	let count = 0;
 	let failedScraped = 0;
-	for (const field of Object.values(response.fields)) {
+	for (const field of Object.values(scraperHTMLtags.fields)) {
 		if (field.selector) {
 			count += 1;
 			await page.waitForSelector(field.selector);
@@ -47,18 +47,12 @@ const pageOptions: GoToOptions = {
 		console.log('Image URLs extracted successfully');
 	}
 	const convertedImage = convertLotImgURL(imageUrls);
-	fs.writeFileSync(
-		'results.json',
-		JSON.stringify(
-			{
-				...lotObj,
-				Images: convertedImage,
-			},
-			null,
-			2,
-		),
-	);
+	const scrapedLotObj = {
+		...lotObj,
+		Images: convertedImage,
+	};
 	console.log('Finalising and closing');
 	await browser.close();
 	console.log('----Scrapper closed!----');
-})(options);
+	return scrapedLotObj;
+}
