@@ -40,7 +40,7 @@ export interface LotDetails {
 	buyItNow: string | null;
 	auctionName: string | null;
 	auctionCountdown: string | null; // e.g. "0D 16H 10min"
-	images: string | string[] | null; // image URLs
+	images: string[] | null; // image URLs
 	copartLink: string | null;
 }
 
