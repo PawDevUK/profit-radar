@@ -8,6 +8,7 @@ import saleList from '@/app/results/saleList.json';
 import LogButton from '@/app/components/common/buttons/logButton';
 import LotDetailsSection from '@/app/inventory/lot/lotDetails';
 import BidBuy from '../BidBuy';
+import Img from 'next/image';
 
 type OtomotoCheckResult = {
 	lotNumber: string;
@@ -240,9 +241,11 @@ export default function LotDetailsPage() {
 										</div>
 										<div
 											className={`relative w-full h-[400px] bg-gray-200 rounded overflow-hidden mb-4 group  border-4 ${AiImage ? 'border-[var(--color-green-600)] ' : 'border-white'}`}>
-											<img
+											<Img
+												alt='Car Image'
 												src={car.images[selectedImageIndex]}
-												className='w-full h-full object-contain'
+												className='object-contain'
+												fill
 												onError={(e) => {
 													e.currentTarget.src = '/images/placeholder.png';
 												}}
@@ -264,35 +267,39 @@ export default function LotDetailsPage() {
 										</div>
 										<div>
 											<div className='grid grid-cols-6 gap-2'>
-												{car.images.map((imgUrl, idx) => (
-													<button
-														key={idx}
-														onClick={() => setSelectedImageIndex(idx)}
-														title={`Image ${idx + 1}`}
-														className={`relative aspect-square rounded overflow-hidden border-2 transition-all hover:scale-105 ${
-															selectedImageIndex === idx
-																? 'border-blue-600 ring-2 ring-blue-400 ring-offset-1'
-																: 'border-gray-300 hover:border-blue-400'
-														}`}>
-														<img
-															src={imgUrl}
-															alt={`Thumbnail ${idx + 1}`}
-															className='w-full h-full object-cover'
-															onError={(e) => {
-																e.currentTarget.src = '/images/placeholder.png';
-															}}
-														/>
-													</button>
-												))}
+												{car.images.length > 1
+													? car.images.map((imgUrl: string, idx) => (
+															<button
+																key={idx}
+																onClick={() => setSelectedImageIndex(idx)}
+																title={`Image ${idx + 1}`}
+																className={`relative aspect-square rounded overflow-hidden border-2 transition-all hover:scale-105 ${
+																	selectedImageIndex === idx
+																		? 'border-blue-600 ring-2 ring-blue-400 ring-offset-1'
+																		: 'border-gray-300 hover:border-blue-400'
+																}`}>
+																<Img
+																	src={imgUrl}
+																	alt={`Thumbnail ${idx + 1}`}
+																	className='object-cover'
+																	fill
+																	onError={(e) => {
+																		e.currentTarget.src = '/images/placeholder.png';
+																	}}
+																/>
+															</button>
+														))
+													: null}
 											</div>
 										</div>
 									</>
-								) : car.images[0] ? (
+								) : car.images?.[0] ? (
 									<div className='relative w-full h-[400px] bg-gray-200 rounded overflow-hidden'>
-										<img
-											src={car.images[0]}
-											alt={car.title}
-											className='w-full h-full object-contain'
+										<Img
+											src={car.images![0]}
+											alt={car.title ?? 'Car image'}
+											className='object-contain'
+											fill
 											onError={(e) => {
 												e.currentTarget.src = '/images/placeholder.png';
 											}}
