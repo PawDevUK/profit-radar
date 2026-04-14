@@ -1,7 +1,7 @@
 import puppeteer, { type GoToOptions } from 'puppeteer';
 import convertLotImgURL from './parseImgUrls.js';
 import scraperHTMLtags from './AI_HTML_extract/AIresponse.json' with { type: 'json' };
-
+import _ from 'lodash';
 const pageOptions: GoToOptions = {
 	waitUntil: 'networkidle0',
 	timeout: 0,
@@ -24,7 +24,7 @@ export default async function scrapeLot(pageUrls: string[] | string) {
 					await page.waitForSelector(field.selector, { timeout: 1000 });
 					const value = await page.$eval(field.selector, (el) => el.textContent?.trim() ?? '');
 					const label = field.label || '';
-					lotObj = { ...lotObj, [label]: value };
+					lotObj = { ...lotObj, [_.camelCase(label)]: value };
 					if (field.label !== 'Images') {
 						lotObj = { ...lotObj, [label]: value };
 					}
