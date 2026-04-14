@@ -9,6 +9,7 @@ import LogButton from '@/app/components/common/buttons/logButton';
 import LotDetailsSection from '@/app/inventory/lot/lotDetails';
 import BidBuy from '../BidBuy';
 import Img from 'next/image';
+import Toggle from '@/app/components/common/toggler/toggler';
 
 type OtomotoCheckResult = {
 	lotNumber: string;
@@ -215,30 +216,6 @@ export default function LotDetailsPage() {
 							<div className='mb-4'>
 								{car.images && car.images.length > 0 ? (
 									<>
-										<div className='flex flex-row justify-between'>
-											<div className='w-45 mb-4'>
-												{!AiImage ? (
-													<LogButton
-														onclick={() => setAiImage(!AiImage)}
-														item={{
-															href: '',
-															label: 'Orginal Image',
-															fontSize: undefined,
-															class: 'image-orginal-button',
-														}}></LogButton>
-												) : (
-													<LogButton
-														onclick={() => setAiImage(!AiImage)}
-														item={{
-															href: '',
-															label: 'AI Visualisation',
-															fontSize: undefined,
-															class: 'image-ai-button',
-														}}></LogButton>
-												)}
-											</div>
-											<div className='w-45 mb-4'></div>
-										</div>
 										<div
 											className={`relative w-full h-[400px] bg-gray-200 rounded overflow-hidden mb-4 group  border-4 ${AiImage ? 'border-[var(--color-green-600)] ' : 'border-white'}`}>
 											<Img
@@ -250,6 +227,7 @@ export default function LotDetailsPage() {
 													e.currentTarget.src = '/images/placeholder.png';
 												}}
 											/>
+											<Toggle enabled={AiImage} onChange={toggleAIimage} size={30} />
 											{car.images.length > 1 && (
 												<>
 													<button
