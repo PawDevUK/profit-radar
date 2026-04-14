@@ -1,0 +1,55 @@
+{
+	"Data": {
+		"scrapedLotObj": {
+			"Title": "2023 TESLA MODEL Y",
+			"Year:": "2023",
+			"Make:": "TESLA",
+			"Model:": "MODEL Y",
+			"Body Style :": "AWD Sport Utility",
+			"VIN:": "7SAYGAEE7PF******",
+			"Lot number:": "92865555",
+			"Lane/Item:": "-/-",
+			"Sale name:": "CA - LOS ANGELES",
+			"Location:": "CA - LOS ANGELES",
+			"Title code:": "CA - Salvage Certificate",
+			"": "Not Actual",
+			"Odometer:": "0  mi  Not Actual",
+			"Primary damage:": "Front End",
+			"Cylinders:": "Black",
+			"Color:": "Yes",
+			"Has key:": "Yes",
+			"Engine type:": "Automatic",
+			"Transmission:": "Automobile",
+			"Vehicle type:": "ALL WHEEL DRIVE",
+			"Drivetrain:": "Electric",
+			"Fuel:": "Thu. Apr 16, 2026 08:00 PM GMT+1",
+			"Current bid": "$0",
+			"Auction countdown:": "2D 8H 18min",
+			"Images": [
+				"https://cs.copart.com/v1/AUTH_svc.pdoc00001/ids-c-prod-lpp/1125/9fb42bacf1dc49d8914dc190fbbd5090_ful.jpg",
+				"https://cs.copart.com/v1/AUTH_svc.pdoc00001/ids-c-prod-lpp/1125/3970b480f44d4b5192378218c4716695_ful.jpg",
+				"https://cs.copart.com/v1/AUTH_svc.pdoc00001/ids-c-prod-lpp/1125/10a820a214c149aebcd31b8f809b350b_ful.jpg",
+				"https://cs.copart.com/v1/AUTH_svc.pdoc00001/ids-c-prod-lpp/1125/69cb247e61e340d8946daa59e6d5b093_ful.jpg",
+				"https://cs.copart.com/v1/AUTH_svc.pdoc00001/ids-c-prod-lpp/1125/7ec6aedb214d4e83a1a820b1d38ac25b_ful.jpg",
+				"https://cs.copart.com/v1/AUTH_svc.pdoc00001/ids-c-prod-lpp/1125/9cccbc64207b47f79f36c206c6ce13bd_ful.jpg",
+				"https://cs.copart.com/v1/AUTH_svc.pdoc00001/ids-c-prod-lpp/1125/df60c47277264526b455bc29ea1c00de_ful.jpg",
+				"https://cs.copart.com/v1/AUTH_svc.pdoc00001/ids-c-prod-lpp/1125/afb6266e956f403d9a3c7278877d288e_ful.jpg",
+				"https://cs.copart.com/v1/AUTH_svc.pdoc00001/ids-c-prod-lpp/1125/a24de261d4024df8bc23874a7c0a28dc_ful.jpg",
+				"https://cs.copart.com/v1/AUTH_svc.pdoc00001/ids-c-prod-lpp/1125/9f4bd69fb24e4071804844731e9d5668_ful.jpg",
+				"https://cs.copart.com/v1/AUTH_svc.pdoc00001/ids-c-prod-lpp/1125/ee43e2fc2ac247e088021d11d1f782a2_ful.jpg",
+				"https://cs.copart.com/v1/AUTH_svc.pdoc00001/ids-c-prod-lpp/1125/2fa09329763d4a2f968df90a849441d7_ful.jpg",
+				"https://cs.copart.com/v1/AUTH_svc.pdoc00001/ids-c-prod-lpp/1125/c1a3909a03e74e16926ec025d02fef85_ful.jpg"
+			]
+		},
+		"scrapingInfo": {
+			"Success": 31,
+			"Failed": 13,
+			"failedSelectors": [
+				"vehicle-information > .lot-details-information:nth-child(13) .lot-details-information-value",
+				"vehicle-information > .lot-details-information:nth-child(15) .highlights-item > span > span",
+				"vehicle-information > .lot-details-information:nth-child(16) .lot-details-information-value"
+			],
+			"Url": "h"
+		}
+	}
+}
