@@ -2,36 +2,37 @@
 import { useRouter, useParams } from 'next/navigation';
 import Card from '@/app/inventory/results/card/card';
 import { useState } from 'react';
-import saleList from '@/app/results/saleList.json';
-import { LotDetails } from '@/lib/types/lotDetails-type';
+import scrapedSaleList from '@/lib/scrapers/copart/saleList/scrapedSaleList.json' with { type: 'json' };
+import { scrapedDataType } from '@/lib/types/lotDetails-type';
 import { filter_Results_State } from '@/lib/state/searchFilters.state';
 
 export default function SaleListResultsPage() {
 	const { searchFilters } = filter_Results_State();
-	const [cars] = useState<LotDetails[]>(saleList);
+	const [cars] = useState<scrapedDataType[]>(scrapedSaleList);
 	const router = useRouter();
-	const params = useParams();
 
-	const filterResults = (selected: string, cars: LotDetails[]) => {
-		return cars.filter((car) => car.make === selected);
+	const filterResults = (selected: string, cars: scrapedDataType[]) => {
+		if (!selected) return cars;
+		return cars.filter((car) => car.scrapedLotObj.make === selected);
 	};
+
+	const visibleCars = filterResults(searchFilters.make, cars);
 
 	return (
 		<div className='w-full min-h-screen bg-gray-50 py-3 px-4 sm:px-6 lg:px-8'>
 			<div className='max-w-(--max-app-width) mx-auto'>
 				<div className='flex flex-wrap justify-center'>
-					{cars.map((car, index) => (
+					{visibleCars.map((car, index) => (
 						<Card
 							key={index}
-							item={car}
+							item={car.scrapedLotObj}
 							onClick={() => {
-								console.log('Clicked');
-								router.push(`/inventory/lot/${car.lotNumber}`);
+								router.push(`/inventory/lot/${car.scrapedLotObj.lotNumber}`);
 							}}></Card>
 					))}
 				</div>
 
-				{filterResults(searchFilters.make, cars).length === 0 && (
+				{visibleCars.length === 0 && (
 					<div className='text-center py-12'>
 						<p className='text-gray-500 text-lg'>No cars found for this sale</p>
 					</div>
