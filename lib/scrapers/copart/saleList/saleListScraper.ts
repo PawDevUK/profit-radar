@@ -29,6 +29,7 @@ export default async function saleListScraper() {
 	fs.writeFile('./scrapedSaleList.json', JSON.stringify(scrapedSaleList), 'utf-8', (err) => {
 		if (err) console.error('Error writing file:', err);
 	});
+	await browser.close();
 }
 
 saleListScraper();
