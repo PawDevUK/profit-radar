@@ -24,9 +24,9 @@ export default async function scrapeLot(pageUrls: string[] | string) {
 					await page.waitForSelector(field.selector, { timeout: 1000 });
 					const value = await page.$eval(field.selector, (el) => el.textContent?.trim() ?? '');
 					const label = field.label || '';
-					lotObj = { ...lotObj, [_.camelCase(label)]: value };
+					const camelCaseLabel = _.camelCase(label);
 					if (field.label !== 'Images') {
-						lotObj = { ...lotObj, [label]: value };
+						lotObj = { ...lotObj, [camelCaseLabel]: value };
 					}
 				} catch {
 					// selector not present within 1 second, skip to next field
@@ -42,7 +42,6 @@ export default async function scrapeLot(pageUrls: string[] | string) {
 		console.log('Failed', failedScraped, 'elements.');
 		console.log('Finished scrapping info!!');
 		console.log('Starting scrapping images.');
-
 		// extract image URLs
 		const imageUrls = await page.$$eval('.img-responsive.p-galleria-img-thumbnail', (images) => images.map((img) => img.getAttribute('src') || '').filter(Boolean));
 		if (imageUrls.length > 0) {
