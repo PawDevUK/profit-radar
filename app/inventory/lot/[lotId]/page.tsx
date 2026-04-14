@@ -308,12 +308,6 @@ export default function LotDetailsPage() {
 									</div>
 								)}
 							</div>
-
-							{car.copartLink && (
-								<a href={car.copartLink} target='_blank' rel='noopener noreferrer' className='inline-block text-blue-600 hover:text-blue-800 font-medium mb-6'>
-									📷 View Full Gallery on Copart →
-								</a>
-							)}
 						</div>
 
 						<LotDetailsSection lotData={car}></LotDetailsSection>
