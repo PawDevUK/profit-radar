@@ -1,0 +1,2 @@
+# Exclude scraper HTML snapshots from GitHub Linguist language statistics
+lib/scrapers/copart/lot/AI_HTML_extract/*.html linguist-generated=true
