@@ -240,12 +240,24 @@ export default function LotDetailsPage() {
 											<div className='w-45 mb-4'></div>
 										</div>
 										<div
-											className={`relative w-full h-[400px] bg-gray-200 rounded overflow-hidden mb-4 group  border-4 ${AiImage ? 'border-[var(--color-green-600)] ' : 'border-white'}`}>
+											className={`relative w-full h-100 bg-gray-200 rounded overflow-hidden mb-4 group  border-4 ${AiImage ? 'border-[var(--color-green-600)] ' : 'border-white'}`}>
 											<Img
 												alt='Car Image'
 												src={car.images[selectedImageIndex]}
-												className='object-contain'
+												className='object-contain z-30'
 												fill
+												onError={(e) => {
+													e.currentTarget.src = '/images/placeholder.png';
+												}}
+											/>
+											<div className=''></div>
+											<Img
+												src={car.images[selectedImageIndex]}
+												alt=''
+												fill
+												aria-hidden
+												priority
+												className='object-cover scale-110 blur-lg opacity-60'
 												onError={(e) => {
 													e.currentTarget.src = '/images/placeholder.png';
 												}}
@@ -254,13 +266,41 @@ export default function LotDetailsPage() {
 												<>
 													<button
 														onClick={() => setSelectedImageIndex((prev) => (prev > 0 ? prev - 1 : car.images!.length - 1))}
-														className='absolute left-3 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 hover:bg-opacity-70 text-white p-2 rounded-full transition-all opacity-0 group-hover:opacity-100'>
-														←
+														type='button'
+														className='absolute top-0 start-0 z-40 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none '
+														data-carousel-prev>
+														<span className='inline-flex items-center justify-center w-10 h-10 rounded-base bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60  group-focus:outline-none rounded-md'>
+															<svg
+																className='w-5 h-5 text-white rtl:rotate-180'
+																aria-hidden='true'
+																xmlns='http://www.w3.org/2000/svg'
+																width='24'
+																height='24'
+																fill='none'
+																viewBox='0 0 24 24'>
+																<path stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m15 19-7-7 7-7' />
+															</svg>
+															<span className='sr-only'>Previous</span>
+														</span>
 													</button>
 													<button
+														type='button'
+														className='absolute top-0 end-0 z-40 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none'
 														onClick={() => setSelectedImageIndex((prev) => (prev < car.images!.length - 1 ? prev + 1 : 0))}
-														className='absolute right-3 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 hover:bg-opacity-70 text-white p-2 rounded-full transition-all opacity-0 group-hover:opacity-100'>
-														→
+														data-carousel-next>
+														<span className='inline-flex items-center justify-center w-10 h-10 rounded-base bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-focus:ring-gray-800/70 group-focus:outline-none rounded-md'>
+															<svg
+																className='w-5 h-5 text-white rtl:rotate-180'
+																aria-hidden='true'
+																xmlns='http://www.w3.org/2000/svg'
+																width='24'
+																height='24'
+																fill='none'
+																viewBox='0 0 24 24'>
+																<path stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m9 5 7 7-7 7' />
+															</svg>
+															<span className='sr-only'>Next</span>
+														</span>
 													</button>
 												</>
 											)}
