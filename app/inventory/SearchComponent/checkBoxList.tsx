@@ -85,7 +85,7 @@ const Memo_CheckboxItem = memo(function CheckboxItem({ option, isSelected, onCha
 							/>
 						</svg>
 					</span>
-					<div className='ml-2 mt-0.5 text-gray-500 text-[18px]'>{option}</div>
+					<div className='ml-2 mt-0.5 text-gray-500 text-[16px]'>{option}</div>
 				</label>
 			</div>
 		</div>
