@@ -207,18 +207,18 @@ export default function LotDetailsPage() {
 
 	function toggleAIImage() {
 		return (
-			<div className='absolute right-10 top-3 flex flex-row justify-between z-320 cursor-pointer'>
+			<div className='absolute right-15 md:right-10  top-3 flex flex-row justify-between z-320 cursor-pointer'>
 				<div className='w-45 mb-4 relative '>
 					{AiImage ? (
-						<div className='image-ai-label flex justify-start items-center h-10 w-50 pl-10' onClick={() => setAiImage(false)}>
-							AI Image
+						<div className='image-ai-label flex justify-start items-center h-10 w-41 pl-2' onClick={() => setAiImage(false)}>
+							AI Repaired
 						</div>
 					) : (
-						<div className='image-original-label flex justify-start items-center h-10 w-50 pl-2 ' onClick={() => setAiImage(true)}>
-							Original Image
+						<div className='image-original-label flex justify-start items-center h-10 w-41 pl-5' onClick={() => setAiImage(true)}>
+							Original
 						</div>
 					)}
-					<div className='absolute top-1.5 -end-3.5 z-40'>
+					<div className='absolute top-1.5 end-5 z-40'>
 						<Toggle enabled={AiImage} size={1.5} onChange={toggleAIimage} />
 					</div>
 				</div>
