@@ -1,14 +1,32 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 type ToggleProps = {
 	enabled?: boolean;
 	onChange?: (enabled: boolean) => void;
+	size?: number;
 };
 
-export default function Toggle({ enabled = false, onChange }: ToggleProps) {
+export default function Toggle({ enabled = false, onChange, size }: ToggleProps) {
 	const [isOn, setIsOn] = useState(enabled);
+	const scale = typeof size === 'number' && size > 0 ? size : 1;
+
+	useEffect(() => {
+		setIsOn(enabled);
+	}, [enabled]);
+
+	const dimensions = {
+		wrapperWidth: 40 * scale,
+		trackHeight: 19 * scale,
+		trackWidth: 39 * scale,
+		trackPadding: 1 * scale,
+		iconPaddingX: 6 * scale,
+		iconFontSize: 13 * scale,
+		knobSize: 17 * scale,
+		knobTranslateX: 20 * scale,
+		knobFontSize: 12 * scale,
+	};
 
 	const handleClick = () => {
 		const newValue = !isOn;
@@ -17,27 +35,39 @@ export default function Toggle({ enabled = false, onChange }: ToggleProps) {
 	};
 
 	return (
-		<div className='flex items-center space-x-3 w-[40px]'>
+		<div className='flex items-center space-x-3 z-100 ' style={{ width: `${dimensions.wrapperWidth}px` }}>
 			<button
 				type='button'
 				onClick={handleClick}
-				className={`relative flex h-[19px] w-[39px] items-center rounded-full p-[1px] transition-colors ${isOn ? 'bg-[var(--mongo-green)]' : 'bg-gray-300'}`}
+				className={`relative flex items-center rounded-full transition-colors cursor-pointer ${isOn ? 'bg-(--mongo-green)' : 'bg-gray-300'}`}
+				style={{
+					height: `${dimensions.trackHeight}px`,
+					width: `${dimensions.trackWidth}px`,
+					padding: `${dimensions.trackPadding}px`,
+				}}
 				role='switch'
 				aria-checked={isOn}>
 				{/* Background icons (faded) */}
-				<div className='absolute inset-0 flex items-center justify-between px-[6px] text-xs font-bold'>
-					<span className={'text-white/40'} style={{ fontSize: '13px' }}>
+				<div className='absolute inset-0 flex items-center justify-between text-xs font-bold' style={{ paddingInline: `${dimensions.iconPaddingX}px` }}>
+					<span className={'text-white/40'} style={{ fontSize: `${dimensions.iconFontSize}px` }}>
 						×
 					</span>
-					<span className={isOn ? 'text-teal-900/70' : 'text-gray-500/40'} style={{ fontSize: '13px' }}>
+					<span className={isOn ? 'text-teal-900/70' : 'text-gray-500/40'} style={{ fontSize: `${dimensions.iconFontSize}px` }}>
 						✓
 					</span>
 				</div>
 
 				{/* Knob */}
 				<div
-					className={`relative z-10 flex h-[17px] w-[17px] items-center justify-center rounded-full bg-white shadow-md transition-transform duration-200 ${isOn ? 'translate-x-[20px]' : 'translate-x-0'}`}>
-					<span className='text-xs text-gray-900 leading-none'>{isOn ? '✓' : '×'}</span>
+					className='relative z-10 flex items-center justify-center rounded-full bg-white shadow-md transition-transform duration-200'
+					style={{
+						height: `${dimensions.knobSize}px`,
+						width: `${dimensions.knobSize}px`,
+						transform: `translateX(${isOn ? dimensions.knobTranslateX : 0}px)`,
+					}}>
+					<span className='text-gray-900 leading-none' style={{ fontSize: `${dimensions.knobFontSize}px` }}>
+						{isOn ? '✓' : '×'}
+					</span>
 				</div>
 			</button>
 		</div>
