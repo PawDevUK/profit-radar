@@ -9,6 +9,7 @@ import LogButton from '@/app/components/common/buttons/logButton';
 import LotDetailsSection from '@/app/inventory/lot/lotDetails';
 import BidBuy from '../BidBuy';
 import Img from 'next/image';
+import Toggle from '@/app/components/common/toggler/toggler';
 
 type OtomotoCheckResult = {
 	lotNumber: string;
@@ -36,9 +37,6 @@ export default function LotDetailsPage() {
 	const [car, setCar] = useState<LotDetails | null>(null);
 	const [loading, setLoading] = useState(true);
 	const [selectedImageIndex, setSelectedImageIndex] = useState(0);
-	const [otomotoResult, setOtomotoResult] = useState<OtomotoCheckResult | null>(null);
-	const [otomotoLoading, setOtomotoLoading] = useState(false);
-	const otomotoCheckRef = useRef(false); // Prevent duplicate otomoto checks
 	const [AiImage, setAiImage] = useState(false);
 
 	useEffect(() => {
@@ -199,6 +197,27 @@ export default function LotDetailsPage() {
 		);
 	}
 
+	function toggleAIImage() {
+		return (
+			<div className='absolute right-10 top-3 flex flex-row justify-between z-320 cursor-pointer'>
+				<div className='w-45 mb-4 relative '>
+					{AiImage ? (
+						<div className='image-ai-label flex justify-start items-center h-10 w-50 pl-10' onClick={() => setAiImage(false)}>
+							AI Image
+						</div>
+					) : (
+						<div className='image-original-label flex justify-start items-center h-10 w-50 pl-2 ' onClick={() => setAiImage(true)}>
+							Original Image
+						</div>
+					)}
+					<div className='absolute top-1.5 -end-3.5 z-40'>
+						<Toggle enabled={AiImage} size={1.5} onChange={toggleAIimage} />
+					</div>
+				</div>
+			</div>
+		);
+	}
+
 	return (
 		<div className='min-h-screen bg-gray-50 py-6 px-4 sm:px-6 lg:px-8'>
 			<div className='max-w-7xl mx-auto'>
@@ -212,35 +231,12 @@ export default function LotDetailsPage() {
 						{/* Images */}
 						<div className='bg-white rounded-lg shadow p-6 mb-2'>
 							{/* Main Image with Navigation */}
-							<div className='mb-4'>
+							<div className='mb-4 relative'>
+								{toggleAIImage()}
 								{car.images && car.images.length > 0 ? (
 									<>
-										<div className='flex flex-row justify-between'>
-											<div className='w-45 mb-4'>
-												{!AiImage ? (
-													<LogButton
-														onclick={() => setAiImage(!AiImage)}
-														item={{
-															href: '',
-															label: 'Orginal Image',
-															fontSize: undefined,
-															class: 'image-orginal-button',
-														}}></LogButton>
-												) : (
-													<LogButton
-														onclick={() => setAiImage(!AiImage)}
-														item={{
-															href: '',
-															label: 'AI Visualisation',
-															fontSize: undefined,
-															class: 'image-ai-button',
-														}}></LogButton>
-												)}
-											</div>
-											<div className='w-45 mb-4'></div>
-										</div>
 										<div
-											className={`relative w-full h-100 bg-gray-200 rounded overflow-hidden mb-4 group  border-4 ${AiImage ? 'border-[var(--color-green-600)] ' : 'border-white'}`}>
+											className={`relative w-full h-100 bg-gray-200 rounded overflow-hidden mb-4 group  border-4 ${AiImage ? 'border-(--mongo-green) ' : 'border-white'}`}>
 											<Img
 												alt='Car Image'
 												src={car.images[selectedImageIndex]}
@@ -262,6 +258,7 @@ export default function LotDetailsPage() {
 													e.currentTarget.src = '/images/placeholder.png';
 												}}
 											/>
+											<div className='z-50'></div>
 											{car.images.length > 1 && (
 												<>
 													<button
