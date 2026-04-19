@@ -76,7 +76,7 @@ const Memo_CheckboxItem = memo(function CheckboxItem({ option, isSelected, onCha
 						className='peer h-6 w-6 cursor-pointer transition-all appearance-none rounded shadow hover:shadow-md border border-slate-300'
 						onChange={() => onChangeHandler(option)}
 					/>
-					<span className='absolute text-[var(--mongo-green)] opacity-0 peer-checked:opacity-100 top-[14px] left-[12px] transform -translate-x-1/2 -translate-y-1/2 pointer-events-none'>
+					<span className='absolute text-[var(--mongo-green)] opacity-0 peer-checked:opacity-100 top-[13px] left-[12px] transform -translate-x-1/2 -translate-y-1/2 pointer-events-none'>
 						<svg xmlns='http://www.w3.org/2000/svg' className='h-5.5 w-5.5' viewBox='0 0 20 20' fill='currentColor' stroke='currentColor' strokeWidth='1'>
 							<path
 								fillRule='evenodd'
