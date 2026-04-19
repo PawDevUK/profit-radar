@@ -24,32 +24,34 @@
     color: var(--mongo-green);
 }
 
-.image-orginal-button {
-
-    color: var(--small-text-blue);
-    border: 1px solid var(--small-text-blue);
-    background: transparent;
+.image-original-label {
+    color: var(--mongo-green);
+    border: 1px solid var(--mongo-green);
+    background: #fff;
+    border-radius: 10px;
 }
 
-.image-orginal-button:hover {
-    color: var(--main-blue);
-    border: 1px solid var(--main-blue);
+.image-original-label:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    /* shadow-lg */
+    color: var(--mongo-green);
 }
 
-.image-ai-button {
-
+.image-ai-label {
     color: #fff;
     border: 1px solid #00684b50;
-    background: var(--color-green-600);
+    background: var(--mongo-green);
+    border-radius: 10px;
+
 }
 
-.image-ai-button:hover {
+.image-ai-label:hover {
 
-    color: #fff
+    color: #fff;
 }
 
-.image-ai-button::selection {
-    background: var(--color-green-600);
+.image-ai-label::selection {
+    background: var(--mongo-green);
 }
 
 
