@@ -53,3 +53,17 @@ page.$(selector) finds the first matching element and returns an ElementHandle o
 page.$$(selector) finds all matching elements and returns an array of ElementHandles.
 page.$eval(selector, fn) finds the first matching element, passes it into fn inside the browser page, and returns the result.
 page.$$eval(selector, fn) finds all matching elements, passes them as an array into fn inside the browser page, and returns the result.
+
+### Problem 6
+
+Choosing the right AI model for image generation: Why cost/quality balance matters at scale
+
+I recently built a system that uses AI to convert photos of damaged vehicles into realistic "pre-accident" repaired versions — perfect for insurance, repair estimates, or customer visuals.
+
+While experimenting, I ran into some small issues with OpenAI's image generation:
+The documentation listed gpt-image-1-mini as available, but it wasn't in practice.
+Quality options felt binary (low or high) with little in between.
+Actual costs were significantly higher than the pricing page suggested — for just 7 images, I was charged ~46p when I expected around 15p.
+At a small scale, it seems minor, but when you're processing 150,000 images, even a few pence difference per image adds up to serious extra costs.
+
+In contrast, switching to the xAI Grok Imagine API has been a much better experience. It's more flexible (better support for image-to-image editing and iterative refinement), offers clearer pricing, and is significantly cheaper to run at volume with the standard model at $0.02 per image.
