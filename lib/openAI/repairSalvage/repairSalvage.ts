@@ -1,33 +1,35 @@
 import fs from 'fs';
+import path from 'path';
 import OpenAI from 'openai';
+import dotenv from 'dotenv';
+import { fileURLToPath } from 'url';
 
-const openai = new OpenAI();
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+dotenv.config({ path: path.resolve(__dirname, '../../../.env') });
+
 import prompt from './prompt';
 
-const response = await openai.responses.create({
-	model: 'gpt-4.1',
-	input: [
-		{
-			role: 'user',
-			content: [],
-		},
-	],
-	tools: [{ type: 'image_generation' }],
+const vehicleInfo = `Make CHEVROLET Model SILVERADO Year 2020 Trim — Body Style Crew Cab Pickup Vehicle Type Automobile Color Blue`;
+
+const imagePath = path.resolve(__dirname, '../../../public/lot-images/copart/95914435/img-005.jpg');
+const imageBuffer = fs.readFileSync(imagePath);
+const imageFile = await OpenAI.toFile(imageBuffer, 'img-005.png', { type: 'image/jpeg' });
+
+const openai = new OpenAI({
+	apiKey: process.env.OPENAI_API_REPAIR_KEY,
 });
 
-const imageData = response.output.filter((output) => output.type === 'image_generation_call').map((output) => output.result);
+const response = await openai.images.edit({
+	model: 'gpt-image-1',
+	image: imageFile,
+	prompt: prompt(vehicleInfo),
+	size: 'auto',
+	quality: 'low',
+});
 
-if (imageData.length > 0) {
-	const imageBase64 = imageData[0];
-	const fs = await import('fs');
-	fs.writeFileSync('gift-basket.png', Buffer.from(imageBase64, 'base64'));
+const imageBase64 = response.data?.[0]?.b64_json;
+if (imageBase64) {
+	fs.writeFileSync('repaired-silverado.png', Buffer.from(imageBase64, 'base64'));
 } else {
-	console.log(response.output.content);
-}
-function encodeImage(arg0: string) {
-	throw new Error('Function not implemented.');
-}
-
-function createFile(arg0: string) {
-	throw new Error('Function not implemented.');
+	console.log(response);
 }
