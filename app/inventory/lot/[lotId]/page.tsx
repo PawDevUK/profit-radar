@@ -218,8 +218,8 @@ export default function LotDetailsPage() {
 							Original
 						</div>
 					)}
-					<div className='absolute top-1.5 end-5 z-40'>
-						<Toggle enabled={AiImage} size={1.5} onChange={toggleAIimage} />
+					<div className='absolute top-[9px] end-[22px] z-40'>
+						<Toggle enabled={AiImage} size={1.2} onChange={toggleAIimage} colour='--mongo-green-light' />
 					</div>
 				</div>
 			</div>
@@ -229,7 +229,7 @@ export default function LotDetailsPage() {
 	return (
 		<div className='min-h-screen bg-gray-50 py-6 px-4 sm:px-6 lg:px-8'>
 			<div className='max-w-7xl mx-auto'>
-				<button onClick={() => handleBack()} className='text-var(--header-text) hover:text-[var(--mongo-green)] font-medium mb-5'>
+				<button onClick={() => handleBack()} className='text-[var(--header-text)] hover:text-[var(--mongo-green)] font-medium mb-5'>
 					← Back to Sale List
 				</button>
 
@@ -256,7 +256,7 @@ export default function LotDetailsPage() {
 									return images.length > 0 ? (
 										<>
 											<div
-												className={`relative w-full h-100 bg-gray-200 rounded overflow-hidden mb-4 group border-4 ${AiImage ? 'border-(--mongo-green)' : 'border-white'}`}>
+												className={`relative w-full h-100 bg-gray-200 rounded overflow-hidden mb-4 group border-4 ${AiImage ? 'border-[var(--mongo-green)]' : 'border-white'}`}>
 												<Img
 													alt='Car Image'
 													src={currentSrc}
