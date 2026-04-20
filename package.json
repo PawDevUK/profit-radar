@@ -14,6 +14,8 @@
 		"scrape:all": "tsx lib/cli.ts --task all"
 	},
 	"dependencies": {
+		"@ai-sdk/xai": "^3.0.83",
+		"ai": "^6.0.168",
 		"crypto": "^1.0.1",
 		"dotenv": "^17.2.3",
 		"lodash": "^4.17.23",
