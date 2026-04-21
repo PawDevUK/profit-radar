@@ -58,9 +58,10 @@ export default function LotDetailsPage() {
 				// 	}
 
 				if (scrapedSaleList && scrapedSaleList.length > 0) {
-					const foundCar = scrapedSaleList.find((c: scrapedDataType) => String(c.scrapedLotObj.lotNumber) === lotId);
+					const foundCar = {};
+					//  scrapedSaleList.find((c: scrapedDataType) => String(c.scrapedLotObj.lotNumber) === lotId);
 					if (foundCar) {
-						setCar(foundCar.scrapedLotObj);
+						// setCar(foundCar.scrapedLotObj);
 						setSelectedImageIndex(0);
 						const lotNumber = foundCar.scrapedLotObj.lotNumber;
 						if (lotNumber) {
