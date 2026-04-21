@@ -1,21 +1,43 @@
 import { LotDetailsType } from '@/lib/types/lotDetails-type';
 
 export type CalendarMonthType = {
-	month: string;
-	year: number;
-	scrapedAt: Date;
-	totalAuctions: number;
+	month: string | null;
+	year: number | null;
+	scrapedAt: Date | null;
+	totalAuctions: number | null;
 	auctions: SaleListType[];
 };
-
+export const createEmptyCalendarList = (): CalendarMonthType => ({
+	month: null,
+	year: null,
+	scrapedAt: null,
+	totalAuctions: null,
+	auctions: [],
+});
 export type SaleListType = {
-	saleTime: string;
-	saleName: string;
-	saleType: string;
-	currentSale: string;
-	nextSale: string;
-	totalLots: number;
-	lots: LotDetailsType[];
-	buyItNow: number;
-	scrapedAt: Date;
+	saleTime: string | null;
+	saleName: string | null;
+	saleType: string | null;
+	currentSale: string | null;
+	currentSaleUrl: string | null;
+	nextSale: string | null;
+	nextSaleUrl: string | null;
+	totalLots: number | null;
+	lotList: LotDetailsType[];
+	buyItNow: number | null;
+	scrapedAt: string | null;
 };
+
+export const createEmptySaleList = (): SaleListType => ({
+	saleTime: null,
+	saleName: null,
+	saleType: null,
+	currentSale: null,
+	currentSaleUrl: null,
+	nextSale: null,
+	nextSaleUrl: null,
+	totalLots: null,
+	lotList: [],
+	buyItNow: null,
+	scrapedAt: null,
+});
