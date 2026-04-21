@@ -9,7 +9,7 @@ export async function GET(request: Request) {
 	const limit = full ? undefined : Math.max(0, Number(limitParam ?? 100)) || 100;
 
 	try {
-		const { scrapeCopartCalendar } = await import('@/lib/scrapers/copart/calendar/calendarScraper.mjs');
+		const { scrapeCopartCalendar } = await import('@/lib/scrapers/copart/calendar/calendarScraper.js');
 		const { saveCalendarMonth } = await import('@/lib/db/db');
 		const auctions = await scrapeCopartCalendar(month);
 		// Persist results to MongoDB (upsert by month+year)
