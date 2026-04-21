@@ -67,3 +67,18 @@ Actual costs were significantly higher than the pricing page suggested — for j
 At a small scale, it seems minor, but when you're processing 150,000 images, even a few pence difference per image adds up to serious extra costs.
 
 In contrast, switching to the xAI Grok Imagine API has been a much better experience. It's more flexible (better support for image-to-image editing and iterative refinement), offers clearer pricing, and is significantly cheaper to run at volume with the standard model at $0.02 per image.
+
+### Problem 7
+
+Getting sale information from csv file, converting it into correct data structure and saving it into database.
+
+I have just realised that instead of scrapping data from the every lot for sale or even sale list I can download the csv file and then use it.
+
+Problem is that this file is in csv format and need conversion into json and then data structure need to be updated. Also make and model
+are not full but the urls for each lot have the make and model in it so I need to use ai to sort it out.
+
+I need the steps to follow.
+
+1. Fetch sale list in csv format.
+2. Convert CSV into json.
+3. Convert key into camel case keys. Ath the moment key are with spacing.
