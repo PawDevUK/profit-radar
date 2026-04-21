@@ -1,18 +1,21 @@
 import { LotDetails } from '@/lib/types/lotDetails-type';
 
-export type CalendarAuction = {
-	location: string;
-	saleDate: string;
-	saleTime?: string;
-	viewSalesLink: string;
-	numberOnSale?: number;
-	saleList?: LotDetails[];
-};
-
 export type CalendarMonthDoc = {
 	month: string;
 	year: number;
 	scrapedAt: Date;
 	totalAuctions: number;
-	auctions: CalendarAuction[];
+	auctions: SaleList[];
+};
+
+export type SaleList = {
+	saleTime: string;
+	saleName: string;
+	saleType: string;
+	currentSale: string;
+	nextSale: string;
+	totalLots: number;
+	lots: LotDetails[];
+	buyItNow: number;
+	scrapedAt: Date;
 };
