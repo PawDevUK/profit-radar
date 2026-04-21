@@ -1,21 +1,21 @@
-import { LotDetails } from '@/lib/types/lotDetails-type';
+import { LotDetailsType } from '@/lib/types/lotDetails-type';
 
-export type CalendarMonthDoc = {
+export type CalendarMonthType = {
 	month: string;
 	year: number;
 	scrapedAt: Date;
 	totalAuctions: number;
-	auctions: SaleList[];
+	auctions: SaleListType[];
 };
 
-export type SaleList = {
+export type SaleListType = {
 	saleTime: string;
 	saleName: string;
 	saleType: string;
 	currentSale: string;
 	nextSale: string;
 	totalLots: number;
-	lots: LotDetails[];
+	lots: LotDetailsType[];
 	buyItNow: number;
 	scrapedAt: Date;
 };

@@ -1,6 +1,6 @@
 export type OdometerUnit = 'mi' | 'km';
 
-export interface LotDetails {
+export interface LotDetailsType {
 	title: string | null;
 	year: string | null;
 	make: string | null;
@@ -44,8 +44,8 @@ export interface LotDetails {
 	copartLink: string | null;
 }
 
-export interface scrapedDataType {
-	scrapedLotObj: LotDetails;
+export interface scrapedLotDataType {
+	scrapedLotObj: LotDetailsType;
 	scrapingInfo: {
 		Success: number;
 		Failed: number;
