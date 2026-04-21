@@ -10,65 +10,67 @@ const pageOptions: GoToOptions = {
 };
 
 export async function scrapeCopartCalendar() {
+	const scrapedCalendarMonth: CalendarMonthType = createEmptyCalendarList();
 	const options = {
-		headless: false,
+		headless: false, // set to true in production
 		args: ['--no-sandbox', '--disable-setuid-sandbox'],
 	};
-	// const context = await createContext();
+
 	const browser = await puppeteer.launch(options);
 	const page = await browser.newPage();
-	await page.goto(copartCalendarUrl, pageOptions);
-	console.log('Launching copart calendar page:', copartCalendarUrl);
-	await page.content();
 
-	const scrapedCalendarMonth: CalendarMonthType = createEmptyCalendarList();
-	let data = [];
 	try {
-		await page.waitForSelector('[data-uname="saleslistSaletimeval"]', { timeout: 10000, visible: true });
+		console.log('Launching Copart calendar page:', copartCalendarUrl);
+		await page.goto(copartCalendarUrl, pageOptions);
 
-		data = await page.$$eval('tr.odd', (els) => {
-			// const parser = new DOMParser();
-			// const doc = parser.parseFromString(els.outerHTML.trim(), 'text/html');
-			return els.map((el) => {
-				return el.outerHTML.trim();
-			});
-			// 	els.map((row) => {
-			// 		const qText = (uname: string) => row.querySelector(`[data-uname="${uname}"]`)?.textContent?.trim() ?? null;
-			// 		const qHref = (uname: string) => (row.querySelector(`[data-uname="${uname}"] a`) as HTMLAnchorElement | null)?.href ?? null;
-			// 		const totalLotsRaw = qText('saleslistTotallotsval');
-			// 		const totalLotsParsed = totalLotsRaw ? Number(totalLotsRaw.replace(/[^\d.]/g, '')) : NaN;
-			// 		return {
-			// 			saleTime: qText('saleslistSaletimeval'),
-			// 			saleName: qText('saleslistLocationval'),
-			// 			saleType: qText('saleslistRegionval'),
-			// 			currentSale: qText('saleslistCurrentsaleval'),
-			// 			currentSaleUrl: qHref('saleslistCurrentsaleval'),
-			// 			nextSale: qText('saleslistNextsaleval'),
-			// 			nextSaleUrl: qHref('saleslistNextsaleval'),
-			// 			totalLots: Number.isFinite(totalLotsParsed) ? totalLotsParsed : null,
-			// 			lotList: [],
-			// 			buyItNow: null,
-			// 			scrapedAt: new Date().toISOString(),
-			// 		};
-			// 	}),
+		// Wait for at least one sale time element to appear
+		await page.waitForSelector('[data-uname="saleslistSaletimeval"]', {
+			timeout: 15000,
+			visible: true,
 		});
 
-		// scrapedCalendarMonth.auctions = rows; // adjust to your actual property name/type
+		// This runs entirely in the browser context → safe from __name error
+		const data = await page.$$eval('tr.odd', (els) => {
+			return els.map((el) => {
+				// Ultra-safe inline queries (no nested named functions)
+				const saleTime = el.querySelector('[data-uname="saleslistSaletimeval"]')?.textContent?.trim() ?? null;
+
+				// Add more fields as needed (uncomment and adjust selectors)
+				const saleName = el.querySelector('[data-uname="saleslistLocationval"]')?.textContent?.trim() ?? null;
+				const saleType = el.querySelector('[data-uname="saleslistRegionval"]')?.textContent?.trim() ?? null;
+				const currentSale = el.querySelector('[data-uname="saleslistCurrentsaleval"]')?.textContent?.trim() ?? null;
+				const currentSaleUrl = (el.querySelector('[data-uname="saleslistCurrentsaleval"] a') as HTMLAnchorElement | null)?.href ?? null;
+
+				return {
+					saleTime,
+					saleName,
+					saleType,
+					currentSale,
+					currentSaleUrl,
+					// ... other fields
+				};
+			});
+		});
+
+		console.log(`Scraped ${data.length} rows`);
+
+		// Save to file
+		await fs.promises.writeFile('./scrapedMonth.json', JSON.stringify(scrapedCalendarMonth, null, 2), 'utf8');
+		console.log('File written successfully!');
+
+		// Update your calendar object if needed
+		// scrapedCalendarMonth.auctions = data;   // uncomment and adjust property name if needed
+
+		return scrapedCalendarMonth;
 	} catch (e) {
-		console.log(e);
+		console.error('Scraping error:', e);
+		// Optionally return error info
+		return createEmptyCalendarList(); // or throw e;
 	} finally {
 		await page.close();
 		await browser.close();
 	}
-
-	fs.writeFile('./scrapedMonth.html', data.join('\n'), 'utf8', (err) => {
-		if (err) {
-			console.error('Error writing file:', err);
-			return;
-		}
-		console.log('File written successfully!');
-	});
-	return scrapedCalendarMonth;
 }
 
+// Run it
 const scrapedMonth = await scrapeCopartCalendar();
