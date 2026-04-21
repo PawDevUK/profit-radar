@@ -1,8 +1,8 @@
 import { Schema } from 'mongoose';
-import { LotDetails } from '@/lib/types/lotDetails-type';
-import { SaleList } from '@/lib/types/calendar-type';
+import { LotDetailsType } from '@/lib/types/lotDetails-type';
+import { SaleListType, CalendarMonthType } from '@/lib/types/calendar-type';
 
-export const LotDetailsSchema = new Schema<LotDetails>(
+export const LotDetailsSchema = new Schema<LotDetailsType>(
 	{
 		title: { type: String, required: true },
 		year: { type: Number, required: true },
@@ -54,7 +54,7 @@ export const LotDetailsSchema = new Schema<LotDetails>(
 	{ _id: false },
 );
 
-const SaleListSchema = new Schema<SaleList>(
+export const SaleListSchema = new Schema<SaleListType>(
 	{
 		saleTime: { type: String, required: true },
 		saleName: { type: String, required: true }, // e.g., "TX - HOUSTON"
@@ -68,3 +68,11 @@ const SaleListSchema = new Schema<SaleList>(
 	},
 	{ timestamps: true },
 );
+
+export const MonthSaleSchema = new Schema<CalendarMonthType>({
+	month: { type: String },
+	year: { type: Number },
+	scrapedAt: { type: Date },
+	totalAuctions: { type: Number },
+	auctions: [SaleListSchema],
+});
