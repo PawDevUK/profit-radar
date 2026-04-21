@@ -32,22 +32,25 @@ export async function scrapeCopartCalendar() {
 		// This runs entirely in the browser context → safe from __name error
 		const data = await page.$$eval('tr.odd', (els) => {
 			return els.map((el) => {
-				// Ultra-safe inline queries (no nested named functions)
-				const saleTime = el.querySelector('[data-uname="saleslistSaletimeval"]')?.textContent?.trim() ?? null;
+				const qText = (uname: string) => el.querySelector(`[data-uname="${uname}"]`)?.textContent?.trim() ?? null;
 
-				// Add more fields as needed (uncomment and adjust selectors)
-				const saleName = el.querySelector('[data-uname="saleslistLocationval"]')?.textContent?.trim() ?? null;
-				const saleType = el.querySelector('[data-uname="saleslistRegionval"]')?.textContent?.trim() ?? null;
-				const currentSale = el.querySelector('[data-uname="saleslistCurrentsaleval"]')?.textContent?.trim() ?? null;
-				const currentSaleUrl = (el.querySelector('[data-uname="saleslistCurrentsaleval"] a') as HTMLAnchorElement | null)?.href ?? null;
+				const qHref = (uname: string) => (el.querySelector(`[data-uname="${uname}"] a`) as HTMLAnchorElement | null)?.href ?? null;
+
+				const totalLotsRaw = qText('saleslistTotallotsval');
+				const totalLotsParsed = totalLotsRaw ? Number(totalLotsRaw.replace(/[^\d.]/g, '')) : NaN;
 
 				return {
-					saleTime,
-					saleName,
-					saleType,
-					currentSale,
-					currentSaleUrl,
-					// ... other fields
+					saleTime: qText('saleslistSaletimeval'),
+					saleName: qText('saleslistLocationval'),
+					saleType: qText('saleslistRegionval'),
+					currentSale: qText('saleslistCurrentsaleval'),
+					currentSaleUrl: qHref('saleslistCurrentsaleval'),
+					nextSale: qText('saleslistNextsaleval'),
+					nextSaleUrl: qHref('saleslistNextsaleval'),
+					totalLots: Number.isFinite(totalLotsParsed) ? totalLotsParsed : null,
+					lotList: [],
+					buyItNow: null,
+					scrapedAt: new Date().toISOString(),
 				};
 			});
 		});
@@ -55,7 +58,7 @@ export async function scrapeCopartCalendar() {
 		console.log(`Scraped ${data.length} rows`);
 
 		// Save to file
-		await fs.promises.writeFile('./scrapedMonth.json', JSON.stringify(scrapedCalendarMonth, null, 2), 'utf8');
+		await fs.promises.writeFile('./scrapedMonth.json', JSON.stringify((scrapedCalendarMonth.auctions = data), null, 2), 'utf8');
 		console.log('File written successfully!');
 
 		// Update your calendar object if needed
