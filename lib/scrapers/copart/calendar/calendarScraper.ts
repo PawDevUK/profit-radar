@@ -54,17 +54,6 @@ export default async function scrapeCopartCalendar() {
 		scrapedCalendarMonth.month = months[new Date().getMonth()];
 		scrapedCalendarMonth.scrapedAt = new Date();
 		scrapedCalendarMonth.totalAuctions = data.length;
-
-		if (scrapedCalendarMonth && scrapedCalendarMonth.totalAuctions > 1) {
-			await connectDB();
-			const monthSaleList = new MonthSaleModel(scrapedCalendarMonth);
-			await monthSaleList.save();
-			console.log('Month sale data saved to database successfully!');
-		} else {
-			console.log('Not enough auctions scraped, skipping save.');
-		}
-		// await fs.promises.writeFile('./scrapedMonth.json', JSON.stringify(scrapedCalendarMonth, null, 2), 'utf8');
-		// console.log('File written successfully!');
 		return scrapedCalendarMonth;
 	} catch (e) {
 		console.error('Scraping error:', e);
