@@ -1,43 +1,19 @@
 'use client';
-
+import { format } from 'date-fns';
 import { useMemo, useState } from 'react';
-import CalendarMonthType, { createEmptyCalendarList } from '@/lib/types/calendar-type';
-
-type CalendarEvent = {
-	id: string;
-	title: string;
-	time?: string;
-	date: string; // ISO date: YYYY-MM-DD
-	location?: string;
-	image?: string;
-};
-
-type CalendarAuction = {
-	location: string;
-	saleDate: string;
-	saleTime?: string;
-	viewSalesLink: string;
-	numberOnSale?: number | null;
-};
+import { CalendarMonthType, SaleListType, createEmptyCalendarList } from '@/lib/types/calendar-type';
 
 type CalendarDay = {
 	date: Date;
 	label: string;
 	isToday: boolean;
 	inCurrentMonth: boolean;
-	events: CalendarEvent[];
+	events: SaleListType[];
 };
 
 const dayLabels = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
 
-const formatIsoDate = (date: Date) => {
-	const year = date.getFullYear();
-	const month = `${date.getMonth() + 1}`.padStart(2, '0');
-	const day = `${date.getDate()}`.padStart(2, '0');
-	return `${year}-${month}-${day}`;
-};
-
-const buildMonthGrid = (anchor: Date, events: CalendarEvent[]): CalendarDay[] => {
+const buildMonthGrid = (anchor: Date, events: SaleListType[]): CalendarDay[] => {
 	const year = anchor.getFullYear();
 	const month = anchor.getMonth();
 
@@ -45,9 +21,13 @@ const buildMonthGrid = (anchor: Date, events: CalendarEvent[]): CalendarDay[] =>
 	const weekday = (firstOfMonth.getDay() + 6) % 7; // shift so Monday is 0
 	const start = new Date(year, month, 1 - weekday);
 
-	const todayIso = formatIsoDate(new Date());
-	const eventMap = events.reduce<Record<string, CalendarEvent[]>>((acc, evt) => {
-		acc[evt.date] = acc[evt.date] ? [...acc[evt.date], evt] : [evt];
+	const todayIso = format(new Date(), 'yyyy-MM-dd');
+
+	const eventMap = events.reduce<Record<string, SaleListType[]>>((acc, evt) => {
+		if (evt.currentSale) {
+			const iso = format(new Date(evt.currentSale), 'yyyy-MM-dd');
+			acc[iso] = acc[iso] ? [...acc[iso], evt] : [evt];
+		}
 		return acc;
 	}, {});
 
@@ -55,7 +35,7 @@ const buildMonthGrid = (anchor: Date, events: CalendarEvent[]): CalendarDay[] =>
 	for (let i = 0; i < 42; i += 1) {
 		const current = new Date(start);
 		current.setDate(start.getDate() + i);
-		const iso = formatIsoDate(current);
+		const iso = format(current, 'yyyy-MM-dd');
 		days.push({
 			date: current,
 			label: `${current.getDate()}`,
@@ -64,34 +44,48 @@ const buildMonthGrid = (anchor: Date, events: CalendarEvent[]): CalendarDay[] =>
 			events: eventMap[iso] || [],
 		});
 	}
-
+	console.log(days);
 	return days;
 };
-const getTodaysEvents = (events: CalendarEvent[]) => {
-	const todayIso = formatIsoDate(new Date());
-	return events.filter((evt) => evt.date === todayIso);
+
+const getTodaysEvents = (events: SaleListType[]) => {
+	const todayIso = format(new Date(), 'yyyy-MM-dd');
+	return events.filter((evt) => {
+		if (evt?.currentSale) {
+			return format(new Date(evt?.currentSale), 'yyyy-MM-dd') === todayIso;
+		}
+	});
 };
 
-const setDayEvents = (date: Date, events: CalendarEvent[], setDisplayDay: React.Dispatch<React.SetStateAction<CalendarEvent[]>>) => {
-	const iso = formatIsoDate(date);
+const setDayEvents = (date: Date, events: SaleListType[], setDisplayDay: React.Dispatch<React.SetStateAction<SaleListType[]>>) => {
+	const iso = format(date, 'yyyy-MM-dd');
 
-	const filteredEvents = events.filter((evt) => evt.date === iso);
+	const filteredEvents = events.filter((evt) => {
+		if (evt?.currentSale) {
+			return format(new Date(evt?.currentSale), 'yyyy-MM-dd') === iso;
+		}
+	});
 
 	setDisplayDay(filteredEvents);
 };
 
-export default function Calendar({ sales }: { sales: CalendarAuction[] }) {
-	const events: CalendarEvent[] = sales.map((sale) => ({
-		id: `${sale.location}-${sale.saleDate}`,
-		title: sale.location,
-		time: sale.saleTime,
-		date: sale.saleDate,
-		location: sale.location,
-		image: '',
-	}));
+// const setDayEvents = (date: Date, events: SaleListType[], setDisplayDay: React.Dispatch<React.SetStateAction<SaleListType[]>>) => {
+// 	const iso = format(date, 'yyyy-MM-dd');
+
+// 	const filteredEvents = events.filter((evt) => {
+// 		if (evt?.currentSale) {
+// 			return format(new Date(evt?.currentSale), 'yyyy-MM-dd') === iso;
+// 		}
+// 	});
+
+// 	setDisplayDay(filteredEvents);
+// };
+
+export default function Calendar({ allAuctions }: { allAuctions: CalendarMonthType[] }) {
+	const events: SaleListType[] = allAuctions.map((month) => month.auctions).flat();
 
 	const [currentDate, setCurrentDate] = useState(new Date());
-	const [displayDay, setDisplayDay] = useState<CalendarEvent[]>(getTodaysEvents(events));
+	const [displayDay, setDisplayDay] = useState<SaleListType[]>(getTodaysEvents(events));
 
 	const monthLabel = useMemo(() => {
 		return new Intl.DateTimeFormat('en', { month: 'long', year: 'numeric' }).format(currentDate);
@@ -106,7 +100,6 @@ export default function Calendar({ sales }: { sales: CalendarAuction[] }) {
 		<div className='flex justify-center w-full'>
 			<div className='rounded-xl border border-slate-200 bg-white shadow-sm w-[80vw] lg:w-225 '>
 				<div className='px-6 py-4'>
-					<h2 className='text-lg font-semibold text-gray-900'>Upcoming Auctions</h2>
 					<div className='mt-6'>
 						<div className='flex justify-center space-x-2'>
 							<div className='flex items-center space-x-2'>
@@ -155,7 +148,7 @@ export default function Calendar({ sales }: { sales: CalendarAuction[] }) {
 									className={`relative flex h-9 w-full items-center justify-center rounded-md text-sm font-medium ${
 										day.inCurrentMonth ? 'text-gray-900 hover:bg-gray-100' : 'text-gray-400'
 									} ${day.isToday ? 'bg-blue-50 text-blue-600' : ''}`}>
-									<time dateTime={formatIsoDate(day.date)} className='text-sm'>
+									<time dateTime={format(day.date, 'yyyy-MM-dd')} className='text-sm'>
 										{day.label}
 									</time>
 									{day.events.length > 0 && <div className='absolute bottom-1 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-blue-600'></div>}
@@ -166,25 +159,26 @@ export default function Calendar({ sales }: { sales: CalendarAuction[] }) {
 				</div>
 				<div className='border-t border-gray-200 px-6 py-4'>
 					<ol className='divide-y divide-gray-200'>
-						{displayDay.map((event) => (
-							<li key={event.id} className='flex items-center space-x-4 py-4'>
+						{displayDay.map((event, i) => (
+							<li key={i} className='flex items-center space-x-4 py-4'>
 								{/* <img src={event.image} alt="" className="h-10 w-10 rounded-full" /> */}
 								<div className='flex-1'>
-									<h3 className='text-sm font-medium text-gray-900'>{event.title}</h3>
+									<h3 className='text-sm font-medium text-gray-900'>{event.saleName}</h3>
 									<dl className='mt-1 flex space-x-4 text-xs text-gray-500'>
 										<div>
 											<dt className='sr-only'>Date</dt>
 											<dd>
-												<time dateTime={event.date}>
-													{new Date(event.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
-													{event.time && ` at ${event.time}`}
+												<time dateTime={event.currentSale ?? undefined}>
+													{event.currentSale &&
+														new Date(event.currentSale).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+													{event.saleTime && ` at ${event.saleTime}`}
 												</time>
 											</dd>
 										</div>
-										{event.location && (
+										{event.saleName && (
 											<div>
 												<dt className='sr-only'>Location</dt>
-												<dd>{event.location}</dd>
+												<dd>{event.saleName}</dd>
 											</div>
 										)}
 									</dl>
