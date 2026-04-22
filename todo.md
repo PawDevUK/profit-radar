@@ -9,3 +9,5 @@
 - [x] Add onClick to lot card so on click it should open new page with detailed info of the sinlge lot.
 - [ ] Add database for scraped lots
 - [ ]
+- [ ] CHANGE NAME TO "IMPORTEK"
+- [ ] Add tokens to endpoints to authorise requests.
