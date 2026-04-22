@@ -1,7 +1,7 @@
 import React from 'react';
-import { LotDetails } from '@/lib/types/lotDetails-type';
+import { LotDetailsType } from '@/lib/types/lotDetails-type';
 
-export default function BidBuy({ car }: { car: LotDetails }) {
+export default function BidBuy({ car }: { car: LotDetailsType }) {
 	return (
 		<div>
 			<div>
