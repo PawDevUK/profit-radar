@@ -1,5 +1,7 @@
 import mongoose from 'mongoose';
 import 'dotenv/config';
+import MonthSaleModel from './models';
+import { CalendarMonthType } from '@/lib/types/calendar-type';
 
 const MONGODB_URI = process.env.MONGODB_URI;
 
@@ -15,4 +17,15 @@ export async function connectDB() {
 		dbName: process.env.MONGODB_DB || 'profit_radar',
 	});
 	return cachedConnection;
+}
+
+export async function saveMonthSale(scrapedCalendarMonth: CalendarMonthType) {
+	if (scrapedCalendarMonth) {
+		await connectDB();
+		const monthSaleList = new MonthSaleModel(scrapedCalendarMonth);
+		await monthSaleList.save();
+		console.log('Month sale data saved to database successfully!');
+	} else {
+		console.log('Not enough auctions scraped, skipping save.');
+	}
 }
