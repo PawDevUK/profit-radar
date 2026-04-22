@@ -3,15 +3,15 @@ import { useRouter, useParams } from 'next/navigation';
 import Card from '@/app/inventory/results/card/card';
 import { useState } from 'react';
 import scrapedSaleList from '@/lib/scrapers/copart/saleList/scrapedSaleList.json' with { type: 'json' };
-import { scrapedDataType } from '@/lib/types/lotDetails-type';
+import { scrapedLotDataType } from '@/lib/types/lotDetails-type';
 import { filter_Results_State } from '@/lib/state/searchFilters.state';
 
 export default function SaleListResultsPage() {
 	const { searchFilters } = filter_Results_State();
-	const [cars] = useState<scrapedDataType[]>(scrapedSaleList);
+	const [cars] = useState<scrapedLotDataType[]>(scrapedSaleList);
 	const router = useRouter();
 
-	const filterResults = (selected: string, cars: scrapedDataType[]) => {
+	const filterResults = (selected: string, cars: scrapedLotDataType[]) => {
 		if (!selected) return cars;
 		return cars.filter((car) => car.scrapedLotObj.make === selected);
 	};
