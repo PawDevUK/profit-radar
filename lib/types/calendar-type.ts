@@ -7,13 +7,7 @@ export type CalendarMonthType = {
 	totalAuctions: number | null;
 	auctions: SaleListType[];
 };
-export const createEmptyCalendarList = (): CalendarMonthType => ({
-	month: null,
-	year: null,
-	scrapedAt: null,
-	totalAuctions: null,
-	auctions: [],
-});
+
 export type SaleListType = {
 	saleTime: string | null;
 	saleName: string | null;
@@ -27,6 +21,13 @@ export type SaleListType = {
 	scrapedAt: string | null;
 };
 
+export const createEmptyCalendarList = (): CalendarMonthType => ({
+	month: null,
+	year: null,
+	scrapedAt: null,
+	totalAuctions: null,
+	auctions: [],
+});
 export const createEmptySaleList = (): SaleListType => ({
 	saleTime: null,
 	saleName: null,
