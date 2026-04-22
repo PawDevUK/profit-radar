@@ -33,7 +33,7 @@ export interface LotDetailsType {
 	driveTrain: string | null; // e.g. "Rear-wheel drive"
 	fuelType: string | null; // e.g. "Diesel"
 	saleDate: string | null; // e.g. "Thu. Feb 05, 2026 02:00 AM GMT"
-	highlights: string[] | null;
+	highlights: string[] | string | null;
 	notes: string | null;
 	lastUpdated: string | null; // e.g. "02/03/2026 12:27 am"
 	currentBid: string | null;
