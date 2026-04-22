@@ -1,29 +1,44 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import marchSale from '../results/calendar_March.json';
-import CalendarList from './list';
 import Calendar from './calendar';
-
-type Sale = {
-	location: string;
-	saleDate: string;
-	saleTime: string;
-	viewSalesLink: string;
-	numberOnSale?: number | null;
-};
+import { CalendarMonthType } from '@/lib/types/calendar-type';
 
 export default function CalendarPage() {
 	const router = useRouter();
-	const [sales, setSales] = useState<Sale[]>(marchSale.auctions);
+	const [sales, setSales] = useState<CalendarMonthType[]>([]);
 	const [isRefreshing, setIsRefreshing] = useState(false);
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState<string | null>(null);
 
+	useEffect(() => {
+		console.log('Loading calendar data!!');
+		const fetchSales = async () => {
+			setLoading(true);
+			try {
+				await fetch('/api/copart/db/getAllSaleLists')
+					.then((res) => res.json())
+					.then((data) => {
+						if (data) {
+							setSales(data);
+							console.log('Calendar data fetched', data);
+						} else {
+							setError('No Calendar fetched from the Database');
+						}
+					});
+			} catch (e) {
+				console.log(e);
+				setError('Error fetching data');
+			} finally {
+				setLoading(false);
+			}
+		};
+		fetchSales();
+	}, []);
+
 	return (
 		<div className='min-h-screen bg-gray-50 py-6 px-4 sm:px-6 lg:px-8'>
-			{/* <CalendarList /> */}
 			<Calendar sales={sales} />
 		</div>
 	);
