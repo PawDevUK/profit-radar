@@ -3,7 +3,7 @@
 import scrapedSaleList from '@/lib/scrapers/copart/saleList/scrapedSaleList.json' with { type: 'json' };
 import { useParams, useRouter } from 'next/navigation';
 import { useState, useEffect, useRef } from 'react';
-import { scrapedDataType, LotDetails } from '@/lib/types/lotDetails-type';
+import { LotDetailsType } from '@/lib/types/lotDetails-type';
 import saleList from '@/app/results/saleList.json';
 import LogButton from '@/app/components/common/buttons/logButton';
 import LotDetailsSection from '@/app/inventory/lot/lotDetails';
@@ -34,57 +34,11 @@ export default function LotDetailsPage() {
 	const router = useRouter();
 	const saleId = params.id as string;
 	const lotId = params.lotId as string;
-	const [car, setCar] = useState<LotDetails | null>(null);
+	const [car, setCar] = useState<LotDetailsType | null>(null);
 	const [loading, setLoading] = useState(true);
 	const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 	const [AiImage, setAiImage] = useState(false);
 	const [aiImages, setAiImages] = useState<string[]>([]);
-
-	useEffect(() => {
-		const loadCarData = async () => {
-			try {
-				// // Load basic data from auctions.json using the saleId
-				// const response = await fetch(`/api/auctions?auctionId=${saleId}`);
-				// if (response.ok) {
-				// 	const auctionData = await response.json();
-				// 	if (auctionData && auctionData.cars) {
-				// 		const foundCar = auctionData.cars.find((c: LotDetails) => String(c.lotNumber) === lotId);
-				// 		if (foundCar) {
-				// 			setCar(foundCar);
-				// 			setSelectedImageIndex(0);
-				// 		} else {
-				// 			console.error('Lot not found in auction data');
-				// 		}
-				// 	}
-
-				if (scrapedSaleList && scrapedSaleList.length > 0) {
-					const foundCar = {};
-					//  scrapedSaleList.find((c: scrapedDataType) => String(c.scrapedLotObj.lotNumber) === lotId);
-					if (foundCar) {
-						// setCar(foundCar.scrapedLotObj);
-						setSelectedImageIndex(0);
-						const lotNumber = foundCar.scrapedLotObj.lotNumber;
-						if (lotNumber) {
-							fetch(`/api/copart/local-ai-images?lotId=${lotNumber}`)
-								.then((r) => r.json())
-								.then((data) => setAiImages(data.images ?? []))
-								.catch(() => setAiImages([]));
-						}
-					} else {
-						console.error('Lot not found in sale list');
-					}
-				} else {
-					console.error('Failed to load auction data');
-				}
-			} catch (error) {
-				console.error('Error loading car data:', error);
-			} finally {
-				setLoading(false);
-			}
-		};
-
-		loadCarData();
-	}, [lotId, saleId]);
 
 	// // Load Otomoto listing check result
 	// useEffect(() => {
