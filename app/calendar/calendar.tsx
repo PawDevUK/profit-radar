@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo, useState } from 'react';
+import CalendarMonthType, { createEmptyCalendarList } from '@/lib/types/calendar-type';
 
 type CalendarEvent = {
 	id: string;
