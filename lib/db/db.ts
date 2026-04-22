@@ -29,3 +29,9 @@ export async function saveMonthSale(scrapedCalendarMonth: CalendarMonthType) {
 		console.log('Not enough auctions scraped, skipping save.');
 	}
 }
+
+export async function getAllSalesLists() {
+	await connectDB();
+	const allSalesLists = MonthSaleModel.find({});
+	return allSalesLists;
+}
