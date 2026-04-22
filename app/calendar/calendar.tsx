@@ -1,6 +1,6 @@
 'use client';
 import { format } from 'date-fns';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { CalendarMonthType, SaleListType, createEmptyCalendarList } from '@/lib/types/calendar-type';
 
 type CalendarDay = {
@@ -44,17 +44,7 @@ const buildMonthGrid = (anchor: Date, events: SaleListType[]): CalendarDay[] => 
 			events: eventMap[iso] || [],
 		});
 	}
-	console.log(days);
 	return days;
-};
-
-const getTodaysEvents = (events: SaleListType[]) => {
-	const todayIso = format(new Date(), 'yyyy-MM-dd');
-	return events.filter((evt) => {
-		if (evt?.currentSale) {
-			return format(new Date(evt?.currentSale), 'yyyy-MM-dd') === todayIso;
-		}
-	});
 };
 
 const setDayEvents = (date: Date, events: SaleListType[], setDisplayDay: React.Dispatch<React.SetStateAction<SaleListType[]>>) => {
@@ -69,23 +59,21 @@ const setDayEvents = (date: Date, events: SaleListType[], setDisplayDay: React.D
 	setDisplayDay(filteredEvents);
 };
 
-// const setDayEvents = (date: Date, events: SaleListType[], setDisplayDay: React.Dispatch<React.SetStateAction<SaleListType[]>>) => {
-// 	const iso = format(date, 'yyyy-MM-dd');
-
-// 	const filteredEvents = events.filter((evt) => {
-// 		if (evt?.currentSale) {
-// 			return format(new Date(evt?.currentSale), 'yyyy-MM-dd') === iso;
-// 		}
-// 	});
-
-// 	setDisplayDay(filteredEvents);
-// };
-
-export default function Calendar({ allAuctions }: { allAuctions: CalendarMonthType[] }) {
+export default function Calendar({ allAuctions, todaysEvents }: { allAuctions: CalendarMonthType[]; todaysEvents: SaleListType[] }) {
 	const events: SaleListType[] = allAuctions.map((month) => month.auctions).flat();
-
 	const [currentDate, setCurrentDate] = useState(new Date());
-	const [displayDay, setDisplayDay] = useState<SaleListType[]>(getTodaysEvents(events));
+	const [displayDay, setDisplayDay] = useState<SaleListType[]>(todaysEvents);
+	const [loading, setLoading] = useState(true);
+
+	useEffect(() => {
+		setDisplayDay(todaysEvents);
+	}, [todaysEvents]);
+
+	useEffect(() => {
+		if (displayDay && events.length > 0) {
+			setLoading(false);
+		}
+	}, [displayDay, events]);
 
 	const monthLabel = useMemo(() => {
 		return new Intl.DateTimeFormat('en', { month: 'long', year: 'numeric' }).format(currentDate);
@@ -96,6 +84,16 @@ export default function Calendar({ allAuctions }: { allAuctions: CalendarMonthTy
 	const goToPreviousMonth = () => setCurrentDate((d) => new Date(d.getFullYear(), d.getMonth() - 1, 1));
 	const goToNextMonth = () => setCurrentDate((d) => new Date(d.getFullYear(), d.getMonth() + 1, 1));
 
+	if (loading) {
+		return (
+			<div className='min-h-screen bg-gray-50 flex items-center justify-center'>
+				<div className='text-center'>
+					<div className='animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4'></div>
+					<p className='text-gray-600'>Loading car details...</p>
+				</div>
+			</div>
+		);
+	}
 	return (
 		<div className='flex justify-center w-full'>
 			<div className='rounded-xl border border-slate-200 bg-white shadow-sm w-[80vw] lg:w-225 '>
