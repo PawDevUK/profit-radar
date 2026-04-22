@@ -22,7 +22,6 @@ export type SaleListType = {
 	currentSaleUrl: string | null;
 	nextSale: string | null;
 	nextSaleUrl: string | null;
-	totalLots: number | null;
 	lotList: LotDetailsType[];
 	buyItNow: number | null;
 	scrapedAt: string | null;
@@ -36,7 +35,6 @@ export const createEmptySaleList = (): SaleListType => ({
 	currentSaleUrl: null,
 	nextSale: null,
 	nextSaleUrl: null,
-	totalLots: null,
 	lotList: [],
 	buyItNow: null,
 	scrapedAt: null,
