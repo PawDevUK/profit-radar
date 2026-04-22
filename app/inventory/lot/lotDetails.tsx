@@ -1,5 +1,5 @@
 import React from 'react';
-import type { LotDetails } from '@/lib/types/lotDetails-type';
+import type { LotDetailsType } from '@/lib/types/lotDetails-type';
 
 function formatValue(value: unknown): React.ReactNode {
 	if (value === null || value === undefined || value === '') return '—';
@@ -34,7 +34,7 @@ function SectionWrapper({ children }: { children: React.ReactNode }) {
 	);
 }
 
-export default function LotDetailsSection({ lotData }: { lotData: LotDetails }) {
+export default function LotDetailsSection({ lotData }: { lotData: LotDetailsType }) {
 	return (
 		<div className='space-y-2'>
 			<SectionWrapper>
