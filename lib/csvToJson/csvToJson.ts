@@ -1,0 +1,23 @@
+import csv from 'csv-parser';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+export default async function convertCSVtoJSON(file: string) {
+	const results: string[] = [];
+	fs.createReadStream(file)
+		.pipe(csv())
+		.on('data', (data) => results.push(data))
+		.on('end', () => {
+			fs.writeFileSync('output.json', JSON.stringify(results, null, 2));
+			console.log('Conversion complete');
+		});
+	return results;
+}
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const csvFile = path.join(__dirname, './LotSearchresults__2026_April_21.csv');
+const convertedJson = convertCSVtoJSON(csvFile);
+
+console.log(convertedJson);

@@ -2,10 +2,10 @@ import puppeteer, { type GoToOptions } from 'puppeteer';
 import convertLotImgURL from './parseImgUrls.js';
 import scraperHTMLtags from './AI_HTML_extract/AIresponse.json' with { type: 'json' };
 import _ from 'lodash';
-import type { LotDetails } from '@/lib/types/lotDetails-type';
+import type { LotDetailsType } from '@/lib/types/lotDetails-type';
 
 type ScrapedLotDetails = {
-	[K in keyof LotDetails]: LotDetails[K] | null;
+	[K in keyof LotDetailsType]: LotDetailsType[K] | null;
 };
 
 const createEmptyLotDetails = (): ScrapedLotDetails => ({

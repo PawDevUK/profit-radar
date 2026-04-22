@@ -57,14 +57,15 @@ export const LotDetailsSchema = new Schema<LotDetailsType>(
 export const SaleListSchema = new Schema<SaleListType>(
 	{
 		saleTime: { type: String, required: true },
-		saleName: { type: String, required: true }, // e.g., "TX - HOUSTON"
+		saleName: { type: String, required: true },
 		saleType: { type: String },
 		nextSale: { type: String },
-		currentSale: { type: String, required: true }, // Sale date
-		totalLots: { type: Number }, // Number of lots in the sale
-		lots: [LotDetailsSchema], // Embedded array of lot details
-		scrapedAt: { type: Date, default: Date.now },
-		buyItNow: { type: Number }, // When this sale was scraped
+		nextSaleUrl: { type: String },
+		currentSale: { type: String, required: true },
+		currentSaleUrl: { type: String },
+		lotList: [LotDetailsSchema],
+		scrapedAt: { type: Date },
+		buyItNow: { type: Number },
 	},
 	{ timestamps: true },
 );

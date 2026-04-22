@@ -15,7 +15,7 @@ if (!process.env.XAI_API_KEY) {
 	throw new Error('Missing XAI_API_KEY in project .env file');
 }
 
-const vehicleInfo = 'Make CHEVROLET Model SILVERADO Year 2020 Trim - Body Style Crew Cab Pickup Vehicle Type Automobile Color Blue';
+const vehicleInfo = '';
 
 const copartImageUrl = 'https://cs.copart.com/v1/AUTH_svc.pdoc00001/ids-c-prod-lpp/1225/8e326c7f6f5b42a0b7b9aa6a59a3263e_hrs.jpg';
 
