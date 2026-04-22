@@ -61,9 +61,8 @@ export const SaleListSchema = new Schema<SaleListType>(
 		saleType: { type: String },
 		nextSale: { type: String },
 		currentSale: { type: String, required: true }, // Sale date
-		totalLots: { type: Number }, // Number of lots in the sale
-		lots: [LotDetailsSchema], // Embedded array of lot details
-		scrapedAt: { type: Date, default: Date.now },
+		lotList: [LotDetailsSchema], // Embedded array of lot details
+		scrapedAt: { type: Date },
 		buyItNow: { type: Number }, // When this sale was scraped
 	},
 	{ timestamps: true },
