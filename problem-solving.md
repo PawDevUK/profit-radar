@@ -72,7 +72,7 @@ In contrast, switching to the xAI Grok Imagine API has been a much better experi
 
 Getting sale information from csv file, converting it into correct data structure and saving it into database.
 
-I have just realised that instead of scrapping data from the every lot for sale or even sale list I can download the csv file and then use it.
+I have just realised that instead of scrapping data from the every lot for sale or even sale list I can download the csv file with all information required. This file is accessible on copart page.
 
 Problem is that this file is in csv format and need conversion into json and then data structure need to be updated. Also make and model
 are not full but the urls for each lot have the make and model in it so I need to use ai to sort it out.
