@@ -97,6 +97,9 @@ export default async function scrapeLot(pageUrls: string[] | string) {
 		const imageUrls = await page.$$eval('.img-responsive.p-galleria-img-thumbnail', (images) => images.map((img) => img.getAttribute('src') || '').filter(Boolean));
 		if (imageUrls.length > 0) {
 			console.log('Image URLs extracted successfully');
+			console.log(imageUrls);
+		} else if (imageUrls.length === 0) {
+			console.log('No images urls found.');
 		}
 
 		lotObj.year = lotObj.title ? lotObj.title?.substring(0, 4).trim() : null;
