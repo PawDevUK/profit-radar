@@ -23,13 +23,13 @@ export const LotDetailsSchema = new Schema<LotDetailsType>(
 		transmissionNote: { type: String },
 		titleCode: { type: String },
 		vehicleTitleType: { type: String },
-		odometer: { type: Number },
+		odometer: { type: String },
 		odometerUnit: { type: String, enum: ['mi', 'km'] },
 		odometerStatus: { type: String },
 		primaryDamage: { type: String },
 		cylinders: { type: String },
 		color: { type: String },
-		hasKey: { type: Boolean, default: false },
+		hasKey: { type: String, default: false },
 		engineType: { type: String },
 		transmission: { type: String },
 		vehicleType: { type: String },
@@ -39,15 +39,14 @@ export const LotDetailsSchema = new Schema<LotDetailsType>(
 		highlights: { type: [String], default: [] },
 		notes: { type: String },
 		lastUpdated: { type: String },
-		currentBid: { type: Number },
+		currentBid: { type: String },
 		buyItNow: { type: Number, default: null },
 		auctionName: { type: String },
 		auctionCountdown: { type: String },
 		images: [
 			{
-				copart: { type: String }, // Keep as URL or change to Buffer if storing binary
-				AiRepaired: { type: Buffer }, // Binary data for repaired image
-				repairedMimeType: { type: String }, // e.g., 'image/png'
+				copart: { type: [String] }, // Keep as URL or change to Buffer if storing binary
+				AiRepaired: { type: [Buffer] }, // Binary data for repaired image
 			},
 		],
 	},
