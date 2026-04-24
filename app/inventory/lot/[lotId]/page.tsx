@@ -1,6 +1,5 @@
 'use client';
 
-import scrapedSaleList from '@/lib/scrapers/copart/saleList/scrapedSaleList.json' with { type: 'json' };
 import { useParams, useRouter } from 'next/navigation';
 import { useState, useEffect, useRef } from 'react';
 import { LotDetailsType } from '@/lib/types/lotDetails-type';
@@ -97,7 +96,7 @@ export default function LotDetailsPage() {
 							<div className='mb-4 relative'>
 								{toggleAIImage()}
 								{(() => {
-									const images = car.images ?? [];
+									const images = car.images.copart ?? [];
 									// Build map: original index -> AI image path, parsed from img-001-ai.png naming
 									const aiImageMap: Record<number, string> = Object.fromEntries(
 										aiImages
@@ -213,7 +212,7 @@ export default function LotDetailsPage() {
 										</>
 									) : null;
 								})()}
-								{!car.images?.length && !AiImage && (
+								{!car.images?.copart?.length && !AiImage && (
 									<div className='w-full h-[400px] bg-gray-100 rounded flex items-center justify-center border-2 border-gray-200'>
 										<div className='text-center'>
 											<p className='text-gray-400 text-lg'>No Images Available</p>
