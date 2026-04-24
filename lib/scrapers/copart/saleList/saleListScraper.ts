@@ -8,7 +8,7 @@ const pageOptions: GoToOptions = {
 	waitUntil: 'networkidle0',
 	timeout: 0,
 };
-export default async function saleListScraper(saleUrl: string, scrapedListSizeNum: number) {
+export default async function saleListScraper(saleUrl: string, scrapedListSizeNum: number | null) {
 	const options = {
 		headless: false,
 		args: ['--no-sandbox', '--disable-setuid-sandbox'],
@@ -18,15 +18,9 @@ export default async function saleListScraper(saleUrl: string, scrapedListSizeNu
 		const salesPage = await browser.newPage();
 		await salesPage.goto(saleUrl, pageOptions);
 		await salesPage.waitForSelector('a[aria-label="Lot Details"]', { timeout: 30000 });
-
 		const lotUrls = await salesPage.$$eval('a[aria-label="Lot Details"]', (anchors) => anchors.map((a) => (a as HTMLAnchorElement).href).filter(Boolean));
-		const reducedNumOfUrls = lotUrls.slice(0, scrapedListSizeNum);
-		console.log('Found lot URLs:', reducedNumOfUrls);
-
-		const scrapedSaleList = await scrapeLot(scrapedListSizeNum ? reducedNumOfUrls : lotUrls);
-
+		const scrapedSaleList = await scrapeLot(scrapedListSizeNum ? lotUrls.slice(0, scrapedListSizeNum) : lotUrls);
 		await browser.close();
-
 		return scrapedSaleList;
 	}
 	return 'No sales Urls or list to scrape!!';
