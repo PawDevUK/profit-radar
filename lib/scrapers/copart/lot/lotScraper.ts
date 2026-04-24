@@ -48,7 +48,10 @@ const createEmptyLotDetails = (): ScrapedLotDetails => ({
 	buyItNow: null,
 	auctionName: null,
 	auctionCountdown: null,
-	images: null,
+	images: {
+		copart: [],
+		AiRepaired: [],
+	},
 	copartLink: null,
 });
 
@@ -107,7 +110,7 @@ export default async function scrapeLot(pageUrls: string[] | string) {
 
 		lotObj.images = {
 			copart: convertLotImgURL(imageUrls), // Keep as URL or change to Buffer if storing binary
-			AiRepaired: [], // Binary data for repaired image
+			AiRepaired: null, // Binary data for repaired image
 		};
 		lotObj.copartLink = pageUrls;
 
