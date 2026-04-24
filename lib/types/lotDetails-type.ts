@@ -42,8 +42,8 @@ export interface LotDetailsType {
 	auctionCountdown: string | null; // e.g. "0D 16H 10min"
 	images: {
 		copart: string[] | null;
-		AiRepaired: Buffer[];
-	}; // image URLs
+		AiRepaired: Buffer[] | null;
+	};
 	copartLink: string | null;
 }
 
