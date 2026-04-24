@@ -1,7 +1,7 @@
 'use client';
 import { lazy, memo, Suspense, useEffect, useState, useTransition } from 'react';
 import { X, SlidersHorizontal } from 'lucide-react';
-import SaleListResultsPage from '../saleListResults/[id]/page';
+import SaleListResultsPage from './saleListResults/[id]/page';
 
 import SearchChipsFilters from './searchChipsFilters/searchChipsFilters';
 

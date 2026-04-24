@@ -3,6 +3,8 @@ import Image from 'next/image';
 
 function Card({ ...props }) {
 	const { item, onClick } = props;
+	const { images } = item;
+	const imageUrl = images[0].copart[0] || '/placeholder-image.png';
 	return (
 		<div
 			className='md:max-h-115.5 w-full max-w-lg md:w-[30%] lg:w-[22%] xl:w-[18%] m-1.5 bg-neutral-primary-soft border border-gray-300 rounded-base shadow-md rounded-lg flex flex-row md:flex-col'
@@ -14,7 +16,7 @@ function Card({ ...props }) {
 					</span>
 					<Image
 						className='absolute top-0 left-0 z-1 rounded-base rounded-bl-lg rounded-tl-lg md:rounded-bl-none md:rounded-tr-lg h-full w-full object-cover'
-						src={item.images?.[0] || '/placeholder-image.png'}
+						src={imageUrl}
 						alt='lot image'
 						width={300}
 						height={300}
