@@ -1,5 +1,5 @@
 ﻿export const prompt = function (html: string): string {
-return `You are an expert in DOM analysis and Puppeteer scraping. Your task is to analyze a real HTML snapshot of a Copart vehicle lot-details page and produce a precise, machine-readable selector map that a Puppeteer scraper will use directly to extract data.
+	return `You are an expert in DOM analysis and Puppeteer scraping. Your task is to analyze a real HTML snapshot of a Copart vehicle lot-details page and produce a precise, machine-readable selector map that a Puppeteer scraper will use directly to extract data.
 
 ═══════════════════════════════════════════════════════════
 CRITICAL RULES — READ BEFORE PRODUCING ANY OUTPUT
@@ -83,7 +83,10 @@ interface LotDetails {
   buyItNow: number | null;    // Buy It Now price — often absent, use not-found
   auctionName: string;        // Auction/sale name (same source as saleName)
   auctionCountdown: string;   // Countdown string e.g. "6D 21H 9min"
-  images: string[];           // Array of thumbnail image src URLs
+  images: {
+  copart:[],
+  AiRepaired:[]
+  };           // Array of thumbnail image src URLs
   copartLink: string;         // Full page URL via page.url()
 }
 
