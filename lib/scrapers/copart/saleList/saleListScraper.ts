@@ -13,18 +13,21 @@ export default async function saleListScraper(saleUrl: string, scrapedListSizeNu
 		headless: false,
 		args: ['--no-sandbox', '--disable-setuid-sandbox'],
 	};
-	const browser = await puppeteer.launch(options);
-	const salesPage = await browser.newPage();
-	await salesPage.goto(saleUrl, pageOptions);
-	await salesPage.waitForSelector('a[aria-label="Lot Details"]', { timeout: 30000 });
+	if (saleUrl) {
+		const browser = await puppeteer.launch(options);
+		const salesPage = await browser.newPage();
+		await salesPage.goto(saleUrl, pageOptions);
+		await salesPage.waitForSelector('a[aria-label="Lot Details"]', { timeout: 30000 });
 
-	const lotUrls = await salesPage.$$eval('a[aria-label="Lot Details"]', (anchors) => anchors.map((a) => (a as HTMLAnchorElement).href).filter(Boolean));
-	const reducedNumOfUrls = lotUrls.slice(0, scrapedListSizeNum);
-	console.log('Found lot URLs:', reducedNumOfUrls);
+		const lotUrls = await salesPage.$$eval('a[aria-label="Lot Details"]', (anchors) => anchors.map((a) => (a as HTMLAnchorElement).href).filter(Boolean));
+		const reducedNumOfUrls = lotUrls.slice(0, scrapedListSizeNum);
+		console.log('Found lot URLs:', reducedNumOfUrls);
 
-	const scrapedSaleList = await scrapeLot(reducedNumOfUrls);
+		const scrapedSaleList = await scrapeLot(scrapedListSizeNum ? reducedNumOfUrls : lotUrls);
 
-	await browser.close();
+		await browser.close();
 
-	return scrapedSaleList;
+		return scrapedSaleList;
+	}
+	return 'No sales Urls or list to scrape!!';
 }
