@@ -1,6 +1,4 @@
-import fs from 'fs';
 import puppeteer, { Browser, Page, type GoToOptions } from 'puppeteer';
-// Update the import path below to the correct relative path if needed
 import { proxyConfig, ProxyConfig } from '@/lib/scrapers/proxy/proxy-config';
 import scrapeLot from '../lot/lotScraper';
 
