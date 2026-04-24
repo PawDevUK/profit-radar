@@ -55,74 +55,74 @@ async function downloadWithRetry(url: string, outPath: string, attempts = 3): Pr
 	return false;
 }
 
-async function main() {
-	const raw = await readFile(INPUT_JSON, 'utf8');
-	const data = JSON.parse(raw) as ScrapedLot[];
+// async function main() {
+// 	const raw = await readFile(INPUT_JSON, 'utf8');
+// 	const data = JSON.parse(raw) as ScrapedLot[];
 
-	await mkdir(PUBLIC_BASE_DIR, { recursive: true });
+// 	await mkdir(PUBLIC_BASE_DIR, { recursive: true });
 
-	let downloaded = 0;
-	let reused = 0;
-	let failed = 0;
+// 	let downloaded = 0;
+// 	let reused = 0;
+// 	let failed = 0;
 
-	for (const item of data) {
-		const lot = item.scrapedLotObj;
-		if (!lot) continue;
+// 	for (const item of data) {
+// 		const lot = item.scrapedLotObj;
+// 		if (!lot) continue;
 
-		const lotNumber = sanitizeSegment(String(lot.lotNumber ?? 'unknown-lot'));
-		const lotDir = path.join(PUBLIC_BASE_DIR, lotNumber);
-		await mkdir(lotDir, { recursive: true });
+// 		const lotNumber = sanitizeSegment(String(lot.lotNumber ?? 'unknown-lot'));
+// 		const lotDir = path.join(PUBLIC_BASE_DIR, lotNumber);
+// 		await mkdir(lotDir, { recursive: true });
 
-		const images = Array.isArray(lot.images) ? lot.images : [];
-		const uniqueImages = [...new Set(images)];
-		const localizedImages: string[] = [];
+// 		const images = Array.isArray(lot.image?.copart) ? lot.images.copart : [];
+// 		const uniqueImages = [...new Set(images)];
+// 		const localizedImages: string[] = [];
 
-		for (let idx = 0; idx < uniqueImages.length; idx++) {
-			const remoteUrl = uniqueImages[idx];
-			if (!remoteUrl?.startsWith('http')) continue;
+// 		for (let idx = 0; idx < uniqueImages.length; idx++) {
+// 			const remoteUrl = uniqueImages[idx];
+// 			if (!remoteUrl?.startsWith('http')) continue;
 
-			let ext = '.jpg';
-			try {
-				const head = await fetch(remoteUrl, { method: 'HEAD' });
-				ext = extFromUrlOrType(remoteUrl, head.headers.get('content-type'));
-			} catch {
-				ext = extFromUrlOrType(remoteUrl, null);
-			}
+// 			let ext = '.jpg';
+// 			try {
+// 				const head = await fetch(remoteUrl, { method: 'HEAD' });
+// 				ext = extFromUrlOrType(remoteUrl, head.headers.get('content-type'));
+// 			} catch {
+// 				ext = extFromUrlOrType(remoteUrl, null);
+// 			}
 
-			const fileName = `img-${String(idx + 1).padStart(3, '0')}${ext}`;
-			const filePath = path.join(lotDir, fileName);
-			const publicRef = `${PUBLIC_BASE_URL}/${lotNumber}/${fileName}`;
+// 			const fileName = `img-${String(idx + 1).padStart(3, '0')}${ext}`;
+// 			const filePath = path.join(lotDir, fileName);
+// 			const publicRef = `${PUBLIC_BASE_URL}/${lotNumber}/${fileName}`;
 
-			if (await exists(filePath)) {
-				reused++;
-				localizedImages.push(publicRef);
-				continue;
-			}
+// 			if (await exists(filePath)) {
+// 				reused++;
+// 				localizedImages.push(publicRef);
+// 				continue;
+// 			}
 
-			const ok = await downloadWithRetry(remoteUrl, filePath, 3);
-			if (ok) {
-				downloaded++;
-				localizedImages.push(publicRef);
-			} else {
-				failed++;
-				// keep original URL as fallback
-				localizedImages.push(remoteUrl);
-			}
-		}
+// 			const ok = await downloadWithRetry(remoteUrl, filePath, 3);
+// 			if (ok) {
+// 				downloaded++;
+// 				localizedImages.push(publicRef);
+// 			} else {
+// 				failed++;
+// 				// keep original URL as fallback
+// 				localizedImages.push(remoteUrl);
+// 			}
+// 		}
 
-		lot.images = localizedImages;
-	}
+// 		lot.images = localizedImages;
+// 	}
 
-	await writeFile(OUTPUT_JSON, JSON.stringify(data, null, 2) + '\n', 'utf8');
+// 	await writeFile(OUTPUT_JSON, JSON.stringify(data, null, 2) + '\n', 'utf8');
 
-	console.log(`Done.
-Downloaded: ${downloaded}
-Reused: ${reused}
-Failed: ${failed}
-Updated: ${OUTPUT_JSON}`);
-}
+// 	console.log(`Done.
+// Downloaded: ${downloaded}
+// Reused: ${reused}
+// Failed: ${failed}
+// Updated: ${OUTPUT_JSON}`);
+// }
 
-main().catch((err) => {
-	console.error(err);
-	process.exit(1);
-});
+// main().catch((err) => {
+// 	console.error(err);
+// 	process.exit(1);
+// });
