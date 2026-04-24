@@ -1,12 +1,12 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import saleListScraper from '@/lib/scrapers/copart/saleList/saleListScraper';
 import { getAllSalesLists } from '@/lib/db/db';
-import { format, isPast } from 'date-fns';
+import { isPast } from 'date-fns';
 import { saveSalesList } from '@/lib/db/db';
 import { SaleListType } from '@/lib/types/calendar-type';
 import { scrapedLotDataType } from '@/lib/types/lotDetails-type';
 
-export async function PUT(NextRequest) {
+export async function PUT() {
 	const allDBdata = await getAllSalesLists();
 	const auctions = allDBdata[0].auctions;
 	const currentSales: SaleListType[] = [];
