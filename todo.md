@@ -10,3 +10,6 @@
 - [ ] Add database for scraped lots
 - [ ] CHANGE NAME TO "IMPORTEK"
 - [ ] Add tokens to endpoints to authorise requests.
+- [ ] Scraper page pagination.
+- [ ] Add scraping data to db.
+- [ ]
