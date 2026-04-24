@@ -105,7 +105,10 @@ export default async function scrapeLot(pageUrls: string[] | string) {
 		lotObj.year = lotObj.title ? lotObj.title?.substring(0, 4).trim() : null;
 		lotObj.title = lotObj.title ? lotObj.title.substring(4).trim() : null;
 
-		lotObj.images = convertLotImgURL(imageUrls);
+		lotObj.images = {
+			copart: convertLotImgURL(imageUrls), // Keep as URL or change to Buffer if storing binary
+			AiRepaired: [], // Binary data for repaired image
+		};
 		lotObj.copartLink = pageUrls;
 
 		function remove$(key: string) {
