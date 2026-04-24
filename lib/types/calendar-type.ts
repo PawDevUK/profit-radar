@@ -12,7 +12,7 @@ export type SaleListType = {
 	saleTime: string | null;
 	saleName: string | null;
 	saleType: string | null;
-	currentSale: string | null;
+	currentSale: string | null | Date;
 	currentSaleUrl: string | null;
 	nextSale: string | null;
 	nextSaleUrl: string | null;
