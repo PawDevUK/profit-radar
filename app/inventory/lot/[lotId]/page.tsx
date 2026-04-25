@@ -1,25 +1,25 @@
 'use client';
 
 import { useParams, useRouter } from 'next/navigation';
-import { useState, useEffect, useRef } from 'react';
-import { LotDetailsType } from '@/lib/types/lotDetails-type';
-import saleList from '@/app/results/saleList.json';
-import LogButton from '@/app/components/common/buttons/logButton';
+import { useState } from 'react';
 import LotDetailsSection from '@/app/inventory/lot/lotDetails';
 import BidBuy from '../BidBuy';
 import Img from 'next/image';
 import Toggle from '@/app/components/common/toggler/toggler';
+import { allCars_State } from '@/lib/state/allCars.state';
 
 export default function LotDetailsPage() {
 	const params = useParams();
 	const router = useRouter();
-	const saleId = params.id as string;
 	const lotId = params.lotId as string;
-	const [car, setCar] = useState<LotDetailsType | null>(null);
-	const [loading, setLoading] = useState(true);
+	const allCars = allCars_State((state) => state.allCars);
+	const isLoading = allCars_State((state) => state.isLoading);
+	const car = allCars.find((c) => c.lotNumber === lotId) ?? null;
 	const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 	const [AiImage, setAiImage] = useState(false);
-	const [aiImages, setAiImages] = useState<string[]>([]);
+	const [aiImages] = useState<string[]>([]);
+
+	console.log(car);
 
 	const handleBack = () => {
 		router.push(`/inventory`);
@@ -29,7 +29,7 @@ export default function LotDetailsPage() {
 		setAiImage((prev) => !prev);
 	};
 
-	if (loading) {
+	if (isLoading) {
 		return (
 			<div className='min-h-screen bg-gray-50 flex items-center justify-center'>
 				<div className='text-center'>
@@ -96,7 +96,9 @@ export default function LotDetailsPage() {
 							<div className='mb-4 relative'>
 								{toggleAIImage()}
 								{(() => {
-									const images = car.images.copart ?? [];
+									// Mongoose stores images as a subdocument array: [{ copart: [], AiRepaired: [] }]
+									const imagesDoc = Array.isArray(car.images) ? (car.images as unknown as { copart: string[] | null }[])[0] : car.images;
+									const images: string[] = imagesDoc?.copart ?? [];
 									// Build map: original index -> AI image path, parsed from img-001-ai.png naming
 									const aiImageMap: Record<number, string> = Object.fromEntries(
 										aiImages
@@ -212,14 +214,6 @@ export default function LotDetailsPage() {
 										</>
 									) : null;
 								})()}
-								{!car.images?.copart?.length && !AiImage && (
-									<div className='w-full h-[400px] bg-gray-100 rounded flex items-center justify-center border-2 border-gray-200'>
-										<div className='text-center'>
-											<p className='text-gray-400 text-lg'>No Images Available</p>
-											<p className='text-gray-500 text-sm mt-2'>Check Copart for vehicle images</p>
-										</div>
-									</div>
-								)}
 							</div>
 						</div>
 
