@@ -1,50 +1,15 @@
 'use client';
 import { useRouter } from 'next/navigation';
 import Card from '@/app/inventory/saleListResults/[id]/card/card';
-import { useState, useEffect } from 'react';
 import { LotDetailsType } from '@/lib/types/lotDetails-type';
 import { filter_Results_State } from '@/lib/state/searchFilters.state';
-import { CalendarMonthType, SaleListType } from '@/lib/types/calendar-type';
+import { allCars_State } from '@/lib/state/allCars.state';
 
 export default function SaleListResultsPage() {
 	const { searchFilters } = filter_Results_State();
-	const [cars, setCars] = useState<LotDetailsType[]>([]);
+	const cars = allCars_State((state) => state.allCars);
+	const isLoading = allCars_State((state) => state.isLoading);
 	const router = useRouter();
-	const [isLoading, setIsLoading] = useState(true);
-
-	useEffect(() => {
-		const fetchedDB = async () => {
-			setIsLoading(true);
-			await fetch(`/api/copart/db/getAllSaleLists`)
-				.then((res) => res.json())
-				.then((data) => {
-					if (Array.isArray(data) && data.length > 0) {
-						const allAuctions: SaleListType[] = [];
-						const allCars: LotDetailsType[] = [];
-
-						data.forEach((month: CalendarMonthType) => {
-							if (Array.isArray(month.auctions)) {
-								allAuctions.push(...month.auctions);
-							}
-						});
-
-						if (allAuctions.length > 0) {
-							allAuctions.forEach((auction: SaleListType) => {
-								if (Array.isArray(auction.lotList)) {
-									allCars.push(...auction.lotList);
-								}
-							});
-						}
-
-						setCars(allCars);
-					} else {
-						console.log('No sales lists found in the database');
-					}
-					setIsLoading(false);
-				});
-		};
-		void fetchedDB();
-	}, []);
 
 	const filterResults = (selected: string, cars: LotDetailsType[]) => {
 		if (!selected) return cars;
