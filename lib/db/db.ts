@@ -62,6 +62,10 @@ export async function saveSalesList(_id: string, SalesList: LotDetailsType[]) {
 	} catch (e) {
 		console.log(e);
 	}
+
+	return {
+		savedToDb: true,
+	};
 }
 
 export async function getOneSalesList(id: string) {
