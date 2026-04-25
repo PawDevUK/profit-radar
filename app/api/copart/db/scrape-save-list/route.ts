@@ -46,7 +46,7 @@ export async function PUT() {
 	// 	const saleUrl = sale.currentSaleUrl;
 	try {
 		if (saleUrl) {
-			scrapeAndSave(sale, saleId);
+			await scrapeAndSave(sale, saleId);
 		} else {
 			console.log('Not scraped any data');
 		}
