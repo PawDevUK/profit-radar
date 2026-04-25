@@ -9,7 +9,7 @@ export async function PUT() {
 	const allDBdata = await getAllSalesLists();
 	const auctions = allDBdata[0].auctions;
 	const currentSales: SaleListType[] = [];
-	const limitScrape = 1;
+	const limitScrape = null;
 
 	auctions.map((auction: SaleListType) => {
 		if (auction.currentSale ? !isPast(auction.currentSale) : null) {
@@ -20,41 +20,38 @@ export async function PUT() {
 	async function scrapeAndSave(sale: SaleListType, _id: string) {
 		let arrayOfScrapedLots;
 		let scrapedData;
-		let succesSave = false;
+		let successSave = false;
 		console.log('Starting scraping auctions.');
 		if (sale.currentSaleUrl && _id) {
+			console.log(sale.currentSaleUrl);
 			scrapedData = await saleListScraper(sale.currentSaleUrl, limitScrape);
 			console.log('Finished scrapping action.');
 			if (Array.isArray(scrapedData)) {
 				arrayOfScrapedLots = scrapedData.map((lot) => {
 					return lot.scrapedLotObj;
 				});
-				succesSave = (await saveSalesList(_id, arrayOfScrapedLots)).savedToDb;
+				successSave = (await saveSalesList(_id, arrayOfScrapedLots)).savedToDb;
 			}
 		}
-		if (scrapedData && succesSave) {
-			return succesSave;
+		if (scrapedData && successSave) {
+			return successSave;
 		}
-		return (succesSave = false);
+		return (successSave = false);
 	}
-	const sale = currentSales[1];
-	const saleId = sale._id;
-	const saleUrl = sale.currentSaleUrl;
-	let scraping = false;
-	let scrapeSaveSucces = false;
 
-	for (let i = 0; i < currentSales.length; i++) {
-		scraping = true;
-		if (scraping) {
-			scrapeSaveSucces = await scrapeAndSave(currentSales[i], saleId);
-		}
-	}
+	let scraping = false;
+	let scrapeSaveSuccess = false;
 
 	try {
-		if (saleUrl) {
-			await scrapeAndSave(sale, saleId);
-		} else {
-			console.log('Not scraped any data');
+		for (let i = 0; i < currentSales.length; i++) {
+			const saleId = currentSales[i]._id;
+			scraping = true;
+			if (scraping) {
+				scrapeSaveSuccess = await scrapeAndSave(currentSales[i], saleId);
+				if (scrapeSaveSuccess && scraping) {
+					scraping = false;
+				}
+			}
 		}
 	} catch (e) {
 		console.log(e);
