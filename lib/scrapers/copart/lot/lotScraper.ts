@@ -109,8 +109,8 @@ export default async function scrapeLot(pageUrls: string[] | string) {
 		lotObj.title = lotObj.title ? lotObj.title.substring(4).trim() : null;
 
 		lotObj.images = {
-			copart: convertLotImgURL(imageUrls), // Keep as URL or change to Buffer if storing binary
-			AiRepaired: null, // Binary data for repaired image
+			copart: convertLotImgURL(imageUrls),
+			AiRepaired: null,
 		};
 		lotObj.copartLink = pageUrls;
 
