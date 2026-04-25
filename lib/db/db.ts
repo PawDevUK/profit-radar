@@ -46,7 +46,7 @@ export async function saveSalesList(_id: string, SalesList: LotDetailsType[]) {
 
 	try {
 		if (auctionId && SalesList) {
-			await MonthSaleModel.updateOne({ _id: parentId, 'auctions._id': auctionId }, { $push: { 'auctions.$.lotList': SalesList } });
+			await MonthSaleModel.updateOne({ _id: parentId, 'auctions._id': auctionId }, { $set: { 'auctions.$.lotList': SalesList } });
 
 			console.log('Data saved to sale list and db updated');
 		} else {
