@@ -21,10 +21,13 @@ export default async function saleListScraper(saleUrl: string, scrapedListSizeNu
 			await salesPage.waitForSelector('a[aria-label="Lot Details"]', { timeout: 30000 });
 			const lotUrls = await salesPage.$$eval('a[aria-label="Lot Details"]', (anchors) => anchors.map((a) => (a as HTMLAnchorElement).href).filter(Boolean));
 			const scrapedSaleList = await scrapeLot(scrapedListSizeNum ? lotUrls.slice(0, scrapedListSizeNum) : lotUrls);
-			await browser.close();
 			return scrapedSaleList;
 		}
 	} catch (e) {
 		console.log(e);
+	} finally {
+		if (browser) {
+			await browser.close();
+		}
 	}
 }
