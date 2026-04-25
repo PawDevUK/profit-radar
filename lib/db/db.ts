@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import 'dotenv/config';
 import MonthSaleModel from './models';
-import { CalendarMonthType } from '@/lib/types/calendar-type';
+import { CalendarMonthType, SaleListType } from '@/lib/types/calendar-type';
 import { LotDetailsType } from '@/lib/types/lotDetails-type';
 
 const MONGODB_URI = process.env.MONGODB_URI;
@@ -40,15 +40,12 @@ export async function getAllSalesLists() {
 
 export async function saveSalesList(_id: string, SalesList: LotDetailsType[]) {
 	await connectDB();
-
-	const parentId = new mongoose.Types.ObjectId('69e8914d2f2be50e2cecd373'); // main document _id
 	const auctionId = new mongoose.Types.ObjectId(_id); // nested auction _id
-
+	const parentDoc = await MonthSaleModel.findOne({ 'auctions._id': auctionId });
+	const parentId = parentDoc?._id;
 	try {
 		if (auctionId && SalesList) {
 			await MonthSaleModel.updateOne({ _id: parentId, 'auctions._id': auctionId }, { $set: { 'auctions.$.lotList': SalesList } });
-
-			console.log('Data saved to sale list and db updated');
 		} else {
 			console.log('There is no sales Id or updated sales list to be saved!!');
 		}
@@ -68,12 +65,15 @@ export async function saveSalesList(_id: string, SalesList: LotDetailsType[]) {
 }
 
 export async function getOneSalesList(id: string) {
+	if (!mongoose.Types.ObjectId.isValid(id)) {
+		throw new Error('Invalid ObjectId');
+	}
 	const nestedId = new mongoose.Types.ObjectId(id);
 	await connectDB();
 	const parentDoc = await MonthSaleModel.findOne({ 'auctions._id': nestedId });
 	let nestedAuction = null;
 	if (parentDoc && Array.isArray(parentDoc.auctions)) {
-		nestedAuction = parentDoc.auctions.find((auction: any) => auction._id.equals(nestedId));
+		nestedAuction = parentDoc.auctions.find((auction: SaleListType) => auction._id.equals(nestedId));
 	}
 	if (nestedAuction) {
 		return nestedAuction;
