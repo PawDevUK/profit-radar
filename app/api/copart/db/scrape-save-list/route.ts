@@ -11,6 +11,7 @@ export async function PUT() {
 	const auctions = allDBdata[0].auctions;
 	const currentSales: SaleListType[] = [];
 	const scraping = false;
+	const limitScrape = 1;
 
 	auctions.map((auction: SaleListType) => {
 		if (auction.currentSale ? !isPast(auction.currentSale) : null) {
@@ -23,10 +24,12 @@ export async function PUT() {
 		let scrapedData;
 		console.log('Starting scraping auctions.');
 		if (sale.currentSaleUrl && _id) {
-			scrapedData = await saleListScraper(sale.currentSaleUrl, null);
+			scrapedData = await saleListScraper(sale.currentSaleUrl, limitScrape);
 			console.log('Finished scrapping action.');
 			if (Array.isArray(scrapedData)) {
-				arrayOfScrapedLots = scrapedData.map((lot: scrapedLotDataType) => lot.scrapedLotObj);
+				arrayOfScrapedLots = scrapedData.map((lot) => {
+					return lot.scrapedLotObj;
+				});
 				await saveSalesList(_id, arrayOfScrapedLots);
 			}
 		}
@@ -40,10 +43,7 @@ export async function PUT() {
 	const sale = currentSales[1];
 	const saleId = sale._id;
 	const saleUrl = sale.currentSaleUrl;
-	console.log(sale);
 
-	// currentSales.map((sale) => {
-	// 	const saleUrl = sale.currentSaleUrl;
 	try {
 		if (saleUrl) {
 			await scrapeAndSave(sale, saleId);
