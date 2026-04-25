@@ -1,10 +1,14 @@
 'use client';
 import Image from 'next/image';
+import { carImagePlaceholder } from '@/img';
 
 function Card({ ...props }) {
 	const { item, onClick } = props;
 	const { images } = item;
-	const imageUrl = images[0].copart[0] || '/placeholder-image.png';
+	console.log(images);
+
+	const imageUrl = images[0].copart ? images[0].copart[0] : carImagePlaceholder;
+
 	return (
 		<div
 			className='md:max-h-115.5 w-full max-w-lg md:w-[30%] lg:w-[22%] xl:w-[18%] m-1.5 bg-neutral-primary-soft border border-gray-300 rounded-base shadow-md rounded-lg flex flex-row md:flex-col'
