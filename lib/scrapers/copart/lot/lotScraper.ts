@@ -5,7 +5,7 @@ import _ from 'lodash';
 import type { LotDetailsType } from '@/lib/types/lotDetails-type';
 
 type ScrapedLotDetails = {
-	[K in keyof LotDetailsType]: LotDetailsType[K] | null;
+	[K in keyof LotDetailsType]: LotDetailsType[K];
 };
 
 const createEmptyLotDetails = (): ScrapedLotDetails => ({
