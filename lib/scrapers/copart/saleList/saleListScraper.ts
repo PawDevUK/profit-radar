@@ -1,5 +1,5 @@
 import puppeteer, { Browser, Page, type GoToOptions } from 'puppeteer';
-import { proxyConfig, ProxyConfig } from '@/lib/scrapers/proxy/proxy-config';
+import { createContext } from '@/lib/scrapers/proxy/createContext';
 import scrapeLot from '../lot/lotScraper';
 
 const pageOptions: GoToOptions = {
@@ -11,10 +11,12 @@ export default async function saleListScraper(saleUrl: string, scrapedListSizeNu
 		headless: false,
 		args: ['--no-sandbox', '--disable-setuid-sandbox'],
 	};
+	let browser: { close: () => Promise<void> } | null = null;
 	try {
 		if (saleUrl) {
-			const browser = await puppeteer.launch(options);
-			const salesPage = await browser.newPage();
+			const ctx = await createContext(options);
+			browser = ctx.browser;
+			const salesPage = ctx.page;
 			await salesPage.goto(saleUrl, pageOptions);
 			await salesPage.waitForSelector('a[aria-label="Lot Details"]', { timeout: 30000 });
 			const lotUrls = await salesPage.$$eval('a[aria-label="Lot Details"]', (anchors) => anchors.map((a) => (a as HTMLAnchorElement).href).filter(Boolean));
