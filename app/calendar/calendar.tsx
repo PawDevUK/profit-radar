@@ -166,7 +166,7 @@ export default function Calendar({ allAuctions, todaysEvents }: { allAuctions: C
 										<div>
 											<dt className='sr-only'>Date</dt>
 											<dd>
-												<time dateTime={event.currentSale ?? undefined}>
+												<time dateTime={event.currentSale?.toString() ?? undefined}>
 													{event.currentSale &&
 														new Date(event.currentSale).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
 													{event.saleTime && ` at ${event.saleTime}`}
