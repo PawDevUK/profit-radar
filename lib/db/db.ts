@@ -45,7 +45,7 @@ export async function saveSalesList(_id: string, SalesList: LotDetailsType[]) {
 	const parentId = parentDoc?._id;
 	try {
 		if (auctionId && SalesList) {
-			await MonthSaleModel.updateOne({ _id: parentId, 'auctions._id': auctionId }, { $set: { 'auctions.$.lotList': SalesList } });
+			await MonthSaleModel.updateOne({ _id: parentId, 'auctions._id': auctionId }, { $set: { 'auctions.$.lotList': SalesList, 'auctions.$.numOfLots': SalesList.length } });
 		} else {
 			console.log('There is no sales Id or updated sales list to be saved!!');
 		}

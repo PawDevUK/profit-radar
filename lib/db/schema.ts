@@ -63,6 +63,7 @@ export const SaleListSchema = new Schema<SaleListType>(
 		currentSale: { type: String, required: true },
 		currentSaleUrl: { type: String },
 		lotList: [LotDetailsSchema],
+		numOfLots: { type: Number },
 		scrapedAt: { type: Date },
 		buyItNow: { type: Number },
 	},
