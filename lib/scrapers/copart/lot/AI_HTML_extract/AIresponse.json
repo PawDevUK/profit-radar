@@ -8,6 +8,151 @@
 		"biddingSection": "#sticky-bottom-box-container",
 		"imageSection": ".images-lot-info-container"
 	},
+	"reducedFields": {
+		"title": {
+			"selector": "h1.ldp-header-title",
+			"strategy": "direct",
+			"label": "Title",
+			"container": ".lot-details-header-block",
+			"method": "$eval",
+			"extract": "node.innerText.trim()",
+			"type": "string",
+			"confidence": "high",
+			"notes": "Stable h1 element unique to the lot details page. Full title e.g. '2017 SUBARU WRX'."
+		},
+		"lotNumber": {
+			"selector": ".lh-1-4.p-mt-3 span.p-ml-1",
+			"strategy": "direct",
+			"label": "Lot number:",
+			"container": ".lot-details-header-block",
+			"method": "$eval",
+			"extract": "node.innerText.trim()",
+			"type": "string",
+			"confidence": "high",
+			"notes": "Inside the header, the lot number row has class lh-1-4 p-mt-3. The span.p-ml-1 contains the numeric lot number e.g. '99763515'."
+		},
+		"laneItem": {
+			"selector": ".lh-1-4.p-mt-3 > span.p-f-w-500 + span",
+			"strategy": "direct",
+			"label": "Lane/Item:",
+			"container": ".lot-details-header-block",
+			"method": "$eval",
+			"extract": "node.innerText.trim()",
+			"type": "string",
+			"confidence": "high",
+			"notes": "In the header row .lh-1-4.p-mt-3, 'Lane/Item:' is a direct-child span.p-f-w-500. Its adjacent sibling span (CSS + combinator skips text nodes) holds the value e.g. 'B/2574'."
+		},
+		"saleName": {
+			"selector": "#saleNameLink",
+			"strategy": "direct",
+			"label": "Sale name:",
+			"container": ".salename-location-block",
+			"method": "$eval",
+			"extract": "node.innerText.trim()",
+			"type": "string",
+			"confidence": "high",
+			"notes": "Stable id attribute. Returns e.g. 'DC - WASHINGTON DC'."
+		},
+		"location": {
+			"selector": "#locationInfoButton",
+			"strategy": "direct",
+			"label": "Location:",
+			"container": ".salename-location-block",
+			"method": "$eval",
+			"extract": "node.innerText.trim()",
+			"type": "string",
+			"confidence": "high",
+			"notes": "Stable id attribute. Returns the location name e.g. 'DC - WASHINGTON DC'."
+		},
+		"engineVerified": {
+			"selector": null,
+			"strategy": "not-found",
+			"label": null,
+			"container": "",
+			"method": null,
+			"extract": null,
+			"type": "boolean",
+			"confidence": "low",
+			"notes": "Not present in this HTML snapshot. Appears on some lots under lot-details-information with label 'Engine Verified:'. Comment out or skip in scraper."
+		},
+		"engineVerifiedNote": {
+			"selector": null,
+			"strategy": "not-found",
+			"label": null,
+			"container": "",
+			"method": null,
+			"extract": null,
+			"type": "string",
+			"confidence": "low",
+			"notes": "Not present in this HTML snapshot. Only appears when engineVerified exists. Comment out or skip in scraper."
+		},
+		"engineStatus": {
+			"selector": null,
+			"strategy": "not-found",
+			"label": null,
+			"container": "",
+			"method": null,
+			"extract": null,
+			"type": "string",
+			"confidence": "low",
+			"notes": "Not present in this HTML snapshot. May appear as a lot-details-information row on run-and-drive lots. Comment out or skip in scraper."
+		},
+		"transmissionEngages": {
+			"selector": null,
+			"strategy": "not-found",
+			"label": null,
+			"container": "",
+			"method": null,
+			"extract": null,
+			"type": "boolean",
+			"confidence": "low",
+			"notes": "Not present in this HTML snapshot. Comment out or skip in scraper."
+		},
+		"transmissionNote": {
+			"selector": null,
+			"strategy": "not-found",
+			"label": null,
+			"container": "",
+			"method": null,
+			"extract": null,
+			"type": "string",
+			"confidence": "low",
+			"notes": "Not present in this HTML snapshot. Comment out or skip in scraper."
+		},
+		"titleCode": {
+			"selector": "vehicle-information > .lot-details-information:nth-child(1) .lot-details-information-value",
+			"strategy": "label-based",
+			"label": "Title code:",
+			"container": "vehicle-information",
+			"method": "$eval",
+			"extract": "node.innerText.trim()",
+			"type": "string",
+			"confidence": "high",
+			"notes": "First lot-details-information block inside vehicle-information. innerText gives full code e.g. 'MD - Cert Of Salvage > 75% Damage'."
+		},
+		"images": {
+			"selector": ".img-responsive.p-galleria-img-thumbnail",
+			"strategy": "multi-element",
+			"label": "Images",
+			"container": ".images-lot-info-container",
+			"method": "$$eval",
+			"extract": "Array.from(nodes).map(node => node.getAttribute('src') || node.src || '').filter(Boolean)",
+			"type": "string[]",
+			"confidence": "high",
+			"notes": "Thumbnail img elements inside the PrimeNG galleria component. Use getAttribute('src') to get the URL. High-res URLs can be derived by replacing '_thb.jpg' with '_hrs.jpg'."
+		},
+		"copartLink": {
+			"selector": null,
+			"strategy": "derived",
+			"label": null,
+			"container": "",
+			"method": "page.url",
+			"extract": "page.url()",
+			"type": "string",
+			"confidence": "high",
+			"notes": "Use page.url() in Puppeteer. No canonical link element in the DOM."
+		}
+	},
 	"fields": {
 		"title": {
 			"selector": "h1.ldp-header-title",
