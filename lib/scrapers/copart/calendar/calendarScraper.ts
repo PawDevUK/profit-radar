@@ -25,7 +25,7 @@ export default async function scrapeCopartCalendar() {
 		console.log('Launching Copart calendar page:', copartCalendarUrl);
 		await page.goto(copartCalendarUrl, pageOptions);
 		await page.waitForSelector('[data-uname="saleslistSaletimeval"]', {
-			timeout: 15000,
+			timeout: 10000,
 			visible: true,
 		});
 
