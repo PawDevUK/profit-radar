@@ -6,6 +6,24 @@ import Calendar from './calendar';
 import { CalendarMonthType, SaleListType } from '@/lib/types/calendar-type';
 import { format } from 'date-fns';
 
+const isCalendarMonthArray = (value: unknown): value is CalendarMonthType[] => {
+	if (!Array.isArray(value)) return false;
+	return value.every((month) => typeof month === 'object' && month !== null && Array.isArray((month as CalendarMonthType).auctions));
+};
+
+const unwrapCalendarMonths = (payload: unknown): CalendarMonthType[] => {
+	if (isCalendarMonthArray(payload)) return payload;
+
+	if (payload && typeof payload === 'object' && 'data' in payload) {
+		const data = (payload as { data?: unknown }).data;
+		if (isCalendarMonthArray(data)) {
+			return data;
+		}
+	}
+
+	return [];
+};
+
 export default function CalendarPage() {
 	const router = useRouter();
 	const [sales, setSales] = useState<CalendarMonthType[]>([]);
@@ -27,16 +45,20 @@ export default function CalendarPage() {
 		const fetchSales = async () => {
 			setLoading(true);
 			try {
-				await fetch('/api/copart/db/getAllSaleLists')
-					.then((res) => res.json())
-					.then((data) => {
-						if (data) {
-							setSales(data);
-							console.log('Calendar data fetched!!');
-						} else {
-							setError('No Calendar fetched from the Database');
-						}
-					});
+				const response = await fetch('/api/copart/db/getAllSaleLists');
+				if (!response.ok) {
+					throw new Error(`Failed to fetch calendar data: ${response.status}`);
+				}
+
+				const payload: unknown = await response.json();
+				const months = unwrapCalendarMonths(payload);
+
+				if (months.length > 0) {
+					setSales(months);
+					console.log('Calendar data fetched!!');
+				} else {
+					setError('No Calendar fetched from the Database');
+				}
 			} catch (e) {
 				console.log(e);
 				setError('Error fetching data');
