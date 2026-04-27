@@ -40,6 +40,7 @@ export default async function scrapeCopartCalendar() {
 						currentSaleUrl: (el.querySelector('[data-uname="saleslistCurrentsaleval"]') as HTMLAnchorElement | null)?.href ?? null,
 						nextSale: el.querySelector('[data-uname="saleslistNextsaleval"]')?.textContent?.trim() ?? null,
 						nextSaleUrl: (el.querySelector('[data-uname="saleslistNextsaleval"]') as HTMLAnchorElement | null)?.href ?? null,
+						numOfLots: null,
 						lotList: [],
 						buyItNow: null,
 						scrapedAt: new Date().toISOString(),
