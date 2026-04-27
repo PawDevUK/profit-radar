@@ -77,7 +77,11 @@ export async function getOneSalesList(id: string) {
 	const parentDoc = await MonthSaleModel.findOne({ 'auctions._id': nestedId });
 	let nestedAuction = null;
 	if (parentDoc && Array.isArray(parentDoc.auctions)) {
-		nestedAuction = parentDoc.auctions.find((auction: SaleListType) => auction._id.equals(nestedId));
+		nestedAuction = parentDoc.auctions.find((auction: SaleListType) => {
+			if(auction._id){
+				 return auction._id.toString() === nestedId.toString()
+			}
+		});
 	}
 	if (nestedAuction) {
 		return nestedAuction;
