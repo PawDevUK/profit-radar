@@ -4,12 +4,17 @@ import Card from '@/app/inventory/saleListResults/[id]/card/card';
 import { LotDetailsType } from '@/lib/types/lotDetails-type';
 import { filter_Results_State } from '@/lib/state/searchFilters.state';
 import { allCars_State } from '@/lib/state/allCars.state';
+import { useState } from 'react';
 
 export default function SaleListResultsPage() {
 	const { searchFilters } = filter_Results_State();
 	const cars = allCars_State((state) => state.allCars);
 	const isLoading = allCars_State((state) => state.isLoading);
 	const router = useRouter();
+	const [pagination, setPagination] = useState({
+		currentPage: 1,
+		itemsPerPage: 10,
+	});
 
 	const filterResults = (selected: string, cars: LotDetailsType[]) => {
 		if (!selected) return cars;
