@@ -18,6 +18,19 @@ const isCalendarMonthArray = (value: unknown): value is CalendarMonthType[] => {
 	return value.every((month) => typeof month === 'object' && month !== null && Array.isArray((month as CalendarMonthType).auctions));
 };
 
+const unwrapCalendarMonths = (payload: unknown): CalendarMonthType[] => {
+	if (isCalendarMonthArray(payload)) return payload;
+
+	if (payload && typeof payload === 'object' && 'data' in payload) {
+		const data = (payload as { data?: unknown }).data;
+		if (isCalendarMonthArray(data)) {
+			return data;
+		}
+	}
+
+	return [];
+};
+
 const flattenSaleLists = (months: CalendarMonthType[]): SaleListType[] => {
 	const allSales: SaleListType[] = [];
 	for (const month of months) {
@@ -54,8 +67,8 @@ export const allCars_State = create<AllCarsState>((set, get) => ({
 				throw new Error(`Failed to fetch sale lists: ${response.status}`);
 			}
 
-			const data: unknown = await response.json();
-			const months = isCalendarMonthArray(data) ? data : [];
+			const payload: unknown = await response.json();
+			const months = unwrapCalendarMonths(payload);
 			const sales = flattenSaleLists(months);
 			const cars = flattenCars(sales);
 
