@@ -5,7 +5,6 @@ import { carImagePlaceholder } from '@/img';
 function Card({ ...props }) {
 	const { item, onClick } = props;
 	const { images } = item;
-	console.log(images);
 
 	const imageUrl = images[0].copart ? images[0].copart[0] : carImagePlaceholder;
 
@@ -31,7 +30,7 @@ function Card({ ...props }) {
 			<div className='p-2 flex flex-col justify-between flex-1 md:w-full w-1/2'>
 				<div className='flex flex-col'>
 					<a className='flex flex-row justify-center' href='#'>
-						<h5 className='text-[16px] text-heading font-semibold tracking-tight'>{item.title}</h5>
+						<h5 className='text-[16px] text-heading font-semibold tracking-tight'>{item.title.slice(0, 20)}</h5>
 					</a>
 				</div>
 				<div className='flex flex-col items-center mt-1 '>
