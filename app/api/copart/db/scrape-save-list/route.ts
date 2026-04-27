@@ -46,7 +46,7 @@ export async function PUT() {
 		for (let i = 0; i < currentSales.length; i++) {
 			const saleId = currentSales[i]._id;
 			scraping = true;
-			if (scraping) {
+			if (scraping && saleId) {
 				scrapeSaveSuccess = await scrapeAndSave(currentSales[i], saleId);
 				if (scrapeSaveSuccess && scraping) {
 					scraping = false;
