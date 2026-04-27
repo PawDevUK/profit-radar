@@ -56,5 +56,4 @@ export async function PUT() {
 	} catch (e) {
 		console.log(e);
 	}
-	// });
 }
