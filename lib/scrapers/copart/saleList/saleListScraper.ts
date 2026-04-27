@@ -18,8 +18,10 @@ export default async function saleListScraper(saleUrl: string, scrapedListSizeNu
 			browser = ctx.browser;
 			const salesPage = ctx.page;
 			await salesPage.goto(saleUrl, pageOptions);
-			await salesPage.waitForSelector('a[aria-label="Lot Details"]', { timeout: 30000 });
+			await salesPage.waitForSelector('a[aria-label="Lot Details"]', { timeout: 10000 });
 			const saleUrls: string[] = [];
+			const consentSelector = 'button[aria-label="Consent"].fc-button.fc-cta-consent.fc-primary-button';
+			const nextPageSelector = 'button[aria-label="Next Page"].p-paginator-next.p-link';
 			while (true) {
 				const lotUrlsOnPage = await salesPage.$$eval('a[aria-label="Lot Details"]', (anchors) => anchors.map((a) => (a as HTMLAnchorElement).href).filter(Boolean));
 				saleUrls.push(...lotUrlsOnPage);
@@ -34,8 +36,14 @@ export default async function saleListScraper(saleUrl: string, scrapedListSizeNu
 				await salesPage.evaluate(() => {
 					window.scrollTo({ top: document.body.scrollHeight, behavior: 'instant' as ScrollBehavior });
 				});
+				const consentButton = await salesPage.$(consentSelector);
+				if (consentButton) {
+					await consentButton.click();
+					await salesPage.waitForSelector(consentSelector, { hidden: true, timeout: 5000 }).catch(() => null);
+				}
 
-				const nextButton = await salesPage.$('button[aria-label="Next Page"].p-paginator-next.p-link:not(.p-disabled)');
+				const nextButton = await salesPage.$(`${nextPageSelector}:not(.p-disabled)`);
+
 				if (!nextButton) {
 					break;
 				}
@@ -44,7 +52,25 @@ export default async function saleListScraper(saleUrl: string, scrapedListSizeNu
 					(el as HTMLElement).scrollIntoView({ block: 'center', inline: 'nearest' });
 				});
 
-				await nextButton.click();
+				const clickedNext = await salesPage.evaluate((selector) => {
+					const button = document.querySelector(selector) as HTMLButtonElement | null;
+					if (!button) {
+						return false;
+					}
+
+					const isDisabled = button.disabled || button.classList.contains('p-disabled') || button.getAttribute('aria-disabled') === 'true';
+					if (isDisabled) {
+						return false;
+					}
+
+					button.scrollIntoView({ block: 'center', inline: 'nearest' });
+					button.click();
+					return true;
+				}, nextPageSelector);
+
+				if (!clickedNext) {
+					break;
+				}
 
 				if (firstLotHref) {
 					await salesPage.waitForFunction(
