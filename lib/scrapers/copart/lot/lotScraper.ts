@@ -70,11 +70,12 @@ export default async function scrapeLot(pageUrls: string[] | string) {
 		let Success = 0;
 		let failedScraped = 0;
 		const failedSelectors: string[] = [];
+		await page.waitForSelector('.img-responsive.p-galleria-img-thumbnail', { timeout: 1000 });
 
-		for (const field of Object.values(scraperHTMLtags.fields)) {
+		for (const field of Object.values(scraperHTMLtags.reducedFields)) {
 			if (field.selector) {
 				try {
-					await page.waitForSelector(field.selector, { timeout: 1000 });
+					// await page.waitForSelector(field.selector, { timeout: 500 });
 					const value = await page.$eval(field.selector, (el) => el.textContent?.trim() ?? '');
 					const label = field.label || '';
 					const camelCaseLabel = _.camelCase(label);
@@ -99,8 +100,7 @@ export default async function scrapeLot(pageUrls: string[] | string) {
 		// extract image URLs
 		const imageUrls = await page.$$eval('.img-responsive.p-galleria-img-thumbnail', (images) => images.map((img) => img.getAttribute('src') || '').filter(Boolean));
 		if (imageUrls.length > 0) {
-			console.log('Image URLs extracted successfully');
-			console.log(imageUrls);
+			console.log('Image URLs extracted successfully', imageUrls.length);
 		} else if (imageUrls.length === 0) {
 			console.log('No images urls found.');
 		}
@@ -139,7 +139,10 @@ export default async function scrapeLot(pageUrls: string[] | string) {
 		if (typeof lotObj.odometer === 'string') {
 			lotObj.odometer = lotObj.odometer.match(/[\d,]+/)?.[0] ?? null;
 		}
-
+		console.log('------------------');
+		console.log('Scraped lot', lotObj.lotNumber);
+		console.log(lotObj.title);
+		console.log('------------------');
 		return {
 			scrapedLotObj: lotObj,
 			scrapingInfo: {
@@ -158,6 +161,7 @@ export default async function scrapeLot(pageUrls: string[] | string) {
 	const browser = await puppeteer.launch(options);
 	const page = await browser.newPage();
 	const scrapedData = [];
+	let numberOfScraped = 0;
 	if (pageUrls && typeof pageUrls === 'string') {
 		const pageUrl = pageUrls;
 		const Data = await getData(pageUrl);
@@ -167,6 +171,8 @@ export default async function scrapeLot(pageUrls: string[] | string) {
 		for (const url of pageUrls) {
 			const Data = await getData(url);
 			scrapedData.push(Data);
+			numberOfScraped += 1;
+			console.log('Number of scraped cars', numberOfScraped);
 		}
 	}
 
