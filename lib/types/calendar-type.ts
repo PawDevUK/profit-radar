@@ -17,8 +17,10 @@ export type SaleListType = {
 	nextSale: string | null;
 	nextSaleUrl: string | null;
 	lotList: LotDetailsType[];
+	numOfLots: number | null;
 	buyItNow: number | null;
 	scrapedAt: string | null;
+	_id?: string;
 };
 
 export const createEmptyCalendarList = (): CalendarMonthType => ({
@@ -37,6 +39,7 @@ export const createEmptySaleList = (): SaleListType => ({
 	nextSale: null,
 	nextSaleUrl: null,
 	lotList: [],
+	numOfLots: null,
 	buyItNow: null,
 	scrapedAt: null,
 });
