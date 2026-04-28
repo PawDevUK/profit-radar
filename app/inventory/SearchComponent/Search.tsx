@@ -1,5 +1,6 @@
 import CheckBoxList from './checkBoxList';
-import { MapPin, Car, Gavel, Fuel, KeySquare, CarFront, ListTodo, ArrowDownUp } from 'lucide-react';
+
+import { MapPin, Car, Gavel, Fuel, KeySquare, CarFront, ListTodo, ArrowDownUp, ChessKing } from 'lucide-react';
 import './style.css';
 import {
 	sort,
@@ -41,12 +42,24 @@ const bodyStyleIcon = <Car strokeWidth={strokeIcons} className='checkboxIcon' />
 interface SideSearchProps {
 	resetAll: boolean;
 }
+interface makeModelType {
+	make: string;
+	models: string[];
+}
+
+function getMakes(makes: makeModelType[]) {
+	const makesArr = makes.map((make: makeModelType) => {
+		return make.make;
+	});
+	return makesArr;
+}
 
 export default function SideSearch({ resetAll }: SideSearchProps) {
 	void resetAll;
 	const sortFilter = filter_Results_State(selectSearchFilterByKey('sort'));
 	const makeFilter = filter_Results_State(selectSearchFilterByKey('make'));
 	const modelFilter = filter_Results_State(selectSearchFilterByKey('model'));
+	const selectedModelsFilter = filter_Results_State(selectSearchFilterByKey('selectedModels'));
 	const vehicleTitleTypeFilter = filter_Results_State(selectSearchFilterByKey('vehicleTitleType'));
 	const vehicleConditionTypeFilter = filter_Results_State(selectSearchFilterByKey('vehicleConditionType'));
 	const vehicleTypeFilter = filter_Results_State(selectSearchFilterByKey('vehicleType'));
@@ -62,8 +75,8 @@ export default function SideSearch({ resetAll }: SideSearchProps) {
 	return (
 		<div className='flex flex-col '>
 			<CheckBoxList title='Sort' options={sort} selected={sortFilter} icon={sortIcon} />
-			<CheckBoxList title='Make' options={makes} selected={makeFilter} scrollable searchable icon={makeIcon} />
-			<CheckBoxList multiSelect title='Model' options={makes} selected={modelFilter} scrollable searchable icon={modelIcon} />
+			<CheckBoxList title='Make' options={getMakes(makes)} selected={makeFilter} scrollable searchable icon={makeIcon} makesData={makes} />
+			<CheckBoxList multiSelect title='Model' options={modelFilter} selected={selectedModelsFilter} scrollable searchable icon={modelIcon} />
 			<CheckBoxList multiSelect title='Vehicle title type' options={titleType} selected={vehicleTitleTypeFilter} icon={titleTypeIcon} />
 			<CheckBoxList multiSelect title='Body style' options={bodyType} selected={bodyStyleFilter} icon={bodyStyleIcon} />
 			<CheckBoxList title='Vehicle condition type' options={conditionType} selected={vehicleConditionTypeFilter} icon={vehicleConditionIcon} />
