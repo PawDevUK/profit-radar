@@ -1,8 +1,8 @@
 'use client';
 import CollapseCard from '@/app/inventory/SearchComponent/collapseCard/collapseCard';
 import SearchBar from '@/app/components/search/search';
-import React, { useState, useCallback, useMemo, memo } from 'react';
-import { filter_Results_State } from '@/lib/state/searchFilters.state';
+import React, { useState, useCallback, useMemo, memo, useEffect } from 'react';
+import { filter_Results_State, makesType } from '@/lib/state/searchFilters.state';
 import { selectSetFilter } from '@/lib/state/selectors/searchFilters.selectors';
 
 type CheckboxListProps = {
@@ -13,14 +13,21 @@ type CheckboxListProps = {
 	icon?: React.ReactNode;
 	searchable?: boolean;
 	multiSelect?: boolean;
+	setMake?: React.Dispatch<React.SetStateAction<string>>;
+	makesData?: makesType[]; // add
 };
 
-function CheckBoxListComponent({ options, selected = [], title, scrollable, icon, searchable }: CheckboxListProps) {
+function CheckBoxListComponent({ options, selected = [], title, scrollable, icon, searchable, setMake, makesData }: CheckboxListProps) {
 	const [searchOptions, setSearchOptions] = useState<string[]>(options);
 	const SET_Filter = filter_Results_State(selectSetFilter);
+	const SET_Models = filter_Results_State((s) => s.SET_Models); // add
 	const selectedSet = useMemo(() => {
 		return Array.isArray(selected) ? new Set(selected) : new Set([selected]);
 	}, [selected]);
+
+	useEffect(() => {
+		setSearchOptions(options);
+	}, [options]);
 
 	const handleSearchChange = useCallback(
 		(query: string | undefined) => {
@@ -37,8 +44,15 @@ function CheckBoxListComponent({ options, selected = [], title, scrollable, icon
 	const handleCheckboxChange = useCallback(
 		(option: string) => {
 			SET_Filter(option, title ?? '');
+
+			// Keep model options in sync whenever "Make" changes.
+			if (title === 'Make' && makesData) {
+				const currentMake = typeof selected === 'string' ? selected : '';
+				const nextMake = currentMake === option ? '' : option;
+				SET_Models(nextMake, makesData);
+			}
 		},
-		[SET_Filter, title],
+		[SET_Filter, SET_Models, title, makesData, selected],
 	);
 
 	return (
@@ -52,7 +66,7 @@ function CheckBoxListComponent({ options, selected = [], title, scrollable, icon
 			)}
 			<div className={`px-4 ${scrollable ? 'max-h-64 overflow-y-auto' : ''}`}>
 				{searchOptions.map((option) => (
-					<Memo_CheckboxItem key={option} option={option} isSelected={selectedSet.has(option)} onChangeHandler={handleCheckboxChange} />
+					<Memo_CheckboxItem key={option} option={option} isSelected={selectedSet.has(option)} onChangeHandler={handleCheckboxChange} setMake={setMake} />
 				))}
 			</div>
 		</CollapseCard>
@@ -63,9 +77,15 @@ interface CheckboxItemProps {
 	option: string;
 	isSelected: boolean;
 	onChangeHandler: (option: string) => void;
+	setMake?: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const Memo_CheckboxItem = memo(function CheckboxItem({ option, isSelected, onChangeHandler }: CheckboxItemProps) {
+const Memo_CheckboxItem = memo(function CheckboxItem({ option, isSelected, onChangeHandler, setMake }: CheckboxItemProps) {
+	useEffect(() => {
+		if (isSelected && setMake) {
+			setMake(option);
+		}
+	}, [isSelected]);
 	return (
 		<div className='flex flex-row mx-2 my-1'>
 			<div className='inline-flex items-center'>
