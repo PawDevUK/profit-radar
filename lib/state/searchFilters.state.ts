@@ -4,8 +4,23 @@ import _ from 'lodash';
 
 type SearchFilterKey = keyof SearchFilters;
 
+export interface makesType {
+	make: string;
+	models: string[];
+}
+
 const isSearchFilterKey = (key: string): key is SearchFilterKey => {
 	return key in initialSearchFilters;
+};
+
+const getModels = (make: string, makes: makesType[]) => {
+	const selectedMakes: string[] = [];
+	makes.forEach((element: makesType) => {
+		if (element.make === make) {
+			selectedMakes.push(...element.models);
+		}
+	});
+	return selectedMakes;
 };
 
 const selectToggle = <T extends SearchFilters[SearchFilterKey]>(option: string, currentValue: T, title: string): T => {
@@ -31,6 +46,7 @@ const initialSearchFilters: SearchFilters = {
 	title: [],
 	year: [],
 	make: '',
+	selectedModels: [],
 	model: [],
 	trim: [],
 	bodyStyle: [],
@@ -74,22 +90,54 @@ const initialSearchFilters: SearchFilters = {
 interface FilterResultsState {
 	searchFilters: SearchFilters;
 	SET_Filter: (filters: string, label: string) => void;
+	SET_Models: (make: string, makes: makesType[]) => void;
+	SET_SelectedModel: (value: string) => void;
 }
 
 export const filter_Results_State = create<FilterResultsState>((set) => ({
 	searchFilters: initialSearchFilters,
 	SET_Filter: (filters: string, label: string) => {
 		const labelCamelCase = _.camelCase(label);
-		if (!isSearchFilterKey(labelCamelCase)) {
-			console.warn(`Invalid search filter key: ${labelCamelCase}`);
-			return;
-		}
+		if (!isSearchFilterKey(labelCamelCase)) return;
 
+		set((state) => {
+			if (labelCamelCase === 'model') {
+				return {
+					searchFilters: {
+						...state.searchFilters,
+						selectedModels: selectToggle(filters, state.searchFilters.selectedModels, label),
+					},
+				};
+			}
+
+			return {
+				searchFilters: {
+					...state.searchFilters,
+					[labelCamelCase]: selectToggle(filters, state.searchFilters[labelCamelCase], label),
+				},
+			};
+		});
+	},
+	SET_Models: (make: string, makes: makesType[]) => {
+		const models = getModels(make, makes);
 		set((state) => ({
 			searchFilters: {
 				...state.searchFilters,
-				[labelCamelCase]: selectToggle(filters, state.searchFilters[labelCamelCase], label),
+				model: models,
+				selectedModels: [],
 			},
 		}));
+	},
+	SET_SelectedModel: (value: string) => {
+		set((state) => {
+			const exists = state.searchFilters.selectedModels.includes(value);
+
+			return {
+				searchFilters: {
+					...state.searchFilters,
+					selectedModels: exists ? state.searchFilters.selectedModels.filter((item) => item !== value) : [...state.searchFilters.selectedModels, value],
+				},
+			};
+		});
 	},
 }));
