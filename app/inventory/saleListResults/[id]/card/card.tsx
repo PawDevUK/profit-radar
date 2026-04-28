@@ -14,7 +14,7 @@ function Card({ ...props }) {
 			onClick={onClick}>
 			<div className='flex flex-col justify-between md:w-full w-1/3 relative h-full md:h-40 '>
 				<a href='#' className='w-full h-full '>
-					<span className='absolute top-1 left-1 z-10 border border-brand-subtle text-(--main-blue)  text-xs font-medium px-1.5 py-0.5 rounded-sm bg-white'>
+					<span className='absolute top-1 left-1 z-5 border border-brand-subtle text-(--main-blue)  text-xs font-medium px-1.5 py-0.5 rounded-sm bg-white'>
 						{item.lotNumber}
 					</span>
 					<Image
