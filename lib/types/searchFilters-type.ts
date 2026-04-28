@@ -5,6 +5,7 @@ export interface SearchFilters {
 	title: string[];
 	year: number[]; // Or a range type if preferred
 	make: string;
+	selectedModels: string[];
 	model: string[];
 	trim: string[];
 	bodyStyle: string[];
