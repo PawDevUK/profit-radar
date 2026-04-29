@@ -1,5 +1,5 @@
 'use client';
-import { lazy, memo, Suspense, useEffect, useState, useTransition } from 'react';
+import { lazy, memo, Suspense, useState, useTransition } from 'react';
 import { X, SlidersHorizontal } from 'lucide-react';
 import SaleListResultsPage from './saleListResults/[id]/page';
 
@@ -19,6 +19,7 @@ const ToggleButton = ({ toggleFilters }: { toggleFilters: () => void }) => {
 		</button>
 	);
 };
+
 const CloseButton = ({ toggleFilters }: { toggleFilters: () => void }) => {
 	return (
 		<button className='w-8 h-8' onClick={toggleFilters}>
@@ -30,7 +31,6 @@ const CloseButton = ({ toggleFilters }: { toggleFilters: () => void }) => {
 export default function Page() {
 	const { selectedFilters } = chipFilters_State();
 	const [open, setOpen] = useState(false);
-	const [resetAll, setResetAll] = useState(false);
 	const [, startTransition] = useTransition();
 
 	const toggleFilters = () => {
@@ -39,17 +39,7 @@ export default function Page() {
 		});
 	};
 
-	const getFilteredLot = (_cars: string[]) => {
-		void _cars;
-		// setFilteredCars(cars);
-	};
-
-	const resetAllClick = () => {
-		setResetAll(true);
-		setTimeout(() => {
-			setResetAll(false);
-		}, 100);
-	};
+	const resetAllFilters = function () {};
 
 	return (
 		<div className='relative min-h-screen flex flex-col'>
@@ -67,14 +57,14 @@ export default function Page() {
 						<div className='px-10 py-6 flex items-center justify-between'>
 							<h2 className='text-[22px] font-bold text-(--header-text)'>Filter and sort</h2>
 							<div className='flex items-center gap-2'>
-								<button onClick={resetAllClick} className='resetButton'>
+								<button onClick={resetAllFilters} className='resetButton'>
 									Reset All
 								</button>
 								<CloseButton toggleFilters={toggleFilters} />
 							</div>
 						</div>
 						<Suspense fallback={<div className='p-4 text-gray-500'>Loading filters...</div>}>
-							<SideSearch resetAll={resetAll} />
+							<SideSearch />
 						</Suspense>
 					</aside>
 				) : (

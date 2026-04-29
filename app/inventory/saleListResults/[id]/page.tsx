@@ -2,9 +2,10 @@
 import { useRouter } from 'next/navigation';
 import Card from '@/app/inventory/saleListResults/[id]/card/card';
 import { LotDetailsType } from '@/lib/types/lotDetails-type';
-import { filter_Results_State } from '@/lib/state/searchFilters.state';
+import { setFilterResults_State } from '@/lib/state/searchFilters.state';
 import { allCars_State } from '@/lib/state/allCars.state';
 import { useMemo, useState } from 'react';
+import _ from 'lodash';
 
 type PaginationProps = {
 	totalItems: number;
@@ -69,7 +70,7 @@ const getVisiblePages = (totalPages: number, currentPage: number, maxVisiblePage
 };
 
 export default function SaleListResultsPage() {
-	const { searchFilters } = filter_Results_State();
+	const { searchFilters } = setFilterResults_State();
 	const cars = allCars_State((state) => state.allCars);
 	const isLoading = allCars_State((state) => state.isLoading);
 	const error = allCars_State((state) => state.error);
@@ -79,10 +80,51 @@ export default function SaleListResultsPage() {
 
 	const filterResults = (selected: string, cars: LotDetailsType[]) => {
 		if (!selected) return cars;
-		return cars.filter((car) => car.make === selected);
+		const filteredCars: LotDetailsType[] = [];
+		const selectedKeys = Object.keys(selected) as (keyof LotDetailsType)[];
+
+		function carLoop(cars, selectedEntry) {
+			const carsKeys = Object.keys(cars) as (keyof LotDetailsType)[];
+			carsKeys.forEach((carEntry) => {
+				if (carEntry === selectedEntry) {
+					console.log(selectedEntry);
+				}
+			});
+		}
+		console.log(cars);
+		selectedKeys.forEach((selectedEntry) => {
+			if (selected[selectedEntry]) {
+				if (typeof selected[selectedEntry] === 'string') {
+					console.log('selected', selected[selectedEntry]);
+					const check = { selectedEntry: selected[selectedEntry] };
+					cars.forEach((lot) => {
+						console.log(_.isEqual(check, lot));
+					});
+				}
+				if (Array.isArray(selected[selectedEntry]) && selected[selectedEntry].length > 0) {
+					console.log('Selected Array', selected[selectedEntry]);
+				}
+			}
+		});
+
+		cars.forEach((car: LotDetailsType) => {
+			// carsKeys.forEach((key) => {
+			// 	// console.log(car[key]);
+			// 	selectedKeys.forEach((selectedKey) => {
+			// 		if (selected[selectedKey] && car[key]) {
+			// 			if (selectedKey !== 'images' && key !== 'images') {
+			// 				// console.log(selectedKey);
+			// 				console.log('selected-->', selected[selectedKey], 'car keys ====>', car[key]);
+			// 			}
+			// 		}
+			// 	});
+			// });
+		});
+		// console.log(filteredCars);
+		return filteredCars;
 	};
 
-	const filteredCars = filterResults(searchFilters.make, cars);
+	const filteredCars = filterResults(searchFilters, cars.slice(0, 2));
 	const totalPages = Math.max(1, Math.ceil(filteredCars.length / itemsPerPage));
 	const currentPage = Math.min(requestedPage, totalPages);
 

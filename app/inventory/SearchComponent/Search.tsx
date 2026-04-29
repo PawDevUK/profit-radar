@@ -1,6 +1,6 @@
 import CheckBoxList from './checkBoxList';
 
-import { MapPin, Car, Gavel, Fuel, KeySquare, CarFront, ListTodo, ArrowDownUp, ChessKing } from 'lucide-react';
+import { MapPin, Car, Gavel, Fuel, KeySquare, CarFront, ListTodo, ArrowDownUp } from 'lucide-react';
 import './style.css';
 import {
 	sort,
@@ -18,7 +18,7 @@ import {
 	bodyType,
 } from '@/app/inventory/options';
 
-import { filter_Results_State } from '@/lib/state/searchFilters.state';
+import { setFilterResults_State } from '@/lib/state/searchFilters.state';
 import { selectSearchFilterByKey } from '@/lib/state/selectors/searchFilters.selectors';
 
 import { Engine, Gears, VehicleType, CarCondition, DriveType, V8Icon, strokeIcons, colorIcons } from './searchIcons';
@@ -39,9 +39,6 @@ const auctionNameIcon = <Gavel strokeWidth={strokeIcons} className='checkboxIcon
 const locationIcon = <MapPin strokeWidth={strokeIcons} className='checkboxIcon' />;
 const bodyStyleIcon = <Car strokeWidth={strokeIcons} className='checkboxIcon' />;
 
-interface SideSearchProps {
-	resetAll: boolean;
-}
 interface makeModelType {
 	make: string;
 	models: string[];
@@ -54,23 +51,22 @@ function getMakes(makes: makeModelType[]) {
 	return makesArr;
 }
 
-export default function SideSearch({ resetAll }: SideSearchProps) {
-	void resetAll;
-	const sortFilter = filter_Results_State(selectSearchFilterByKey('sort'));
-	const makeFilter = filter_Results_State(selectSearchFilterByKey('make'));
-	const modelFilter = filter_Results_State(selectSearchFilterByKey('model'));
-	const selectedModelsFilter = filter_Results_State(selectSearchFilterByKey('selectedModels'));
-	const vehicleTitleTypeFilter = filter_Results_State(selectSearchFilterByKey('vehicleTitleType'));
-	const vehicleConditionTypeFilter = filter_Results_State(selectSearchFilterByKey('vehicleConditionType'));
-	const vehicleTypeFilter = filter_Results_State(selectSearchFilterByKey('vehicleType'));
-	const engineTypeFilter = filter_Results_State(selectSearchFilterByKey('engineType'));
-	const transmissionFilter = filter_Results_State(selectSearchFilterByKey('transmission'));
-	const fuelTypeFilter = filter_Results_State(selectSearchFilterByKey('fuelType'));
-	const driveTrainFilter = filter_Results_State(selectSearchFilterByKey('driveTrain'));
-	const cylindersFilter = filter_Results_State(selectSearchFilterByKey('cylinders'));
-	const auctionNameFilter = filter_Results_State(selectSearchFilterByKey('auctionName'));
-	const locationFilter = filter_Results_State(selectSearchFilterByKey('location'));
-	const bodyStyleFilter = filter_Results_State(selectSearchFilterByKey('bodyStyle'));
+export default function SideSearch() {
+	const sortFilter = setFilterResults_State(selectSearchFilterByKey('sort'));
+	const makeFilter = setFilterResults_State(selectSearchFilterByKey('make'));
+	const modelFilter = setFilterResults_State(selectSearchFilterByKey('model'));
+	const selectedModelsFilter = setFilterResults_State(selectSearchFilterByKey('selectedModels'));
+	const vehicleTitleTypeFilter = setFilterResults_State(selectSearchFilterByKey('vehicleTitleType'));
+	const vehicleConditionTypeFilter = setFilterResults_State(selectSearchFilterByKey('vehicleConditionType'));
+	const vehicleTypeFilter = setFilterResults_State(selectSearchFilterByKey('vehicleType'));
+	const engineTypeFilter = setFilterResults_State(selectSearchFilterByKey('engineType'));
+	const transmissionFilter = setFilterResults_State(selectSearchFilterByKey('transmission'));
+	const fuelTypeFilter = setFilterResults_State(selectSearchFilterByKey('fuelType'));
+	const driveTrainFilter = setFilterResults_State(selectSearchFilterByKey('driveTrain'));
+	const cylindersFilter = setFilterResults_State(selectSearchFilterByKey('cylinders'));
+	const auctionNameFilter = setFilterResults_State(selectSearchFilterByKey('auctionName'));
+	const locationFilter = setFilterResults_State(selectSearchFilterByKey('location'));
+	const bodyStyleFilter = setFilterResults_State(selectSearchFilterByKey('bodyStyle'));
 
 	return (
 		<div className='flex flex-col '>
