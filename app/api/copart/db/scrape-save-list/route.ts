@@ -28,7 +28,8 @@ export async function PUT() {
 			console.log('Finished scrapping action.');
 			if (Array.isArray(scrapedData)) {
 				arrayOfScrapedLots = scrapedData.map((lot) => {
-					return lot.scrapedLotObj;
+					// return lot.scrapedLotObj;
+					return lot;
 				});
 				successSave = (await saveSalesList(_id, arrayOfScrapedLots)).savedToDb;
 			}
