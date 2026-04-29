@@ -2,8 +2,6 @@ import 'dotenv/config';
 const copartCalendarUrl = 'https://www.copart.com/salesListResult?intcmp=banners_auction-calendar_rentals_promotion';
 import puppeteer, { type GoToOptions } from 'puppeteer';
 import { CalendarMonthType, createEmptyCalendarList } from '@/lib/types/calendar-type';
-import { connectDB } from '@/lib/db/db';
-import MonthSaleModel from '@/lib/db/models';
 
 const pageOptions: GoToOptions = {
 	waitUntil: 'networkidle0',
