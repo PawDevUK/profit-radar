@@ -34,8 +34,9 @@ export default function CalendarPage() {
 	const getTodaysEvents = (events: SaleListType[]) => {
 		const todayIso = format(new Date(), 'yyyy-MM-dd');
 		return events.filter((evt) => {
-			if (evt.currentSale) {
-				return format(new Date(evt.currentSale), 'yyyy-MM-dd') === todayIso;
+			const currentSale = evt.currentSale !== 'LIVE NOW' ? evt.currentSale : todayIso;
+			if (currentSale) {
+				return format(new Date(currentSale), 'yyyy-MM-dd') === todayIso;
 			}
 		});
 	};

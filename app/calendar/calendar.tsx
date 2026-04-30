@@ -24,8 +24,9 @@ const buildMonthGrid = (anchor: Date, events: SaleListType[]): CalendarDay[] => 
 	const todayIso = format(new Date(), 'yyyy-MM-dd');
 
 	const eventMap = events.reduce<Record<string, SaleListType[]>>((acc, evt) => {
-		if (evt.currentSale) {
-			const iso = format(new Date(evt.currentSale), 'yyyy-MM-dd');
+		const currentSale = evt.currentSale !== 'LIVE NOW' ? evt.currentSale : todayIso;
+		if (currentSale) {
+			const iso = format(new Date(currentSale), 'yyyy-MM-dd');
 			acc[iso] = acc[iso] ? [...acc[iso], evt] : [evt];
 		}
 		return acc;
