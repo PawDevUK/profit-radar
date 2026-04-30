@@ -78,59 +78,13 @@ export default function SaleListResultsPage() {
 	const [requestedPage, setRequestedPage] = useState(1);
 	const [itemsPerPage, setItemsPerPage] = useState(20);
 
-	const filterResults = (selected: string, cars: LotDetailsType[]) => {
-		if (!selected) return cars;
-		const filteredCars: LotDetailsType[] = [];
-		const selectedKeys = Object.keys(selected) as (keyof LotDetailsType)[];
-
-		function carLoop(cars, selectedEntry) {
-			const carsKeys = Object.keys(cars) as (keyof LotDetailsType)[];
-			carsKeys.forEach((carEntry) => {
-				if (carEntry === selectedEntry) {
-					console.log(selectedEntry);
-				}
-			});
-		}
-		console.log(cars);
-		selectedKeys.forEach((selectedEntry) => {
-			if (selected[selectedEntry]) {
-				if (typeof selected[selectedEntry] === 'string') {
-					console.log('selected', selected[selectedEntry]);
-					const check = { selectedEntry: selected[selectedEntry] };
-					cars.forEach((lot) => {
-						console.log(_.isEqual(check, lot));
-					});
-				}
-				if (Array.isArray(selected[selectedEntry]) && selected[selectedEntry].length > 0) {
-					console.log('Selected Array', selected[selectedEntry]);
-				}
-			}
-		});
-
-		cars.forEach((car: LotDetailsType) => {
-			// carsKeys.forEach((key) => {
-			// 	// console.log(car[key]);
-			// 	selectedKeys.forEach((selectedKey) => {
-			// 		if (selected[selectedKey] && car[key]) {
-			// 			if (selectedKey !== 'images' && key !== 'images') {
-			// 				// console.log(selectedKey);
-			// 				console.log('selected-->', selected[selectedKey], 'car keys ====>', car[key]);
-			// 			}
-			// 		}
-			// 	});
-			// });
-		});
-		// console.log(filteredCars);
-		return filteredCars;
-	};
-
-	const filteredCars = filterResults(searchFilters, cars.slice(0, 2));
+	const filteredCars = cars;
 	const totalPages = Math.max(1, Math.ceil(filteredCars.length / itemsPerPage));
 	const currentPage = Math.min(requestedPage, totalPages);
 
 	const pages = useMemo(() => getVisiblePages(totalPages, currentPage), [totalPages, currentPage]);
 	const visibleCars = filteredCars.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
-
+	console.log(visibleCars);
 	if (isLoading) {
 		return (
 			<div className='min-h-screen bg-gray-50 flex items-center justify-center'>
