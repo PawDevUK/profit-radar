@@ -1,4 +1,3 @@
-import { NextResponse } from 'next/server';
 import saleListScraper from '@/lib/scrapers/copart/saleList/saleListScraper';
 import { getAllSalesLists } from '@/lib/db/db';
 import { isPast } from 'date-fns';
