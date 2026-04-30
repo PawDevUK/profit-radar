@@ -1,5 +1,8 @@
 import { type GoToOptions } from 'puppeteer';
 import { createContext } from '@/lib/scrapers/proxy/createContext';
+// import scrapeLot from '../lot/lotScraper';
+import { AILotScraper } from '@/lib/scrapers/copart/lot/AI_LotScraper/AILotScraper';
+import scrapeLotImages from '@/lib/scrapers/copart/lot/scrapeLotImages';
 import scrapeLot from '../lot/lotScraper';
 
 const pageOptions: GoToOptions = {
@@ -94,6 +97,7 @@ export default async function saleListScraper(saleUrl: string, scrapedListSizeNu
 				}
 			}
 			const scrapedSaleList = await scrapeLot(scrapedListSizeNum ? saleUrls.slice(0, scrapedListSizeNum) : saleUrls);
+			// const scrapedSaleList = await scrapeLotImages(scrapedListSizeNum ? saleUrls.slice(0, scrapedListSizeNum) : saleUrls);
 			return scrapedSaleList;
 		}
 	} catch (e) {
