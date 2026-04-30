@@ -7,7 +7,6 @@ function Card({ ...props }) {
 	const { images } = item;
 
 	const imageUrl = images[0].copart ? images[0].copart[0] : carImagePlaceholder;
-
 	return (
 		<div
 			className='md:max-h-115.5 w-full max-w-lg md:w-[30%] lg:w-[22%] xl:w-[18%] m-1.5 bg-neutral-primary-soft border border-gray-300 rounded-base shadow-md rounded-lg flex flex-row md:flex-col'
@@ -30,7 +29,7 @@ function Card({ ...props }) {
 			<div className='p-2 flex flex-col justify-between flex-1 md:w-full w-1/2'>
 				<div className='flex flex-col'>
 					<a className='flex flex-row justify-center' href='#'>
-						<h5 className='text-[16px] text-heading font-semibold tracking-tight'>{item.title.slice(0, 20)}</h5>
+						<h5 className='text-[16px] text-heading font-semibold tracking-tight'>{item.title ? item.title.slice(0, 20) : ''}</h5>
 					</a>
 				</div>
 				<div className='flex flex-col items-center mt-1 '>
