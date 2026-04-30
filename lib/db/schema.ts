@@ -55,12 +55,12 @@ export const LotDetailsSchema = new Schema<LotDetailsType>(
 
 export const SaleListSchema = new Schema<SaleListType>(
 	{
-		saleTime: { type: String, required: true },
-		saleName: { type: String, required: true },
+		saleTime: { type: String },
+		saleName: { type: String },
 		saleType: { type: String },
 		nextSale: { type: String },
 		nextSaleUrl: { type: String },
-		currentSale: { type: String, required: true },
+		currentSale: { type: String },
 		currentSaleUrl: { type: String },
 		lotList: [LotDetailsSchema],
 		numOfLots: { type: Number },
