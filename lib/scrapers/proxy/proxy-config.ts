@@ -13,7 +13,7 @@ export interface ProxyConfig {
 export const proxyConfig: ProxyConfig = {
 	timeout: 15000,
 	headless: false,
-	enabled: false,
+	enabled: true,
 	server: process.env.proxy_server,
 	username: process.env.proxy_username,
 	password: process.env.proxy_password,
