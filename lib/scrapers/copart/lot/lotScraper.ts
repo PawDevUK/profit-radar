@@ -8,7 +8,7 @@ type ScrapedLotDetails = {
 	[K in keyof LotDetailsType]: LotDetailsType[K];
 };
 
-const createEmptyLotDetails = (): ScrapedLotDetails => ({
+export const createEmptyLotDetails = (): ScrapedLotDetails => ({
 	title: null,
 	year: null,
 	make: null,
@@ -143,15 +143,7 @@ export default async function scrapeLot(pageUrls: string[] | string) {
 		console.log('Scraped lot', lotObj.lotNumber);
 		console.log(lotObj.title);
 		console.log('------------------');
-		return {
-			scrapedLotObj: lotObj,
-			scrapingInfo: {
-				Success,
-				Failed: failedScraped,
-				failedSelectors,
-				Url: pageUrls,
-			},
-		};
+		return lotObj;
 	}
 	const options = {
 		headless: false,
