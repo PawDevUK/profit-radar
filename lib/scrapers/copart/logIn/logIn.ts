@@ -2,6 +2,7 @@ import { createContext } from '@/lib/scrapers/proxy/createContext';
 import { type GoToOptions } from 'puppeteer';
 import path from 'path';
 import { promises as fs } from 'fs';
+import { parse as parseUrl, URL } from 'url';
 
 const pageOptions: GoToOptions = {
 	waitUntil: 'networkidle0',
@@ -15,6 +16,7 @@ const waitForCsvDownload = async (dir: string, timeoutMs = 30000) => {
 	const start = Date.now();
 	while (Date.now() - start < timeoutMs) {
 		const files = await fs.readdir(dir);
+		console.log('Download dir contents:', files); // add this
 		const csv = files.find((f) => f.endsWith('.csv'));
 		const partial = files.find((f) => f.endsWith('.crdownload'));
 		if (csv && !partial) return path.join(dir, csv);
@@ -23,21 +25,40 @@ const waitForCsvDownload = async (dir: string, timeoutMs = 30000) => {
 	throw new Error('CSV download timed out');
 };
 
-export const logInToCopart = async function (landingUrl: string, url: string) {
+export const logInToCopart = async function (landingUrl: string, targetUrl: string) {
 	const options = {
 		headless: false,
 		args: ['--no-sandbox', '--disable-setuid-sandbox'],
 	};
+	const downloadPath = path.resolve('./downloads');
+	await fs.mkdir(downloadPath, { recursive: true });
+
 	let browser: { close: () => Promise<void> } | null = null;
 	const timeoutNumber = 200000;
 	try {
-		if (landingUrl && url) {
+		if (landingUrl && targetUrl) {
 			const ctx = await createContext(options);
 			browser = ctx.browser;
 			const signin = ctx.page;
 
 			const downloadDir = path.join(process.cwd(), 'tmp', 'downloads');
 			await fs.mkdir(downloadDir, { recursive: true });
+
+			signin.on('response', async (response) => {
+				const requestUrl = response.url();
+
+				// Check if the response is a file download (adjust the condition as needed)
+				if (response.request().resourceType() === 'document' && requestUrl.endsWith('.pdf')) {
+					// Adjust for your file type
+					const fileName = path.basename(new URL(requestUrl).pathname);
+					const filePath = path.resolve(downloadPath, fileName);
+
+					// Save the response buffer to a file
+					const buffer = await response.buffer();
+					await fs.writeFile(filePath, buffer);
+					console.log(`File downloaded to: ${filePath}`);
+				}
+			});
 
 			const cdp = await signin.target().createCDPSession();
 			await cdp.send('Page.setDownloadBehavior', {
@@ -100,13 +121,17 @@ export const logInToCopart = async function (landingUrl: string, url: string) {
 			if (!hasSession) {
 				throw new Error('Login click done, but no auth cookie found yet.');
 			}
-
 			// Now navigate
-			await signin.goto(url, { waitUntil: 'domcontentloaded', timeout: timeoutNumber });
-			await signin.waitForSelector('.cprt-btn-white.export-csv-button', { visible: true, timeout: 15000 });
-			await signin.click('.cprt-btn-white.export-csv-button');
-			const csvPath = await waitForCsvDownload(downloadDir);
-			console.log('CSV downloaded:', csvPath);
+			console.log('Navigates to lot url.');
+			await signin.goto(targetUrl, { waitUntil: 'domcontentloaded', timeout: timeoutNumber });
+			// Second click — use real Puppeteer click (counts as user gesture)
+			await signin.waitForSelector('button.export-csv-button', { visible: true, timeout: timeoutNumber });
+			await signin.click('button.export-csv-button'); // real pointer event, not JS eval
+			await signin.setRequestInterception(true);
+			signin.on('request', (request) => {
+				// Continue all requests
+				request.continue();
+			});
 		}
 	} catch (e) {
 		console.error(e);
