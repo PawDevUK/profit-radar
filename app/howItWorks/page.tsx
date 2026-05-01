@@ -31,8 +31,7 @@ export default function HowItWorks() {
 									</p>
 
 									<p className='text-lg leading-relaxed text-gray-700'>
-										Each lot is then compared with listings from at the moment Polish market (planned to extend it to international markets) to estimate resale
-										potential and highlight the
+										Each lot is then compared with listings from international resale markets to estimate resale potential and highlight the
 										<span className='font-semibold'> best deal candidates</span> based on market spread.
 									</p>
 									<div className='md:w-90 py-5'>
@@ -63,8 +62,8 @@ export default function HowItWorks() {
 					<div className='space-y-5 pr-card'>
 						<h3 className='text-2xl font-bold text-blue-600 sm:text-3xl'>Get Started in Minutes</h3>
 						<p className='text-lg leading-relaxed text-gray-700'>
-							Choose your target vehicles, budget, and auction filters. ProfitRadar keeps the data fresh, compares auction prices with Polish market benchmarks, and
-							helps you focus only on listings with the strongest margin potential.
+							Choose your target vehicles, budget, and auction filters. ProfitRadar keeps the data fresh, compares auction prices with international market
+							benchmarks, and helps you focus only on listings with the strongest margin potential.
 						</p>
 						<div className='md:w-90 py-5'>
 							<LogButton item={{ href: '/signup', label: 'Create Account', fontSize: 18 }}></LogButton>
@@ -82,7 +81,7 @@ export default function HowItWorks() {
 						<div className='text-center '>
 							<h2 className='text-2xl font-bold text-blue-600 sm:text-3xl'>How ProfitRadar Finds Opportunities</h2>
 							<p className='mt-4 text-lg text-gray-600'>
-								From auction ingestion to Polish market comparison, every step is designed to help you spot profitable imports faster.
+								From auction ingestion to international market comparison, every step is designed to help you spot profitable imports faster.
 							</p>
 						</div>
 
