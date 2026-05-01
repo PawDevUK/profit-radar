@@ -161,7 +161,7 @@ export function AuctionsClient({ initialData }: { initialData: any[] }) {
 ## How This Fits Your Repo
 
 - Centralize reads in `lib/db/db.ts` and reuse helpers across `app/...` Server Components.
-- In `app/api/.../route.ts` endpoints (e.g., `copart/scrape-sale-list/route.ts`, `auctions/route.ts`), add caching headers and consider `next: { revalidate, tags }` where compatible.
+- In `app/api/.../route.ts` endpoints (e.g., `copart/db/scrape-save-list/route.ts`, `auctions/route.ts`), add caching headers and consider `next: { revalidate, tags }` where compatible.
 - Hydrate client views that require interactivity (e.g., filters on `dashboard/page.tsx`) with initial data fetched on the server.
 - After mutations (creating/updating results or notifications), call `revalidateTag(...)` for the affected resources.
 

@@ -1,4 +1,102 @@
-# ProfitRadar Scraper Refresh Report (Feb 6, 2026)
+# ProfitRadar Scraper Refresh Report
+
+## Overview
+
+- Goal: Keep Copart data fresh with different update cadences for calendar, sale lists, and lots.
+- Approach: Decouple scraping tasks by layer, use MongoDB for normalized storage, and apply incremental updates rather than bulk replacements.
+- Market comparison targets international resale platforms (currently Otomoto); additional markets are planned.
+
+## Implemented Data Model
+
+Data is stored in a single `MonthSale` MongoDB collection with nested documents:
+
+- **MonthSale**: Top-level document per scraped calendar month. Fields: `month`, `year`, `scrapedAt`, `totalAuctions`, `auctions[]`.
+- **SaleList** (nested in `auctions[]`): One entry per auction event. Fields: `saleTime`, `saleName`, `currentSale`, `currentSaleUrl`, `nextSale`, `nextSaleUrl`, `numOfLots`, `lotList[]`.
+- **LotDetails** (nested in `lotList[]`): Full lot spec. Fields: `vin`, `lotNumber`, `make`, `model`, `year`, `trim`, `primaryDamage`, `odometer`, `currentBid`, `buyItNow`, `images`, and more.
+
+See [DataBase.md](DataBase.md) for the full schema reference.
+
+## How Scraping Is Triggered
+
+Scrapers are invoked via Next.js API route handlers — there is no standalone CLI at this time.
+
+| Trigger | API Route | What It Does |
+|---|---|---|
+| Calendar scrape | `GET /api/copart/scrape-calendar` | Runs `calendarScraper`, calls `saveMonthSale()` |
+| Sale list scrape | `PUT /api/copart/db/scrape-save-list` | Iterates upcoming auctions, runs `saleListScraper` per URL, calls `saveSalesList()` |
+| CSV export | `GET /api/copart/login_CsvSaleList` | Logs into Copart via Puppeteer and downloads a CSV sale list |
+
+## Update Cadence (Recommended)
+
+- **Calendar**: Once daily (09:00). If no change, skip write.
+- **Sales**: Twice daily (09:00, 17:00), targeting today + upcoming auctions only.
+- **Lots**: Updated as part of the sale list scrape — lot data is embedded in `lotList[]`.
+
+## Scheduling (Windows Task Scheduler)
+
+Since scrapers are HTTP-triggered, schedule with `curl` or PowerShell hitting the local or deployed app:
+
+```powershell
+# 09:00 daily: calendar
+schtasks /Create /SC DAILY /ST 09:00 /TN "ProfitRadar_Calendar_0900" /TR "powershell -NoProfile -Command \"Invoke-WebRequest -Uri 'http://localhost:3000/api/copart/scrape-calendar'\"" /RL HIGHEST /F
+
+# 09:00 daily: sale lists
+schtasks /Create /SC DAILY /ST 09:15 /TN "ProfitRadar_SaleList_0915" /TR "powershell -NoProfile -Command \"Invoke-WebRequest -Method PUT -Uri 'http://localhost:3000/api/copart/db/scrape-save-list'\"" /RL HIGHEST /F
+
+# 17:00 daily: sale lists refresh
+schtasks /Create /SC DAILY /ST 17:00 /TN "ProfitRadar_SaleList_1700" /TR "powershell -NoProfile -Command \"Invoke-WebRequest -Method PUT -Uri 'http://localhost:3000/api/copart/db/scrape-save-list'\"" /RL HIGHEST /F
+```
+
+Verify:
+
+```powershell
+schtasks /Query /TN "ProfitRadar_Calendar_0900"
+schtasks /Query /TN "ProfitRadar_SaleList_0915"
+```
+
+## Incremental Update Strategy
+
+- `saveSalesList(auctionId, lots)` uses MongoDB's `$set` with the positional `$` operator to update only the matched nested auction — existing `MonthSale` documents are not replaced.
+- `scrape-save-list` filters to only upcoming auctions (`!isPast(currentSale)`) before scraping, avoiding unnecessary requests to past events.
+- Re-running either scraper is safe — calendar creates new documents per month; sale list overwrites `lotList` on the same auction.
+
+## Proxy Support
+
+All Puppeteer scrapers read proxy config from env:
+
+```env
+PROXY_ENABLED=true
+PROXY_SERVER=http://host:port
+PROXY_USERNAME=...
+PROXY_PASSWORD=...
+```
+
+The `createContext()` utility in `lib/scrapers/proxy/createContext.ts` applies `puppeteer-extra-plugin-stealth` and authenticates with the proxy automatically.
+
+## Lot Scraping: Browser Reuse Strategy
+
+- **Reuse one browser/page**: Open a single Puppeteer browser, loop through lot URLs with `page.goto()`. Keeps cookies/session intact and reduces CAPTCHA risk.
+- **Pacing and jitter**: Add small randomized delays (250–750 ms) between lots; backoff on transient failures.
+- **Session stickiness**: Keep the same proxy session for a batch; rotate between batches.
+- **Periodic refresh**: Every 50–100 lots, close and reopen the page to keep memory stable.
+- **Failure handling**: On CAPTCHA/block, open a fresh page or incognito context and rotate proxy session.
+
+## Environment
+
+```env
+MONGODB_URI=mongodb+srv://user:pass@cluster/db
+MONGODB_DB=profit_radar
+COPART_CALENDAR_URL=https://www.copart.com/auctionDashboard
+COPART_LOGIN=your@email.com
+COPART_PASS=yourpassword
+```
+
+## Known Gaps
+
+- No standalone CLI (`lib/cli.ts` does not exist) — all scraping is HTTP-triggered.
+- No `scrape:calendar` / `scrape:sales` npm scripts — use API routes directly.
+- No lot-level incremental merge function yet — `lotList` is fully replaced on each sale list scrape.
+- No debug snapshot output to `results/debug/` implemented yet.
 
 ## Overview
 

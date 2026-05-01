@@ -1,59 +1,96 @@
-Structure of db and general documentation about db
+# Database Documentation
 
-Data Base is the storage to keep aplication data. It needs to be structure in the way that can be accessed easly with minimal risk of bugs.
+## Overview
 
-The structure of objects are:
+MongoDB is the primary data store. The application uses Mongoose for schema definition and connection management. The connection is cached to avoid re-connecting on every serverless invocation (`lib/db/db.ts`).
 
-Calledar / Sale results / lot details
+All data lives in a single collection: `MonthSale`. Each document represents one scraped calendar month, containing nested auctions, each containing its scraped lot list.
+
+---
+
+## Schema Structure
 
 ```
-const calendarMonth = {
-  month: "February",
-  year: 2026,
-  scrapedAt: "2026-02-07T12:00:00.000Z",
-  totalAuctions: 1,
-  auctions: [{
-  location: "Warsaw, PL",
-  saleDate: "2026-02-15",
-  saleTime: "10:00",
-  viewSalesLink: "https://example.com/auctions/123",
-  numberOnSale: 1,
-  saleList: [
-    {
-      title: "2018 Honda Civic EX",
-      lotNr: "12345",
-      odometr: "56,200",
-      odometrStatus: "actual",
-      currentBid: "3200",
-      buyItNow: "9500",
-      details: {
-        title: "2018 Honda Civic EX",
-        year: 2018,
-        make: "Honda",
-        model: "Civic",
-        trim: "EX",
-        vin: "2HGFC2F79JH000000",
-        runAndDrive: true,
-        lotNumber: 12345,
-        saleName: "Weekly Auction",
-        location: "Warsaw, PL",
-        odometer: 56200,
-        odometerUnit: "km",
-        primaryDamage: "Front end",
-        color: "Blue",
-        hasKey: true,
-        driveTrain: "FWD",
-        fuelType: "Petrol",
-        highlights: ["Run & Drive"],
-        images: ["https://example.com/imgs/12345-1.jpg"]
-      }
-    },]
-};
+MonthSale (collection)
+├── month: String               — e.g. "February"
+├── year: Number                — e.g. 2026
+├── scrapedAt: Date
+├── totalAuctions: Number
+└── auctions: SaleList[]
+    ├── _id: ObjectId           — used to target nested updates
+    ├── saleTime: String
+    ├── saleName: String
+    ├── saleType: String
+    ├── currentSale: String     — ISO date string or "LIVE NOW"
+    ├── currentSaleUrl: String
+    ├── nextSale: String
+    ├── nextSaleUrl: String
+    ├── numOfLots: Number
+    ├── scrapedAt: Date
+    ├── buyItNow: Number
+    └── lotList: LotDetails[]
+        ├── title, year, make, model, trim, bodyStyle
+        ├── vin, lotNumber, laneItem, saleName, location
+        ├── odometer, odometerUnit (mi | km), odometerStatus
+        ├── primaryDamage, color, hasKey
+        ├── runAndDrive, engineVerified, engineVerifiedNote, engineStatus
+        ├── transmissionEngages, transmissionNote
+        ├── titleCode, vehicleTitleType
+        ├── cylinders, engineType, transmission, vehicleType, driveTrain, fuelType
+        ├── saleDate, auctionName, auctionCountdown
+        ├── currentBid: String
+        ├── buyItNow: Number
+        ├── highlights: String[]
+        ├── notes, lastUpdated
+        └── images: [{ copart: String[], AiRepaired: Buffer[] }]
 ```
 
-The scraper should scrape calendar first and then save it to Mongo DB. Then scraper should scrape the sale results with lots detail and then save it to DB.
+Schema source: [lib/db/schema.ts](../lib/db/schema.ts)
+Model: [lib/db/models.ts](../lib/db/models.ts)
 
-Scrape calendar                    ------ > Data Base Calendar object
-Scrape sale list with lots deteils ------ > Data Base Calendar nested objects
+---
 
-Data from database should be fetch directly to calendar component and eather saved to redux or contect.
+## DB Functions (`lib/db/db.ts`)
+
+| Function | Description |
+|---|---|
+| `connectDB()` | Connect to MongoDB (cached). Reads `MONGODB_URI` and `MONGODB_DB` from env. |
+| `saveMonthSale(data)` | Insert a new `MonthSale` document (from calendar scrape). |
+| `getAllSalesLists()` | Return all `MonthSale` documents. |
+| `saveSalesList(auctionId, lots)` | Update `lotList` and `numOfLots` on a specific nested auction by `_id`. |
+| `getOneSalesList(id)` | Find and return a single nested auction by its `_id`. |
+
+---
+
+## Data Flow
+
+```
+1. Scrape calendar
+        ↓
+   saveMonthSale()  →  MonthSale document created in DB
+        ↓
+2. Scrape sale list (per auction URL)
+        ↓
+   saveSalesList(auctionId, lots)  →  lotList populated on nested auction
+        ↓
+3. Calendar page reads via getAllSalesLists()
+   Inventory page reads via getOneSalesList(id)
+```
+
+---
+
+## Environment Variables
+
+```env
+MONGODB_URI=mongodb+srv://user:pass@cluster/db
+MONGODB_DB=profit_radar   # defaults to "profit_radar" if not set
+```
+
+---
+
+## Notes
+
+- `LotDetails` schema uses `{ _id: false }` — lots do not get their own ObjectId.
+- `SaleList` schema uses `{ timestamps: true }` — Mongoose auto-adds `createdAt`/`updatedAt`.
+- `images.AiRepaired` stores binary `Buffer` data for AI-reconstructed images; `images.copart` stores Copart CDN URL strings.
+- `saveSalesList` finds the parent `MonthSale` document by searching `auctions._id`, then uses `$set` with the positional `$` operator to update only the matched nested auction.

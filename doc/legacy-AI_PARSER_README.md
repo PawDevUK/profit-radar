@@ -1,30 +1,27 @@
 # AI Title Parser
 
-AI-powered car title parser that accurately extracts year, make, model, trim, and body type from vehicle titles.
+> **Note:** This document describes the title parser implemented in `lib/ai-title-parser.ts`. The parser calls OpenAI's API directly via `fetch`. The project also has `@ai-sdk/xai` installed for xAI/Grok access, used separately in other AI features.
+
+AI-powered car title parser that extracts year, make, model, trim, and body type from raw Copart lot titles.
 
 ## Features
 
-✅ **Accurate Parsing**: Uses OpenAI GPT-3.5 to understand car nomenclature
-✅ **Trim Separation**: Correctly identifies trim levels (EX, LT, T-150, etc.)
-✅ **Body Type Detection**: Recognizes vehicle types (Sedan, SUV, Van, Truck)
-✅ **Fallback Parser**: Works without AI using regex patterns
-✅ **Batch Processing**: Parse multiple titles with rate limiting
+- **AI Parsing**: Calls OpenAI `gpt-3.5-turbo` to understand car nomenclature
+- **Trim Separation**: Correctly identifies trim levels (EX, LT, T-150, XLT, etc.)
+- **Body Type Detection**: Recognises vehicle types (Sedan, SUV, Van, Truck)
+- **Fallback Parser**: Regex-based fallback when `OPENAI_API_KEY` is not set
+- **Batch Processing**: Parse multiple titles with rate limiting
+- **Car Data Enhancement**: Accepts full car objects and enriches them with parsed fields
 
 ## Setup
 
-### 1. Get OpenAI API Key
-
-1. Go to <https://platform.openai.com/api-keys>
-2. Create a new API key
-3. Add to your `.env.local`:
+Add to `.env.local`:
 
 ```env
 OPENAI_API_KEY=sk-...your-key-here
 ```
 
-### 2. Install Dependencies
-
-No additional dependencies needed - uses native `fetch`.
+No additional npm dependencies needed — uses native `fetch`.
 
 ## Usage
 
@@ -167,7 +164,7 @@ for (const car of cars) {
 
 **Very affordable for this use case!**
 
-## Fallback Behavior
+## Fallback Behaviour
 
 If OpenAI API is unavailable or `OPENAI_API_KEY` is not set, the parser falls back to regex-based parsing:
 
@@ -214,11 +211,3 @@ The AI is very accurate, but if you encounter issues:
 1. Check the input title format
 2. Report edge cases for prompt improvement
 3. Use fallback parser for non-critical data
-
-## Future Enhancements
-
-- [ ] Cache parsed results to avoid re-parsing
-- [ ] Support for other languages (Spanish, German, etc.)
-- [ ] Integration with car database APIs for validation
-- [ ] Custom model support (Claude, Llama, etc.)
-- [ ] Batch API endpoint for async processing
