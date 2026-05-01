@@ -74,11 +74,11 @@ Getting sale information from csv file, converting it into correct data structur
 
 I have just realised that instead of scrapping data from the every lot for sale or even sale list I can download the csv file with all information required. This file is accessible on copart page.
 
-Problem is that this file is in csv format and need conversion into json and then data structure need to be updated. Also make and model
-are not full but the urls for each lot have the make and model in it so I need to use ai to sort it out.
+- Problem is that this file is in csv format and need to be converted into json and then data structure need to be updated. Also make and model are not full. The urls for each lot have the make and model in it so I need to use ai or regex to sort it out.
+- Another problem is the csv file is accessible after user login but it is already done. It took me around 2 days to set scraper flow to login (that was fairly easy) and to download the file. Process of downloading file was roadblock as the download button wasn't clicked and the download logic didn't work strait a way as expected. I'm glad that copart didn't ban me for countless test :)
 
 I need the steps to follow.
 
-1. Fetch sale list in csv format.
-2. Convert CSV into json.
-3. Convert key into camel case keys. Ath the moment key are with spacing.
+1. Fetch sale list in csv format. (done)
+2. Convert CSV into json. (done)
+3. Convert key into camel case keys. Ath the moment key are with spacing. (done)
