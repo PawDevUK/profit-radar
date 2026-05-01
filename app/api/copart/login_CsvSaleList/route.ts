@@ -9,7 +9,3 @@ export async function GET({ salesLsit }) {
 	await login_CSV(landingUrl, tempUrl);
 	return NextResponse.json({ data: 'Success!' });
 }
-
-// First need to be created sales list object, the main one which hold the all data across auction.
-// Then list of sales need to be loop over and every iteration need to download the csv file, converted into lotDetails object array and then it need to be saved.
-// Then Image scraper needs to add the images to each lot.
