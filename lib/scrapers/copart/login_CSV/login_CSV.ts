@@ -128,7 +128,7 @@ async function waitForAnyNewFileStable(dir: string, startedAt: number, { timeout
 	throw new Error('Download timed out');
 }
 
-export const login_AndScrapeCSV = async function (landingUrl: string, targetUrl: string) {
+export const login_CSV = async function (landingUrl: string, targetUrl: string) {
 	const options = {
 		headless: false,
 		args: ['--no-sandbox', '--disable-setuid-sandbox'],
