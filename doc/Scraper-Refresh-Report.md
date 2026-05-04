@@ -8,9 +8,9 @@
 
 ## Implemented Data Model
 
-Data is stored in a single `MonthSale` MongoDB collection with nested documents:
+Data is stored in a single `CalendarSale` MongoDB collection with nested documents:
 
-- **MonthSale**: Top-level document per scraped calendar month. Fields: `month`, `year`, `scrapedAt`, `totalAuctions`, `auctions[]`.
+- **CalendarSale**: Top-level document per scraped calendar month. Fields: `month`, `year`, `scrapedAt`, `totalAuctions`, `auctions[]`.
 - **SaleList** (nested in `auctions[]`): One entry per auction event. Fields: `saleTime`, `saleName`, `currentSale`, `currentSaleUrl`, `nextSale`, `nextSaleUrl`, `numOfLots`, `lotList[]`.
 - **LotDetails** (nested in `lotList[]`): Full lot spec. Fields: `vin`, `lotNumber`, `make`, `model`, `year`, `trim`, `primaryDamage`, `odometer`, `currentBid`, `buyItNow`, `images`, and more.
 
@@ -56,7 +56,7 @@ schtasks /Query /TN "ProfitRadar_SaleList_0915"
 
 ## Incremental Update Strategy
 
-- `saveSalesList(auctionId, lots)` uses MongoDB's `$set` with the positional `$` operator to update only the matched nested auction — existing `MonthSale` documents are not replaced.
+- `saveSalesList(auctionId, lots)` uses MongoDB's `$set` with the positional `$` operator to update only the matched nested auction — existing `CalendarSale` documents are not replaced.
 - `scrape-save-list` filters to only upcoming auctions (`!isPast(currentSale)`) before scraping, avoiding unnecessary requests to past events.
 - Re-running either scraper is safe — calendar creates new documents per month; sale list overwrites `lotList` on the same auction.
 

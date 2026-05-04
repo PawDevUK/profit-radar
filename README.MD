@@ -103,10 +103,10 @@ ProfitRadar is a Next.js App Router application for discovering profitable vehic
 
 ## Data Model
 
-MongoDB stores a `MonthSale` document per scraped calendar month:
+MongoDB stores a `CalendarSale` document per scraped calendar month:
 
 ```
-MonthSale
+CalendarSale
 ├── month: string
 ├── auctions: Auction[]
 │   ├── _id

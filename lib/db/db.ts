@@ -23,9 +23,9 @@ export async function connectDB() {
 export async function saveCalendar(scrapedCalendarMonth: CalendarType) {
 	if (scrapedCalendarMonth) {
 		await connectDB();
-		const monthSaleList = new CalendarSaleModel(scrapedCalendarMonth);
-		await monthSaleList.save();
-		console.log('Month sale data saved to database successfully!');
+		const CalendarSaleList = new CalendarSaleModel(scrapedCalendarMonth);
+		await CalendarSaleList.save();
+		console.log('Calendar sale data saved to database successfully!');
 	} else {
 		console.log('Not enough auctions scraped, skipping save.');
 	}

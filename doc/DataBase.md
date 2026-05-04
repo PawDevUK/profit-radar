@@ -4,14 +4,14 @@
 
 MongoDB is the primary data store. The application uses Mongoose for schema definition and connection management. The connection is cached to avoid re-connecting on every serverless invocation (`lib/db/db.ts`).
 
-All data lives in a single collection: `MonthSale`. Each document represents one scraped calendar month, containing nested auctions, each containing its scraped lot list.
+All data lives in a single collection: `CalendarSale`. Each document represents one scraped calendar month, containing nested auctions, each containing its scraped lot list.
 
 ---
 
 ## Schema Structure
 
 ```
-MonthSale (collection)
+CalendarSale (collection)
 ├── month: String               — e.g. "February"
 ├── year: Number                — e.g. 2026
 ├── scrapedAt: Date
@@ -55,8 +55,8 @@ Model: [lib/db/models.ts](../lib/db/models.ts)
 | Function | Description |
 |---|---|
 | `connectDB()` | Connect to MongoDB (cached). Reads `MONGODB_URI` and `MONGODB_DB` from env. |
-| `saveCalendar(data)` | Insert a new `MonthSale` document (from calendar scrape). |
-| `getAllSalesLists()` | Return all `MonthSale` documents. |
+| `saveCalendar(data)` | Insert a new `CalendarSale` document (from calendar scrape). |
+| `getAllSalesLists()` | Return all `CalendarSale` documents. |
 | `saveSalesList(auctionId, lots)` | Update `lotList` and `numOfLots` on a specific nested auction by `_id`. |
 | `getOneSalesList(id)` | Find and return a single nested auction by its `_id`. |
 
@@ -67,7 +67,7 @@ Model: [lib/db/models.ts](../lib/db/models.ts)
 ```
 1. Scrape calendar
         ↓
-   saveCalendar()  →  MonthSale document created in DB
+   saveCalendar()  →  CalendarSale document created in DB
         ↓
 2. Scrape sale list (per auction URL)
         ↓
@@ -93,4 +93,4 @@ MONGODB_DB=profit_radar   # defaults to "profit_radar" if not set
 - `LotDetails` schema uses `{ _id: false }` — lots do not get their own ObjectId.
 - `SaleList` schema uses `{ timestamps: true }` — Mongoose auto-adds `createdAt`/`updatedAt`.
 - `images.AiRepaired` stores binary `Buffer` data for AI-reconstructed images; `images.copart` stores Copart CDN URL strings.
-- `saveSalesList` finds the parent `MonthSale` document by searching `auctions._id`, then uses `$set` with the positional `$` operator to update only the matched nested auction.
+- `saveSalesList` finds the parent `CalendarSale` document by searching `auctions._id`, then uses `$set` with the positional `$` operator to update only the matched nested auction.
