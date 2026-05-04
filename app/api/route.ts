@@ -25,6 +25,11 @@ export async function GET(req: NextRequest) {
 		});
 	}
 	if (converted.length > 0) {
+		// I need to get all lots from database with saleId
+		// Check if database has all of the lots
+		// If converted lots are the same save shouldn't be done.
+		// If there is some lot missing in database, insert it.
+
 		dataSavedStatus = await saveLots(converted);
 	}
 	console.log(converted.length);
