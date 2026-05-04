@@ -62,7 +62,7 @@ export const SaleListSchema = new Schema<SaleListType>(
 		nextSaleUrl: { type: String },
 		currentSale: { type: String },
 		currentSaleUrl: { type: String },
-		lotList: [LotDetailsSchema],
+		saleId: { type: String },
 		numOfLots: { type: Number },
 		scrapedAt: { type: Date },
 		buyItNow: { type: Number },
@@ -70,9 +70,7 @@ export const SaleListSchema = new Schema<SaleListType>(
 	{ timestamps: true },
 );
 
-export const MonthSaleSchema = new Schema<CalendarType>({
-	month: { type: String },
-	year: { type: Number },
+export const CalendarSaleSchema = new Schema<CalendarType>({
 	scrapedAt: { type: Date },
 	totalAuctions: { type: Number },
 	auctions: [SaleListSchema],

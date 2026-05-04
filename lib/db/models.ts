@@ -1,6 +1,6 @@
 import { model, models, Schema } from 'mongoose';
-import { MonthSaleSchema } from '@/lib/db/schema';
+import { CalendarSaleSchema } from '@/lib/db/schema';
 
-const MonthSaleModel = models?.MonthSale || model('MonthSale', MonthSaleSchema as Schema);
+const CalendarSaleModel = models?.MonthSale || model('MonthSale', CalendarSaleSchema as Schema);
 
-export default MonthSaleModel;
+export default CalendarSaleModel;

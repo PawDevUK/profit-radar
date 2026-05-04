@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import 'dotenv/config';
-import MonthSaleModel from './models';
+import CalendarSaleModel from './models';
 import { CalendarType, SaleListType } from '@/lib/types/calendar-type';
 import { LotDetailsType } from '@/lib/types/lotDetails-type';
 
@@ -23,7 +23,7 @@ export async function connectDB() {
 export async function saveCalendar(scrapedCalendarMonth: CalendarType) {
 	if (scrapedCalendarMonth) {
 		await connectDB();
-		const monthSaleList = new MonthSaleModel(scrapedCalendarMonth);
+		const monthSaleList = new CalendarSaleModel(scrapedCalendarMonth);
 		await monthSaleList.save();
 		console.log('Month sale data saved to database successfully!');
 	} else {
@@ -33,7 +33,7 @@ export async function saveCalendar(scrapedCalendarMonth: CalendarType) {
 
 export async function getAllSalesLists() {
 	await connectDB();
-	const allSalesLists = MonthSaleModel.find({});
+	const allSalesLists = CalendarSaleModel.find({});
 
 	return allSalesLists;
 }
@@ -41,11 +41,14 @@ export async function getAllSalesLists() {
 export async function saveSalesList(_id: string, SalesList: LotDetailsType[]) {
 	await connectDB();
 	const auctionId = new mongoose.Types.ObjectId(_id); // nested auction _id
-	const parentDoc = await MonthSaleModel.findOne({ 'auctions._id': auctionId });
+	const parentDoc = await CalendarSaleModel.findOne({ 'auctions._id': auctionId });
 	const parentId = parentDoc?._id;
 	try {
 		if (auctionId && SalesList) {
-			await MonthSaleModel.updateOne({ _id: parentId, 'auctions._id': auctionId }, { $set: { 'auctions.$.lotList': SalesList, 'auctions.$.numOfLots': SalesList.length } });
+			await CalendarSaleModel.updateOne(
+				{ _id: parentId, 'auctions._id': auctionId },
+				{ $set: { 'auctions.$.lotList': SalesList, 'auctions.$.numOfLots': SalesList.length } },
+			);
 		} else {
 			console.log('There is no sales Id or updated sales list to be saved!!');
 		}
@@ -74,7 +77,7 @@ export async function getOneSalesList(id: string) {
 	}
 	const nestedId = new mongoose.Types.ObjectId(id);
 	await connectDB();
-	const parentDoc = await MonthSaleModel.findOne({ 'auctions._id': nestedId });
+	const parentDoc = await CalendarSaleModel.findOne({ 'auctions._id': nestedId });
 	let nestedAuction = null;
 	if (parentDoc && Array.isArray(parentDoc.auctions)) {
 		nestedAuction = parentDoc.auctions.find((auction: SaleListType) => {
