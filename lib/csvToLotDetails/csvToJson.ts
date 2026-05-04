@@ -3,15 +3,15 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-export async function convertCSVtoJSON(file: string) {
-	const results: string[] = [];
-	fs.createReadStream(file)
-		.pipe(csv())
-		.on('data', (data) => results.push(data))
-		.on('end', () => {
-			console.log('Conversion complete');
-		});
-	return results;
+export function convertCSVtoJSON(file: string): Promise<any[]> {
+	return new Promise((resolve, reject) => {
+		const results: any[] = [];
+		fs.createReadStream(file)
+			.pipe(csv())
+			.on('data', (data) => results.push(data))
+			.on('end', () => resolve(results))
+			.on('error', reject);
+	});
 }
 
 export async function convertCSVtoJSON_save(file: string) {
@@ -29,6 +29,4 @@ export async function convertCSVtoJSON_save(file: string) {
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const csvFile = path.join(__dirname, './LotSearchresults__2026_April_21.csv');
-const convertedJson = convertCSVtoJSON_save(csvFile);
-
-console.log(convertedJson);
+// const convertedJson = convertCSVtoJSON_save(csvFile);
