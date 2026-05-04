@@ -1,8 +1,9 @@
 import mongoose from 'mongoose';
 import 'dotenv/config';
-import CalendarSaleModel from './models';
+import { CalendarSaleModel } from './models';
 import { CalendarType, SaleListType } from '@/lib/types/calendar-type';
 import { LotDetailsType } from '@/lib/types/lotDetails-type';
+import { LotDetailsModel } from './models';
 
 const MONGODB_URI = process.env.MONGODB_URI;
 
@@ -36,6 +37,26 @@ export async function getAllSalesLists() {
 	const allSalesLists = CalendarSaleModel.find({});
 
 	return allSalesLists;
+}
+
+export async function saveLots(lots: LotDetailsType[]) {
+	if (!lots || lots.length === 0) {
+		console.log('No lots to save');
+		return { savedCount: 0 };
+	}
+
+	try {
+		await connectDB();
+		const result = await LotDetailsModel.insertMany(lots);
+		console.log(`${result.length} lots saved to database successfully!`);
+		return {
+			savedCount: result.length,
+			savedToDb: true,
+		};
+	} catch (e) {
+		console.error('Error saving lots:', e);
+		throw e;
+	}
 }
 
 export async function saveSalesList(_id: string, SalesList: LotDetailsType[]) {
