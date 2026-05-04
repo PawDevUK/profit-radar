@@ -1,9 +1,9 @@
 import { create } from 'zustand';
-import { CalendarMonthType, SaleListType } from '@/lib/types/calendar-type';
+import { CalendarType, SaleListType } from '@/lib/types/calendar-type';
 import { LotDetailsType } from '@/lib/types/lotDetails-type';
 
 type AllCarsState = {
-	calendarMonths: CalendarMonthType[];
+	calendarMonths: CalendarType[];
 	saleLists: SaleListType[];
 	allCars: LotDetailsType[];
 	isLoading: boolean;
@@ -13,12 +13,12 @@ type AllCarsState = {
 	reset: () => void;
 };
 
-const isCalendarMonthArray = (value: unknown): value is CalendarMonthType[] => {
+const isCalendarMonthArray = (value: unknown): value is CalendarType[] => {
 	if (!Array.isArray(value)) return false;
-	return value.every((month) => typeof month === 'object' && month !== null && Array.isArray((month as CalendarMonthType).auctions));
+	return value.every((month) => typeof month === 'object' && month !== null && Array.isArray((month as CalendarType).auctions));
 };
 
-const unwrapCalendarMonths = (payload: unknown): CalendarMonthType[] => {
+const unwrapCalendarMonths = (payload: unknown): CalendarType[] => {
 	if (isCalendarMonthArray(payload)) return payload;
 
 	if (payload && typeof payload === 'object' && 'data' in payload) {
@@ -31,7 +31,7 @@ const unwrapCalendarMonths = (payload: unknown): CalendarMonthType[] => {
 	return [];
 };
 
-const flattenSaleLists = (months: CalendarMonthType[]): SaleListType[] => {
+const flattenSaleLists = (months: CalendarType[]): SaleListType[] => {
 	const allSales: SaleListType[] = [];
 	for (const month of months) {
 		if (Array.isArray(month.auctions)) {

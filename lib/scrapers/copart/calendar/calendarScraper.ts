@@ -1,7 +1,7 @@
 import 'dotenv/config';
 const copartCalendarUrl = 'https://www.copart.com/salesListResult';
 import puppeteer, { type GoToOptions } from 'puppeteer';
-import { CalendarMonthType, createEmptyCalendarList } from '@/lib/types/calendar-type';
+import { CalendarType, createEmptyCalendarList } from '@/lib/types/calendar-type';
 
 const pageOptions: GoToOptions = {
 	waitUntil: 'networkidle0',
@@ -9,7 +9,7 @@ const pageOptions: GoToOptions = {
 };
 
 export default async function scrapeCopartCalendar() {
-	const scrapedCalendarMonth: CalendarMonthType = createEmptyCalendarList();
+	const scrapedCalendarMonth: CalendarType = createEmptyCalendarList();
 	const options = {
 		headless: false, // set to true in production
 		args: ['--no-sandbox', '--disable-setuid-sandbox'],
@@ -17,7 +17,6 @@ export default async function scrapeCopartCalendar() {
 
 	const browser = await puppeteer.launch(options);
 	const page = await browser.newPage();
-	const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
 	try {
 		console.log('Launching Copart calendar page:', copartCalendarUrl);
@@ -39,7 +38,7 @@ export default async function scrapeCopartCalendar() {
 						nextSale: el.querySelector('[data-uname="saleslistNextsaleval"]')?.textContent?.trim() ?? null,
 						nextSaleUrl: (el.querySelector('[data-uname="saleslistNextsaleval"]') as HTMLAnchorElement | null)?.href ?? null,
 						numOfLots: null,
-						lotList: [],
+						saleId: null,
 						buyItNow: null,
 						scrapedAt: new Date().toISOString(),
 					};
@@ -49,15 +48,13 @@ export default async function scrapeCopartCalendar() {
 
 		console.log(`Scraped ${data.length} rows`);
 		scrapedCalendarMonth.auctions = data;
-		scrapedCalendarMonth.year = new Date().getFullYear();
-		scrapedCalendarMonth.month = months[new Date().getMonth()];
 		scrapedCalendarMonth.scrapedAt = new Date();
 		scrapedCalendarMonth.totalAuctions = data.length;
 		return scrapedCalendarMonth;
 	} catch (e) {
 		console.error('Scraping error:', e);
-		// Optionally return error info
-		return createEmptyCalendarList(); // or throw e;
+
+		return createEmptyCalendarList();
 	} finally {
 		await page.close();
 		await browser.close();

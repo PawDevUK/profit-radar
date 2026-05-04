@@ -1,6 +1,6 @@
 import { Schema } from 'mongoose';
 import { LotDetailsType } from '@/lib/types/lotDetails-type';
-import { SaleListType, CalendarMonthType } from '@/lib/types/calendar-type';
+import { SaleListType, CalendarType } from '@/lib/types/calendar-type';
 
 export const LotDetailsSchema = new Schema<LotDetailsType>(
 	{
@@ -70,7 +70,7 @@ export const SaleListSchema = new Schema<SaleListType>(
 	{ timestamps: true },
 );
 
-export const MonthSaleSchema = new Schema<CalendarMonthType>({
+export const MonthSaleSchema = new Schema<CalendarType>({
 	month: { type: String },
 	year: { type: Number },
 	scrapedAt: { type: Date },

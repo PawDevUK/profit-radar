@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import 'dotenv/config';
 import MonthSaleModel from './models';
-import { CalendarMonthType, SaleListType } from '@/lib/types/calendar-type';
+import { CalendarType, SaleListType } from '@/lib/types/calendar-type';
 import { LotDetailsType } from '@/lib/types/lotDetails-type';
 
 const MONGODB_URI = process.env.MONGODB_URI;
@@ -20,7 +20,7 @@ export async function connectDB() {
 	return cachedConnection;
 }
 
-export async function saveMonthSale(scrapedCalendarMonth: CalendarMonthType) {
+export async function saveCalendar(scrapedCalendarMonth: CalendarType) {
 	if (scrapedCalendarMonth) {
 		await connectDB();
 		const monthSaleList = new MonthSaleModel(scrapedCalendarMonth);
@@ -78,8 +78,8 @@ export async function getOneSalesList(id: string) {
 	let nestedAuction = null;
 	if (parentDoc && Array.isArray(parentDoc.auctions)) {
 		nestedAuction = parentDoc.auctions.find((auction: SaleListType) => {
-			if(auction._id){
-				 return auction._id.toString() === nestedId.toString()
+			if (auction._id) {
+				return auction._id.toString() === nestedId.toString();
 			}
 		});
 	}

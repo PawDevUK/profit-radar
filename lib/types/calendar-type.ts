@@ -1,8 +1,4 @@
-import { LotDetailsType } from '@/lib/types/lotDetails-type';
-
-export type CalendarMonthType = {
-	month: string | null;
-	year: number | null;
+export type CalendarType = {
 	scrapedAt: Date | null;
 	totalAuctions: number | null;
 	auctions: SaleListType[];
@@ -16,20 +12,19 @@ export type SaleListType = {
 	currentSaleUrl: string | null;
 	nextSale: string | null;
 	nextSaleUrl: string | null;
-	lotList: LotDetailsType[];
+	saleId: string | null;
 	numOfLots: number | null;
 	buyItNow: number | null;
 	scrapedAt: string | null;
 	_id?: string;
 };
 
-export const createEmptyCalendarList = (): CalendarMonthType => ({
-	month: null,
-	year: null,
+export const createEmptyCalendarList = (): CalendarType => ({
 	scrapedAt: null,
 	totalAuctions: null,
 	auctions: [],
 });
+
 export const createEmptySaleList = (): SaleListType => ({
 	saleTime: null,
 	saleName: null,
@@ -38,7 +33,7 @@ export const createEmptySaleList = (): SaleListType => ({
 	currentSaleUrl: null,
 	nextSale: null,
 	nextSaleUrl: null,
-	lotList: [],
+	saleId: null,
 	numOfLots: null,
 	buyItNow: null,
 	scrapedAt: null,

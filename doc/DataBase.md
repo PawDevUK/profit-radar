@@ -55,7 +55,7 @@ Model: [lib/db/models.ts](../lib/db/models.ts)
 | Function | Description |
 |---|---|
 | `connectDB()` | Connect to MongoDB (cached). Reads `MONGODB_URI` and `MONGODB_DB` from env. |
-| `saveMonthSale(data)` | Insert a new `MonthSale` document (from calendar scrape). |
+| `saveCalendar(data)` | Insert a new `MonthSale` document (from calendar scrape). |
 | `getAllSalesLists()` | Return all `MonthSale` documents. |
 | `saveSalesList(auctionId, lots)` | Update `lotList` and `numOfLots` on a specific nested auction by `_id`. |
 | `getOneSalesList(id)` | Find and return a single nested auction by its `_id`. |
@@ -67,7 +67,7 @@ Model: [lib/db/models.ts](../lib/db/models.ts)
 ```
 1. Scrape calendar
         ↓
-   saveMonthSale()  →  MonthSale document created in DB
+   saveCalendar()  →  MonthSale document created in DB
         ↓
 2. Scrape sale list (per auction URL)
         ↓
