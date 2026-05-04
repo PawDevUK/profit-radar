@@ -236,6 +236,14 @@ export const login_CSV = async function (landingUrl: string, targetUrl: string, 
 			timeoutMs: 90000,
 		});
 
+		if (filePath) {
+			console.log('---- Sending csv to conversion and to database ----');
+			await fetch(`http://localhost:3000/api?csvSalePath=${filePath}&id=${saleId}`, {
+				method: 'GET',
+				headers: { 'Content-Type': 'text/csv' },
+			});
+		}
+
 		console.log('Downloaded file:', filePath);
 	} catch (e) {
 		console.error(e);
@@ -244,9 +252,4 @@ export const login_CSV = async function (landingUrl: string, targetUrl: string, 
 			await browser.close();
 		}
 	}
-
-	await fetch(`http://localhost:3000/api?csvSalePath=${filePath}&id=${saleId}`, {
-		method: 'GET',
-		headers: { 'Content-Type': 'text/csv' },
-	});
 };
