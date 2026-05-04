@@ -128,7 +128,7 @@ async function waitForAnyNewFileStable(dir: string, startedAt: number, { timeout
 	throw new Error('Download timed out');
 }
 
-export const login_CSV = async function (landingUrl: string, targetUrl: string) {
+export const login_CSV = async function (landingUrl: string, targetUrl: string, saleId: string) {
 	const options = {
 		headless: false,
 		args: ['--no-sandbox', '--disable-setuid-sandbox'],
@@ -245,7 +245,7 @@ export const login_CSV = async function (landingUrl: string, targetUrl: string) 
 		}
 	}
 
-	await fetch(`http://localhost:3000/api?csvSalePath=${filePath}&id=23432423`, {
+	await fetch(`http://localhost:3000/api?csvSalePath=${filePath}&id=${saleId}`, {
 		method: 'GET',
 		headers: { 'Content-Type': 'text/csv' },
 	});
