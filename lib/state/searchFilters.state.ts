@@ -66,7 +66,7 @@ const initialSearchFilters: SearchFilters = {
 	vehicleTitleType: [],
 	vehicleConditionType: [],
 	odometerUnit: [],
-	odometerStatus: [],
+	odometerDescription: [],
 	primaryDamage: [],
 	cylinders: [],
 	color: [],

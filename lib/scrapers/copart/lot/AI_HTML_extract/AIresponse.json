@@ -141,7 +141,7 @@
 			"confidence": "high",
 			"notes": "Thumbnail img elements inside the PrimeNG galleria component. Use getAttribute('src') to get the URL. High-res URLs can be derived by replacing '_thb.jpg' with '_hrs.jpg'."
 		},
-		"copartLink": {
+		"lotUrl": {
 			"selector": null,
 			"strategy": "derived",
 			"label": null,
@@ -385,7 +385,7 @@
 			"confidence": "high",
 			"notes": "Derived from the odometer value text. Second non-empty token is the unit e.g. 'mi'."
 		},
-		"odometerStatus": {
+		"odometerDescription": {
 			"selector": "vehicle-information > .lot-details-information:nth-child(2) .lot-details-information-value span:first-child",
 			"strategy": "derived",
 			"label": null,
@@ -594,7 +594,7 @@
 			"confidence": "high",
 			"notes": "Thumbnail img elements inside the PrimeNG galleria component. Use getAttribute('src') to get the URL. High-res URLs can be derived by replacing '_thb.jpg' with '_hrs.jpg'."
 		},
-		"copartLink": {
+		"lotUrl": {
 			"selector": null,
 			"strategy": "derived",
 			"label": null,

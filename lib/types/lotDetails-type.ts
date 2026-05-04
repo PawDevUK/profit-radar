@@ -23,7 +23,7 @@ export interface LotDetailsType {
 	vehicleTitleType: string | null;
 	odometer: string | null;
 	odometerUnit: OdometerUnit | null;
-	odometerStatus: string | null;
+	odometerDescription: string | null;
 	primaryDamage: string | null;
 	cylinders: string | null;
 	color: string | null;
@@ -46,7 +46,7 @@ export interface LotDetailsType {
 		copart: string[] | null;
 		AiRepaired: Buffer[] | null;
 	};
-	copartLink: string | null;
+	lotUrl: string | null;
 }
 
 export function createLotObject() {
@@ -73,7 +73,7 @@ export function createLotObject() {
 		vehicleTitleType: null,
 		odometer: null,
 		odometerUnit: null,
-		odometerStatus: null,
+		odometerDescription: null,
 		primaryDamage: null,
 		cylinders: null,
 		color: null,
@@ -95,6 +95,6 @@ export function createLotObject() {
 			copart: null,
 			AiRepaired: null,
 		},
-		copartLink: null,
+		lotUrl: null,
 	};
 }

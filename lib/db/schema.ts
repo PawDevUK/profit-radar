@@ -26,7 +26,7 @@ export const LotDetailsSchema = new Schema<LotDetailsType>(
 		vehicleTitleType: { type: String },
 		odometer: { type: String },
 		odometerUnit: { type: String, enum: ['mi', 'km'] },
-		odometerStatus: { type: String },
+		odometerDescription: { type: String },
 		primaryDamage: { type: String },
 		cylinders: { type: String },
 		color: { type: String },

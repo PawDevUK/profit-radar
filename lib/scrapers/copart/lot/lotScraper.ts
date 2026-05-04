@@ -31,7 +31,7 @@ export const createEmptyLotDetails = (): ScrapedLotDetails => ({
 	vehicleTitleType: null,
 	odometer: null,
 	odometerUnit: null,
-	odometerStatus: null,
+	odometerDescription: null,
 	primaryDamage: null,
 	cylinders: null,
 	color: null,
@@ -53,7 +53,7 @@ export const createEmptyLotDetails = (): ScrapedLotDetails => ({
 		copart: [],
 		AiRepaired: [],
 	},
-	copartLink: null,
+	lotUrl: null,
 });
 
 const pageOptions: GoToOptions = {
@@ -113,7 +113,7 @@ export default async function scrapeLot(pageUrls: string[] | string) {
 			copart: convertLotImgURL(imageUrls),
 			AiRepaired: null,
 		};
-		lotObj.copartLink = pageUrls;
+		lotObj.lotUrl = pageUrls;
 
 		function remove$(key: string) {
 			const value = mutableLotObj[key];
@@ -132,9 +132,9 @@ export default async function scrapeLot(pageUrls: string[] | string) {
 		}
 
 		if (lotObj.odometer?.includes('Not')) {
-			lotObj.odometerStatus = 'Not Actual';
+			lotObj.odometerDescription = 'Not Actual';
 		} else if (lotObj.odometer?.includes('Actual')) {
-			lotObj.odometerStatus = 'Actual';
+			lotObj.odometerDescription = 'Actual';
 		}
 
 		if (typeof lotObj.odometer === 'string') {

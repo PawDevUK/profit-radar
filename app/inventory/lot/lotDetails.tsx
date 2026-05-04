@@ -59,7 +59,7 @@ export default function LotDetailsSection({ lotData }: { lotData: LotDetailsType
 					<Row label='Current Bid' value={`$${lotData.currentBid}`} />
 					{/* <Row label='Buy It Now' value={lotData.buyItNow} /> */}
 					<Row label='Auction Countdown' value={lotData.auctionCountdown} />
-					{/* <Row label='Copart Link' value={lotData.copartLink} /> */}
+					{/* <Row label='Copart Link' value={lotData.lotUrl} /> */}
 				</Section>
 			</SectionWrapper>
 
@@ -72,7 +72,7 @@ export default function LotDetailsSection({ lotData }: { lotData: LotDetailsType
 					<Row label='Vehicle Title Type' value={lotData.vehicleTitleType} />
 					<Row label='Odometer' value={lotData.odometer} />
 					{/* <Row label='Odometer Unit' value={lotData.odometerUnit} /> */}
-					<Row label='Odometer Status' value={lotData.odometerStatus} />
+					<Row label='Odometer Status' value={lotData.odometerDescription} />
 					<Row label='Engine Verified' value={lotData.engineVerified} />
 					<Row label='Engine Verified Note' value={lotData.engineVerifiedNote} />
 					<Row label='Engine Status' value={lotData.engineStatus} />

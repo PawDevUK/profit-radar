@@ -64,8 +64,8 @@ const results = await batchParseCarTitles(titles);
 import { enhanceCarDataWithAIParsing } from '@/lib/ai-title-parser';
 
 const cars = [
- { lotNumber: '12345', title: '2017 ford transit t-150', price: '$10,000' },
- { lotNumber: '12346', title: '2020 kia telluride ex', price: '$25,000' },
+ { lotInv: '12345', title: '2017 ford transit t-150', price: '$10,000' },
+ { lotInv: '12346', title: '2020 kia telluride ex', price: '$25,000' },
 ];
 
 const enhanced = await enhanceCarDataWithAIParsing(cars);

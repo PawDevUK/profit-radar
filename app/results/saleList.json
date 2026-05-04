@@ -21,7 +21,7 @@
 		"vehicleTitleType": "",
 		"odometer": 116628,
 		"odometerUnit": "mi",
-		"odometerStatus": "ACTUAL",
+		"odometerDescription": "ACTUAL",
 		"primaryDamage": "Front End Damage",
 		"cylinders": "0",
 		"color": "",
@@ -40,7 +40,7 @@
 		"auctionName": "",
 		"auctionCountdown": "Auction in 0D 16H 19min",
 		"images": ["https://picsum.photos/200"],
-		"copartLink": ""
+		"lotUrl": ""
 	},
 	{
 		"title": "CHEVROLET SILVERADO 1500",
@@ -64,7 +64,7 @@
 		"vehicleTitleType": "",
 		"odometer": 45230,
 		"odometerUnit": "mi",
-		"odometerStatus": "ACTUAL",
+		"odometerDescription": "ACTUAL",
 		"primaryDamage": "Side Damage",
 		"cylinders": "0",
 		"color": "",
@@ -83,7 +83,7 @@
 		"auctionName": "",
 		"auctionCountdown": "Auction in 1D 8H 45min",
 		"images": ["https://picsum.photos/200"],
-		"copartLink": ""
+		"lotUrl": ""
 	},
 	{
 		"title": "HONDA CIVIC",
@@ -107,7 +107,7 @@
 		"vehicleTitleType": "",
 		"odometer": 78341,
 		"odometerUnit": "mi",
-		"odometerStatus": "ACTUAL",
+		"odometerDescription": "ACTUAL",
 		"primaryDamage": "Rear End Damage",
 		"cylinders": "0",
 		"color": "",
@@ -126,7 +126,7 @@
 		"auctionName": "",
 		"auctionCountdown": "Auction in 2D 12H 30min",
 		"images": ["https://picsum.photos/200"],
-		"copartLink": ""
+		"lotUrl": ""
 	},
 	{
 		"title": "TOYOTA CAMRY",
@@ -150,7 +150,7 @@
 		"vehicleTitleType": "",
 		"odometer": 28950,
 		"odometerUnit": "mi",
-		"odometerStatus": "ACTUAL",
+		"odometerDescription": "ACTUAL",
 		"primaryDamage": "Minor Damage",
 		"cylinders": "0",
 		"color": "",
@@ -169,7 +169,7 @@
 		"auctionName": "",
 		"auctionCountdown": "Auction in 0D 4H 15min",
 		"images": ["https://picsum.photos/200"],
-		"copartLink": ""
+		"lotUrl": ""
 	},
 	{
 		"title": "FORD F-150",
@@ -193,7 +193,7 @@
 		"vehicleTitleType": "",
 		"odometer": 156789,
 		"odometerUnit": "mi",
-		"odometerStatus": "ACTUAL",
+		"odometerDescription": "ACTUAL",
 		"primaryDamage": "Front End Damage",
 		"cylinders": "0",
 		"color": "",
@@ -212,7 +212,7 @@
 		"auctionName": "",
 		"auctionCountdown": "Auction in 3D 6H 20min",
 		"images": ["https://picsum.photos/200"],
-		"copartLink": ""
+		"lotUrl": ""
 	},
 	{
 		"title": "BMW X3",
@@ -236,7 +236,7 @@
 		"vehicleTitleType": "",
 		"odometer": 67890,
 		"odometerUnit": "mi",
-		"odometerStatus": "ACTUAL",
+		"odometerDescription": "ACTUAL",
 		"primaryDamage": "Side Damage",
 		"cylinders": "0",
 		"color": "",
@@ -255,7 +255,7 @@
 		"auctionName": "",
 		"auctionCountdown": "Auction in 1D 14H 10min",
 		"images": ["https://picsum.photos/200"],
-		"copartLink": ""
+		"lotUrl": ""
 	},
 	{
 		"title": "JEEP GRAND CHEROKEE",
@@ -279,7 +279,7 @@
 		"vehicleTitleType": "",
 		"odometer": 54321,
 		"odometerUnit": "mi",
-		"odometerStatus": "ACTUAL",
+		"odometerDescription": "ACTUAL",
 		"primaryDamage": "Rear End Damage",
 		"cylinders": "0",
 		"color": "",
@@ -298,7 +298,7 @@
 		"auctionName": "",
 		"auctionCountdown": "Auction in 2D 9H 55min",
 		"images": ["https://picsum.photos/200"],
-		"copartLink": ""
+		"lotUrl": ""
 	},
 	{
 		"title": "MERCEDES-BENZ C-CLASS",
@@ -322,7 +322,7 @@
 		"vehicleTitleType": "",
 		"odometer": 98765,
 		"odometerUnit": "mi",
-		"odometerStatus": "ACTUAL",
+		"odometerDescription": "ACTUAL",
 		"primaryDamage": "Minor Damage",
 		"cylinders": "0",
 		"color": "",
@@ -341,7 +341,7 @@
 		"auctionName": "",
 		"auctionCountdown": "Auction in 0D 22H 40min",
 		"images": ["https://picsum.photos/200"],
-		"copartLink": ""
+		"lotUrl": ""
 	},
 	{
 		"title": "NISSAN ALTIMA",
@@ -365,7 +365,7 @@
 		"vehicleTitleType": "",
 		"odometer": 12345,
 		"odometerUnit": "mi",
-		"odometerStatus": "ACTUAL",
+		"odometerDescription": "ACTUAL",
 		"primaryDamage": "Front End Damage",
 		"cylinders": "0",
 		"color": "",
@@ -384,7 +384,7 @@
 		"auctionName": "",
 		"auctionCountdown": "Auction in 4D 2H 25min",
 		"images": ["https://picsum.photos/200"],
-		"copartLink": ""
+		"lotUrl": ""
 	},
 	{
 		"title": "VOLKSWAGEN JETTA",
@@ -408,7 +408,7 @@
 		"vehicleTitleType": "",
 		"odometer": 145678,
 		"odometerUnit": "mi",
-		"odometerStatus": "ACTUAL",
+		"odometerDescription": "ACTUAL",
 		"primaryDamage": "Side Damage",
 		"cylinders": "0",
 		"color": "",
@@ -427,6 +427,6 @@
 		"auctionName": "",
 		"auctionCountdown": "Auction in 1D 18H 5min",
 		"images": ["https://picsum.photos/200"],
-		"copartLink": ""
+		"lotUrl": ""
 	}
 ]

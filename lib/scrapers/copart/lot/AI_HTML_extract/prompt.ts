@@ -65,7 +65,7 @@ interface LotDetails {
   vehicleTitleType: string;   // Description part of titleCode e.g. "Cert Of Salvage > 75% Damage"
   odometer: number;           // Numeric odometer reading
   odometerUnit: string;       // Unit e.g. "mi" or "km"
-  odometerStatus: string;     // Status e.g. "Not Actual", "Actual"
+  odometerDescription: string;     // Status e.g. "Not Actual", "Actual"
   primaryDamage: string;      // Primary damage type e.g. "Front End"
   cylinders: string;          // Number of cylinders e.g. "4"
   color: string;              // Color e.g. "Charcoal"
@@ -87,7 +87,7 @@ interface LotDetails {
   copart:[],
   AiRepaired:[]
   };           // Array of thumbnail image src URLs
-  copartLink: string;         // Full page URL via page.url()
+  lotUrl: string;         // Full page URL via page.url()
 }
 
 ═══════════════════════════════════════════════════════════
@@ -207,7 +207,7 @@ odometerUnit:
   selector -> vehicle-information > .lot-details-information:nth-child(2) .lot-details-information-value
   extract  -> el.innerText.trim().split(/\s+/)[1] || "mi"
 
-odometerStatus:
+odometerDescription:
   selector -> vehicle-information > .lot-details-information:nth-child(2) .lot-details-information-value span:first-child
   extract  -> el.innerText.trim()
 
@@ -288,7 +288,7 @@ images:
   method   -> $$eval
   extract  -> els.map(el => el.getAttribute("src")).filter(Boolean)
 
-copartLink:
+lotUrl:
   selector -> null
   method   -> page.url
   extract  -> page.url()
