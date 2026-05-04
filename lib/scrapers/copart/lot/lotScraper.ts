@@ -17,7 +17,8 @@ export const createEmptyLotDetails = (): ScrapedLotDetails => ({
 	bodyStyle: null,
 	runAndDrive: null,
 	vin: null,
-	lotNumber: null,
+	lotInv: null,
+	saleId: null,
 	laneItem: null,
 	saleName: null,
 	location: null,
@@ -125,9 +126,9 @@ export default async function scrapeLot(pageUrls: string[] | string) {
 		remove$('currentBid');
 
 		if (lotObj.odometer?.includes('km')) {
-			lotObj.odometerUnit = 'km';
+			lotObj.odometerUnit = 'km' as const;
 		} else if (lotObj.odometer?.includes('mi') || lotObj.odometer?.includes('miles')) {
-			lotObj.odometerUnit = 'miles';
+			lotObj.odometerUnit = 'mi' as const;
 		}
 
 		if (lotObj.odometer?.includes('Not')) {
@@ -140,7 +141,7 @@ export default async function scrapeLot(pageUrls: string[] | string) {
 			lotObj.odometer = lotObj.odometer.match(/[\d,]+/)?.[0] ?? null;
 		}
 		console.log('------------------');
-		console.log('Scraped lot', lotObj.lotNumber);
+		console.log('Scraped lot', lotObj.lotInv);
 		console.log(lotObj.title);
 		console.log('------------------');
 		return lotObj;

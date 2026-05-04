@@ -52,7 +52,7 @@ interface LotDetails {
   bodyStyle: string;          // Body style e.g. "Sedan"
   runAndDrive: boolean;       // Whether vehicle runs and drives — often absent
   vin: string;                // 17-character VIN
-  lotNumber: string;          // Copart lot number
+  lotInv: string;          // Copart lot number
   laneItem: string;           // Lane/Item code e.g. "B/2574"
   saleName: string;           // Sale location name e.g. "DC - WASHINGTON DC"
   location: string;           // Physical location display name
@@ -170,7 +170,7 @@ vin:
   fallback -> span.p-ml-1.ng-star-inserted (header VIN block, sibling of copy button)
   extract  -> el.innerText.trim()
 
-lotNumber:
+lotInv:
   selector -> .lh-1-4.p-mt-3 span.p-ml-1
   extract  -> el.innerText.trim()
 

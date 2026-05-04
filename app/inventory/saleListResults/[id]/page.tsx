@@ -118,7 +118,7 @@ export default function SaleListResultsPage() {
 								key={index}
 								item={car}
 								onClick={() => {
-									router.push(`/inventory/lot/${car.lotNumber}`);
+									router.push(`/inventory/lot/${car.lotInv}`);
 								}}></Card>
 						))}
 					</div>

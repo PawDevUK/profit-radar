@@ -52,7 +52,7 @@ const initialSearchFilters: SearchFilters = {
 	bodyStyle: [],
 	runAndDrive: [],
 	vin: [],
-	lotNumber: [],
+	lotInv: [],
 	laneItem: [],
 	saleName: [],
 	location: [],

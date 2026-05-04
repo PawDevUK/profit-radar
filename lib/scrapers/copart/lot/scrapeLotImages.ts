@@ -3,7 +3,7 @@ import convertLotImgURL from './parseImgUrls.js';
 import _ from 'lodash';
 
 interface scrapeImagesType {
-	lotNumber: string | null;
+	lotInv: string | null;
 	images: {
 		copart: string[] | null;
 		AiRepaired: Buffer[] | null;
@@ -11,7 +11,7 @@ interface scrapeImagesType {
 }
 
 export const createEmptyLotDetails = (): scrapeImagesType => ({
-	lotNumber: null,
+	lotInv: null,
 	images: {
 		copart: [],
 		AiRepaired: [],
@@ -44,7 +44,7 @@ export default async function scrapeLotImages(pageUrls: string[] | string) {
 		};
 
 		console.log('------------------');
-		console.log('Scraped lot', lotObj.lotNumber);
+		console.log('Scraped lot', lotObj.lotInv);
 		console.log('------------------');
 		return lotObj;
 	}

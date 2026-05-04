@@ -5,7 +5,7 @@ import puppeteer from 'puppeteer';
 // Note: Using puppeteer with stealth bypass via launch args instead of plugin
 
 export type Car = {
-	lotNumber: string;
+	lotInv: string;
 	title: string;
 	year: string;
 	make: string;
@@ -30,7 +30,7 @@ export type Car = {
 };
 
 export type OtomotoCheckResult = {
-	lotNumber: string;
+	lotInv: string;
 	title: string;
 	make: string;
 	model: string;
@@ -48,7 +48,7 @@ export type OtomotoListingCheck = {
 	odometer: string;
 	listed_otomoto: boolean;
 	listing_count?: number;
-	lotNumber: string;
+	lotInv: string;
 	checkedAt: string;
 };
 
@@ -310,7 +310,7 @@ export async function checkAllCarsAndSaveToFile(): Promise<OtomotoListingCheck[]
 					odometer: car.odometer,
 					listed_otomoto: verification.found,
 					listing_count: verification.count,
-					lotNumber: car.lotNumber,
+					lotInv: car.lotInv,
 					checkedAt: timestamp,
 				};
 
@@ -326,7 +326,7 @@ export async function checkAllCarsAndSaveToFile(): Promise<OtomotoListingCheck[]
 					odometer: car.odometer,
 					listed_otomoto: false,
 					listing_count: 0,
-					lotNumber: car.lotNumber,
+					lotInv: car.lotInv,
 					checkedAt: timestamp,
 				};
 
@@ -379,7 +379,7 @@ export async function checkAllCarsOnOtomoto(): Promise<OtomotoCheckResult[]> {
 				const otomotoResult = await checkCarOnOtomoto(make, model);
 
 				results.push({
-					lotNumber: car.lotNumber,
+					lotInv: car.lotInv,
 					title: car.title,
 					make,
 					model,
@@ -390,7 +390,7 @@ export async function checkAllCarsOnOtomoto(): Promise<OtomotoCheckResult[]> {
 				});
 			} catch (error) {
 				results.push({
-					lotNumber: car.lotNumber,
+					lotInv: car.lotInv,
 					title: car.title,
 					make: car.make,
 					model: car.model,

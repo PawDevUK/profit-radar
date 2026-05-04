@@ -1,5 +1,5 @@
 export type OtomotoCheckResult = {
-	lotNumber: string;
+	lotInv: string;
 	title: string;
 	make: string;
 	model: string;
@@ -11,7 +11,7 @@ export type OtomotoCheckResult = {
 };
 
 export type OtomotoCheckRecord = {
-	lotNumber: string;
+	lotInv: string;
 	listed_otomoto: boolean;
 	listing_count: number;
 };

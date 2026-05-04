@@ -50,7 +50,7 @@ export default function LotDetailsSection({ lotData }: { lotData: LotDetailsType
 				</Section>
 
 				<Section title='Auction Information'>
-					<Row label='Lot Number' value={lotData.lotNumber} />
+					<Row label='Lot Number' value={lotData.lotInv} />
 					{/* <Row label='Lane Item' value={lotData.laneItem} /> */}
 					{/* <Row label='Sale Name' value={lotData.saleName} /> */}
 					<Row label='Location' value={lotData.location} />

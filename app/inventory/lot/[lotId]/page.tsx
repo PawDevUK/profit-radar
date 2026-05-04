@@ -14,7 +14,7 @@ export default function LotDetailsPage() {
 	const lotId = params.lotId as string;
 	const allCars = allCars_State((state) => state.allCars);
 	const isLoading = allCars_State((state) => state.isLoading);
-	const car = allCars.find((c) => c.lotNumber === lotId) ?? null;
+	const car = allCars.find((c) => c.lotInv === lotId) ?? null;
 	const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 	const [AiImage, setAiImage] = useState(false);
 	const [aiImages] = useState<string[]>([]);

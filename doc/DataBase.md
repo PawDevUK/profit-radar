@@ -30,7 +30,7 @@ CalendarSale (collection)
     ├── buyItNow: Number
     └── lotList: LotDetails[]
         ├── title, year, make, model, trim, bodyStyle
-        ├── vin, lotNumber, laneItem, saleName, location
+        ├── vin, lotInv, laneItem, saleName, location
         ├── odometer, odometerUnit (mi | km), odometerStatus
         ├── primaryDamage, color, hasKey
         ├── runAndDrive, engineVerified, engineVerifiedNote, engineStatus
