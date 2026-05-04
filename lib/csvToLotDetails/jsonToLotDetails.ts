@@ -1,24 +1,35 @@
 import { createLotObject, LotDetailsType } from '../types/lotDetails-type';
 import { camelCase } from 'lodash';
-import output from './output.json';
 
-export async function convertJsonSalesList(saleId: string) {
+export async function convertJsonSalesList(saleId: string, json) {
 	const lotDetailsArray: LotDetailsType[] = [];
+	const trimOdometer = (odo: string) => {
+		return odo.replace(/[^0-9,]/g, '');
+	};
+	if (json.length > 0) {
+		json.forEach((lot) => {
+			let lotDetails: LotDetailsType = createLotObject();
 
-	output.forEach((lot) => {
-		let lotDetails: LotDetailsType = createLotObject();
-
-		Object.keys(lot).forEach((property) => {
-			lotDetails = {
-				...lotDetails,
-				saleId,
-				[camelCase(property)]: (lot as Record<string, any>)[property],
-			};
+			Object.keys(lot).forEach((property) => {
+				if (property === 'Odometer') {
+					lotDetails = {
+						...lotDetails,
+						odometer: trimOdometer(lot[property]),
+					};
+				} else {
+					lotDetails = {
+						...lotDetails,
+						saleId,
+						[camelCase(property)]: (lot as Record<string, any>)[property],
+					};
+				}
+			});
+			lotDetailsArray.push(lotDetails);
 		});
-		lotDetailsArray.push(lotDetails);
-	});
-	console.log(lotDetailsArray);
-	return lotDetailsArray;
+		return lotDetailsArray;
+	} else {
+		throw console.error('Json object is empty!');
+	}
 
 	// keys need to be converted into camelcase.
 	// Json needs to be converted into lotDetails
