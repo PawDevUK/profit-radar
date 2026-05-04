@@ -137,6 +137,7 @@ export const login_CSV = async function (landingUrl: string, targetUrl: string) 
 	let browser: { close: () => Promise<void> } | null = null;
 	const timeoutNumber = 200000;
 	const downloadPath = path.join(process.cwd(), 'downloads');
+	let filePath;
 
 	if (!existsSync(downloadPath)) {
 		mkdirSync(downloadPath, { recursive: true });
@@ -231,7 +232,7 @@ export const login_CSV = async function (landingUrl: string, targetUrl: string) 
 
 		await Promise.allSettled([signin.waitForNavigation({ waitUntil: 'domcontentloaded', timeout: 15000 }), humanClickHandle(signin, exportHandle)]);
 
-		const filePath = await waitForAnyNewFileStable(downloadPath, startedAt, {
+		filePath = await waitForAnyNewFileStable(downloadPath, startedAt, {
 			timeoutMs: 90000,
 		});
 
@@ -243,4 +244,9 @@ export const login_CSV = async function (landingUrl: string, targetUrl: string) 
 			await browser.close();
 		}
 	}
+
+	await fetch(`http://localhost:3000/api?csvSalePath=${filePath}&id=23432423`, {
+		method: 'GET',
+		headers: { 'Content-Type': 'text/csv' },
+	});
 };
