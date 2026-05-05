@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { convertJsonSalesList } from '@/lib/csvToLotDetails/jsonToLotDetails';
 import { convertCSVtoJSON } from '@/lib/csvToLotDetails/csvToJson';
-import { v4 as uuidv4 } from 'uuid';
-import output from '@/lib/csvToLotDetails/output.json';
 import { saveLots } from '@/lib/db/db';
 
 export async function GET(req: NextRequest) {
