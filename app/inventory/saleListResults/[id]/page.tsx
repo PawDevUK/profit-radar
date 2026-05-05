@@ -84,7 +84,6 @@ export default function SaleListResultsPage() {
 
 	const pages = useMemo(() => getVisiblePages(totalPages, currentPage), [totalPages, currentPage]);
 	const visibleCars = filteredCars.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
-	console.log(visibleCars);
 	if (isLoading) {
 		return (
 			<div className='min-h-screen bg-gray-50 flex items-center justify-center'>
