@@ -29,7 +29,7 @@ export default async function scrapeLotImages(pageUrls: string[] | string) {
 		console.log('Launching page:', pageUrls);
 		await page.content();
 		const lotObj = createEmptyLotDetails();
-		await page.waitForSelector('.img-responsive.p-galleria-img-thumbnail', { timeout: 1000 });
+		await page.waitForSelector('.img-responsive.p-galleria-img-thumbnail', { timeout: 10000 });
 		console.log('Starting scrapping images.');
 		// extract image URLs
 		const imageUrls = await page.$$eval('.img-responsive.p-galleria-img-thumbnail', (images) => images.map((img) => img.getAttribute('src') || '').filter(Boolean));
