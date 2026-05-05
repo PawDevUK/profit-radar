@@ -56,7 +56,7 @@ export interface LotDetailsType {
 	lotUrl: string | null;
 }
 
-export function createLotObject() {
+export function createLotObject(): LotDetailsType {
 	return {
 		title: null,
 		year: null,
@@ -96,7 +96,13 @@ export function createLotObject() {
 		lastUpdated: null,
 		currentBid: null,
 		buyItNow: null,
+		myBid: null,
+		itemNumber: null,
+		estRetailValue: null,
 		auctionName: null,
+		saleLight: null,
+		announcements: null,
+		autoGrade: null,
 		auctionCountdown: null,
 		images: {
 			copart: null,
