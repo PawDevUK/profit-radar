@@ -1,8 +1,3 @@
-/**
- * AI-powered car title parser using OpenAI
- * Accurately extracts year, make, model, trim, and body type from car titles
- */
-
 interface ParsedCarTitle {
 	year: string;
 	make: string;
@@ -11,10 +6,6 @@ interface ParsedCarTitle {
 	title: string;
 }
 
-/**
- * Parse car title using OpenAI API
- * Requires OPENAI_API_KEY environment variable
- */
 export async function parseCarUrlWithAI(url: string): Promise<ParsedCarTitle> {
 	const apiKey = process.env.OPENAI_API_KEY;
 
@@ -34,7 +25,7 @@ export async function parseCarUrlWithAI(url: string): Promise<ParsedCarTitle> {
 				messages: [
 					{
 						role: 'system',
-						content: `You are a url parser. Extract structured information from url. It is a link to the detailed page of the car. In this url are year, make, mode, trim 
+						content: `You are a url parser. Extract structured information from url. It is a link to the detailed page of a lot. In this url are year, make, mode, trim, title. 
 Return ONLY a JSON object with these fields:
 - year: 4-digit year
 - make: Car manufacturer (e.g., Ford, Kia, BMW)
