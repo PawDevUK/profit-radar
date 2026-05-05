@@ -34,9 +34,11 @@ export async function saveCalendar(scrapedCalendarMonth: CalendarType) {
 
 export async function getAllSalesLists() {
 	await connectDB();
-	const allSalesLists = CalendarSaleModel.find({});
-
-	return allSalesLists;
+	return await CalendarSaleModel.find({});
+}
+export async function getAllLots() {
+	await connectDB();
+	return await LotDetailsModel.find({});
 }
 
 export async function saveLots(lots: LotDetailsType[]) {
