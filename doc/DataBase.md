@@ -32,7 +32,7 @@ CalendarSale (collection)
         ├── title, year, make, model, trim, bodyStyle
         ├── vin, lotInv, laneItem, saleName, location
         ├── odometer, odometerUnit (mi | km), odometerDescription
-        ├── primaryDamage, color, hasKey
+        ├── damageDescription, color, hasKey
         ├── runAndDrive, engineVerified, engineVerifiedNote, engineStatus
         ├── transmissionEngages, transmissionNote
         ├── titleCode, vehicleTitleType

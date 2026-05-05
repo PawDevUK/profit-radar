@@ -12,7 +12,7 @@ Data is stored in a single `CalendarSale` MongoDB collection with nested documen
 
 - **CalendarSale**: Top-level document per scraped calendar month. Fields: `month`, `year`, `scrapedAt`, `totalAuctions`, `auctions[]`.
 - **SaleList** (nested in `auctions[]`): One entry per auction event. Fields: `saleTime`, `saleName`, `currentSale`, `currentSaleUrl`, `nextSale`, `nextSaleUrl`, `numOfLots`, `lotList[]`.
-- **LotDetails** (nested in `lotList[]`): Full lot spec. Fields: `vin`, `lotInv`, `make`, `model`, `year`, `trim`, `primaryDamage`, `odometer`, `currentBid`, `buyItNow`, `images`, and more.
+- **LotDetails** (nested in `lotList[]`): Full lot spec. Fields: `vin`, `lotInv`, `make`, `model`, `year`, `trim`, `damageDescription`, `odometer`, `currentBid`, `buyItNow`, `images`, and more.
 
 See [DataBase.md](DataBase.md) for the full schema reference.
 
