@@ -37,6 +37,5 @@ export async function GET(req: NextRequest) {
 	return NextResponse.json({
 		numberToCovert,
 		numberProcessed,
-		skipped: lotsNoUrl.length,
 	});
 }
