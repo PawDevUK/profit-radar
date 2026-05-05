@@ -1,4 +1,5 @@
 import 'dotenv/config';
+// I have canceled proxy service as it is causing more problems that it helps
 
 export interface ProxyConfig {
 	headless: boolean;
