@@ -1,3 +1,5 @@
+import { NextParsedUrlQuery } from 'next/dist/server/request-meta';
+
 export type OdometerUnit = 'mi' | 'km';
 
 export interface LotDetailsType {
@@ -24,7 +26,7 @@ export interface LotDetailsType {
 	odometer: string | null;
 	odometerUnit: OdometerUnit | null;
 	odometerDescription: string | null;
-	primaryDamage: string | null;
+	damageDescription: string | null;
 	cylinders: string | null;
 	color: string | null;
 	hasKey: boolean | null;
@@ -39,7 +41,13 @@ export interface LotDetailsType {
 	lastUpdated: string | null;
 	currentBid: string | null;
 	buyItNow: string | null;
+	myBid: string | null;
+	itemNumber: string | null;
+	estRetailValue: string | null;
 	auctionName: string | null;
+	saleLight: string | null;
+	announcements: string | null;
+	autoGrade: string | NextParsedUrlQuery;
 	auctionCountdown: string | null;
 	_id?: string;
 	images: {
@@ -74,7 +82,7 @@ export function createLotObject() {
 		odometer: null,
 		odometerUnit: null,
 		odometerDescription: null,
-		primaryDamage: null,
+		damageDescription: null,
 		cylinders: null,
 		color: null,
 		hasKey: null,

@@ -27,7 +27,7 @@ export const LotDetailsSchema = new Schema<LotDetailsType>(
 		odometer: { type: String },
 		odometerUnit: { type: String, enum: ['mi', 'km'] },
 		odometerDescription: { type: String },
-		primaryDamage: { type: String },
+		damageDescription: { type: String },
 		cylinders: { type: String },
 		color: { type: String },
 		hasKey: { type: String, default: false },
@@ -41,9 +41,16 @@ export const LotDetailsSchema = new Schema<LotDetailsType>(
 		notes: { type: String },
 		lastUpdated: { type: String },
 		currentBid: { type: String },
-		buyItNow: { type: Number, default: null },
+		buyItNow: { type: String, default: null },
+		myBid: { type: String },
+		itemNumber: { type: String },
+		estRetailValue: { type: String },
 		auctionName: { type: String },
+		saleLight: { type: String },
+		announcements: { type: String },
+		autoGrade: { type: String },
 		auctionCountdown: { type: String },
+		lotUrl: { type: String },
 		images: [
 			{
 				copart: { type: [String] }, // Keep as URL or change to Buffer if storing binary
