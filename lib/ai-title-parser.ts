@@ -8,20 +8,18 @@ interface ParsedCarTitle {
 	make: string;
 	model: string;
 	trim?: string;
-	bodyType?: string;
-	rawTitle: string;
+	title: string;
 }
 
 /**
  * Parse car title using OpenAI API
  * Requires OPENAI_API_KEY environment variable
  */
-export async function parseCarTitleWithAI(title: string): Promise<ParsedCarTitle> {
+export async function parseCarUrlWithAI(url: string): Promise<ParsedCarTitle> {
 	const apiKey = process.env.OPENAI_API_KEY;
 
 	if (!apiKey) {
 		console.warn('OPENAI_API_KEY not set, falling back to basic parsing');
-		return fallbackParse(title);
 	}
 
 	try {
@@ -36,23 +34,25 @@ export async function parseCarTitleWithAI(title: string): Promise<ParsedCarTitle
 				messages: [
 					{
 						role: 'system',
-						content: `You are a car title parser. Extract structured information from car titles.
+						content: `You are a url parser. Extract structured information from url. It is a link to the detailed page of the car. In this url are year, make, mode, trim 
 Return ONLY a JSON object with these fields:
 - year: 4-digit year
 - make: Car manufacturer (e.g., Ford, Kia, BMW)
 - model: Car model WITHOUT trim (e.g., Transit, Telluride, 3 Series)
 - trim: Trim level if present (e.g., EX, T-150, XLT, Limited)
-- bodyType: Vehicle type if mentioned (e.g., Sedan, SUV, Van, Truck)
+- title: This is combine year, make, model
 
 Examples:
-"2017 ford transit t-150" → {"year":"2017","make":"Ford","model":"Transit","trim":"T-150","bodyType":"Van"}
-"2020 kia telluride ex" → {"year":"2020","make":"Kia","model":"Telluride","trim":"EX","bodyType":"SUV"}
-"2014 FORD E150 UTILITY / SERVICE VAN" → {"year":"2014","make":"Ford","model":"E-150","trim":null,"bodyType":"Van"}
-"2019 CHEVROLET SILVERADO 1500 LT CREW CAB" → {"year":"2019","make":"Chevrolet","model":"Silverado 1500","trim":"LT","bodyType":"Truck"}`,
+"https://www.copart.com/lot/99835775/salvage-2023-honda-civic-sport-ct-hartford" → {"year":"2023","make":"honda","model":"civic","trim":"sport","title":"2023 Honda Civic"}
+"https://www.copart.com/lot/98765432/salvage-2022-toyota-camry-le-ny-albany" → {"year":"2022","make":"toyota","model":"camry","trim":"le","title":"2022 Toyota Camry"}
+"https://www.copart.com/lot/97654321/salvage-2021-ford-f-150-xlt-tx-houston" → {"year":"2021","make":"ford","model":"f-150","trim":"xlt","title":"2021 Ford F-150"}
+"https://www.copart.com/lot/96543210/salvage-2023-chevrolet-silverado-1500-lt-ca-los-angeles" → {"year":"2023","make":"chevrolet","model":"silverado-1500","trim":"lt","title":"2023 Chevrolet Silverado 1500"}
+"https://www.copart.com/lot/95432109/salvage-2020-kia-telluride-ex-fl-miami" → {"year":"2020","make":"kia","model":"telluride","trim":"ex","title":"2020 Kia Telluride"}
+`,
 					},
 					{
 						role: 'user',
-						content: title,
+						content: url,
 					},
 				],
 				temperature: 0.1,
@@ -75,107 +75,20 @@ Examples:
 		const parsed = JSON.parse(content.trim());
 
 		return {
-			year: parsed.year || '',
-			make: parsed.make || '',
-			model: parsed.model || '',
+			year: parsed.year || null,
+			make: parsed.make || null,
+			model: parsed.model || null,
 			trim: parsed.trim || undefined,
-			bodyType: parsed.bodyType || undefined,
-			rawTitle: title,
+			title: parsed.title || null,
 		};
 	} catch (error) {
 		console.error('AI parsing failed, falling back to basic parsing:', error);
-		return fallbackParse(title);
+		return {
+			year: '',
+			make: '',
+			model: '',
+			trim: undefined,
+			title: '',
+		};
 	}
-}
-
-/**
- * Fallback parser when AI is not available
- * Simple regex-based parsing
- */
-function fallbackParse(title: string): ParsedCarTitle {
-	if (!title || typeof title !== 'string') {
-		return { year: '', make: '', model: '', rawTitle: title };
-	}
-
-	const parts = title.trim().split(/\s+/);
-
-	const year = parts.length > 0 && /^\d{4}$/.test(parts[0]) ? parts[0] : '';
-	const make = parts.length > 1 ? parts[1] : '';
-	const model = parts.length > 2 ? parts[2] : '';
-
-	// Common trim patterns
-	const trimPatterns = /\b(EX|LX|LT|LS|SE|XL|XLT|LIMITED|SPORT|BASE|PREMIUM|S|SV|SR|SL|T-\d+)\b/i;
-	const trimMatch = title.match(trimPatterns);
-	const trim = trimMatch ? trimMatch[0] : undefined;
-
-	// Common body type patterns
-	const bodyTypePatterns = /\b(SEDAN|SUV|VAN|TRUCK|COUPE|HATCHBACK|WAGON|CONVERTIBLE|CROSSOVER)\b/i;
-	const bodyTypeMatch = title.match(bodyTypePatterns);
-	const bodyType = bodyTypeMatch ? bodyTypeMatch[0] : undefined;
-
-	return {
-		year,
-		make,
-		model: trim && model.includes(trim) ? model.replace(trim, '').trim() : model,
-		trim,
-		bodyType,
-		rawTitle: title,
-	};
-}
-
-/**
- * Batch parse multiple car titles
- * Uses rate limiting to avoid API throttling
- */
-export async function batchParseCarTitles(titles: string[], delayMs: number = 100): Promise<ParsedCarTitle[]> {
-	const results: ParsedCarTitle[] = [];
-
-	for (let i = 0; i < titles.length; i++) {
-		const parsed = await parseCarTitleWithAI(titles[i]);
-		results.push(parsed);
-
-		// Add delay between requests to avoid rate limiting
-		if (i < titles.length - 1) {
-			await new Promise((resolve) => setTimeout(resolve, delayMs));
-		}
-
-		// Progress logging
-		if ((i + 1) % 10 === 0) {
-			console.log(`Parsed ${i + 1}/${titles.length} titles...`);
-		}
-	}
-
-	return results;
-}
-
-/**
- * Update car data with AI-parsed title information
- */
-export async function enhanceCarDataWithAIParsing(cars: any[]): Promise<any[]> {
-	console.log(`Enhancing ${cars.length} cars with AI title parsing...`);
-
-	const enhanced = await Promise.all(
-		cars.map(async (car, index) => {
-			if (!car.title) return car;
-
-			const parsed = await parseCarTitleWithAI(car.title);
-
-			// Add delay to avoid rate limiting (100ms between requests)
-			if (index > 0 && index % 10 === 0) {
-				await new Promise((resolve) => setTimeout(resolve, 1000));
-			}
-
-			return {
-				...car,
-				year: parsed.year || car.year,
-				make: parsed.make || car.make,
-				model: parsed.model || car.model,
-				trim: parsed.trim || car.trim,
-				bodyType: parsed.bodyType || car.bodyType,
-			};
-		}),
-	);
-
-	console.log('AI title parsing complete!');
-	return enhanced;
 }
