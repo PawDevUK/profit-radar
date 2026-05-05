@@ -43,7 +43,7 @@ function Card({ ...props }) {
 							)}
 							<span className='border border-brand-subtle text-(--main-blue)  text-xs font-medium px-1.5 py-0.5 rounded-sm'>{item.year}</span>
 						</div>
-						<span className='border border-brand-subtle text-(--main-blue)  text-xs font-medium px-1.5 py-0.5 m-auto rounded-sm'>{item.primaryDamage}</span>
+						<span className='border border-brand-subtle text-(--main-blue)  text-xs font-medium px-1.5 py-0.5 m-auto rounded-sm'>{item.damageDescription}</span>
 					</div>
 
 					<div className='flex flex-row space-x-4 mt-1'>

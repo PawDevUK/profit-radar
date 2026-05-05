@@ -44,7 +44,7 @@ interface LotDetails {
   odometer: number;           // Numeric odometer reading
   odometerUnit: string;       // Unit e.g. "mi" or "km"
   odometerDescription: string;     // Status e.g. "Not Actual", "Actual"
-  primaryDamage: string;      // Primary damage type e.g. "Front End"
+  damageDescription: string;      // Primary damage type e.g. "Front End"
   cylinders: string;          // Number of cylinders e.g. "4"
   color: string;              // Color e.g. "Charcoal"
   hasKey: boolean;            // Whether vehicle has key — normalize "Yes"->true, "No"->false

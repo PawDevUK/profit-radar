@@ -26,7 +26,7 @@ export interface SearchFilters {
 	odometer: number[]; // Or range
 	odometerUnit: OdometerUnit[];
 	odometerDescription: string[];
-	primaryDamage: string[];
+	damageDescription: string[];
 	cylinders: string[];
 	color: string[];
 	hasKey: boolean[];

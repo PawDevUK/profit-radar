@@ -65,7 +65,7 @@ export default function LotDetailsSection({ lotData }: { lotData: LotDetailsType
 
 			<SectionWrapper>
 				<Section title='Condition'>
-					<Row label='Primary Damage' value={lotData.primaryDamage} />
+					<Row label='Primary Damage' value={lotData.damageDescription} />
 					<Row label='Run And Drive' value={lotData.runAndDrive} />
 					<Row label='Has Key' value={lotData.hasKey} />
 					<Row label='Title Code' value={lotData.titleCode} />

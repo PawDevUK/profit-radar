@@ -47,9 +47,8 @@ export interface LotDetailsType {
 	auctionName: string | null;
 	saleLight: string | null;
 	announcements: string | null;
-	autoGrade: string | NextParsedUrlQuery;
+	autoGrade: string | null;
 	auctionCountdown: string | null;
-	_id?: string;
 	images: {
 		copart: string[] | null;
 		AiRepaired: Buffer[] | null;

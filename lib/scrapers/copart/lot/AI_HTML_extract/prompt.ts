@@ -66,7 +66,7 @@ interface LotDetails {
   odometer: number;           // Numeric odometer reading
   odometerUnit: string;       // Unit e.g. "mi" or "km"
   odometerDescription: string;     // Status e.g. "Not Actual", "Actual"
-  primaryDamage: string;      // Primary damage type e.g. "Front End"
+  damageDescription: string;      // Primary damage type e.g. "Front End"
   cylinders: string;          // Number of cylinders e.g. "4"
   color: string;              // Color e.g. "Charcoal"
   hasKey: boolean;            // Whether vehicle has key — normalize "Yes"->true, "No"->false
@@ -211,7 +211,7 @@ odometerDescription:
   selector -> vehicle-information > .lot-details-information:nth-child(2) .lot-details-information-value span:first-child
   extract  -> el.innerText.trim()
 
-primaryDamage:
+damageDescription:
   selector -> vehicle-information > .lot-details-information:nth-child(3) .lot-details-information-value
   extract  -> el.innerText.trim()
 
