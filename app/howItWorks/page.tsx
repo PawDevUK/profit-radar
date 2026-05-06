@@ -22,7 +22,7 @@ export default function HowItWorks() {
 									<h3 className='text-2xl font-bold text-gray-700 sm:text-3xl mb-10'>
 										Scan Auction Inventory at Scale
 										<br />
-										Compare with the Polish Market
+										Compare with international market
 									</h3>
 
 									<p className='text-lg leading-relaxed text-gray-700'>
