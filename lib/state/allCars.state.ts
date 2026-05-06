@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { LotDetailsType } from '@/lib/types/lotDetails-type';
+import { LotDetailsType, createLotObject } from '@/lib/types/lotDetails-type';
 
 type AllCarsState = {
 	allCars: LotDetailsType[];
@@ -46,5 +46,25 @@ export const allCars_State = create<AllCarsState>((set, get) => ({
 			error: null,
 			hasLoaded: false,
 		});
+	},
+}));
+
+type SelectedSingleLot = {
+	selectedLot: LotDetailsType;
+	setSelectedLot: (lot: LotDetailsType) => void;
+	reset: () => void;
+};
+
+export const SelectSingleLot = create<SelectedSingleLot>((set, get) => ({
+	selectedLot: createLotObject(),
+	setSelectedLot: async (lot) => {
+		if (lot) {
+			set({
+				selectedLot: { ...lot },
+			});
+		}
+	},
+	reset: () => {
+		set({ selectedLot: createLotObject() });
 	},
 }));
