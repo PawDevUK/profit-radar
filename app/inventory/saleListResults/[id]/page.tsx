@@ -6,6 +6,7 @@ import { setFilterResults_State } from '@/lib/state/searchFilters.state';
 import { allCars_State } from '@/lib/state/allCars.state';
 import { useMemo, useState } from 'react';
 import _ from 'lodash';
+import { SelectSingleLot } from '@/lib/state/allCars.state';
 
 type PaginationProps = {
 	totalItems: number;
@@ -83,6 +84,7 @@ export default function SaleListResultsPage() {
 	const currentPage = Math.min(requestedPage, totalPages);
 	const pages = useMemo(() => getVisiblePages(totalPages, currentPage), [totalPages, currentPage]);
 	const visibleCars = filteredCars.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+	const setSelectedLot = SelectSingleLot((state) => state.setSelectedLot);
 
 	if (isLoading) {
 		return (
@@ -117,6 +119,7 @@ export default function SaleListResultsPage() {
 								key={index}
 								item={car}
 								onClick={() => {
+									setSelectedLot(car);
 									router.push(`/inventory/lot/${car.lotInv}`);
 								}}></Card>
 						))}
