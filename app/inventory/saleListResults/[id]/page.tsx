@@ -81,9 +81,9 @@ export default function SaleListResultsPage() {
 	const filteredCars = cars;
 	const totalPages = Math.max(1, Math.ceil(filteredCars.length / itemsPerPage));
 	const currentPage = Math.min(requestedPage, totalPages);
-
 	const pages = useMemo(() => getVisiblePages(totalPages, currentPage), [totalPages, currentPage]);
 	const visibleCars = filteredCars.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+
 	if (isLoading) {
 		return (
 			<div className='min-h-screen bg-gray-50 flex items-center justify-center'>
@@ -107,7 +107,7 @@ export default function SaleListResultsPage() {
 		);
 	}
 
-	if (visibleCars.length > 0) {
+	if (visibleCars && visibleCars.length > 0) {
 		return (
 			<div className='w-full min-h-screen bg-gray-50 py-3 px-4 sm:px-6 lg:px-8'>
 				<div className='max-w-(--max-app-width) mx-auto'>
@@ -126,7 +126,7 @@ export default function SaleListResultsPage() {
 			</div>
 		);
 	}
-	if (filteredCars.length === 0 && !isLoading) {
+	if (filteredCars && filteredCars.length === 0 && !isLoading) {
 		return (
 			<div className='w-full min-h-screen bg-gray-50 py-3 px-4 sm:px-6 lg:px-8'>
 				<div className='max-w-(--max-app-width) mx-auto'>
