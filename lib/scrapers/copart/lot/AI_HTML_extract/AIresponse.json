@@ -20,7 +20,7 @@
 			"confidence": "high",
 			"notes": "Stable h1 element unique to the lot details page. Full title e.g. '2017 SUBARU WRX'."
 		},
-		"lotNumber": {
+		"lotInv": {
 			"selector": ".lh-1-4.p-mt-3 span.p-ml-1",
 			"strategy": "direct",
 			"label": "Lot number:",
@@ -141,7 +141,7 @@
 			"confidence": "high",
 			"notes": "Thumbnail img elements inside the PrimeNG galleria component. Use getAttribute('src') to get the URL. High-res URLs can be derived by replacing '_thb.jpg' with '_hrs.jpg'."
 		},
-		"copartLink": {
+		"lotUrl": {
 			"selector": null,
 			"strategy": "derived",
 			"label": null,
@@ -242,7 +242,7 @@
 			"confidence": "high",
 			"notes": "build-sheet-details child 1 is VIN. Fallback from header: .lot-details-header-block span.p-ml-1.ng-star-inserted (VIN value span adjacent to copy button)."
 		},
-		"lotNumber": {
+		"lotInv": {
 			"selector": ".lh-1-4.p-mt-3 span.p-ml-1",
 			"strategy": "direct",
 			"label": "Lot number:",
@@ -385,7 +385,7 @@
 			"confidence": "high",
 			"notes": "Derived from the odometer value text. Second non-empty token is the unit e.g. 'mi'."
 		},
-		"odometerStatus": {
+		"odometerDescription": {
 			"selector": "vehicle-information > .lot-details-information:nth-child(2) .lot-details-information-value span:first-child",
 			"strategy": "derived",
 			"label": null,
@@ -594,7 +594,7 @@
 			"confidence": "high",
 			"notes": "Thumbnail img elements inside the PrimeNG galleria component. Use getAttribute('src') to get the URL. High-res URLs can be derived by replacing '_thb.jpg' with '_hrs.jpg'."
 		},
-		"copartLink": {
+		"lotUrl": {
 			"selector": null,
 			"strategy": "derived",
 			"label": null,

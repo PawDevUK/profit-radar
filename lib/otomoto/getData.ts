@@ -10,7 +10,7 @@
 // 			body: JSON.stringify({
 // 				make: car.make,
 // 				model: car.model,
-// 				lotNumber: car.lotNumber,
+// 				lotInv: car.lotInv,
 // 				year: car.year,
 // 				odometer: car.odometer,
 // 			}),
@@ -20,7 +20,7 @@
 // 			const data = await response.json();
 // 			if (data.result) {
 // 				setOtomotoResult({
-// 					lotNumber: car.lotNumber,
+// 					lotInv: car.lotInv,
 // 					title: car.title,
 // 					make: car.make,
 // 					model: car.model,
@@ -51,11 +51,11 @@
 // 				const response = await fetch('/api/otomoto-listing-check?action=load');
 // 				if (response.ok) {
 // 					const data = await response.json();
-// 					const carCheck = data.results?.find((r: OtomotoCheckRecord) => r.lotNumber === car.lotNumber);
+// 					const carCheck = data.results?.find((r: OtomotoCheckRecord) => r.lotInv === car.lotInv);
 // 					if (carCheck) {
 // 						const searchQuery = `${car.make} ${car.model}`.toLowerCase();
 // 						setOtomotoResult({
-// 							lotNumber: car.lotNumber,
+// 							lotInv: car.lotInv,
 // 							title: car.title,
 // 							make: car.make,
 // 							model: car.model,

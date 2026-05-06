@@ -1,7 +1,7 @@
 'use client';
 import { format } from 'date-fns';
 import { useEffect, useMemo, useState } from 'react';
-import { CalendarMonthType, SaleListType, createEmptyCalendarList } from '@/lib/types/calendar-type';
+import { CalendarType, SaleListType, createEmptyCalendarList } from '@/lib/types/calendar-type';
 
 type CalendarDay = {
 	date: Date;
@@ -60,7 +60,7 @@ const setDayEvents = (date: Date, events: SaleListType[], setDisplayDay: React.D
 	setDisplayDay(filteredEvents);
 };
 
-export default function Calendar({ allAuctions, todaysEvents }: { allAuctions: CalendarMonthType[]; todaysEvents: SaleListType[] }) {
+export default function Calendar({ allAuctions, todaysEvents }: { allAuctions: CalendarType[]; todaysEvents: SaleListType[] }) {
 	const events: SaleListType[] = allAuctions.map((month) => month.auctions).flat();
 	const [currentDate, setCurrentDate] = useState(new Date());
 	const [displayDay, setDisplayDay] = useState<SaleListType[]>(todaysEvents);

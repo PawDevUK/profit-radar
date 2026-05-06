@@ -7,6 +7,7 @@ import BidBuy from '../BidBuy';
 import Img from 'next/image';
 import Toggle from '@/app/components/common/toggler/toggler';
 import { allCars_State } from '@/lib/state/allCars.state';
+import { carImagePlaceholder } from '@/img';
 
 export default function LotDetailsPage() {
 	const params = useParams();
@@ -14,12 +15,10 @@ export default function LotDetailsPage() {
 	const lotId = params.lotId as string;
 	const allCars = allCars_State((state) => state.allCars);
 	const isLoading = allCars_State((state) => state.isLoading);
-	const car = allCars.find((c) => c.lotNumber === lotId) ?? null;
+	const car = allCars.find((c) => c.lotInv === lotId) ?? null;
 	const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 	const [AiImage, setAiImage] = useState(false);
 	const [aiImages] = useState<string[]>([]);
-
-	console.log(car);
 
 	const handleBack = () => {
 		router.push(`/inventory`);
@@ -61,7 +60,7 @@ export default function LotDetailsPage() {
 
 	function toggleAIImage() {
 		return (
-			<div className='absolute right-15 md:right-10  top-3 flex flex-row justify-between z-320 cursor-pointer'>
+			<div className='absolute right-15 md:right-10 top-3 flex flex-row justify-between z-320 cursor-pointer'>
 				<div className='w-45 mb-4 relative '>
 					{AiImage ? (
 						<div className='image-ai-label flex justify-start items-center h-10 w-41 pl-2' onClick={() => setAiImage(false)}>
@@ -96,7 +95,7 @@ export default function LotDetailsPage() {
 							<div className='mb-4 relative'>
 								{toggleAIImage()}
 								{(() => {
-									// Mongoose stores images as a subdocument array: [{ copart: [], AiRepaired: [] }]
+									// Mongoose stores images as a sub-document: { copart: [], AiRepaired: [] }
 									const imagesDoc = Array.isArray(car.images) ? (car.images as unknown as { copart: string[] | null }[])[0] : car.images;
 									const images: string[] = imagesDoc?.copart ?? [];
 									// Build map: original index -> AI image path, parsed from img-001-ai.png naming
@@ -118,6 +117,7 @@ export default function LotDetailsPage() {
 													src={currentSrc}
 													className='object-contain z-30'
 													fill
+													sizes='(max-width: 1024px) 100vw, 66vw'
 													onError={(e) => {
 														e.currentTarget.src = '/images/placeholder.png';
 													}}
@@ -127,6 +127,7 @@ export default function LotDetailsPage() {
 													src={currentSrc}
 													alt=''
 													fill
+													sizes='(max-width: 1024px) 100vw, 66vw'
 													aria-hidden
 													priority
 													className='object-cover scale-110 blur-lg opacity-60'
@@ -202,6 +203,7 @@ export default function LotDetailsPage() {
 																		alt={`Thumbnail ${idx + 1}`}
 																		className='object-cover'
 																		fill
+																		sizes='(max-width: 640px) 15vw, (max-width: 1024px) 12vw, 120px'
 																		onError={(e) => {
 																			e.currentTarget.src = '/images/placeholder.png';
 																		}}
@@ -212,7 +214,20 @@ export default function LotDetailsPage() {
 												</div>
 											</div>
 										</>
-									) : null;
+									) : (
+										<div className='relative w-full h-100 bg-gray-200 rounded overflow-hidden mb-4'>
+											<Img
+												alt='Car Image'
+												src={carImagePlaceholder}
+												className='object-contain z-30'
+												fill
+												sizes='(max-width: 1024px) 100vw, 66vw'
+												onError={(e) => {
+													e.currentTarget.src = '/images/placeholder.png';
+												}}
+											/>
+										</div>
+									);
 								})()}
 							</div>
 						</div>

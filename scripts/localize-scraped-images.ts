@@ -3,7 +3,7 @@ import path from 'node:path';
 
 type ScrapedLot = {
 	scrapedLotObj?: {
-		lotNumber?: string | number;
+		lotInv?: string | number;
 		images?: string[];
 		[key: string]: unknown;
 	};
@@ -69,8 +69,8 @@ async function downloadWithRetry(url: string, outPath: string, attempts = 3): Pr
 // 		const lot = item.scrapedLotObj;
 // 		if (!lot) continue;
 
-// 		const lotNumber = sanitizeSegment(String(lot.lotNumber ?? 'unknown-lot'));
-// 		const lotDir = path.join(PUBLIC_BASE_DIR, lotNumber);
+// 		const lotInv = sanitizeSegment(String(lot.lotInv ?? 'unknown-lot'));
+// 		const lotDir = path.join(PUBLIC_BASE_DIR, lotInv);
 // 		await mkdir(lotDir, { recursive: true });
 
 // 		const images = Array.isArray(lot.image?.copart) ? lot.images.copart : [];
@@ -91,7 +91,7 @@ async function downloadWithRetry(url: string, outPath: string, attempts = 3): Pr
 
 // 			const fileName = `img-${String(idx + 1).padStart(3, '0')}${ext}`;
 // 			const filePath = path.join(lotDir, fileName);
-// 			const publicRef = `${PUBLIC_BASE_URL}/${lotNumber}/${fileName}`;
+// 			const publicRef = `${PUBLIC_BASE_URL}/${lotInv}/${fileName}`;
 
 // 			if (await exists(filePath)) {
 // 				reused++;

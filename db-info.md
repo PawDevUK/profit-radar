@@ -19,7 +19,7 @@ This allows direct lot lookup and efficient sale-level queries without loading l
 
 ## Why This Is Better
 
-1. Fast single-lot query by `lotNumber`
+1. Fast single-lot query by `lotInv`
 2. Fast fetch of all lots in a sale by `saleId`
 3. Smaller documents and cleaner updates
 4. Better scaling and less risk of oversized MongoDB documents
@@ -41,17 +41,17 @@ Suggested fields:
 
 Optional field:
 
-- `lotNumbers: string[]` only if a precomputed ordered list is needed
+- `lotInvs: string[]` only if a precomputed ordered list is needed
 
 Note:
 
-- If lot volume is high, skip storing `lotNumbers` in Sales and query Lots by `saleId`.
+- If lot volume is high, skip storing `lotInvs` in Sales and query Lots by `saleId`.
 
 ### Lots
 
 Suggested fields:
 
-- `lotNumber` (string, unique)
+- `lotInv` (string, unique)
 - `saleId` (string, indexed)
 - `vin` (string)
 - `make` (string)
@@ -71,9 +71,9 @@ Suggested fields:
 
 Create at least these indexes:
 
-1. `Lots.lotNumber` unique
+1. `Lots.lotInv` unique
 2. `Lots.saleId` non-unique
-3. optional compound: `Lots.saleId + lotNumber`
+3. optional compound: `Lots.saleId + lotInv`
 4. `Sales.saleId` unique
 
 Optional useful indexes:
@@ -95,7 +95,7 @@ Use strict, query-friendly types:
 Recommended ingestion flow:
 
 1. Upsert sale once per scrape run (by `saleId`)
-2. Upsert each lot independently (by `lotNumber`)
+2. Upsert each lot independently (by `lotInv`)
 3. Use `bulkWrite` for lots in batches
 4. Use partial updates (`$set`) to avoid wiping existing good data
 5. Track freshness metadata (`scrapedAt`, `lastSeenAt`, `scrapeRunId`)
@@ -147,14 +147,14 @@ Execution steps:
 
 ## API Query Patterns
 
-1. Get one lot: `findOne({ lotNumber })`
+1. Get one lot: `findOne({ lotInv })`
 2. Get lots by sale: `find({ saleId }).sort(...)`
 3. Get sales by date range: `find({ saleTime: { $gte, $lt } })`
 4. Get lots by freshness: `find({ lastUpdated: { $lt: cutoff } })`
 
 ## Final Recommendation
 
-Use a normalized two-collection model (`Sales`, `Lots`) with `saleId` as relation key, `lotNumber` as unique lot identity, typed date/number fields, and URL-based image storage.
+Use a normalized two-collection model (`Sales`, `Lots`) with `saleId` as relation key, `lotInv` as unique lot identity, typed date/number fields, and URL-based image storage.
 
 This gives the best balance of query speed, scraper reliability, and long-term maintainability for ProfitRadar.
 
@@ -172,11 +172,11 @@ Tasks:
 2. Enable timestamps on both schemas.
 3. Add indexes:
 
-- `Lot.lotNumber` unique
+- `Lot.lotInv` unique
 - `Lot.saleId` index
 - `Sale.saleId` unique
 
-4. Remove or stop using legacy month-nested model exports.
+1. Remove or stop using legacy month-nested model exports.
 
 Exit criteria:
 
@@ -192,7 +192,7 @@ Goal:
 Tasks:
 
 1. Upsert sale by `saleId` once per sale batch.
-2. Upsert lots by `lotNumber` using `bulkWrite`.
+2. Upsert lots by `lotInv` using `bulkWrite`.
 3. Use partial updates (`$set`) only for known scraped fields.
 4. Add `scrapedAt`, `lastSeenAt`, and optional `scrapeRunId` metadata.
 5. Log write stats: inserted, modified, matched, failed.
@@ -217,9 +217,9 @@ Tasks:
 
 Validation checks:
 
-1. Total distinct `lotNumber` count matches expected scrape output.
+1. Total distinct `lotInv` count matches expected scrape output.
 2. Every lot has a `saleId`.
-3. No duplicate `lotNumber` documents exist.
+3. No duplicate `lotInv` documents exist.
 
 Exit criteria:
 
@@ -234,7 +234,7 @@ Goal:
 
 Tasks:
 
-1. Update "get lot by lotNumber" API to read from `Lots`.
+1. Update "get lot by lotInv" API to read from `Lots`.
 2. Update "get lots by saleId" API to read from `Lots`.
 3. Add query projection to return only required fields.
 4. Remove references to month-nested document traversal.

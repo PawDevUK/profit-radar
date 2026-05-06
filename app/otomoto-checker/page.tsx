@@ -10,7 +10,7 @@ type ListingCheckResult = {
 	odometer: string;
 	listed_otomoto: boolean;
 	listing_count?: number;
-	lotNumber: string;
+	lotInv: string;
 	checkedAt: string;
 };
 
@@ -137,8 +137,8 @@ export default function OtomotoCheckerPage() {
 								</thead>
 								<tbody>
 									{results.map((result) => (
-										<tr key={result.lotNumber} className='border-b hover:bg-gray-50'>
-											<td className='px-6 py-4 text-sm text-gray-900 font-medium'>{result.lotNumber}</td>
+										<tr key={result.lotInv} className='border-b hover:bg-gray-50'>
+											<td className='px-6 py-4 text-sm text-gray-900 font-medium'>{result.lotInv}</td>
 											<td className='px-6 py-4 text-sm text-gray-700'>{result.year}</td>
 											<td className='px-6 py-4 text-sm text-gray-700'>{result.make}</td>
 											<td className='px-6 py-4 text-sm text-gray-700'>{result.model}</td>

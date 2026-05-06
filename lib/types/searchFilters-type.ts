@@ -11,7 +11,7 @@ export interface SearchFilters {
 	bodyStyle: string[];
 	runAndDrive: boolean[]; // Might not make sense as array; consider boolean or null
 	vin: string[];
-	lotNumber: string[];
+	lotInv: string[];
 	laneItem: string[];
 	saleName: string[];
 	location: string[];
@@ -25,8 +25,8 @@ export interface SearchFilters {
 	vehicleConditionType: string[];
 	odometer: number[]; // Or range
 	odometerUnit: OdometerUnit[];
-	odometerStatus: string[];
-	primaryDamage: string[];
+	odometerDescription: string[];
+	damageDescription: string[];
 	cylinders: string[];
 	color: string[];
 	hasKey: boolean[];

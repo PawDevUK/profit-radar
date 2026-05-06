@@ -1,8 +1,9 @@
 import mongoose from 'mongoose';
 import 'dotenv/config';
-import MonthSaleModel from './models';
-import { CalendarMonthType, SaleListType } from '@/lib/types/calendar-type';
+import { CalendarSaleModel } from './models';
+import { CalendarType, SaleListType } from '@/lib/types/calendar-type';
 import { LotDetailsType } from '@/lib/types/lotDetails-type';
+import { LotDetailsModel } from './models';
 
 const MONGODB_URI = process.env.MONGODB_URI;
 
@@ -20,12 +21,12 @@ export async function connectDB() {
 	return cachedConnection;
 }
 
-export async function saveMonthSale(scrapedCalendarMonth: CalendarMonthType) {
+export async function saveCalendar(scrapedCalendarMonth: CalendarType) {
 	if (scrapedCalendarMonth) {
 		await connectDB();
-		const monthSaleList = new MonthSaleModel(scrapedCalendarMonth);
-		await monthSaleList.save();
-		console.log('Month sale data saved to database successfully!');
+		const CalendarSaleList = new CalendarSaleModel(scrapedCalendarMonth);
+		await CalendarSaleList.save();
+		console.log('Calendar sale data saved to database successfully!');
 	} else {
 		console.log('Not enough auctions scraped, skipping save.');
 	}
@@ -33,19 +34,44 @@ export async function saveMonthSale(scrapedCalendarMonth: CalendarMonthType) {
 
 export async function getAllSalesLists() {
 	await connectDB();
-	const allSalesLists = MonthSaleModel.find({});
+	return await CalendarSaleModel.find({});
+}
+export async function getAllLots() {
+	await connectDB();
+	return await LotDetailsModel.find({});
+}
 
-	return allSalesLists;
+export async function saveLots(lots: LotDetailsType[]) {
+	if (!lots || lots.length === 0) {
+		console.log('No lots to save');
+		return { savedCount: 0 };
+	}
+
+	try {
+		await connectDB();
+		const result = await LotDetailsModel.insertMany(lots);
+		console.log(`${result.length} lots saved to database successfully!`);
+		return {
+			savedCount: result.length,
+			savedToDb: true,
+		};
+	} catch (e) {
+		console.error('Error saving lots:', e);
+		throw e;
+	}
 }
 
 export async function saveSalesList(_id: string, SalesList: LotDetailsType[]) {
 	await connectDB();
 	const auctionId = new mongoose.Types.ObjectId(_id); // nested auction _id
-	const parentDoc = await MonthSaleModel.findOne({ 'auctions._id': auctionId });
+	const parentDoc = await CalendarSaleModel.findOne({ 'auctions._id': auctionId });
 	const parentId = parentDoc?._id;
 	try {
 		if (auctionId && SalesList) {
-			await MonthSaleModel.updateOne({ _id: parentId, 'auctions._id': auctionId }, { $set: { 'auctions.$.lotList': SalesList, 'auctions.$.numOfLots': SalesList.length } });
+			await CalendarSaleModel.updateOne(
+				{ _id: parentId, 'auctions._id': auctionId },
+				{ $set: { 'auctions.$.lotList': SalesList, 'auctions.$.numOfLots': SalesList.length } },
+			);
 		} else {
 			console.log('There is no sales Id or updated sales list to be saved!!');
 		}
@@ -74,12 +100,12 @@ export async function getOneSalesList(id: string) {
 	}
 	const nestedId = new mongoose.Types.ObjectId(id);
 	await connectDB();
-	const parentDoc = await MonthSaleModel.findOne({ 'auctions._id': nestedId });
+	const parentDoc = await CalendarSaleModel.findOne({ 'auctions._id': nestedId });
 	let nestedAuction = null;
 	if (parentDoc && Array.isArray(parentDoc.auctions)) {
 		nestedAuction = parentDoc.auctions.find((auction: SaleListType) => {
-			if(auction._id){
-				 return auction._id.toString() === nestedId.toString()
+			if (auction._id) {
+				return auction._id.toString() === nestedId.toString();
 			}
 		});
 	}

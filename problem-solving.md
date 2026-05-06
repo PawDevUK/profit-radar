@@ -81,4 +81,4 @@ I need the steps to follow.
 
 1. Fetch sale list in csv format. (done)
 2. Convert CSV into json. (done)
-3. Convert key into camel case keys. Ath the moment key are with spacing. (done)
+3. Convert key into camel case keys. At the moment key are with spacing. (done)

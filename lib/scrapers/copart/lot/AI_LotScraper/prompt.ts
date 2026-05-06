@@ -30,7 +30,7 @@ interface LotDetails {
   bodyStyle: string;          // Body style e.g. "Sedan"
   runAndDrive: boolean;       // Whether vehicle runs and drives — often absent
   vin: string;                // 17-character VIN
-  lotNumber: string;          // Copart lot number
+  lotInv: string;          // Copart lot number
   laneItem: string;           // Lane/Item code e.g. "B/2574"
   saleName: string;           // Sale location name e.g. "DC - WASHINGTON DC"
   location: string;           // Physical location display name
@@ -43,8 +43,8 @@ interface LotDetails {
   vehicleTitleType: string;   // Description part of titleCode e.g. "Cert Of Salvage > 75% Damage"
   odometer: number;           // Numeric odometer reading
   odometerUnit: string;       // Unit e.g. "mi" or "km"
-  odometerStatus: string;     // Status e.g. "Not Actual", "Actual"
-  primaryDamage: string;      // Primary damage type e.g. "Front End"
+  odometerDescription: string;     // Status e.g. "Not Actual", "Actual"
+  damageDescription: string;      // Primary damage type e.g. "Front End"
   cylinders: string;          // Number of cylinders e.g. "4"
   color: string;              // Color e.g. "Charcoal"
   hasKey: boolean;            // Whether vehicle has key — normalize "Yes"->true, "No"->false
@@ -65,7 +65,7 @@ interface LotDetails {
   copart:[],
   AiRepaired:[]
   };           // Array of thumbnail image src URLs
-  copartLink: string;         // Full page URL via page.url()
+  lotUrl: string;         // Full page URL via page.url()
 }
 
 

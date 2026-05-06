@@ -1,3 +1,5 @@
+import { NextParsedUrlQuery } from 'next/dist/server/request-meta';
+
 export type OdometerUnit = 'mi' | 'km';
 
 export interface LotDetailsType {
@@ -9,51 +11,103 @@ export interface LotDetailsType {
 	bodyStyle: string | null;
 	runAndDrive: boolean | null;
 	vin: string | null;
-	lotNumber: string | null;
-	laneItem: string | null; // e.g. "-/-"
+	lotInv: string | null;
+	saleId: string | null;
+	laneItem: string | null;
 	saleName: string | null;
 	location: string | null;
 	engineVerified: boolean | null;
-	engineVerifiedNote: string | null; // e.g. "Copart verified that the engine starts."
-	engineStatus: string | null; // e.g. "Engine Starts"
+	engineVerifiedNote: string | null;
+	engineStatus: string | null;
 	transmissionEngages: boolean | null;
-	transmissionNote: string | null; // e.g. "Copart verified that the transmission engages."
-	titleCode: string | null; // e.g. "PA - Cert Of Title"
-	vehicleTitleType: string | null; // e.g. "Title Absent"
+	transmissionNote: string | null;
+	titleCode: string | null;
+	vehicleTitleType: string | null;
 	odometer: string | null;
-	odometerUnit: string | null;
-	odometerStatus: string | null; // e.g. "Not Actual"
-	primaryDamage: string | null; // e.g. "Normal Wear"
+	odometerUnit: OdometerUnit | null;
+	odometerDescription: string | null;
+	damageDescription: string | null;
 	cylinders: string | null;
 	color: string | null;
 	hasKey: boolean | null;
-	engineType: string | null; // e.g. "2.0L 4"
-	transmission: string | null; // e.g. "Automatic"
-	vehicleType: string | null; // e.g. "Medium Duty/box Trucks"
-	driveTrain: string | null; // e.g. "Rear-wheel drive"
-	fuelType: string | null; // e.g. "Diesel"
-	saleDate: string | null; // e.g. "Thu. Feb 05, 2026 02:00 AM GMT"
+	engineType: string | null;
+	transmission: string | null;
+	vehicleType: string | null;
+	driveTrain: string | null;
+	fuelType: string | null;
+	saleDate: string | null;
 	highlights: string[] | string | null;
 	notes: string | null;
-	lastUpdated: string | null; // e.g. "02/03/2026 12:27 am"
+	lastUpdated: string | null;
 	currentBid: string | null;
 	buyItNow: string | null;
+	myBid: string | null;
+	itemNumber: string | null;
+	estRetailValue: string | null;
 	auctionName: string | null;
+	saleLight: string | null;
+	announcements: string | null;
+	autoGrade: string | null;
 	auctionCountdown: string | null;
-	_id?: string; // e.g. "0D 16H 10min"
 	images: {
 		copart: string[] | null;
 		AiRepaired: Buffer[] | null;
 	};
-	copartLink: string | null;
+	lotUrl: string | null;
 }
 
-export interface scrapedLotDataType {
-	scrapedLotObj: LotDetailsType;
-	scrapingInfo: {
-		Success: number;
-		Failed: number;
-		failedSelectors: string[];
-		Url: string;
+export function createLotObject(): LotDetailsType {
+	return {
+		title: null,
+		year: null,
+		make: null,
+		model: null,
+		trim: null,
+		bodyStyle: null,
+		runAndDrive: null,
+		vin: null,
+		lotInv: null,
+		saleId: null,
+		laneItem: null,
+		saleName: null,
+		location: null,
+		engineVerified: null,
+		engineVerifiedNote: null,
+		engineStatus: null,
+		transmissionEngages: null,
+		transmissionNote: null,
+		titleCode: null,
+		vehicleTitleType: null,
+		odometer: null,
+		odometerUnit: null,
+		odometerDescription: null,
+		damageDescription: null,
+		cylinders: null,
+		color: null,
+		hasKey: null,
+		engineType: null,
+		transmission: null,
+		vehicleType: null,
+		driveTrain: null,
+		fuelType: null,
+		saleDate: null,
+		highlights: null,
+		notes: null,
+		lastUpdated: null,
+		currentBid: null,
+		buyItNow: null,
+		myBid: null,
+		itemNumber: null,
+		estRetailValue: null,
+		auctionName: null,
+		saleLight: null,
+		announcements: null,
+		autoGrade: null,
+		auctionCountdown: null,
+		images: {
+			copart: null,
+			AiRepaired: null,
+		},
+		lotUrl: null,
 	};
 }

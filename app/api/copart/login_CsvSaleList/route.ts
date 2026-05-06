@@ -2,10 +2,11 @@ import { login_CSV } from '@/lib/scrapers/copart/login_CSV/login_CSV';
 
 import { NextResponse } from 'next/server';
 const tempUrl =
-	'https://www.copart.com/saleListResult/376/2026-05-01?location=OH%20-%20Akron&saleDate=1777644000000&liveAuction=false&from=%2FsalesListResult&yardNum=376&qId=e2abaa7e-31cb-4be0-bb78-93292d1d8101-1777578609594';
-
+	'https://www.copart.com/saleListResult/376/2026-05-05?location=OH%20-%20Akron&saleDate=1777989600000&liveAuction=false&from=%2FsalesListResult&yardNum=376&qId=1a813ad6-7f82-46c2-bf32-efdc71e1a1f1-1777930318723';
 const landingUrl = 'https://www.copart.com';
+const saleId = '232242534';
+
 export async function GET() {
-	await login_CSV(landingUrl, tempUrl);
-	return NextResponse.json({ data: 'Success!' });
+	const data = await login_CSV(landingUrl, tempUrl, saleId);
+	return NextResponse.json({ data: data, message: 'Success!' });
 }

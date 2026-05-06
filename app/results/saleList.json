@@ -8,7 +8,7 @@
 		"bodyStyle": "",
 		"runAndDrive": true,
 		"vin": "",
-		"lotNumber": "99970785",
+		"lotInv": "99970785",
 		"laneItem": "0",
 		"saleName": "TX - HOUSTON",
 		"location": "TX - HOUSTON",
@@ -21,8 +21,8 @@
 		"vehicleTitleType": "",
 		"odometer": 116628,
 		"odometerUnit": "mi",
-		"odometerStatus": "ACTUAL",
-		"primaryDamage": "Front End Damage",
+		"odometerDescription": "ACTUAL",
+		"damageDescription": "Front End Damage",
 		"cylinders": "0",
 		"color": "",
 		"hasKey": false,
@@ -40,7 +40,7 @@
 		"auctionName": "",
 		"auctionCountdown": "Auction in 0D 16H 19min",
 		"images": ["https://picsum.photos/200"],
-		"copartLink": ""
+		"lotUrl": ""
 	},
 	{
 		"title": "CHEVROLET SILVERADO 1500",
@@ -51,7 +51,7 @@
 		"bodyStyle": "",
 		"runAndDrive": true,
 		"vin": "",
-		"lotNumber": "99970786",
+		"lotInv": "99970786",
 		"laneItem": "1",
 		"saleName": "CA - LOS ANGELES",
 		"location": "CA - LOS ANGELES",
@@ -64,8 +64,8 @@
 		"vehicleTitleType": "",
 		"odometer": 45230,
 		"odometerUnit": "mi",
-		"odometerStatus": "ACTUAL",
-		"primaryDamage": "Side Damage",
+		"odometerDescription": "ACTUAL",
+		"damageDescription": "Side Damage",
 		"cylinders": "0",
 		"color": "",
 		"hasKey": true,
@@ -83,7 +83,7 @@
 		"auctionName": "",
 		"auctionCountdown": "Auction in 1D 8H 45min",
 		"images": ["https://picsum.photos/200"],
-		"copartLink": ""
+		"lotUrl": ""
 	},
 	{
 		"title": "HONDA CIVIC",
@@ -94,7 +94,7 @@
 		"bodyStyle": "",
 		"runAndDrive": true,
 		"vin": "",
-		"lotNumber": "99970787",
+		"lotInv": "99970787",
 		"laneItem": "2",
 		"saleName": "FL - MIAMI",
 		"location": "FL - MIAMI",
@@ -107,8 +107,8 @@
 		"vehicleTitleType": "",
 		"odometer": 78341,
 		"odometerUnit": "mi",
-		"odometerStatus": "ACTUAL",
-		"primaryDamage": "Rear End Damage",
+		"odometerDescription": "ACTUAL",
+		"damageDescription": "Rear End Damage",
 		"cylinders": "0",
 		"color": "",
 		"hasKey": true,
@@ -126,7 +126,7 @@
 		"auctionName": "",
 		"auctionCountdown": "Auction in 2D 12H 30min",
 		"images": ["https://picsum.photos/200"],
-		"copartLink": ""
+		"lotUrl": ""
 	},
 	{
 		"title": "TOYOTA CAMRY",
@@ -137,7 +137,7 @@
 		"bodyStyle": "",
 		"runAndDrive": true,
 		"vin": "",
-		"lotNumber": "99970788",
+		"lotInv": "99970788",
 		"laneItem": "3",
 		"saleName": "NY - NEW YORK",
 		"location": "NY - NEW YORK",
@@ -150,8 +150,8 @@
 		"vehicleTitleType": "",
 		"odometer": 28950,
 		"odometerUnit": "mi",
-		"odometerStatus": "ACTUAL",
-		"primaryDamage": "Minor Damage",
+		"odometerDescription": "ACTUAL",
+		"damageDescription": "Minor Damage",
 		"cylinders": "0",
 		"color": "",
 		"hasKey": true,
@@ -169,7 +169,7 @@
 		"auctionName": "",
 		"auctionCountdown": "Auction in 0D 4H 15min",
 		"images": ["https://picsum.photos/200"],
-		"copartLink": ""
+		"lotUrl": ""
 	},
 	{
 		"title": "FORD F-150",
@@ -180,7 +180,7 @@
 		"bodyStyle": "",
 		"runAndDrive": true,
 		"vin": "",
-		"lotNumber": "99970789",
+		"lotInv": "99970789",
 		"laneItem": "4",
 		"saleName": "TX - DALLAS",
 		"location": "TX - DALLAS",
@@ -193,8 +193,8 @@
 		"vehicleTitleType": "",
 		"odometer": 156789,
 		"odometerUnit": "mi",
-		"odometerStatus": "ACTUAL",
-		"primaryDamage": "Front End Damage",
+		"odometerDescription": "ACTUAL",
+		"damageDescription": "Front End Damage",
 		"cylinders": "0",
 		"color": "",
 		"hasKey": true,
@@ -212,7 +212,7 @@
 		"auctionName": "",
 		"auctionCountdown": "Auction in 3D 6H 20min",
 		"images": ["https://picsum.photos/200"],
-		"copartLink": ""
+		"lotUrl": ""
 	},
 	{
 		"title": "BMW X3",
@@ -223,7 +223,7 @@
 		"bodyStyle": "",
 		"runAndDrive": true,
 		"vin": "",
-		"lotNumber": "99970790",
+		"lotInv": "99970790",
 		"laneItem": "5",
 		"saleName": "IL - CHICAGO",
 		"location": "IL - CHICAGO",
@@ -236,8 +236,8 @@
 		"vehicleTitleType": "",
 		"odometer": 67890,
 		"odometerUnit": "mi",
-		"odometerStatus": "ACTUAL",
-		"primaryDamage": "Side Damage",
+		"odometerDescription": "ACTUAL",
+		"damageDescription": "Side Damage",
 		"cylinders": "0",
 		"color": "",
 		"hasKey": true,
@@ -255,7 +255,7 @@
 		"auctionName": "",
 		"auctionCountdown": "Auction in 1D 14H 10min",
 		"images": ["https://picsum.photos/200"],
-		"copartLink": ""
+		"lotUrl": ""
 	},
 	{
 		"title": "JEEP GRAND CHEROKEE",
@@ -266,7 +266,7 @@
 		"bodyStyle": "",
 		"runAndDrive": true,
 		"vin": "",
-		"lotNumber": "99970791",
+		"lotInv": "99970791",
 		"laneItem": "6",
 		"saleName": "GA - ATLANTA",
 		"location": "GA - ATLANTA",
@@ -279,8 +279,8 @@
 		"vehicleTitleType": "",
 		"odometer": 54321,
 		"odometerUnit": "mi",
-		"odometerStatus": "ACTUAL",
-		"primaryDamage": "Rear End Damage",
+		"odometerDescription": "ACTUAL",
+		"damageDescription": "Rear End Damage",
 		"cylinders": "0",
 		"color": "",
 		"hasKey": false,
@@ -298,7 +298,7 @@
 		"auctionName": "",
 		"auctionCountdown": "Auction in 2D 9H 55min",
 		"images": ["https://picsum.photos/200"],
-		"copartLink": ""
+		"lotUrl": ""
 	},
 	{
 		"title": "MERCEDES-BENZ C-CLASS",
@@ -309,7 +309,7 @@
 		"bodyStyle": "",
 		"runAndDrive": true,
 		"vin": "",
-		"lotNumber": "99970792",
+		"lotInv": "99970792",
 		"laneItem": "7",
 		"saleName": "CA - SAN FRANCISCO",
 		"location": "CA - SAN FRANCISCO",
@@ -322,8 +322,8 @@
 		"vehicleTitleType": "",
 		"odometer": 98765,
 		"odometerUnit": "mi",
-		"odometerStatus": "ACTUAL",
-		"primaryDamage": "Minor Damage",
+		"odometerDescription": "ACTUAL",
+		"damageDescription": "Minor Damage",
 		"cylinders": "0",
 		"color": "",
 		"hasKey": true,
@@ -341,7 +341,7 @@
 		"auctionName": "",
 		"auctionCountdown": "Auction in 0D 22H 40min",
 		"images": ["https://picsum.photos/200"],
-		"copartLink": ""
+		"lotUrl": ""
 	},
 	{
 		"title": "NISSAN ALTIMA",
@@ -352,7 +352,7 @@
 		"bodyStyle": "",
 		"runAndDrive": true,
 		"vin": "",
-		"lotNumber": "99970793",
+		"lotInv": "99970793",
 		"laneItem": "8",
 		"saleName": "TX - SAN ANTONIO",
 		"location": "TX - SAN ANTONIO",
@@ -365,8 +365,8 @@
 		"vehicleTitleType": "",
 		"odometer": 12345,
 		"odometerUnit": "mi",
-		"odometerStatus": "ACTUAL",
-		"primaryDamage": "Front End Damage",
+		"odometerDescription": "ACTUAL",
+		"damageDescription": "Front End Damage",
 		"cylinders": "0",
 		"color": "",
 		"hasKey": true,
@@ -384,7 +384,7 @@
 		"auctionName": "",
 		"auctionCountdown": "Auction in 4D 2H 25min",
 		"images": ["https://picsum.photos/200"],
-		"copartLink": ""
+		"lotUrl": ""
 	},
 	{
 		"title": "VOLKSWAGEN JETTA",
@@ -395,7 +395,7 @@
 		"bodyStyle": "",
 		"runAndDrive": true,
 		"vin": "",
-		"lotNumber": "99970794",
+		"lotInv": "99970794",
 		"laneItem": "9",
 		"saleName": "FL - ORLANDO",
 		"location": "FL - ORLANDO",
@@ -408,8 +408,8 @@
 		"vehicleTitleType": "",
 		"odometer": 145678,
 		"odometerUnit": "mi",
-		"odometerStatus": "ACTUAL",
-		"primaryDamage": "Side Damage",
+		"odometerDescription": "ACTUAL",
+		"damageDescription": "Side Damage",
 		"cylinders": "0",
 		"color": "",
 		"hasKey": false,
@@ -427,6 +427,6 @@
 		"auctionName": "",
 		"auctionCountdown": "Auction in 1D 18H 5min",
 		"images": ["https://picsum.photos/200"],
-		"copartLink": ""
+		"lotUrl": ""
 	}
 ]

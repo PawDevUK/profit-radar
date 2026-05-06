@@ -128,7 +128,7 @@ async function waitForAnyNewFileStable(dir: string, startedAt: number, { timeout
 	throw new Error('Download timed out');
 }
 
-export const login_CSV = async function (landingUrl: string, targetUrl: string) {
+export const login_CSV = async function (landingUrl: string, targetUrl: string, saleId: string) {
 	const options = {
 		headless: false,
 		args: ['--no-sandbox', '--disable-setuid-sandbox'],
@@ -137,6 +137,7 @@ export const login_CSV = async function (landingUrl: string, targetUrl: string) 
 	let browser: { close: () => Promise<void> } | null = null;
 	const timeoutNumber = 200000;
 	const downloadPath = path.join(process.cwd(), 'downloads');
+	let filePath;
 
 	if (!existsSync(downloadPath)) {
 		mkdirSync(downloadPath, { recursive: true });
@@ -231,9 +232,17 @@ export const login_CSV = async function (landingUrl: string, targetUrl: string) 
 
 		await Promise.allSettled([signin.waitForNavigation({ waitUntil: 'domcontentloaded', timeout: 15000 }), humanClickHandle(signin, exportHandle)]);
 
-		const filePath = await waitForAnyNewFileStable(downloadPath, startedAt, {
+		filePath = await waitForAnyNewFileStable(downloadPath, startedAt, {
 			timeoutMs: 90000,
 		});
+
+		if (filePath) {
+			console.log('---- Sending csv to conversion and to database ----');
+			await fetch(`http://localhost:3000/api?csvSalePath=${filePath}&id=${saleId}`, {
+				method: 'GET',
+				headers: { 'Content-Type': 'text/csv' },
+			});
+		}
 
 		console.log('Downloaded file:', filePath);
 	} catch (e) {

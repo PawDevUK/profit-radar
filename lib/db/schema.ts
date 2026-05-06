@@ -1,6 +1,6 @@
 import { Schema } from 'mongoose';
 import { LotDetailsType } from '@/lib/types/lotDetails-type';
-import { SaleListType, CalendarMonthType } from '@/lib/types/calendar-type';
+import { SaleListType, CalendarType } from '@/lib/types/calendar-type';
 
 export const LotDetailsSchema = new Schema<LotDetailsType>(
 	{
@@ -12,7 +12,8 @@ export const LotDetailsSchema = new Schema<LotDetailsType>(
 		bodyStyle: { type: String },
 		runAndDrive: { type: Boolean },
 		vin: { type: String },
-		lotNumber: { type: String },
+		lotInv: { type: String },
+		saleId: { type: String },
 		laneItem: { type: String },
 		saleName: { type: String },
 		location: { type: String },
@@ -25,8 +26,8 @@ export const LotDetailsSchema = new Schema<LotDetailsType>(
 		vehicleTitleType: { type: String },
 		odometer: { type: String },
 		odometerUnit: { type: String, enum: ['mi', 'km'] },
-		odometerStatus: { type: String },
-		primaryDamage: { type: String },
+		odometerDescription: { type: String },
+		damageDescription: { type: String },
 		cylinders: { type: String },
 		color: { type: String },
 		hasKey: { type: String, default: false },
@@ -40,15 +41,20 @@ export const LotDetailsSchema = new Schema<LotDetailsType>(
 		notes: { type: String },
 		lastUpdated: { type: String },
 		currentBid: { type: String },
-		buyItNow: { type: Number, default: null },
+		buyItNow: { type: String, default: null },
+		myBid: { type: String },
+		itemNumber: { type: String },
+		estRetailValue: { type: String },
 		auctionName: { type: String },
+		saleLight: { type: String },
+		announcements: { type: String },
+		autoGrade: { type: String },
 		auctionCountdown: { type: String },
-		images: [
-			{
-				copart: { type: [String] }, // Keep as URL or change to Buffer if storing binary
-				AiRepaired: { type: [Buffer] }, // Binary data for repaired image
-			},
-		],
+		lotUrl: { type: String },
+		images: {
+			copart: { type: [String] }, // Keep as URL or change to Buffer if storing binary
+			AiRepaired: { type: [Buffer] }, // Binary data for repaired image
+		},
 	},
 	{ _id: false },
 );
@@ -62,7 +68,7 @@ export const SaleListSchema = new Schema<SaleListType>(
 		nextSaleUrl: { type: String },
 		currentSale: { type: String },
 		currentSaleUrl: { type: String },
-		lotList: [LotDetailsSchema],
+		saleId: { type: String },
 		numOfLots: { type: Number },
 		scrapedAt: { type: Date },
 		buyItNow: { type: Number },
@@ -70,9 +76,7 @@ export const SaleListSchema = new Schema<SaleListType>(
 	{ timestamps: true },
 );
 
-export const MonthSaleSchema = new Schema<CalendarMonthType>({
-	month: { type: String },
-	year: { type: Number },
+export const CalendarSaleSchema = new Schema<CalendarType>({
 	scrapedAt: { type: Date },
 	totalAuctions: { type: Number },
 	auctions: [SaleListSchema],

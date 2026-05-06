@@ -50,7 +50,7 @@ export default function LotDetailsSection({ lotData }: { lotData: LotDetailsType
 				</Section>
 
 				<Section title='Auction Information'>
-					<Row label='Lot Number' value={lotData.lotNumber} />
+					<Row label='Lot Number' value={lotData.lotInv} />
 					{/* <Row label='Lane Item' value={lotData.laneItem} /> */}
 					{/* <Row label='Sale Name' value={lotData.saleName} /> */}
 					<Row label='Location' value={lotData.location} />
@@ -59,20 +59,20 @@ export default function LotDetailsSection({ lotData }: { lotData: LotDetailsType
 					<Row label='Current Bid' value={`$${lotData.currentBid}`} />
 					{/* <Row label='Buy It Now' value={lotData.buyItNow} /> */}
 					<Row label='Auction Countdown' value={lotData.auctionCountdown} />
-					{/* <Row label='Copart Link' value={lotData.copartLink} /> */}
+					{/* <Row label='Copart Link' value={lotData.lotUrl} /> */}
 				</Section>
 			</SectionWrapper>
 
 			<SectionWrapper>
 				<Section title='Condition'>
-					<Row label='Primary Damage' value={lotData.primaryDamage} />
+					<Row label='Primary Damage' value={lotData.damageDescription} />
 					<Row label='Run And Drive' value={lotData.runAndDrive} />
 					<Row label='Has Key' value={lotData.hasKey} />
 					<Row label='Title Code' value={lotData.titleCode} />
 					<Row label='Vehicle Title Type' value={lotData.vehicleTitleType} />
 					<Row label='Odometer' value={lotData.odometer} />
 					{/* <Row label='Odometer Unit' value={lotData.odometerUnit} /> */}
-					<Row label='Odometer Status' value={lotData.odometerStatus} />
+					<Row label='Odometer Status' value={lotData.odometerDescription} />
 					<Row label='Engine Verified' value={lotData.engineVerified} />
 					<Row label='Engine Verified Note' value={lotData.engineVerifiedNote} />
 					<Row label='Engine Status' value={lotData.engineStatus} />

@@ -6,11 +6,11 @@ import { checkAllCarsAndSaveToFile, verifyCarOnOtomoto, loadCopartCars } from '@
 export async function POST(request: Request) {
 	try {
 		const body = await request.json().catch(() => ({}));
-		const { make, model, lotNumber } = body;
+		const { make, model, lotInv } = body;
 
 		// If specific car provided, verify only that car
-		if (make && model && lotNumber) {
-			console.log(`Verifying single car: ${make} ${model} (Lot #${lotNumber})`);
+		if (make && model && lotInv) {
+			console.log(`Verifying single car: ${make} ${model} (Lot #${lotInv})`);
 
 			const verification = await verifyCarOnOtomoto(make, model);
 
@@ -39,7 +39,7 @@ export async function POST(request: Request) {
 			}
 
 			// Find and update or add the car result
-			const existingIndex = allResults.findIndex((r: any) => r.lotNumber === lotNumber);
+			const existingIndex = allResults.findIndex((r: any) => r.lotInv === lotInv);
 			const timestamp = new Date().toISOString();
 
 			const carResult = {
@@ -49,7 +49,7 @@ export async function POST(request: Request) {
 				odometer: body.odometer || 'N/A',
 				listed_otomoto: verification.found,
 				listing_count: verification.count,
-				lotNumber,
+				lotInv,
 				checkedAt: timestamp,
 			};
 
@@ -137,7 +137,7 @@ export async function GET(request: Request) {
 				endpoints: {
 					POST: {
 						description: 'Run Otomoto verification',
-						body: 'Optional: { make, model, lotNumber, year?, odometer? } to check single car, or empty {} to check all cars',
+						body: 'Optional: { make, model, lotInv, year?, odometer? } to check single car, or empty {} to check all cars',
 						returns: 'Verification result(s) with listing counts',
 					},
 					GET: {

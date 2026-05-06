@@ -3,15 +3,15 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Calendar from './calendar';
-import { CalendarMonthType, SaleListType } from '@/lib/types/calendar-type';
+import { CalendarType, SaleListType } from '@/lib/types/calendar-type';
 import { format } from 'date-fns';
 
-const isCalendarMonthArray = (value: unknown): value is CalendarMonthType[] => {
+const isCalendarMonthArray = (value: unknown): value is CalendarType[] => {
 	if (!Array.isArray(value)) return false;
-	return value.every((month) => typeof month === 'object' && month !== null && Array.isArray((month as CalendarMonthType).auctions));
+	return value.every((month) => typeof month === 'object' && month !== null && Array.isArray((month as CalendarType).auctions));
 };
 
-const unwrapCalendarMonths = (payload: unknown): CalendarMonthType[] => {
+const unwrapCalendarMonths = (payload: unknown): CalendarType[] => {
 	if (isCalendarMonthArray(payload)) return payload;
 
 	if (payload && typeof payload === 'object' && 'data' in payload) {
@@ -26,7 +26,7 @@ const unwrapCalendarMonths = (payload: unknown): CalendarMonthType[] => {
 
 export default function CalendarPage() {
 	const router = useRouter();
-	const [sales, setSales] = useState<CalendarMonthType[]>([]);
+	const [sales, setSales] = useState<CalendarType[]>([]);
 	const [isRefreshing, setIsRefreshing] = useState(false);
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState<string | null>(null);

@@ -52,7 +52,7 @@ interface LotDetails {
   bodyStyle: string;          // Body style e.g. "Sedan"
   runAndDrive: boolean;       // Whether vehicle runs and drives — often absent
   vin: string;                // 17-character VIN
-  lotNumber: string;          // Copart lot number
+  lotInv: string;          // Copart lot number
   laneItem: string;           // Lane/Item code e.g. "B/2574"
   saleName: string;           // Sale location name e.g. "DC - WASHINGTON DC"
   location: string;           // Physical location display name
@@ -65,8 +65,8 @@ interface LotDetails {
   vehicleTitleType: string;   // Description part of titleCode e.g. "Cert Of Salvage > 75% Damage"
   odometer: number;           // Numeric odometer reading
   odometerUnit: string;       // Unit e.g. "mi" or "km"
-  odometerStatus: string;     // Status e.g. "Not Actual", "Actual"
-  primaryDamage: string;      // Primary damage type e.g. "Front End"
+  odometerDescription: string;     // Status e.g. "Not Actual", "Actual"
+  damageDescription: string;      // Primary damage type e.g. "Front End"
   cylinders: string;          // Number of cylinders e.g. "4"
   color: string;              // Color e.g. "Charcoal"
   hasKey: boolean;            // Whether vehicle has key — normalize "Yes"->true, "No"->false
@@ -87,7 +87,7 @@ interface LotDetails {
   copart:[],
   AiRepaired:[]
   };           // Array of thumbnail image src URLs
-  copartLink: string;         // Full page URL via page.url()
+  lotUrl: string;         // Full page URL via page.url()
 }
 
 ═══════════════════════════════════════════════════════════
@@ -170,7 +170,7 @@ vin:
   fallback -> span.p-ml-1.ng-star-inserted (header VIN block, sibling of copy button)
   extract  -> el.innerText.trim()
 
-lotNumber:
+lotInv:
   selector -> .lh-1-4.p-mt-3 span.p-ml-1
   extract  -> el.innerText.trim()
 
@@ -207,11 +207,11 @@ odometerUnit:
   selector -> vehicle-information > .lot-details-information:nth-child(2) .lot-details-information-value
   extract  -> el.innerText.trim().split(/\s+/)[1] || "mi"
 
-odometerStatus:
+odometerDescription:
   selector -> vehicle-information > .lot-details-information:nth-child(2) .lot-details-information-value span:first-child
   extract  -> el.innerText.trim()
 
-primaryDamage:
+damageDescription:
   selector -> vehicle-information > .lot-details-information:nth-child(3) .lot-details-information-value
   extract  -> el.innerText.trim()
 
@@ -288,7 +288,7 @@ images:
   method   -> $$eval
   extract  -> els.map(el => el.getAttribute("src")).filter(Boolean)
 
-copartLink:
+lotUrl:
   selector -> null
   method   -> page.url
   extract  -> page.url()

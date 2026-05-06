@@ -3,7 +3,7 @@ import convertLotImgURL from './parseImgUrls.js';
 import _ from 'lodash';
 
 interface scrapeImagesType {
-	lotNumber: string | null;
+	lotInv: string | null;
 	images: {
 		copart: string[] | null;
 		AiRepaired: Buffer[] | null;
@@ -11,7 +11,7 @@ interface scrapeImagesType {
 }
 
 export const createEmptyLotDetails = (): scrapeImagesType => ({
-	lotNumber: null,
+	lotInv: null,
 	images: {
 		copart: [],
 		AiRepaired: [],
@@ -25,11 +25,18 @@ const pageOptions: GoToOptions = {
 
 export default async function scrapeLotImages(pageUrls: string[] | string) {
 	async function getData(pageUrls: string) {
+		await page.setViewport({ width: 1280, height: 800 });
+		await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
 		await page.goto(pageUrls, pageOptions);
 		console.log('Launching page:', pageUrls);
 		await page.content();
 		const lotObj = createEmptyLotDetails();
-		await page.waitForSelector('.img-responsive.p-galleria-img-thumbnail', { timeout: 1000 });
+		const consentSelector = 'button[aria-label="Consent"].fc-button.fc-cta-consent.fc-primary-button';
+		const consentButton = await page.$(consentSelector);
+		if (consentButton) {
+			await page.click(consentSelector);
+		}
+		await page.waitForSelector('.img-responsive.p-galleria-img-thumbnail', { timeout: 20000 });
 		console.log('Starting scrapping images.');
 		// extract image URLs
 		const imageUrls = await page.$$eval('.img-responsive.p-galleria-img-thumbnail', (images) => images.map((img) => img.getAttribute('src') || '').filter(Boolean));
@@ -44,7 +51,7 @@ export default async function scrapeLotImages(pageUrls: string[] | string) {
 		};
 
 		console.log('------------------');
-		console.log('Scraped lot', lotObj.lotNumber);
+		console.log('Scraped lot', lotObj.lotInv);
 		console.log('------------------');
 		return lotObj;
 	}
