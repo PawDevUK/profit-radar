@@ -51,12 +51,10 @@ export const LotDetailsSchema = new Schema<LotDetailsType>(
 		autoGrade: { type: String },
 		auctionCountdown: { type: String },
 		lotUrl: { type: String },
-		images: [
-			{
-				copart: { type: [String] }, // Keep as URL or change to Buffer if storing binary
-				AiRepaired: { type: [Buffer] }, // Binary data for repaired image
-			},
-		],
+		images: {
+			copart: { type: [String] }, // Keep as URL or change to Buffer if storing binary
+			AiRepaired: { type: [Buffer] }, // Binary data for repaired image
+		},
 	},
 	{ _id: false },
 );
