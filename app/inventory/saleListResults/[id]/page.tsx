@@ -3,10 +3,9 @@ import { useRouter } from 'next/navigation';
 import Card from '@/app/inventory/saleListResults/[id]/card/card';
 import { LotDetailsType } from '@/lib/types/lotDetails-type';
 import { setFilterResults_State } from '@/lib/state/searchFilters.state';
-import { allCars_State } from '@/lib/state/allCars.state';
-import { useMemo, useState } from 'react';
+import { allCars_State, SelectSingleLot } from '@/lib/state/allCars.state';
+import { useMemo, useState, useEffect } from 'react';
 import _ from 'lodash';
-import { SelectSingleLot } from '@/lib/state/allCars.state';
 
 type PaginationProps = {
 	totalItems: number;
