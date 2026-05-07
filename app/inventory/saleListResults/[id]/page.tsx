@@ -113,7 +113,7 @@ export default function SaleListResultsPage() {
 		return (
 			<div className='w-full min-h-screen bg-gray-50 py-3 px-4 sm:px-6 lg:px-8'>
 				<div className='max-w-(--max-app-width) mx-auto'>
-					<div className='flex flex-wrap justify-center max-h=[1580px] gap-4'>
+					<div className='flex flex-wrap justify-center max-h=[1580px] gap-0.2'>
 						{visibleCars.map((car, index) => (
 							<Card
 								key={index}
