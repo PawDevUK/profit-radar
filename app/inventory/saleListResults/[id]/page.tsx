@@ -77,13 +77,35 @@ export default function SaleListResultsPage() {
 	const router = useRouter();
 	const [requestedPage, setRequestedPage] = useState(1);
 	const [itemsPerPage, setItemsPerPage] = useState(20);
+	const [mobilePage, setMobilePage] = useState(false);
 
 	const filteredCars = cars;
 	const totalPages = Math.max(1, Math.ceil(filteredCars.length / itemsPerPage));
 	const currentPage = Math.min(requestedPage, totalPages);
 	const pages = useMemo(() => getVisiblePages(totalPages, currentPage), [totalPages, currentPage]);
-	const visibleCars = filteredCars.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+	const visibleCars = mobilePage
+		? filteredCars.slice(0, currentPage * itemsPerPage) // accumulate (infinite scroll)
+		: filteredCars.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage); // replace (pagination)
 	const setSelectedLot = SelectSingleLot((state) => state.setSelectedLot);
+
+	useEffect(() => {
+		const innerWidth = window.innerWidth;
+		setMobilePage(innerWidth < 768);
+	}, [mobilePage]);
+
+	useEffect(() => {
+		if (!mobilePage) return;
+
+		const handleScroll = () => {
+			const isAtBottom = window.innerHeight + window.scrollY >= document.body.scrollHeight - 100;
+			if (isAtBottom && currentPage < totalPages) {
+				setRequestedPage((prev) => prev + 1);
+			}
+		};
+
+		window.addEventListener('scroll', handleScroll);
+		return () => window.removeEventListener('scroll', handleScroll);
+	}, [mobilePage, currentPage, totalPages]);
 
 	if (isLoading) {
 		return (
@@ -124,10 +146,15 @@ export default function SaleListResultsPage() {
 						))}
 					</div>
 				</div>
-				<Pagination pages={pages} totalItems={filteredCars.length} itemsPerPage={itemsPerPage} currentPage={currentPage} setCurrentPage={setRequestedPage} />
+				{!mobilePage ? (
+					<Pagination pages={pages} totalItems={filteredCars.length} itemsPerPage={itemsPerPage} currentPage={currentPage} setCurrentPage={setRequestedPage} />
+				) : (
+					''
+				)}
 			</div>
 		);
 	}
+
 	if (filteredCars && filteredCars.length === 0 && !isLoading) {
 		return (
 			<div className='w-full min-h-screen bg-white py-3 px-4 sm:px-6 lg:px-8'>
