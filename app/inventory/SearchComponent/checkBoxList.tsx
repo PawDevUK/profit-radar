@@ -20,7 +20,6 @@ type CheckboxListProps = {
 function CheckBoxListComponent({ options, selected = [], title, scrollable, icon, searchable, setMake, makesData }: CheckboxListProps) {
 	const [searchOptions, setSearchOptions] = useState<string[]>(options);
 	const SET_Filter = setFilterResults_State(selectSetFilter);
-	const SET_Models = setFilterResults_State((s) => s.SET_Models); // add
 	const selectedSet = useMemo(() => {
 		return Array.isArray(selected) ? new Set(selected) : new Set([selected]);
 	}, [selected]);
@@ -44,15 +43,8 @@ function CheckBoxListComponent({ options, selected = [], title, scrollable, icon
 	const handleCheckboxChange = useCallback(
 		(option: string) => {
 			SET_Filter(option, title ?? '');
-
-			// Keep model options in sync whenever "Make" changes.
-			if (title === 'Make' && makesData) {
-				const currentMake = typeof selected === 'string' ? selected : '';
-				const nextMake = currentMake === option ? '' : option;
-				SET_Models(nextMake, makesData);
-			}
 		},
-		[SET_Filter, SET_Models, title, makesData, selected],
+		[SET_Filter, title],
 	);
 
 	return (
