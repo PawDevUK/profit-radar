@@ -18,7 +18,7 @@ import {
 	bodyType,
 } from '@/app/inventory/options';
 
-import { setFilterResults_State } from '@/lib/state/searchFilters.state';
+import { FilterResults_State } from '@/lib/state/searchFilters.state';
 import { selectSearchFilterByKey } from '@/lib/state/selectors/searchFilters.selectors';
 
 import { Engine, Gears, VehicleType, CarCondition, DriveType, V8Icon, strokeIcons, colorIcons } from './searchIcons';
@@ -54,20 +54,20 @@ function getModels(make: string) {
 	return makes.filter((prop) => make === prop.make)[0]?.models || [];
 }
 export default function SideSearch() {
-	const sortFilter = setFilterResults_State(selectSearchFilterByKey('sort'));
-	const makeFilter = setFilterResults_State(selectSearchFilterByKey('make'));
-	const selectedModelsFilter = setFilterResults_State(selectSearchFilterByKey('selectedModels'));
-	const vehicleTitleTypeFilter = setFilterResults_State(selectSearchFilterByKey('vehicleTitleType'));
-	const vehicleConditionTypeFilter = setFilterResults_State(selectSearchFilterByKey('vehicleConditionType'));
-	const vehicleTypeFilter = setFilterResults_State(selectSearchFilterByKey('vehicleType'));
-	const engineTypeFilter = setFilterResults_State(selectSearchFilterByKey('engineType'));
-	const transmissionFilter = setFilterResults_State(selectSearchFilterByKey('transmission'));
-	const fuelTypeFilter = setFilterResults_State(selectSearchFilterByKey('fuelType'));
-	const driveTrainFilter = setFilterResults_State(selectSearchFilterByKey('driveTrain'));
-	const cylindersFilter = setFilterResults_State(selectSearchFilterByKey('cylinders'));
-	const auctionNameFilter = setFilterResults_State(selectSearchFilterByKey('auctionName'));
-	const locationFilter = setFilterResults_State(selectSearchFilterByKey('location'));
-	const bodyStyleFilter = setFilterResults_State(selectSearchFilterByKey('bodyStyle'));
+	const sortFilter = FilterResults_State(selectSearchFilterByKey('sort'));
+	const makeFilter = FilterResults_State(selectSearchFilterByKey('make'));
+	const selectedModelsFilter = FilterResults_State(selectSearchFilterByKey('selectedModels'));
+	const vehicleTitleTypeFilter = FilterResults_State(selectSearchFilterByKey('vehicleTitleType'));
+	const vehicleConditionTypeFilter = FilterResults_State(selectSearchFilterByKey('vehicleConditionType'));
+	const vehicleTypeFilter = FilterResults_State(selectSearchFilterByKey('vehicleType'));
+	const engineTypeFilter = FilterResults_State(selectSearchFilterByKey('engineType'));
+	const transmissionFilter = FilterResults_State(selectSearchFilterByKey('transmission'));
+	const fuelTypeFilter = FilterResults_State(selectSearchFilterByKey('fuelType'));
+	const driveTrainFilter = FilterResults_State(selectSearchFilterByKey('driveTrain'));
+	const cylindersFilter = FilterResults_State(selectSearchFilterByKey('cylinders'));
+	const auctionNameFilter = FilterResults_State(selectSearchFilterByKey('auctionName'));
+	const locationFilter = FilterResults_State(selectSearchFilterByKey('location'));
+	const bodyStyleFilter = FilterResults_State(selectSearchFilterByKey('bodyStyle'));
 
 	return (
 		<div className='flex flex-col '>

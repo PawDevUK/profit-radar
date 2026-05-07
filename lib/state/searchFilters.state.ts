@@ -83,7 +83,7 @@ interface FilterResultsState {
 	SET_SelectedModel: (value: string) => void;
 }
 
-export const setFilterResults_State = create<FilterResultsState>((set) => ({
+export const FilterResults_State = create<FilterResultsState>((set) => ({
 	searchFilters: initialSearchFilters,
 	SET_Filter: (filters: string, label: string) => {
 		const labelCamelCase = _.camelCase(label);

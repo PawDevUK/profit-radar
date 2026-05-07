@@ -1,12 +1,13 @@
 'use client';
 
-import { useParams, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import LotDetailsSection from '@/app/inventory/lot/lotDetails';
 import BidBuy from '../BidBuy';
 import Img from 'next/image';
 import Toggle from '@/app/components/common/toggler/toggler';
-import { allCars_State, SelectSingleLot } from '@/lib/state/allCars.state';
+import { allCars_State } from '@/lib/state/allCars.state';
+import { SelectSingleLot } from '@/lib/state/lotDetailsPage.state';
 import { carImagePlaceholder } from '@/img';
 
 export default function LotDetailsPage() {
@@ -18,7 +19,6 @@ export default function LotDetailsPage() {
 	const [aiImages] = useState<string[]>([]);
 	const imagesDoc = Array.isArray(car.images) ? (car.images as unknown as { copart: string[] | null }[])[0] : car.images;
 	const images: string[] = imagesDoc?.copart ?? [];
-	// Build map: original index -> AI image path, parsed from img-001-ai.png naming
 	const aiImageMap: Record<number, string> = Object.fromEntries(
 		aiImages
 			.map((p) => {
