@@ -16,6 +16,18 @@ export default function LotDetailsPage() {
 	const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 	const [AiImage, setAiImage] = useState(false);
 	const [aiImages] = useState<string[]>([]);
+	const imagesDoc = Array.isArray(car.images) ? (car.images as unknown as { copart: string[] | null }[])[0] : car.images;
+	const images: string[] = imagesDoc?.copart ?? [];
+	// Build map: original index -> AI image path, parsed from img-001-ai.png naming
+	const aiImageMap: Record<number, string> = Object.fromEntries(
+		aiImages
+			.map((p) => {
+				const m = p.match(/img-(\d+)-ai\.png$/);
+				return m ? [parseInt(m[1], 10) - 1, p] : null;
+			})
+			.filter(Boolean) as [number, string][],
+	);
+	const currentSrc = AiImage && aiImageMap[selectedImageIndex] ? aiImageMap[selectedImageIndex] : images[selectedImageIndex];
 
 	const handleBack = () => {
 		router.push(`/inventory`);
@@ -90,132 +102,14 @@ export default function LotDetailsPage() {
 						<div className='bg-white rounded-lg shadow p-6 mb-2'>
 							{/* Main Image with Navigation */}
 							<div className='mb-4 relative'>
-								{toggleAIImage()}
-								{(() => {
-									// Mongoose stores images as a sub-document: { copart: [], AiRepaired: [] }
-									const imagesDoc = Array.isArray(car.images) ? (car.images as unknown as { copart: string[] | null }[])[0] : car.images;
-									const images: string[] = imagesDoc?.copart ?? [];
-									// Build map: original index -> AI image path, parsed from img-001-ai.png naming
-									const aiImageMap: Record<number, string> = Object.fromEntries(
-										aiImages
-											.map((p) => {
-												const m = p.match(/img-(\d+)-ai\.png$/);
-												return m ? [parseInt(m[1], 10) - 1, p] : null;
-											})
-											.filter(Boolean) as [number, string][],
-									);
-									const currentSrc = AiImage && aiImageMap[selectedImageIndex] ? aiImageMap[selectedImageIndex] : images[selectedImageIndex];
-									return images.length > 0 ? (
-										<>
-											<div
-												className={`relative w-full h-100 bg-gray-200 rounded overflow-hidden mb-4 group border-4 ${AiImage ? 'border-[var(--mongo-green)]' : 'border-white'}`}>
-												<Img
-													alt='Car Image'
-													src={currentSrc}
-													className='object-contain z-30'
-													fill
-													sizes='(max-width: 1024px) 100vw, 66vw'
-													onError={(e) => {
-														e.currentTarget.src = '/images/placeholder.png';
-													}}
-												/>
-												<div className=''></div>
-												<Img
-													src={currentSrc}
-													alt=''
-													fill
-													sizes='(max-width: 1024px) 100vw, 66vw'
-													aria-hidden
-													priority
-													className='object-cover scale-110 blur-lg opacity-60'
-													onError={(e) => {
-														e.currentTarget.src = '/images/placeholder.png';
-													}}
-												/>
-												<div className='z-50'></div>
-												{images.length > 1 && (
-													<>
-														<button
-															onClick={() => setSelectedImageIndex((prev) => (prev > 0 ? prev - 1 : images.length - 1))}
-															type='button'
-															className='absolute top-0 start-0 z-40 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none '
-															data-carousel-prev>
-															<span className='inline-flex items-center justify-center w-10 h-10 rounded-base bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60  group-focus:outline-none rounded-md'>
-																<svg
-																	className='w-5 h-5 text-white rtl:rotate-180'
-																	aria-hidden='true'
-																	xmlns='http://www.w3.org/2000/svg'
-																	width='24'
-																	height='24'
-																	fill='none'
-																	viewBox='0 0 24 24'>
-																	<path
-																		stroke='currentColor'
-																		stroke-linecap='round'
-																		stroke-linejoin='round'
-																		stroke-width='2'
-																		d='m15 19-7-7 7-7'
-																	/>
-																</svg>
-																<span className='sr-only'>Previous</span>
-															</span>
-														</button>
-														<button
-															type='button'
-															className='absolute top-0 end-0 z-40 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none'
-															onClick={() => setSelectedImageIndex((prev) => (prev < images.length - 1 ? prev + 1 : 0))}
-															data-carousel-next>
-															<span className='inline-flex items-center justify-center w-10 h-10 rounded-base bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-focus:ring-gray-800/70 group-focus:outline-none rounded-md'>
-																<svg
-																	className='w-5 h-5 text-white rtl:rotate-180'
-																	aria-hidden='true'
-																	xmlns='http://www.w3.org/2000/svg'
-																	width='24'
-																	height='24'
-																	fill='none'
-																	viewBox='0 0 24 24'>
-																	<path stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m9 5 7 7-7 7' />
-																</svg>
-																<span className='sr-only'>Next</span>
-															</span>
-														</button>
-													</>
-												)}
-											</div>
-											<div>
-												<div className='grid grid-cols-6 gap-2'>
-													{images.length > 1
-														? images.map((imgUrl: string, idx) => (
-																<button
-																	key={idx}
-																	onClick={() => setSelectedImageIndex(idx)}
-																	title={`Image ${idx + 1}`}
-																	className={`relative aspect-square rounded overflow-hidden border-2 transition-all hover:scale-105 ${
-																		selectedImageIndex === idx
-																			? 'border-blue-600 ring-2 ring-blue-400 ring-offset-1'
-																			: 'border-gray-300 hover:border-blue-400'
-																	}`}>
-																	<Img
-																		src={AiImage && aiImageMap[idx] ? aiImageMap[idx] : imgUrl}
-																		alt={`Thumbnail ${idx + 1}`}
-																		className='object-cover'
-																		fill
-																		sizes='(max-width: 640px) 15vw, (max-width: 1024px) 12vw, 120px'
-																		onError={(e) => {
-																			e.currentTarget.src = '/images/placeholder.png';
-																		}}
-																	/>
-																</button>
-															))
-														: null}
-												</div>
-											</div>
-										</>
-									) : (
-										<div className='relative w-full h-100 bg-gray-200 rounded overflow-hidden mb-4'>
+								{/* {toggleAIImage()} */}
+								{images.length > 0 ? (
+									<>
+										<div
+											className={`relative w-full h-100 bg-gray-200 rounded overflow-hidden mb-4 group border-4 ${AiImage ? 'border-[var(--mongo-green)]' : 'border-white'}`}>
 											<Img
 												alt='Car Image'
-												src={carImagePlaceholder}
+												src={currentSrc}
 												className='object-contain z-30'
 												fill
 												sizes='(max-width: 1024px) 100vw, 66vw'
@@ -223,12 +117,108 @@ export default function LotDetailsPage() {
 													e.currentTarget.src = '/images/placeholder.png';
 												}}
 											/>
+											<div className=''></div>
+											<Img
+												src={currentSrc}
+												alt=''
+												fill
+												sizes='(max-width: 1024px) 100vw, 66vw'
+												aria-hidden
+												priority
+												className='object-cover scale-110 blur-lg opacity-60'
+												onError={(e) => {
+													e.currentTarget.src = '/images/placeholder.png';
+												}}
+											/>
+											<div className='z-50'></div>
+											{images.length > 1 && (
+												<>
+													<button
+														onClick={() => setSelectedImageIndex((prev) => (prev > 0 ? prev - 1 : images.length - 1))}
+														type='button'
+														className='absolute top-0 start-0 z-40 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none '
+														data-carousel-prev>
+														<span className='inline-flex items-center justify-center w-10 h-10 rounded-base bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60  group-focus:outline-none rounded-md'>
+															<svg
+																className='w-5 h-5 text-white rtl:rotate-180'
+																aria-hidden='true'
+																xmlns='http://www.w3.org/2000/svg'
+																width='24'
+																height='24'
+																fill='none'
+																viewBox='0 0 24 24'>
+																<path stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m15 19-7-7 7-7' />
+															</svg>
+															<span className='sr-only'>Previous</span>
+														</span>
+													</button>
+													<button
+														type='button'
+														className='absolute top-0 end-0 z-40 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none'
+														onClick={() => setSelectedImageIndex((prev) => (prev < images.length - 1 ? prev + 1 : 0))}
+														data-carousel-next>
+														<span className='inline-flex items-center justify-center w-10 h-10 rounded-base bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-focus:ring-gray-800/70 group-focus:outline-none rounded-md'>
+															<svg
+																className='w-5 h-5 text-white rtl:rotate-180'
+																aria-hidden='true'
+																xmlns='http://www.w3.org/2000/svg'
+																width='24'
+																height='24'
+																fill='none'
+																viewBox='0 0 24 24'>
+																<path stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m9 5 7 7-7 7' />
+															</svg>
+															<span className='sr-only'>Next</span>
+														</span>
+													</button>
+												</>
+											)}
 										</div>
-									);
-								})()}
+										<div>
+											<div className='grid grid-cols-6 gap-2'>
+												{images.length > 1
+													? images.map((imgUrl: string, idx) => (
+															<button
+																key={idx}
+																onClick={() => setSelectedImageIndex(idx)}
+																title={`Image ${idx + 1}`}
+																className={`relative aspect-square rounded overflow-hidden border-2 transition-all hover:scale-105 ${
+																	selectedImageIndex === idx
+																		? 'border-blue-600 ring-2 ring-blue-400 ring-offset-1'
+																		: 'border-gray-300 hover:border-blue-400'
+																}`}>
+																<Img
+																	src={AiImage && aiImageMap[idx] ? aiImageMap[idx] : imgUrl}
+																	alt={`Thumbnail ${idx + 1}`}
+																	className='object-cover'
+																	fill
+																	sizes='(max-width: 640px) 15vw, (max-width: 1024px) 12vw, 120px'
+																	onError={(e) => {
+																		e.currentTarget.src = '/images/placeholder.png';
+																	}}
+																/>
+															</button>
+														))
+													: null}
+											</div>
+										</div>
+									</>
+								) : (
+									<div className='relative w-full h-100 bg-gray-200 rounded overflow-hidden mb-4'>
+										<Img
+											alt='Car Image'
+											src={carImagePlaceholder}
+											className='object-contain z-30'
+											fill
+											sizes='(max-width: 1024px) 100vw, 66vw'
+											onError={(e) => {
+												e.currentTarget.src = '/images/placeholder.png';
+											}}
+										/>
+									</div>
+								)}
 							</div>
 						</div>
-
 						<LotDetailsSection lotData={car}></LotDetailsSection>
 					</div>
 
