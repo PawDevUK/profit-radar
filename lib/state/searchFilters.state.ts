@@ -13,16 +13,6 @@ const isSearchFilterKey = (key: string): key is SearchFilterKey => {
 	return key in initialSearchFilters;
 };
 
-const getModels = (make: string, makes: makesType[]) => {
-	const selectedMakes: string[] = [];
-	makes.forEach((element: makesType) => {
-		if (element.make === make) {
-			selectedMakes.push(...element.models);
-		}
-	});
-	return selectedMakes;
-};
-
 const selectToggle = <T extends SearchFilters[SearchFilterKey]>(option: string, currentValue: T, title: string): T => {
 	if (Array.isArray(currentValue)) {
 		const exists = currentValue.some((item) => String(item) === option);
@@ -90,7 +80,6 @@ const initialSearchFilters: SearchFilters = {
 interface FilterResultsState {
 	searchFilters: SearchFilters;
 	SET_Filter: (filters: string, label: string) => void;
-	SET_Models: (make: string, makes: makesType[]) => void;
 	SET_SelectedModel: (value: string) => void;
 }
 
@@ -117,16 +106,6 @@ export const setFilterResults_State = create<FilterResultsState>((set) => ({
 				},
 			};
 		});
-	},
-	SET_Models: (make: string, makes: makesType[]) => {
-		const models = getModels(make, makes);
-		set((state) => ({
-			searchFilters: {
-				...state.searchFilters,
-				model: models,
-				selectedModels: [],
-			},
-		}));
 	},
 	SET_SelectedModel: (value: string) => {
 		set((state) => {
