@@ -43,8 +43,8 @@ export default function Page() {
 
 	return (
 		<div className='relative min-h-screen flex flex-col'>
-			<div className='h-15 w-full bg-white'>
-				<div className='px-4 py-3 flex flex-row justify-end md:justify-center items-center'>
+			<div className='h-15 w-full bg-white pt-3 pr-1.25 md:p-2 '>
+				<div className='px-4 flex flex-row justify-end md:justify-center items-center'>
 					<div className='w-[70%] mr-4 hidden md:block overflow-hidden'>
 						<SearchChipsFilters />
 					</div>
