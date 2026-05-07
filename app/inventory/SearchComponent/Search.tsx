@@ -50,11 +50,12 @@ function getMakes(makes: makeModelType[]) {
 	});
 	return makesArr;
 }
-
+function getModels(make: string) {
+	return makes.filter((prop) => make === prop.make)[0]?.models || [];
+}
 export default function SideSearch() {
 	const sortFilter = setFilterResults_State(selectSearchFilterByKey('sort'));
 	const makeFilter = setFilterResults_State(selectSearchFilterByKey('make'));
-	const modelFilter = setFilterResults_State(selectSearchFilterByKey('model'));
 	const selectedModelsFilter = setFilterResults_State(selectSearchFilterByKey('selectedModels'));
 	const vehicleTitleTypeFilter = setFilterResults_State(selectSearchFilterByKey('vehicleTitleType'));
 	const vehicleConditionTypeFilter = setFilterResults_State(selectSearchFilterByKey('vehicleConditionType'));
@@ -72,7 +73,7 @@ export default function SideSearch() {
 		<div className='flex flex-col '>
 			<CheckBoxList title='Sort' options={sort} selected={sortFilter} icon={sortIcon} />
 			<CheckBoxList title='Make' options={getMakes(makes)} selected={makeFilter} scrollable searchable icon={makeIcon} makesData={makes} />
-			<CheckBoxList multiSelect title='Model' options={modelFilter} selected={selectedModelsFilter} scrollable searchable icon={modelIcon} />
+			<CheckBoxList multiSelect title='Model' options={getModels(makeFilter)} selected={selectedModelsFilter} scrollable searchable icon={modelIcon} />
 			<CheckBoxList multiSelect title='Vehicle title type' options={titleType} selected={vehicleTitleTypeFilter} icon={titleTypeIcon} />
 			<CheckBoxList multiSelect title='Body style' options={bodyType} selected={bodyStyleFilter} icon={bodyStyleIcon} />
 			<CheckBoxList title='Vehicle condition type' options={conditionType} selected={vehicleConditionTypeFilter} icon={vehicleConditionIcon} />
