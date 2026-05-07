@@ -48,23 +48,3 @@ export const allCars_State = create<AllCarsState>((set, get) => ({
 		});
 	},
 }));
-
-type SelectedSingleLot = {
-	selectedLot: LotDetailsType;
-	setSelectedLot: (lot: LotDetailsType) => void;
-	reset: () => void;
-};
-
-export const SelectSingleLot = create<SelectedSingleLot>((set, get) => ({
-	selectedLot: createLotObject(),
-	setSelectedLot: async (lot) => {
-		if (lot) {
-			set({
-				selectedLot: { ...lot },
-			});
-		}
-	},
-	reset: () => {
-		set({ selectedLot: createLotObject() });
-	},
-}));
