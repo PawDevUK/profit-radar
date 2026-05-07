@@ -2,13 +2,9 @@
 import { lazy, memo, Suspense, useState, useTransition } from 'react';
 import { X, SlidersHorizontal } from 'lucide-react';
 import SaleListResultsPage from './saleListResults/[id]/page';
-
 import SearchChipsFilters from './searchChipsFilters/searchChipsFilters';
-
 const SideSearch = lazy(() => import('./SearchComponent/Search'));
 const MemoizedSaleListResultsPage = memo(SaleListResultsPage);
-
-import { chipFilters_State } from '@/lib/state/chipFilters.state';
 
 const ToggleButton = ({ toggleFilters }: { toggleFilters: () => void }) => {
 	const IconSize = 22;
@@ -29,7 +25,6 @@ const CloseButton = ({ toggleFilters }: { toggleFilters: () => void }) => {
 };
 
 export default function Page() {
-	const { selectedFilters } = chipFilters_State();
 	const [open, setOpen] = useState(false);
 	const [, startTransition] = useTransition();
 
@@ -38,7 +33,6 @@ export default function Page() {
 			setOpen((prev) => !prev);
 		});
 	};
-
 	const resetAllFilters = function () {};
 
 	return (
