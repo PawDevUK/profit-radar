@@ -88,7 +88,7 @@ export default function SaleListResultsPage() {
 
 	if (isLoading) {
 		return (
-			<div className='min-h-screen bg-gray-50 flex items-center justify-center'>
+			<div className='min-h-screen bg-white flex items-center justify-center'>
 				<div className='text-center'>
 					<div className='animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4'></div>
 					<p className='text-gray-600'>Loading inventory list...</p>
@@ -99,7 +99,7 @@ export default function SaleListResultsPage() {
 
 	if (error) {
 		return (
-			<div className='w-full min-h-screen bg-gray-50 py-3 px-4 sm:px-6 lg:px-8'>
+			<div className='w-full min-h-screen bg-white py-3 px-4 sm:px-6 lg:px-8'>
 				<div className='max-w-(--max-app-width) mx-auto'>
 					<div className='text-center py-12'>
 						<p className='text-red-600 text-lg'>Failed to load sale list: {error}</p>
@@ -111,7 +111,7 @@ export default function SaleListResultsPage() {
 
 	if (visibleCars && visibleCars.length > 0) {
 		return (
-			<div className='w-full min-h-screen bg-gray-50 py-3 px-4 sm:px-6 lg:px-8'>
+			<div className='w-full min-h-screen bg-white py-3 px-4 sm:px-6 lg:px-8'>
 				<div className='max-w-(--max-app-width) mx-auto'>
 					<div className='flex flex-wrap justify-center max-h=[1580px] gap-0.2'>
 						{visibleCars.map((car, index) => (
@@ -131,7 +131,7 @@ export default function SaleListResultsPage() {
 	}
 	if (filteredCars && filteredCars.length === 0 && !isLoading) {
 		return (
-			<div className='w-full min-h-screen bg-gray-50 py-3 px-4 sm:px-6 lg:px-8'>
+			<div className='w-full min-h-screen bg-white py-3 px-4 sm:px-6 lg:px-8'>
 				<div className='max-w-(--max-app-width) mx-auto'>
 					<div className='text-center py-12'>
 						<p className='text-gray-500 text-lg'>No cars found for this sale</p>
