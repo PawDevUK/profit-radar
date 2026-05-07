@@ -36,11 +36,6 @@ function Card({ ...props }) {
 					<div className='flex flex-col'>
 						<div className=' flex flex-row items-center space-x-1 mb-1'>
 							<span className='border border-brand-subtle text-(--main-blue)  text-xs font-medium px-1.5 py-0.5 rounded-sm'>{item.odometer} miles</span>
-							{item.hasKey ? (
-								<span className='border border-brand-subtle text-green-600  text-xs font-medium px-1.5 py-0.5 rounded-sm'>keys</span>
-							) : (
-								<span className='border border-brand-subtle text-red-600  text-xs font-medium px-1.5 py-0.5 rounded-sm'>no keys</span>
-							)}
 							<span className='border border-brand-subtle text-(--main-blue)  text-xs font-medium px-1.5 py-0.5 rounded-sm'>{item.year}</span>
 						</div>
 						<span className='border border-brand-subtle text-(--main-blue)  text-xs font-medium px-1.5 py-0.5 m-auto rounded-sm'>{item.damageDescription}</span>
