@@ -1,10 +1,11 @@
 import CheckBoxList from './checkBoxList';
+import { allCars_State } from '@/lib/state/allCars.state';
 
 import { MapPin, Car, Gavel, Fuel, KeySquare, CarFront, ListTodo, ArrowDownUp } from 'lucide-react';
 import './style.css';
+import { useEffect, useState } from 'react';
 import {
 	sort,
-	makes,
 	titleType,
 	conditionType,
 	vehicleType,
@@ -39,21 +40,11 @@ const auctionNameIcon = <Gavel strokeWidth={strokeIcons} className='checkboxIcon
 const locationIcon = <MapPin strokeWidth={strokeIcons} className='checkboxIcon' />;
 const bodyStyleIcon = <Car strokeWidth={strokeIcons} className='checkboxIcon' />;
 
-interface makeModelType {
-	make: string;
-	models: string[];
-}
-
-function getMakes(makes: makeModelType[]) {
-	const makesArr = makes.map((make: makeModelType) => {
-		return make.make;
-	});
-	return makesArr;
-}
-function getModels(make: string) {
-	return makes.filter((prop) => make === prop.make)[0]?.models || [];
-}
 export default function SideSearch() {
+	const cars = allCars_State((state) => state.allCars);
+	const [makes, setMakes] = useState<string[]>([]);
+	const [models, setModels] = useState<string[]>([]);
+
 	const sortFilter = FilterResults_State(selectSearchFilterByKey('sort'));
 	const makeFilter = FilterResults_State(selectSearchFilterByKey('make'));
 	const selectedModelsFilter = FilterResults_State(selectSearchFilterByKey('selectedModels'));
@@ -69,11 +60,31 @@ export default function SideSearch() {
 	const locationFilter = FilterResults_State(selectSearchFilterByKey('location'));
 	const bodyStyleFilter = FilterResults_State(selectSearchFilterByKey('bodyStyle'));
 
+	function getStateModels(make: string) {
+		const selectedModels: string[] = [];
+		cars.forEach((car) => {
+			if (car.make === make && car.model) {
+				selectedModels.push(car.model);
+			}
+		});
+		return [...new Set(selectedModels.map((model) => model))].sort();
+	}
+
+	useEffect(() => {
+		const makes: string[] = [...new Set(cars.map((car) => (car.make ? car.make : '')))].sort();
+		setMakes(makes);
+	}, []);
+
+	useEffect(() => {
+		const selectedModels = getStateModels(makeFilter);
+		setModels(selectedModels);
+	}, [makeFilter]);
+
 	return (
 		<div className='flex flex-col '>
 			<CheckBoxList title='Sort' options={sort} selected={sortFilter} icon={sortIcon} />
-			<CheckBoxList title='Make' options={getMakes(makes)} selected={makeFilter} scrollable searchable icon={makeIcon} makesData={makes} />
-			<CheckBoxList multiSelect title='Model' options={getModels(makeFilter)} selected={selectedModelsFilter} scrollable searchable icon={modelIcon} />
+			<CheckBoxList title='Make' options={makes} selected={makeFilter} scrollable searchable icon={makeIcon} />
+			{models.length > 0 ? <CheckBoxList multiSelect title='Model' options={models} selected={selectedModelsFilter} scrollable searchable icon={modelIcon} /> : ''}
 			<CheckBoxList multiSelect title='Vehicle title type' options={titleType} selected={vehicleTitleTypeFilter} icon={titleTypeIcon} />
 			<CheckBoxList multiSelect title='Body style' options={bodyType} selected={bodyStyleFilter} icon={bodyStyleIcon} />
 			<CheckBoxList title='Vehicle condition type' options={conditionType} selected={vehicleConditionTypeFilter} icon={vehicleConditionIcon} />
