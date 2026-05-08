@@ -1,11 +1,13 @@
 'use client';
 import { useRouter } from 'next/navigation';
 import Card from '@/app/inventory/saleListResults/[id]/card/card';
-import { LotDetailsType } from '@/lib/types/lotDetails-type';
-import { setFilterResults_State } from '@/lib/state/searchFilters.state';
-import { allCars_State, SelectSingleLot } from '@/lib/state/allCars.state';
+import { FilterResults_State } from '@/lib/state/searchFilters.state';
+import { SearchFilters } from '@/lib/types/searchFilters-type';
+import { allCars_State } from '@/lib/state/allCars.state';
+import { SelectSingleLot } from '@/lib/state/lotDetailsPage.state';
 import { useMemo, useState, useEffect } from 'react';
 import _ from 'lodash';
+import { LotDetailsType } from '@/lib/types/lotDetails-type';
 
 type PaginationProps = {
 	totalItems: number;
@@ -69,23 +71,27 @@ const getVisiblePages = (totalPages: number, currentPage: number, maxVisiblePage
 	return Array.from({ length: end - start + 1 }, (_, i) => start + i);
 };
 
+function applyFilter(filters: SearchFilters, carsState: LotDetailsType[s]) {
+	const filteredCars: LotDetailsType[] = carsState.filter((car: LotDetailsType) => car.make === filters.make);
+	return filteredCars && filteredCars.length > 0 ? filteredCars : carsState;
+}
+
 export default function SaleListResultsPage() {
-	const { searchFilters } = setFilterResults_State();
 	const cars = allCars_State((state) => state.allCars);
 	const isLoading = allCars_State((state) => state.isLoading);
 	const error = allCars_State((state) => state.error);
+	const filters = FilterResults_State((state) => state.searchFilters);
 	const router = useRouter();
 	const [requestedPage, setRequestedPage] = useState(1);
 	const [itemsPerPage, setItemsPerPage] = useState(20);
 	const [mobilePage, setMobilePage] = useState(false);
 
-	const filteredCars = cars;
+	const filteredCars = applyFilter(filters, cars);
+
 	const totalPages = Math.max(1, Math.ceil(filteredCars.length / itemsPerPage));
 	const currentPage = Math.min(requestedPage, totalPages);
 	const pages = useMemo(() => getVisiblePages(totalPages, currentPage), [totalPages, currentPage]);
-	const visibleCars = mobilePage
-		? filteredCars.slice(0, currentPage * itemsPerPage) // accumulate (infinite scroll)
-		: filteredCars.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage); // replace (pagination)
+	const visibleCars = mobilePage ? filteredCars.slice(0, currentPage * itemsPerPage) : filteredCars.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 	const setSelectedLot = SelectSingleLot((state) => state.setSelectedLot);
 
 	useEffect(() => {
@@ -135,7 +141,7 @@ export default function SaleListResultsPage() {
 			<div className='w-full min-h-screen bg-white pb-3 px-4 sm:px-6 lg:px-8'>
 				<div className='max-w-(--max-app-width) mx-auto'>
 					<div className='flex flex-wrap justify-center max-h=[1580px] gap-0.2'>
-						{visibleCars.map((car, index) => (
+						{visibleCars.map((car: LotDetailsType, index: number) => (
 							<Card
 								key={index}
 								item={car}
