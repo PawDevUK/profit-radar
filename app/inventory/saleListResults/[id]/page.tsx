@@ -71,7 +71,7 @@ const getVisiblePages = (totalPages: number, currentPage: number, maxVisiblePage
 	return Array.from({ length: end - start + 1 }, (_, i) => start + i);
 };
 
-function applyFilter(filters: SearchFilters, carsState: LotDetailsType[s]) {
+function applyFilter(filters: SearchFilters, carsState: LotDetailsType[]) {
 	const filteredCars: LotDetailsType[] = carsState.filter((car: LotDetailsType) => car.make === filters.make);
 	return filteredCars && filteredCars.length > 0 ? filteredCars : carsState;
 }
