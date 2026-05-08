@@ -14,10 +14,9 @@ type CheckboxListProps = {
 	searchable?: boolean;
 	multiSelect?: boolean;
 	setMake?: React.Dispatch<React.SetStateAction<string>>;
-	makesData?: makesType[]; // add
 };
 
-function CheckBoxListComponent({ options, selected = [], title, scrollable, icon, searchable, setMake, makesData }: CheckboxListProps) {
+function CheckBoxListComponent({ options, selected = [], title, scrollable, icon, searchable, setMake }: CheckboxListProps) {
 	const [searchOptions, setSearchOptions] = useState<string[]>(options);
 	const SET_Filter = FilterResults_State(selectSetFilter);
 	const selectedSet = useMemo(() => {
