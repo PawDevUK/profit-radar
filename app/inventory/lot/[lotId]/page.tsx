@@ -1,6 +1,6 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 import LotDetailsSection from '@/app/inventory/lot/lotDetails';
 import BidBuy from '../BidBuy';
@@ -12,6 +12,7 @@ import { carImagePlaceholder } from '@/img';
 
 export default function LotDetailsPage() {
 	const router = useRouter();
+	const searchParams = useSearchParams();
 	const isLoading = allCars_State((state) => state.isLoading);
 	const car = SelectSingleLot((state) => state.selectedLot);
 	const [selectedImageIndex, setSelectedImageIndex] = useState(0);
@@ -30,7 +31,13 @@ export default function LotDetailsPage() {
 	const currentSrc = AiImage && aiImageMap[selectedImageIndex] ? aiImageMap[selectedImageIndex] : images[selectedImageIndex];
 
 	const handleBack = () => {
-		router.push(`/inventory`);
+		const page = searchParams.get('page');
+		const mobile = searchParams.get('mobile');
+		if (page && !mobile) {
+			router.push(`/inventory?page=${page}#${car.lotInv}`);
+			return;
+		}
+		router.back();
 	};
 
 	const toggleAIimage = () => {
