@@ -14,7 +14,7 @@ function Card({ ...props }) {
 			className='md:max-h-115.5 w-full max-w-lg md:w-[30%] lg:w-[22%] xl:w-[18%] m-1.5 bg-neutral-primary-soft border border-gray-300 rounded-base shadow-md rounded-lg flex flex-row md:flex-col'
 			onClick={onClick}>
 			<div className='flex flex-col justify-between md:w-full w-40 relative h-full md:h-40 '>
-				<a href='#' className='w-full h-full '>
+				<div className='w-full h-full '>
 					<span className='absolute top-1 left-1 z-5 border border-brand-subtle text-(--main-blue)  text-xs font-medium px-1.5 py-0.5 rounded-sm bg-white'>
 						{item.lotInv}
 					</span>
@@ -25,14 +25,14 @@ function Card({ ...props }) {
 						width={300}
 						height={300}
 					/>
-				</a>
+				</div>
 			</div>
 
 			<div className='p-2 flex flex-col justify-between flex-1 md:w-full w-1/2'>
 				<div className='flex flex-col'>
-					<a className='flex flex-row justify-center' href='#'>
+					<div className='flex flex-row justify-center'>
 						<h5 className='text-[16px] text-heading font-semibold tracking-tight'>{item.title ? item.title.slice(0, 20) : ''}</h5>
-					</a>
+					</div>
 				</div>
 				<div className='flex flex-col items-center mt-1 '>
 					<div className='flex flex-col'>
