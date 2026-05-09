@@ -1,5 +1,5 @@
 'use client';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Card from '@/app/inventory/saleListResults/[id]/card/card';
 import { FilterResults_State } from '@/lib/state/searchFilters.state';
 import { SearchFilters } from '@/lib/types/searchFilters-type';
@@ -82,18 +82,19 @@ export default function SaleListResultsPage() {
 	const error = allCars_State((state) => state.error);
 	const filters = FilterResults_State((state) => state.searchFilters);
 	const router = useRouter();
-	const [requestedPage, setRequestedPage] = useState(1);
+	const searchParams = useSearchParams();
+	const [requestedPage, setRequestedPage] = useState(getCurrentPageFromURL());
 	const [itemsPerPage, setItemsPerPage] = useState(20);
 	const [mobilePage, setMobilePage] = useState(false);
-
 	const filteredCars = applyFilter(filters, cars);
-
 	const totalPages = Math.max(1, Math.ceil(filteredCars.length / itemsPerPage));
 	const currentPage = Math.min(requestedPage, totalPages);
 	const pages = useMemo(() => getVisiblePages(totalPages, currentPage), [totalPages, currentPage]);
 	const visibleCars = mobilePage ? filteredCars.slice(0, currentPage * itemsPerPage) : filteredCars.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 	const setSelectedLot = SelectSingleLot((state) => state.setSelectedLot);
-
+	function getCurrentPageFromURL() {
+		return parseInt(searchParams.get('page') || '1', 10);
+	}
 	useEffect(() => {
 		const innerWidth = window.innerWidth;
 		setMobilePage(innerWidth < 768);
@@ -112,6 +113,11 @@ export default function SaleListResultsPage() {
 		window.addEventListener('scroll', handleScroll);
 		return () => window.removeEventListener('scroll', handleScroll);
 	}, [mobilePage, currentPage, totalPages]);
+
+	useEffect(() => {
+		const page = searchParams.get('page');
+		setRequestedPage(page ? parseInt(page, 10) : 1);
+	}, []);
 
 	if (isLoading) {
 		return (
@@ -147,7 +153,7 @@ export default function SaleListResultsPage() {
 								item={car}
 								onClick={() => {
 									setSelectedLot(car);
-									router.push(`/inventory/lot/${car.lotInv}`);
+									router.push(`/inventory/lot/${car.lotInv}?page=${currentPage}&mobile=${mobilePage}`);
 								}}></Card>
 						))}
 					</div>
