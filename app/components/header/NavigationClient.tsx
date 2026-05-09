@@ -93,11 +93,11 @@ export default function NavigationClient() {
 						</div>
 					</div>
 					{/* Desktop logo and search bar */}
-					<div className='flex flex-row w-full'>
+					<div className='flex flex-row justify-between w-full'>
 						<Link href='/' className='text-3xl font-bold text-gray-700 hidden md:block'>
 							Profit<span className='text-(--mongo-green) ml-2'>Radar</span>
 						</Link>
-						<SearchBar targetRoute='inventory' placeholderText='Enter Make, Model, Damage, Color, VIN, and more...'></SearchBar>
+						{/* <SearchBar targetRoute='inventory' placeholderText='Enter Make, Model, Damage, Color, VIN, and more...'></SearchBar> */}
 						<div className='flex flex-row space-x-4 hidden md:flex'>
 							{authItems.map((item, i) => (
 								<div key={i} className='w-30'>
