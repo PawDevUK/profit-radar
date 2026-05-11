@@ -68,7 +68,9 @@ export default function Page() {
 				{open && <div className='fixed  inset-0 z-10 bg-black/50' onClick={() => startTransition(() => setOpen(false))} />}
 			</div>
 			<div className='w-full  md:ml-0 '>
-				<MemoizedSaleListResultsPage />
+				<Suspense fallback={<div className='p-4 text-gray-500'>Loading inventory...</div>}>
+					<MemoizedSaleListResultsPage />
+				</Suspense>
 			</div>
 		</div>
 	);
