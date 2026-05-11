@@ -182,7 +182,7 @@ export default function LotDetailsPage() {
 											)}
 										</div>
 										<div>
-											<div className='grid grid-cols-6 gap-2'>
+											<div className='grid grid-cols-5 gap-2'>
 												{images.length > 1
 													? images.map((imgUrl: string, idx) => (
 															<button
@@ -197,7 +197,7 @@ export default function LotDetailsPage() {
 																<Img
 																	src={AiImage && aiImageMap[idx] ? aiImageMap[idx] : imgUrl}
 																	alt={`Thumbnail ${idx + 1}`}
-																	className='object-cover'
+																	className='object-cover object-left'
 																	fill
 																	sizes='(max-width: 640px) 15vw, (max-width: 1024px) 12vw, 120px'
 																	onError={(e) => {
