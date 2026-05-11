@@ -1,7 +1,7 @@
 'use client';
-import { format } from 'date-fns';
+import { format, isSameDay } from 'date-fns';
 import { useEffect, useMemo, useState } from 'react';
-import { CalendarType, SaleListType, createEmptyCalendarList } from '@/lib/types/calendar-type';
+import { CalendarType, SaleListType } from '@/lib/types/calendar-type';
 
 type CalendarDay = {
 	date: Date;
@@ -48,23 +48,12 @@ const buildMonthGrid = (anchor: Date, events: SaleListType[]): CalendarDay[] => 
 	return days;
 };
 
-const setDayEvents = (date: Date, events: SaleListType[], setDisplayDay: React.Dispatch<React.SetStateAction<SaleListType[]>>) => {
-	const iso = format(date, 'yyyy-MM-dd');
-
-	const filteredEvents = events.filter((evt) => {
-		if (evt?.currentSale) {
-			return format(new Date(evt?.currentSale), 'yyyy-MM-dd') === iso;
-		}
-	});
-
-	setDisplayDay(filteredEvents);
-};
-
 export default function Calendar({ allAuctions, todaysEvents }: { allAuctions: CalendarType[]; todaysEvents: SaleListType[] }) {
 	const events: SaleListType[] = allAuctions.map((month) => month.auctions).flat();
 	const [currentDate, setCurrentDate] = useState(new Date());
 	const [displayDay, setDisplayDay] = useState<SaleListType[]>(todaysEvents);
 	const [loading, setLoading] = useState(true);
+	const [selectedDay, setSelectedDay] = useState(currentDate);
 
 	useEffect(() => {
 		setDisplayDay(todaysEvents);
@@ -95,6 +84,39 @@ export default function Calendar({ allAuctions, todaysEvents }: { allAuctions: C
 			</div>
 		);
 	}
+
+	function DayButton({ day }: { day: CalendarDay }) {
+		const isTodaySelected = isSameDay(day.date, selectedDay);
+		const setDayEvents = (date: Date, events: SaleListType[], setDisplayDay: React.Dispatch<React.SetStateAction<SaleListType[]>>) => {
+			const iso = format(date, 'yyyy-MM-dd');
+
+			const filteredEvents = events.filter((evt) => {
+				if (evt.currentSale === 'LIVE NOW') {
+					evt.currentSale = new Date();
+				}
+				if (evt?.currentSale) {
+					return format(new Date(evt?.currentSale), 'yyyy-MM-dd') === iso;
+				}
+			});
+			setSelectedDay(day.date);
+			setDisplayDay(filteredEvents);
+		};
+		return (
+			<button
+				onClick={() => setDayEvents(day.date, events, setDisplayDay)}
+				type='button'
+				className={`relative flex h-9 w-full items-center justify-center rounded-md text-sm font-medium 
+					${day.inCurrentMonth ? 'text-gray-900 ' : 'text-gray-400'} ${day.isToday ? 'bg-blue-50' : ''} 
+					${isTodaySelected ? 'border border-(--mongo-green) bg-(--mongo-green-light)' : 'hover:bg-gray-100'}
+					`}>
+				<time dateTime={format(day.date, 'yyyy-MM-dd')} className='text-sm'>
+					{day.label}
+				</time>
+				{day.events.length > 0 && <div className='absolute bottom-1 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-blue-600'></div>}
+			</button>
+		);
+	}
+
 	return (
 		<div className='flex justify-center w-full'>
 			<div className='rounded-xl border border-slate-200 bg-white shadow-sm w-[80vw] lg:w-225 '>
@@ -140,18 +162,9 @@ export default function Calendar({ allAuctions, todaysEvents }: { allAuctions: C
 						</div>
 						<div className='mt-2 grid grid-cols-7 gap-1'>
 							{days.map((day) => (
-								<button
-									onClick={() => setDayEvents(day.date, events, setDisplayDay)}
-									key={day.date.toISOString()}
-									type='button'
-									className={`relative flex h-9 w-full items-center justify-center rounded-md text-sm font-medium ${
-										day.inCurrentMonth ? 'text-gray-900 hover:bg-gray-100' : 'text-gray-400'
-									} ${day.isToday ? 'bg-blue-50 text-blue-600' : ''}`}>
-									<time dateTime={format(day.date, 'yyyy-MM-dd')} className='text-sm'>
-										{day.label}
-									</time>
-									{day.events.length > 0 && <div className='absolute bottom-1 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-blue-600'></div>}
-								</button>
+								<div key={day.date.toISOString()}>
+									<DayButton day={day}></DayButton>
+								</div>
 							))}
 						</div>
 					</div>
@@ -160,7 +173,6 @@ export default function Calendar({ allAuctions, todaysEvents }: { allAuctions: C
 					<ol className='divide-y divide-gray-200'>
 						{displayDay.map((event, i) => (
 							<li key={i} className='flex items-center space-x-4 py-4'>
-								{/* <img src={event.image} alt="" className="h-10 w-10 rounded-full" /> */}
 								<div className='flex-1'>
 									<h3 className='text-sm font-medium text-gray-900'>{event.saleName}</h3>
 									<dl className='mt-1 flex space-x-4 text-xs text-gray-500'>
