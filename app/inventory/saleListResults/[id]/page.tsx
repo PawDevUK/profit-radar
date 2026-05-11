@@ -86,6 +86,7 @@ export default function SaleListResultsPage() {
 	const [requestedPage, setRequestedPage] = useState(getCurrentPageFromURL());
 	const [itemsPerPage, setItemsPerPage] = useState(20);
 	const [mobilePage, setMobilePage] = useState(true);
+	const [loadingPage, setLoadingPage] = useState(true);
 	const filteredCars = applyFilter(filters, cars);
 	const totalPages = Math.max(1, Math.ceil(filteredCars.length / itemsPerPage));
 	const currentPage = Math.min(requestedPage, totalPages);
@@ -119,12 +120,28 @@ export default function SaleListResultsPage() {
 		setRequestedPage(page ? parseInt(page, 10) : 1);
 	}, []);
 
-	if (isLoading) {
+	useEffect(() => {
+		setLoadingPage(false);
+	});
+
+	if (loadingPage) {
 		return (
 			<div className='min-h-screen bg-white flex items-center justify-center'>
 				<div className='text-center'>
 					<div className='animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4'></div>
 					<p className='text-gray-600'>Loading inventory list...</p>
+				</div>
+			</div>
+		);
+	}
+
+	if (!isLoading && !loadingPage && visibleCars && visibleCars.length === 0) {
+		return (
+			<div className='w-full min-h-screen bg-white py-3 px-4 sm:px-6 lg:px-8'>
+				<div className='max-w-(--max-app-width) mx-auto'>
+					<div className='text-center py-12'>
+						<p className='text-gray-500 text-lg'>No cars found for this sale</p>
+					</div>
 				</div>
 			</div>
 		);
@@ -163,18 +180,6 @@ export default function SaleListResultsPage() {
 				) : (
 					''
 				)}
-			</div>
-		);
-	}
-
-	if (filteredCars && filteredCars.length === 0 && !isLoading) {
-		return (
-			<div className='w-full min-h-screen bg-white py-3 px-4 sm:px-6 lg:px-8'>
-				<div className='max-w-(--max-app-width) mx-auto'>
-					<div className='text-center py-12'>
-						<p className='text-gray-500 text-lg'>No cars found for this sale</p>
-					</div>
-				</div>
 			</div>
 		);
 	}
