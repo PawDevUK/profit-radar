@@ -85,7 +85,7 @@ export default function SaleListResultsPage() {
 	const searchParams = useSearchParams();
 	const [requestedPage, setRequestedPage] = useState(getCurrentPageFromURL());
 	const [itemsPerPage, setItemsPerPage] = useState(20);
-	const [mobilePage, setMobilePage] = useState(false);
+	const [mobilePage, setMobilePage] = useState(true);
 	const filteredCars = applyFilter(filters, cars);
 	const totalPages = Math.max(1, Math.ceil(filteredCars.length / itemsPerPage));
 	const currentPage = Math.min(requestedPage, totalPages);
