@@ -1,7 +1,7 @@
 'use client';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Card from '@/app/inventory/saleListResults/[id]/card/card';
-import { FilterResults_State } from '@/lib/state/searchFilters.state';
+import { useFilterResultsStore } from '@/lib/state/searchFilters.state';
 import { SearchFilters } from '@/lib/types/searchFilters-type';
 import { allCars_State } from '@/lib/state/allCars.state';
 import { SelectSingleLot } from '@/lib/state/lotDetailsPage.state';
@@ -80,7 +80,7 @@ export default function SaleListResultsPage() {
 	const cars = allCars_State((state) => state.allCars);
 	const isLoading = allCars_State((state) => state.isLoading);
 	const error = allCars_State((state) => state.error);
-	const filters = FilterResults_State((state) => state.searchFilters);
+	const filters = useFilterResultsStore((state) => state.searchFilters);
 	const router = useRouter();
 	const searchParams = useSearchParams();
 	const [requestedPage, setRequestedPage] = useState(getCurrentPageFromURL());

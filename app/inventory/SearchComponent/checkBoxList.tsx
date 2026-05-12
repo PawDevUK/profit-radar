@@ -2,7 +2,7 @@
 import CollapseCard from '@/app/inventory/SearchComponent/collapseCard/collapseCard';
 import SearchBar from '@/app/components/search/search';
 import React, { useState, useCallback, useMemo, memo, useEffect } from 'react';
-import { FilterResults_State, makesType } from '@/lib/state/searchFilters.state';
+import { useFilterResultsStore, makesType } from '@/lib/state/searchFilters.state';
 import { selectSetFilter } from '@/lib/state/selectors/searchFilters.selectors';
 
 type CheckboxListProps = {
@@ -18,7 +18,7 @@ type CheckboxListProps = {
 
 function CheckBoxListComponent({ options, selected = [], title, scrollable, icon, searchable, setMake }: CheckboxListProps) {
 	const [searchOptions, setSearchOptions] = useState<string[]>(options);
-	const SET_Filter = FilterResults_State(selectSetFilter);
+	const SET_Filter = useFilterResultsStore(selectSetFilter);
 	const selectedSet = useMemo(() => {
 		return Array.isArray(selected) ? new Set(selected) : new Set([selected]);
 	}, [selected]);
