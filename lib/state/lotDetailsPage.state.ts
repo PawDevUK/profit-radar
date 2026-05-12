@@ -6,7 +6,7 @@ type SelectedSingleLot = {
 	reset: () => void;
 };
 
-export const useSelectSingleLot = create<SelectedSingleLot>((set, get) => ({
+export const useSingleLotStore = create<SelectedSingleLot>((set, get) => ({
 	selectedLot: createLotObject(),
 	setSelectedLot: async (lot) => {
 		if (lot) {
