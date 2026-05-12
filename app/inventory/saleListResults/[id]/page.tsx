@@ -4,7 +4,7 @@ import Card from '@/app/inventory/saleListResults/[id]/card/card';
 import { useFilterResultsStore } from '@/lib/state/searchFilters.state';
 import { SearchFilters } from '@/lib/types/searchFilters-type';
 import { allCars_State } from '@/lib/state/allCars.state';
-import { SelectSingleLot } from '@/lib/state/lotDetailsPage.state';
+import { useSelectSingleLot } from '@/lib/state/lotDetailsPage.state';
 import { useMemo, useState, useEffect } from 'react';
 import _ from 'lodash';
 import { LotDetailsType } from '@/lib/types/lotDetails-type';
@@ -92,7 +92,7 @@ export default function SaleListResultsPage() {
 	const currentPage = Math.min(requestedPage, totalPages);
 	const pages = useMemo(() => getVisiblePages(totalPages, currentPage), [totalPages, currentPage]);
 	const visibleCars = mobilePage ? filteredCars.slice(0, currentPage * itemsPerPage) : filteredCars.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
-	const setSelectedLot = SelectSingleLot((state) => state.setSelectedLot);
+	const setSelectedLot = useSelectSingleLot((state) => state.setSelectedLot);
 	function getCurrentPageFromURL() {
 		return parseInt(searchParams.get('page') || '1', 10);
 	}

@@ -7,14 +7,14 @@ import BidBuy from '../BidBuy';
 import Img from 'next/image';
 import Toggle from '@/app/components/common/toggler/toggler';
 import { allCars_State } from '@/lib/state/allCars.state';
-import { SelectSingleLot } from '@/lib/state/lotDetailsPage.state';
+import { useSelectSingleLot } from '@/lib/state/lotDetailsPage.state';
 import { carImagePlaceholder } from '@/img';
 
 export default function LotDetailsPage() {
 	const router = useRouter();
 	const searchParams = useSearchParams();
 	const isLoading = allCars_State((state) => state.isLoading);
-	const car = SelectSingleLot((state) => state.selectedLot);
+	const car = useSelectSingleLot((state) => state.selectedLot);
 	const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 	const [AiImage, setAiImage] = useState(false);
 	const [aiImages] = useState<string[]>([]);
