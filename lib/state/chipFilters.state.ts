@@ -5,7 +5,7 @@ interface ChipFiltersState {
 	toggleFilter: (filter: string) => void;
 }
 
-export const chipFilters_State = create<ChipFiltersState>((set) => ({
+export const useChipFiltersStore = create<ChipFiltersState>((set) => ({
 	selectedFilters: [],
 	toggleFilter: (filter: string) =>
 		set((state) => ({
