@@ -1,5 +1,5 @@
 import CheckBoxList from './checkBoxList';
-import { allCars_State } from '@/lib/state/allCars.state';
+import { useAllCarsStore } from '@/lib/state/allCars.state';
 
 import { MapPin, Car, Gavel, Fuel, KeySquare, CarFront, ListTodo, ArrowDownUp } from 'lucide-react';
 import './style.css';
@@ -41,7 +41,7 @@ const locationIcon = <MapPin strokeWidth={strokeIcons} className='checkboxIcon' 
 const bodyStyleIcon = <Car strokeWidth={strokeIcons} className='checkboxIcon' />;
 
 export default function SideSearch() {
-	const cars = allCars_State((state) => state.allCars);
+	const cars = useAllCarsStore((state) => state.allCars);
 	const [makes, setMakes] = useState<string[]>([]);
 	const [models, setModels] = useState<string[]>([]);
 

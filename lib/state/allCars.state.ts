@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { LotDetailsType, createLotObject } from '@/lib/types/lotDetails-type';
+import { LotDetailsType } from '@/lib/types/lotDetails-type';
 
 type AllCarsState = {
 	allCars: LotDetailsType[];
@@ -10,7 +10,7 @@ type AllCarsState = {
 	reset: () => void;
 };
 
-export const allCars_State = create<AllCarsState>((set, get) => ({
+export const useAllCarsStore = create<AllCarsState>((set, get) => ({
 	allCars: [],
 	isLoading: false,
 	error: null,
