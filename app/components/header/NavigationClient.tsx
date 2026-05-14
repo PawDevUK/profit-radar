@@ -69,7 +69,7 @@ export default function NavigationClient() {
 			{/* Top Bar */}
 			{open && (
 				<Suspense>
-					<div className='fixed top-0 left-0 right-0 z-20 md:w-[600px] m-auto'>
+					<div className='fixed top-0 md:top-20 left-0 right-0 z-20 md:w-[600px] m-auto'>
 						<SideSearch />
 					</div>
 					<div className='fixed inset-0 z-19 bg-black/50' onClick={() => startTransition(() => toggleOpenSearch())} />
