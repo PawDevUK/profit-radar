@@ -83,10 +83,12 @@ export default function SaleListResultsPage() {
 	const filters = useFilterResultsStore((state) => state.searchFilters);
 	const router = useRouter();
 	const searchParams = useSearchParams();
-	const [requestedPage, setRequestedPage] = useState(getCurrentPageFromURL());
+	const page = searchParams.get('page');
+	const [requestedPage, setRequestedPage] = useState(page ? parseInt(page, 10) : 1);
 	const [itemsPerPage, setItemsPerPage] = useState(20);
-	const [mobilePage, setMobilePage] = useState(true);
-	const [loadingPage, setLoadingPage] = useState(true);
+	const innerWidth = window.innerWidth;
+	const [mobilePage, setMobilePage] = useState(innerWidth < 768);
+	const [loadingPage, setLoadingPage] = useState(false);
 	const filteredCars = applyFilter(filters, cars);
 	const totalPages = Math.max(1, Math.ceil(filteredCars.length / itemsPerPage));
 	const currentPage = Math.min(requestedPage, totalPages);
@@ -96,10 +98,6 @@ export default function SaleListResultsPage() {
 	function getCurrentPageFromURL() {
 		return parseInt(searchParams.get('page') || '1', 10);
 	}
-	useEffect(() => {
-		const innerWidth = window.innerWidth;
-		setMobilePage(innerWidth < 768);
-	}, [mobilePage]);
 
 	useEffect(() => {
 		if (!mobilePage) return;
@@ -114,15 +112,6 @@ export default function SaleListResultsPage() {
 		window.addEventListener('scroll', handleScroll);
 		return () => window.removeEventListener('scroll', handleScroll);
 	}, [mobilePage, currentPage, totalPages]);
-
-	useEffect(() => {
-		const page = searchParams.get('page');
-		setRequestedPage(page ? parseInt(page, 10) : 1);
-	}, []);
-
-	useEffect(() => {
-		setLoadingPage(false);
-	});
 
 	if (loadingPage) {
 		return (
