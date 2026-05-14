@@ -1,8 +1,9 @@
 import CheckBoxList from './checkBoxList';
 import { useAllCars } from '@/lib/state/allCars.state';
-
 import { MapPin, Car, Gavel, Fuel, KeySquare, CarFront, ListTodo, ArrowDownUp } from 'lucide-react';
 import './style.css';
+import { useSetSearchOpen } from '@/lib/state/searchFilters.state';
+import SearchChipButton from '@/app/components/common/buttons/logButton';
 import {
 	sort,
 	titleType,
@@ -17,12 +18,11 @@ import {
 	location,
 	bodyType,
 } from '@/app/inventory/options';
-
 import { useFilterResultsStore } from '@/lib/state/searchFilters.state';
 import { selectSearchFilterByKey } from '@/lib/state/selectors/searchFilters.selectors';
 
 import { Engine, Gears, VehicleType, CarCondition, DriveType, V8Icon, strokeIcons, colorIcons } from './searchIcons';
-
+import { X } from 'lucide-react';
 const engineTypeIcon = <Engine />;
 const transmissionIcon = <Gears />;
 const driveTrainIcon = <DriveType />;
@@ -38,8 +38,15 @@ const fuelTypeIcon = <Fuel strokeWidth={strokeIcons} className='checkboxIcon' />
 const auctionNameIcon = <Gavel strokeWidth={strokeIcons} className='checkboxIcon' />;
 const locationIcon = <MapPin strokeWidth={strokeIcons} className='checkboxIcon' />;
 const bodyStyleIcon = <Car strokeWidth={strokeIcons} className='checkboxIcon' />;
-
+const CloseButton = ({ toggleFilters }: { toggleFilters: () => void }) => {
+	return (
+		<button className='w-8 h-8' onClick={toggleFilters}>
+			{<X id='closeButton' className='ml-2 checkboxIcon' />}
+		</button>
+	);
+};
 export default function SideSearch() {
+	const toggleOpenSearch = useSetSearchOpen();
 	function getStateModels(make: string) {
 		const selectedModels: string[] = [];
 		cars.forEach((car) => {
@@ -52,6 +59,9 @@ export default function SideSearch() {
 	function getStateMakes() {
 		return [...new Set(cars.map((car) => (car.make ? car.make : '')))].sort();
 	}
+	const toggleFilters = () => {
+		toggleOpenSearch();
+	};
 	const cars = useAllCars();
 	const sortFilter = useFilterResultsStore(selectSearchFilterByKey('sort'));
 	const makeFilter = useFilterResultsStore(selectSearchFilterByKey('make'));
@@ -70,21 +80,39 @@ export default function SideSearch() {
 	const models = getStateModels(makeFilter);
 	const makes = getStateMakes();
 	return (
-		<div className='flex flex-col '>
-			<CheckBoxList title='Sort' options={sort} selected={sortFilter} icon={sortIcon} />
-			<CheckBoxList title='Make' options={makes} selected={makeFilter} scrollable searchable icon={makeIcon} />
-			{models.length > 0 ? <CheckBoxList multiSelect title='Model' options={models} selected={selectedModelsFilter} scrollable searchable icon={modelIcon} /> : ''}
-			<CheckBoxList multiSelect title='Vehicle title type' options={titleType} selected={vehicleTitleTypeFilter} icon={titleTypeIcon} />
-			<CheckBoxList multiSelect title='Body style' options={bodyType} selected={bodyStyleFilter} icon={bodyStyleIcon} />
-			<CheckBoxList title='Vehicle condition type' options={conditionType} selected={vehicleConditionTypeFilter} icon={vehicleConditionIcon} />
-			<CheckBoxList multiSelect title='Vehicle type' options={vehicleType} selected={vehicleTypeFilter} scrollable searchable icon={vehicleTypeIcon} />
-			<CheckBoxList multiSelect title='Engine type' options={engineType} selected={engineTypeFilter} icon={engineTypeIcon} />
-			<CheckBoxList multiSelect title='Transmission' options={transmissionType} selected={transmissionFilter} icon={transmissionIcon} />
-			<CheckBoxList multiSelect title='Fuel type' options={fuelType} selected={fuelTypeFilter} icon={fuelTypeIcon} />
-			<CheckBoxList multiSelect title='Drive train' options={driveTrain} selected={driveTrainFilter} icon={driveTrainIcon} />
-			<CheckBoxList multiSelect title='Cylinders' options={cylinderType} selected={cylindersFilter} icon={cylindersIcon} />
-			<CheckBoxList multiSelect title='Auction name' options={auctionName} selected={auctionNameFilter} icon={auctionNameIcon} />
-			<CheckBoxList multiSelect title='Location' options={location} selected={locationFilter} scrollable icon={locationIcon} />
-		</div>
+		<aside className='flex flex-col md:w-[600px] lg:w-150 mx-auto h-screen bg-white  shadow-lg md:shadow-none z-15'>
+			<div className='px-10 py-6 flex items-center justify-between z-15'>
+				<h2 className='text-[22px] font-bold text-(--header-text)'>Filter and sort</h2>
+				<div className='flex items-center gap-2'>
+					<CloseButton toggleFilters={toggleFilters} />
+				</div>
+			</div>
+			<div className='overflow-y-auto'>
+				<div className='flex flex-col '>
+					<CheckBoxList title='Sort' options={sort} selected={sortFilter} icon={sortIcon} />
+					<CheckBoxList title='Make' options={makes} selected={makeFilter} scrollable searchable icon={makeIcon} />
+					{models.length > 0 ? <CheckBoxList multiSelect title='Model' options={models} selected={selectedModelsFilter} scrollable searchable icon={modelIcon} /> : ''}
+					<CheckBoxList multiSelect title='Vehicle title type' options={titleType} selected={vehicleTitleTypeFilter} icon={titleTypeIcon} />
+					<CheckBoxList multiSelect title='Body style' options={bodyType} selected={bodyStyleFilter} icon={bodyStyleIcon} />
+					<CheckBoxList title='Vehicle condition type' options={conditionType} selected={vehicleConditionTypeFilter} icon={vehicleConditionIcon} />
+					<CheckBoxList multiSelect title='Vehicle type' options={vehicleType} selected={vehicleTypeFilter} scrollable searchable icon={vehicleTypeIcon} />
+					<CheckBoxList multiSelect title='Engine type' options={engineType} selected={engineTypeFilter} icon={engineTypeIcon} />
+					<CheckBoxList multiSelect title='Transmission' options={transmissionType} selected={transmissionFilter} icon={transmissionIcon} />
+					<CheckBoxList multiSelect title='Fuel type' options={fuelType} selected={fuelTypeFilter} icon={fuelTypeIcon} />
+					<CheckBoxList multiSelect title='Drive train' options={driveTrain} selected={driveTrainFilter} icon={driveTrainIcon} />
+					<CheckBoxList multiSelect title='Cylinders' options={cylinderType} selected={cylindersFilter} icon={cylindersIcon} />
+					<CheckBoxList multiSelect title='Auction name' options={auctionName} selected={auctionNameFilter} icon={auctionNameIcon} />
+					<CheckBoxList multiSelect title='Location' options={location} selected={locationFilter} scrollable icon={locationIcon} />
+				</div>
+			</div>
+			<div className='m-5 w-[90%] mx-auto flex space-x-4'>
+				<div className='flex-auto'>
+					<SearchChipButton item={{ href: '#', label: 'Clear All' }}></SearchChipButton>
+				</div>
+				<div className='flex-auto'>
+					<SearchChipButton item={{ href: '#', label: 'Search' }}></SearchChipButton>
+				</div>
+			</div>
+		</aside>
 	);
 }
