@@ -6,14 +6,14 @@ import LotDetailsSection from '@/app/inventory/lot/lotDetails';
 import BidBuy from '../BidBuy';
 import Img from 'next/image';
 import Toggle from '@/app/components/common/toggler/toggler';
-import { useAllCarsStore } from '@/lib/state/allCars.state';
+import { useIsLoading } from '@/lib/state/allCars.state';
 import { useSingleLotStore } from '@/lib/state/lotDetailsPage.state';
 import { carImagePlaceholder } from '@/img';
 
 export default function LotDetailsPage() {
 	const router = useRouter();
 	const searchParams = useSearchParams();
-	const isLoading = useAllCarsStore((state) => state.isLoading);
+	const isLoading = useIsLoading();
 	const car = useSingleLotStore((state) => state.selectedLot);
 	const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 	const [AiImage, setAiImage] = useState(false);
@@ -154,7 +154,7 @@ export default function LotDetailsPage() {
 																height='24'
 																fill='none'
 																viewBox='0 0 24 24'>
-																<path stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m15 19-7-7 7-7' />
+																<path stroke='currentColor' strokeLinecap='round' stroke-linejoin='round' stroke-width='2' d='m15 19-7-7 7-7' />
 															</svg>
 															<span className='sr-only'>Previous</span>
 														</span>
@@ -173,7 +173,7 @@ export default function LotDetailsPage() {
 																height='24'
 																fill='none'
 																viewBox='0 0 24 24'>
-																<path stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m9 5 7 7-7 7' />
+																<path stroke='currentColor' strokeLinecap='round' stroke-linejoin='round' stroke-width='2' d='m9 5 7 7-7 7' />
 															</svg>
 															<span className='sr-only'>Next</span>
 														</span>
