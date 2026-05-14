@@ -16,18 +16,18 @@ export function SearchChipButton({
 	onclick,
 	selected,
 }: {
-	item: { href: string; label: string; fontSize?: number };
+	item?: { href: string; label: string; fontSize?: number };
 	onclick?: (item: { href: string; label: string; fontSize?: number }) => void;
-	selected: boolean;
+	selected?: boolean;
 }) {
 	return (
 		<div className='w-auto mx-2'>
 			<button
-				onClick={() => onclick?.(item)}
-				key={item.href}
+				onClick={() => item && onclick?.(item)}
+				key={item ? item.href : ''}
 				className={`log-button chip-button ${selected ? 'chip-button-selected' : ''}`}
-				style={item.fontSize ? { fontSize: `${item.fontSize}px` } : undefined}>
-				{item.label}
+				style={item && item.fontSize ? { fontSize: `${item.fontSize}px` } : undefined}>
+				{item ? item.label : ''}
 			</button>
 		</div>
 	);
