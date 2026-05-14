@@ -1,37 +1,33 @@
 'use client';
-
+// import SideSearch from '@/app/inventory/SearchComponent/Search';
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense, startTransition } from 'react';
 import { useRouter } from 'next/navigation';
 import { authService } from '../../../lib/auth';
-import SearchBar from '@/app/components/search/search';
 import LogButton from '../common/buttons/logButton';
 import NavButton from '../common/buttons/NavButton';
+import { useSearchOpen, useSetSearchOpen } from '@/lib/state/searchFilters.state';
+
+const SideSearch = lazy(() => import('@/app/inventory/SearchComponent/Search'));
 
 export default function NavigationClient() {
+	const toggleOpenSearch = useSetSearchOpen();
+	const open = useSearchOpen();
 	const [mobileOpen, setMobileOpen] = useState(false);
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	interface User {
 		fullName?: string;
-		// Add other properties as needed
 	}
 
 	const [currentUser, setCurrentUser] = useState<User | null>(null);
 	const router = useRouter();
 
 	useEffect(() => {
-		// Check login status on mount
-		// setIsLoggedIn(authService.isLoggedIn());
-		// setCurrentUser(authService.getCurrentUser());
-
-		// Listen for auth state changes
 		const handleAuthChange = (event: Event) => {
 			const customEvent = event as CustomEvent;
 			setIsLoggedIn(customEvent.detail.isLoggedIn);
 			setCurrentUser(customEvent.detail.user);
 		};
-
-		// Listen for storage changes (cross-tab)
 		const handleStorageChange = () => {
 			setIsLoggedIn(authService.isLoggedIn());
 			setCurrentUser(authService.getCurrentUser());
@@ -44,7 +40,6 @@ export default function NavigationClient() {
 			window.removeEventListener('storage', handleStorageChange);
 		};
 	}, []);
-
 	const handleLogout = () => {
 		authService.logout();
 		setIsLoggedIn(false);
@@ -70,8 +65,16 @@ export default function NavigationClient() {
 	];
 
 	return (
-		<header className='bg-mongo shadow-sm border-b border-gray-200 mainPadding mx-auto'>
+		<header className='relative bg-mongo shadow-sm border-b border-gray-200 mainPadding mx-auto'>
 			{/* Top Bar */}
+			{open && (
+				<Suspense>
+					<div className='fixed top-0 left-0 right-0 z-20 md:w-[600px] m-auto'>
+						<SideSearch />
+					</div>
+					<div className='fixed inset-0 z-19 bg-black/50' onClick={() => startTransition(() => toggleOpenSearch())} />
+				</Suspense>
+			)}
 			<div className=' text-gray-700 px-4 pt-2 pb-5'>
 				<div className='mx-auto flex flex-col items-center justify-between text-sm  pt-3'>
 					{/* Mobile menu button */}
@@ -158,6 +161,8 @@ export default function NavigationClient() {
 					</div>
 				</div>
 			</nav>
+
+			{/* Side Search */}
 		</header>
 	);
 }
