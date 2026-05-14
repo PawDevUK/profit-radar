@@ -6,13 +6,13 @@ import { useRouter } from 'next/navigation';
 import { authService } from '../../../lib/auth';
 import LogButton from '../common/buttons/logButton';
 import NavButton from '../common/buttons/NavButton';
-import { useSearchOpen, useSetSearchOpen } from '@/lib/state/searchFilters.state';
+import { useOpenSearch, useSetOpenSearch } from '@/lib/state/searchFilters.state';
 
 const SideSearch = lazy(() => import('@/app/inventory/SearchComponent/Search'));
 
 export default function NavigationClient() {
-	const toggleOpenSearch = useSetSearchOpen();
-	const open = useSearchOpen();
+	const toggleOpenSearch = useSetOpenSearch();
+	const open = useOpenSearch();
 	const [mobileOpen, setMobileOpen] = useState(false);
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	interface User {

@@ -134,5 +134,5 @@ const useOpenSearchStore = create<openSearchTypes>((set, get) => ({
 	},
 }));
 
-export const useSearchOpen = () => useOpenSearchStore((state) => state.isSearchOpen);
-export const useSetSearchOpen = () => useOpenSearchStore((state) => state.toggleSearchOpen);
+export const useOpenSearch = () => useOpenSearchStore((state) => state.isSearchOpen);
+export const useSetOpenSearch = () => useOpenSearchStore((state) => state.toggleSearchOpen);

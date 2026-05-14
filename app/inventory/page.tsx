@@ -5,7 +5,7 @@ import SaleListResultsPage from './saleListResults/[id]/page';
 import SearchChipsFilters from './searchChipsFilters/searchChipsFilters';
 const MemoizedSaleListResultsPage = memo(SaleListResultsPage);
 
-import { useSetSearchOpen } from '@/lib/state/searchFilters.state';
+import { useSetOpenSearch } from '@/lib/state/searchFilters.state';
 const ToggleButton = ({ toggleFilters }: { toggleFilters: () => void }) => {
 	const IconSize = 22;
 	return (
@@ -17,7 +17,7 @@ const ToggleButton = ({ toggleFilters }: { toggleFilters: () => void }) => {
 };
 
 export default function Page() {
-	const toggleOpenSearch = useSetSearchOpen();
+	const toggleOpenSearch = useSetOpenSearch();
 	const toggleFilters = () => {
 		toggleOpenSearch();
 	};

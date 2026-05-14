@@ -2,7 +2,7 @@ import CheckBoxList from './checkBoxList';
 import { useAllCars } from '@/lib/state/allCars.state';
 import { MapPin, Car, Gavel, Fuel, KeySquare, CarFront, ListTodo, ArrowDownUp } from 'lucide-react';
 import './style.css';
-import { useSetSearchOpen } from '@/lib/state/searchFilters.state';
+import { useSetOpenSearch } from '@/lib/state/searchFilters.state';
 import SearchChipButton from '@/app/components/common/buttons/logButton';
 import {
 	sort,
@@ -46,7 +46,7 @@ const CloseButton = ({ toggleFilters }: { toggleFilters: () => void }) => {
 	);
 };
 export default function SideSearch() {
-	const toggleOpenSearch = useSetSearchOpen();
+	const toggleOpenSearch = useSetOpenSearch();
 	function getStateModels(make: string) {
 		const selectedModels: string[] = [];
 		cars.forEach((car) => {
