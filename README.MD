@@ -9,7 +9,7 @@ ProfitRadar is a Next.js App Router application for discovering profitable vehic
 - **Styling:** Tailwind CSS v4
 - **State:** Zustand + SWR
 - **Database:** MongoDB + Mongoose
-- **Scraping:** Puppeteer + Playwright (with proxy and stealth support)
+- **Scraping:** Puppeteer (with proxy and stealth support)
 - **AI:** OpenAI SDK + xAI Grok (title parsing, image analysis)
 
 ## Features

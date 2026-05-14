@@ -288,7 +288,7 @@ Profit Radar automates:
 
 ### Infrastructure
 
-- **Scrapers**: Node.js + Puppeteer (current) or Playwright
+- **Scrapers**: Node.js + Puppeteer
 - **Database**: MongoDB for vehicle data, PostgreSQL for users
 - **Backend**: Next.js API routes or Express
 - **Frontend**: React/Next.js with Tailwind CSS
