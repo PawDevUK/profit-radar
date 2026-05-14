@@ -1,9 +1,8 @@
 import CheckBoxList from './checkBoxList';
-import { useAllCarsStore } from '@/lib/state/allCars.state';
+import { useAllCars } from '@/lib/state/allCars.state';
 
 import { MapPin, Car, Gavel, Fuel, KeySquare, CarFront, ListTodo, ArrowDownUp } from 'lucide-react';
 import './style.css';
-import { useEffect, useState } from 'react';
 import {
 	sort,
 	titleType,
@@ -41,10 +40,19 @@ const locationIcon = <MapPin strokeWidth={strokeIcons} className='checkboxIcon' 
 const bodyStyleIcon = <Car strokeWidth={strokeIcons} className='checkboxIcon' />;
 
 export default function SideSearch() {
-	const cars = useAllCarsStore((state) => state.allCars);
-	const [makes, setMakes] = useState<string[]>([]);
-	const [models, setModels] = useState<string[]>([]);
-
+	function getStateModels(make: string) {
+		const selectedModels: string[] = [];
+		cars.forEach((car) => {
+			if (car.make === make && car.model) {
+				selectedModels.push(car.model);
+			}
+		});
+		return [...new Set(selectedModels.map((model) => model))].sort();
+	}
+	function getStateMakes() {
+		return [...new Set(cars.map((car) => (car.make ? car.make : '')))].sort();
+	}
+	const cars = useAllCars();
 	const sortFilter = useFilterResultsStore(selectSearchFilterByKey('sort'));
 	const makeFilter = useFilterResultsStore(selectSearchFilterByKey('make'));
 	const selectedModelsFilter = useFilterResultsStore(selectSearchFilterByKey('selectedModels'));
@@ -59,27 +67,8 @@ export default function SideSearch() {
 	const auctionNameFilter = useFilterResultsStore(selectSearchFilterByKey('auctionName'));
 	const locationFilter = useFilterResultsStore(selectSearchFilterByKey('location'));
 	const bodyStyleFilter = useFilterResultsStore(selectSearchFilterByKey('bodyStyle'));
-
-	function getStateModels(make: string) {
-		const selectedModels: string[] = [];
-		cars.forEach((car) => {
-			if (car.make === make && car.model) {
-				selectedModels.push(car.model);
-			}
-		});
-		return [...new Set(selectedModels.map((model) => model))].sort();
-	}
-
-	useEffect(() => {
-		const makes: string[] = [...new Set(cars.map((car) => (car.make ? car.make : '')))].sort();
-		setMakes(makes);
-	}, []);
-
-	useEffect(() => {
-		const selectedModels = getStateModels(makeFilter);
-		setModels(selectedModels);
-	}, [makeFilter]);
-
+	const models = getStateModels(makeFilter);
+	const makes = getStateMakes();
 	return (
 		<div className='flex flex-col '>
 			<CheckBoxList title='Sort' options={sort} selected={sortFilter} icon={sortIcon} />

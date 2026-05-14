@@ -10,14 +10,18 @@ type AllCarsState = {
 	reset: () => void;
 };
 
-export const useAllCarsStore = create<AllCarsState>((set, get) => ({
+const useAllCarsStore = create<AllCarsState>((set, get) => ({
 	allCars: [],
 	isLoading: false,
 	error: null,
 	hasLoaded: false,
 	fetchAllSaleLists: async () => {
-		if (get().isLoading) return;
+		if (get().isLoading) {
+			console.log('⚠️ Fetch already in progress, skipping');
+			return;
+		}
 		set({ isLoading: true, error: null });
+		console.log('🔄 Starting fetch...');
 		try {
 			const response = await fetch('/api/copart/db/getAllLots', { cache: 'no-store' });
 			if (!response.ok) {
@@ -25,7 +29,7 @@ export const useAllCarsStore = create<AllCarsState>((set, get) => ({
 			}
 			const payload = await response.json();
 			const cars = payload.data;
-
+			console.log('✅ Fetch completed, got', cars.length, 'cars');
 			set({
 				allCars: cars,
 				isLoading: false,
@@ -48,3 +52,9 @@ export const useAllCarsStore = create<AllCarsState>((set, get) => ({
 		});
 	},
 }));
+
+export const useAllCars = () => useAllCarsStore((state) => state.allCars);
+export const useIsLoading = () => useAllCarsStore((state) => state.isLoading);
+export const useError = () => useAllCarsStore((state) => state.error);
+export const useFetchAllSaleLists = () => useAllCarsStore((state) => state.fetchAllSaleLists);
+export const useHasLoaded = () => useAllCarsStore((state) => state.hasLoaded);

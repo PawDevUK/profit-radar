@@ -3,7 +3,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import Card from '@/app/inventory/saleListResults/[id]/card/card';
 import { useFilterResultsStore } from '@/lib/state/searchFilters.state';
 import { SearchFilters } from '@/lib/types/searchFilters-type';
-import { useAllCarsStore } from '@/lib/state/allCars.state';
+import { useAllCars, useIsLoading, useError } from '@/lib/state/allCars.state';
 import { useSingleLotStore } from '@/lib/state/lotDetailsPage.state';
 import { useMemo, useState, useEffect } from 'react';
 import _ from 'lodash';
@@ -77,9 +77,9 @@ function applyFilter(filters: SearchFilters, carsState: LotDetailsType[]) {
 }
 
 export default function SaleListResultsPage() {
-	const cars = useAllCarsStore((state) => state.allCars);
-	const isLoading = useAllCarsStore((state) => state.isLoading);
-	const error = useAllCarsStore((state) => state.error);
+	const cars = useAllCars();
+	const isLoading = useIsLoading();
+	const error = useError();
 	const filters = useFilterResultsStore((state) => state.searchFilters);
 	const router = useRouter();
 	const searchParams = useSearchParams();
