@@ -53,7 +53,6 @@ export default function LotDetailsPage() {
 		if (loadedImageCound === images.length) {
 			setIsLoadingImages(false);
 		}
-		console.log(loadedImageCound);
 	}, [loadedImageCound, images.length]);
 
 	if (isLoading) {
