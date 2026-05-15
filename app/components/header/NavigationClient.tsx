@@ -72,7 +72,7 @@ export default function NavigationClient() {
 					<div className='fixed top-0 md:top-20 left-0 right-0 z-20 md:w-[600px] m-auto'>
 						<SideSearch />
 					</div>
-					<div className='fixed inset-0 z-19 bg-black/50' onClick={() => startTransition(() => toggleOpenSearch())} />
+					<div className='fixed inset-0 z-19 bg-black/30 backdrop-blur-sm' onClick={() => startTransition(() => toggleOpenSearch())} />
 				</Suspense>
 			)}
 			<div className=' text-gray-700 px-4 pt-2 pb-5'>
