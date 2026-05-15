@@ -12,17 +12,17 @@ function formatValue(value: unknown): React.ReactNode {
 function Row({ label, value }: { label: string; value: unknown }) {
 	return (
 		<div className='rounded-md bg-white p-0.5'>
-			<div className='text-xs font-medium uppercase tracking-wide text-gray-500'>{label}</div>
-			<div className='mt-1 text-sm text-gray-900'>{formatValue(value)}</div>
+			<div className='text-sm font-medium uppercase tracking-wide text-gray-500 '>{label}</div>
+			<div className='mt-1 text-sm text-gray-900 '>{formatValue(value)}</div>
 		</div>
 	);
 }
 
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
+function Section({ title, children, gridCol }: { title: string; children: React.ReactNode; gridCol?: number }) {
 	return (
-		<section className='rounded-xl border border-gray-200 p-4 bg-white'>
-			<h3 className='mb-3 text-sm font-semibold uppercase tracking-wide text-gray-700'>{title}</h3>
-			<div className='grid grid-cols-1 gap-2 md:grid-cols-2'>{children}</div>
+		<section className='rounded-xl border border-gray-200 p-4 bg-white '>
+			{title ? <h3 className='mb-3 text-md font-semibold uppercase tracking-wide text-gray-700'>{title}</h3> : ''}
+			<div className={`grid gap-3 grid-cols-${gridCol ? gridCol : 3}`}>{children}</div>
 		</section>
 	);
 }
@@ -30,7 +30,7 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 function SectionWrapper({ children }: { children: React.ReactNode }) {
 	return (
 		<section className=''>
-			<div className='grid grid-cols-1 gap-2 md:grid-cols-2 '>{children}</div>
+			<div className='grid grid-cols-1 gap-2 '>{children}</div>
 		</section>
 	);
 }
