@@ -1,5 +1,6 @@
 import React from 'react';
 import type { LotDetailsType } from '@/lib/types/lotDetails-type';
+import { camelCase } from 'lodash';
 
 function formatValue(value: unknown): React.ReactNode {
 	if (value === null || value === undefined || value === '') return '—';
@@ -32,6 +33,21 @@ function SectionWrapper({ children }: { children: React.ReactNode }) {
 			<div className='grid grid-cols-1 gap-2 md:grid-cols-2 '>{children}</div>
 		</section>
 	);
+}
+
+function returnOnlyDataLotDetails(array: string[], lotData: LotDetailsType) {
+	if (Array.isArray(array)) {
+		return array.map((element, i) => {
+			const property = lotData[camelCase(element) as keyof LotDetailsType];
+
+			if (property && property != null) {
+				if (element === 'Odometer Description') {
+					return <Row label={'Odo status'} key={i} value={property} />;
+				}
+				return <Row label={element} key={i} value={property} />;
+			}
+		});
+	}
 }
 
 export default function LotDetailsSection({ lotData }: { lotData: LotDetailsType }) {
