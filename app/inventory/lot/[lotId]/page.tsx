@@ -1,7 +1,8 @@
 'use client';
 
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useState } from 'react';
+import { Spinner } from '@/app/components/common/spinner';
+import { useState, useEffect } from 'react';
 import LotDetailsSection from '@/app/inventory/lot/lotDetails';
 import BidBuy from '../BidBuy';
 import Img from 'next/image';
@@ -11,6 +12,8 @@ import { useSingleLotStore } from '@/lib/state/lotDetailsPage.state';
 import { carImagePlaceholder } from '@/img';
 
 export default function LotDetailsPage() {
+	const [isLoadingImages, setIsLoadingImages] = useState(true);
+	const [loadedImageCound, setLoadedImageCound] = useState(0);
 	const router = useRouter();
 	const searchParams = useSearchParams();
 	const isLoading = useIsLoading();
@@ -18,6 +21,7 @@ export default function LotDetailsPage() {
 	const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 	const [AiImage, setAiImage] = useState(false);
 	const [aiImages] = useState<string[]>([]);
+	const [loadedMainImageSrc, setLoadedMainImageSrc] = useState<string | null>(null);
 	const imagesDoc = Array.isArray(car.images) ? (car.images as unknown as { copart: string[] | null }[])[0] : car.images;
 	const images: string[] = imagesDoc?.copart ?? [];
 	const aiImageMap: Record<number, string> = Object.fromEntries(
@@ -29,6 +33,7 @@ export default function LotDetailsPage() {
 			.filter(Boolean) as [number, string][],
 	);
 	const currentSrc = AiImage && aiImageMap[selectedImageIndex] ? aiImageMap[selectedImageIndex] : images[selectedImageIndex];
+	const isMainImageLoading = loadedMainImageSrc !== currentSrc;
 
 	const handleBack = () => {
 		const page = searchParams.get('page');
@@ -43,6 +48,13 @@ export default function LotDetailsPage() {
 	const toggleAIimage = () => {
 		setAiImage((prev) => !prev);
 	};
+
+	useEffect(() => {
+		if (loadedImageCound === images.length) {
+			setIsLoadingImages(false);
+		}
+		console.log(loadedImageCound);
+	}, [loadedImageCound, images.length]);
 
 	if (isLoading) {
 		return (
@@ -114,13 +126,20 @@ export default function LotDetailsPage() {
 									<>
 										<div
 											className={`relative w-full h-100 bg-gray-200  overflow-hidden  group rounded-t-md ${AiImage ? 'border-[var(--mongo-green)]' : 'border-white'}`}>
+											{isMainImageLoading && (
+												<div className='absolute inset-0 z-50 flex items-center justify-center bg-white/40 backdrop-blur-sm'>
+													<div className='h-10 w-10 animate-spin rounded-full border-2 border-gray-300 border-t-[var(--mongo-green)]' />
+												</div>
+											)}
 											<Img
 												alt='Car Image'
 												src={currentSrc}
-												className='object-contain z-30'
+												className={`object-contain z-30 transition-opacity duration-300 ${isMainImageLoading ? 'opacity-0' : 'opacity-100'}`}
 												fill
 												sizes='(max-width: 1024px) 100vw, 66vw'
+												onLoad={() => setLoadedMainImageSrc(currentSrc)}
 												onError={(e) => {
+													setLoadedMainImageSrc(currentSrc);
 													e.currentTarget.src = '/images/placeholder.png';
 												}}
 											/>
@@ -181,8 +200,9 @@ export default function LotDetailsPage() {
 												</>
 											)}
 										</div>
-										<div>
-											<div className='grid grid-cols-5 gap-2 p-3'>
+										<div className='relative w-full h-[57vw] lg:h-[38vw] max-h-[515px]'>
+											{isLoadingImages ? <div className='h-[57vw] lg:h-[38vw] max-h-[515px] rounded-lg'>{Spinner('Images')}</div> : ''}
+											<div className={`grid grid-cols-5 gap-2 p-3 relative left-0 right-0 h-100${isLoadingImages ? 'opacity-0' : 'opacity-100'}`}>
 												{images.length > 1
 													? images.map((imgUrl: string, idx) => (
 															<button
@@ -200,6 +220,7 @@ export default function LotDetailsPage() {
 																	className='object-cover object-left'
 																	fill
 																	sizes='(max-width: 640px) 15vw, (max-width: 1024px) 12vw, 120px'
+																	onLoad={() => setLoadedImageCound((c) => c + 1)}
 																	onError={(e) => {
 																		e.currentTarget.src = '/images/placeholder.png';
 																	}}
