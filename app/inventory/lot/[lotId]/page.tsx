@@ -226,11 +226,11 @@ export default function LotDetailsPage() {
 								)}
 							</div>
 						</div>
-						<LotDetailsSection lotData={car}></LotDetailsSection>
 					</div>
+					<LotDetailsSection lotData={car}></LotDetailsSection>
 
 					{/* Right Column - Bidding Info */}
-					<BidBuy car={car}></BidBuy>
+					{/* <BidBuy car={car}></BidBuy> */}
 				</div>
 			</div>
 		</div>
