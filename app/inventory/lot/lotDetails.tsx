@@ -75,7 +75,6 @@ export default function LotDetailsSection({ lotData }: { lotData: LotDetailsType
 		'Transmission Note',
 	];
 	const sectionTwo = ['Lot Number', 'Lane Item', 'Sale Name', 'Location', 'Sale Date', 'Auction Name', 'Current Bid', 'Buy It Now', 'Auction Countdown'];
-	console.log(lotData);
 	return (
 		<div className='space-y-2 ml-3 '>
 			<SectionWrapper>
