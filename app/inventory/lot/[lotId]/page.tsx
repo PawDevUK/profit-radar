@@ -34,7 +34,7 @@ export default function LotDetailsPage() {
 	);
 	const currentSrc = AiImage && aiImageMap[selectedImageIndex] ? aiImageMap[selectedImageIndex] : images[selectedImageIndex];
 	const isMainImageLoading = loadedMainImageSrc !== currentSrc;
-
+	console.log(car);
 	const handleBack = () => {
 		const page = searchParams.get('page');
 		const mobile = searchParams.get('mobile');
