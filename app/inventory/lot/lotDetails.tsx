@@ -51,58 +51,42 @@ function returnOnlyDataLotDetails(array: string[], lotData: LotDetailsType) {
 }
 
 export default function LotDetailsSection({ lotData }: { lotData: LotDetailsType }) {
+	const sectionOne = [
+		'Make',
+		'Model',
+		'Year',
+		'Trim',
+		'Odometer',
+		'Odometer Description',
+		'Engine Type',
+		'Transmission',
+		'Drive Train',
+		'Fuel Type',
+		'Cylinders',
+		'Primary Damage',
+		'Run And Drive',
+		'Has Key',
+
+		'Vehicle Title Type',
+		'Odometer Status',
+		'Engine Verified',
+		'Engine Verified Note',
+		'Engine Status',
+		'Transmission Engages',
+		'Transmission Note',
+	];
+	const sectionTwo = ['Lot Number', 'Lane Item', 'Sale Name', 'Location', 'Sale Date', 'Auction Name', 'Current Bid', 'Buy It Now', 'Auction Countdown'];
+	console.log(lotData);
 	return (
 		<div className='space-y-2'>
 			<SectionWrapper>
-				<Section title='Vehicle Overview'>
-					{/* <Row label='Title' value={lotData.title} /> */}
-					<Row label='Make' value={lotData.make} />
-					<Row label='Model' value={lotData.model} />
-					<Row label='Year' value={lotData.year} />
-					<Row label='Trim' value={lotData.trim} />
-					<Row label='Body Style' value={lotData.bodyStyle} />
-					<Row label='Vehicle Type' value={lotData.vehicleType} />
-					<Row label='Color' value={lotData.color} />
+				<Section title='Vehicle Overview'>{returnOnlyDataLotDetails(sectionOne, lotData)}</Section>
+				<Section title='' gridCol={1}>
+					{returnOnlyDataLotDetails(['Title Code'], lotData)}
 				</Section>
 
-				<Section title='Auction Information'>
-					<Row label='Lot Number' value={lotData.lotInv} />
-					{/* <Row label='Lane Item' value={lotData.laneItem} /> */}
-					{/* <Row label='Sale Name' value={lotData.saleName} /> */}
-					<Row label='Location' value={lotData.location} />
-					<Row label='Sale Date' value={lotData.saleDate} />
-					<Row label='Auction Name' value={lotData.auctionName} />
-					<Row label='Current Bid' value={`$${lotData.currentBid}`} />
-					{/* <Row label='Buy It Now' value={lotData.buyItNow} /> */}
-					<Row label='Auction Countdown' value={lotData.auctionCountdown} />
-					{/* <Row label='Copart Link' value={lotData.lotUrl} /> */}
-				</Section>
-			</SectionWrapper>
-
-			<SectionWrapper>
-				<Section title='Condition'>
-					<Row label='Primary Damage' value={lotData.damageDescription} />
-					<Row label='Run And Drive' value={lotData.runAndDrive} />
-					<Row label='Has Key' value={lotData.hasKey} />
-					<Row label='Title Code' value={lotData.titleCode} />
-					<Row label='Vehicle Title Type' value={lotData.vehicleTitleType} />
-					<Row label='Odometer' value={lotData.odometer} />
-					{/* <Row label='Odometer Unit' value={lotData.odometerUnit} /> */}
-					<Row label='Odometer Status' value={lotData.odometerDescription} />
-					<Row label='Engine Verified' value={lotData.engineVerified} />
-					<Row label='Engine Verified Note' value={lotData.engineVerifiedNote} />
-					<Row label='Engine Status' value={lotData.engineStatus} />
-					<Row label='Transmission Engages' value={lotData.transmissionEngages} />
-					<Row label='Transmission Note' value={lotData.transmissionNote} />
-				</Section>
-
-				<Section title='Technical Specs'>
-					<Row label='VIN' value={lotData.vin} />
-					<Row label='Engine Type' value={lotData.engineType} />
-					<Row label='Transmission' value={lotData.transmission} />
-					<Row label='Drive Train' value={lotData.driveTrain} />
-					<Row label='Fuel Type' value={lotData.fuelType} />
-					<Row label='Cylinders' value={lotData.cylinders} />
+				<Section title='Auction Information' gridCol={1}>
+					{returnOnlyDataLotDetails(sectionTwo, lotData)}
 				</Section>
 			</SectionWrapper>
 		</div>
