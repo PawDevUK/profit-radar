@@ -201,7 +201,7 @@ export default function LotDetailsPage() {
 										</div>
 										<div className='relative w-full h-[57vw] lg:h-[38vw] max-h-[515px]'>
 											{isLoadingImages ? <div className='h-[57vw] lg:h-[38vw] max-h-[515px] rounded-lg'>{Spinner('Images')}</div> : ''}
-											<div className={`grid grid-cols-5 gap-2 p-3 relative left-0 right-0 h-100${isLoadingImages ? 'opacity-0' : 'opacity-100'}`}>
+											<div className={`grid grid-cols-5 gap-2 p-3 relative left-0 right-0 ${isLoadingImages ? 'opacity-0' : 'opacity-100'}`}>
 												{images.length > 1
 													? images.map((imgUrl: string, idx) => (
 															<button
