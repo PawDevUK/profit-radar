@@ -18,11 +18,11 @@ function Row({ label, value }: { label: string; value: unknown }) {
 	);
 }
 
-function Section({ title, children, gridCol }: { title: string; children: React.ReactNode; gridCol?: number }) {
+function Section({ title, children, gridCol, gridColMd, gridLg }: { title: string; children: React.ReactNode; gridCol?: string; gridColMd?: string; gridLg?: string }) {
 	return (
 		<section className='rounded-xl border border-gray-200 p-4 bg-white '>
 			{title ? <h3 className='mb-3 text-md font-semibold uppercase tracking-wide text-gray-700'>{title}</h3> : ''}
-			<div className={`grid gap-3 grid-cols-${gridCol ? gridCol : 3}`}>{children}</div>
+			<div className={`grid gap-3 ${gridCol ? gridCol : 'grid-cols-2'} ${gridColMd ? gridColMd : ''} ${gridLg ? gridLg : ''}`}>{children}</div>
 		</section>
 	);
 }
@@ -66,7 +66,6 @@ export default function LotDetailsSection({ lotData }: { lotData: LotDetailsType
 		'Primary Damage',
 		'Run And Drive',
 		'Has Key',
-
 		'Vehicle Title Type',
 		'Odometer Status',
 		'Engine Verified',
@@ -80,12 +79,17 @@ export default function LotDetailsSection({ lotData }: { lotData: LotDetailsType
 	return (
 		<div className='space-y-2'>
 			<SectionWrapper>
-				<Section title='Vehicle Overview'>{returnOnlyDataLotDetails(sectionOne, lotData)}</Section>
-				<Section title='' gridCol={1}>
+				<Section title='Vehicle Overview' gridCol={'grid-cols-2'} gridColMd={'md:grid-cols-3'}>
+					{returnOnlyDataLotDetails(sectionOne, lotData)}
+				</Section>
+				<Section title='' gridCol={'grid-cols-1'}>
 					{returnOnlyDataLotDetails(['Title Code'], lotData)}
 				</Section>
+				<Section title='' gridCol={'grid-cols-1'}>
+					{returnOnlyDataLotDetails(['Est Retail Value'], lotData)}
+				</Section>
 
-				<Section title='Auction Information' gridCol={1}>
+				<Section title='Auction Information' gridCol={'grid-cols-2'} gridColMd={'md:grid-cols-2'}>
 					{returnOnlyDataLotDetails(sectionTwo, lotData)}
 				</Section>
 			</SectionWrapper>
