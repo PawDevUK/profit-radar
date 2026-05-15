@@ -102,18 +102,18 @@ export default function LotDetailsPage() {
 					← Back to Sale List
 				</button>
 
-				<div className='grid grid-cols-1 lg:grid-cols-3 gap-6'>
+				<div className='grid grid-cols-1 lg:grid-cols-3 '>
 					{/* Left Column - Main Info */}
 					<div className='lg:col-span-2'>
 						{/* Images */}
-						<div className='bg-white rounded-lg shadow p-6 mb-2'>
+						<div className='bg-white rounded-lg shadow  mb-2'>
 							{/* Main Image with Navigation */}
 							<div className='mb-4 relative'>
 								{/* {toggleAIImage()} */}
 								{images.length > 0 ? (
 									<>
 										<div
-											className={`relative w-full h-100 bg-gray-200 rounded overflow-hidden mb-4 group border-4 ${AiImage ? 'border-[var(--mongo-green)]' : 'border-white'}`}>
+											className={`relative w-full h-100 bg-gray-200  overflow-hidden  group rounded-t-md ${AiImage ? 'border-[var(--mongo-green)]' : 'border-white'}`}>
 											<Img
 												alt='Car Image'
 												src={currentSrc}
@@ -182,7 +182,7 @@ export default function LotDetailsPage() {
 											)}
 										</div>
 										<div>
-											<div className='grid grid-cols-5 gap-2'>
+											<div className='grid grid-cols-5 gap-2 p-3'>
 												{images.length > 1
 													? images.map((imgUrl: string, idx) => (
 															<button
