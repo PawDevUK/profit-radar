@@ -6,7 +6,7 @@ function formatValue(value: unknown): React.ReactNode {
 	if (value === null || value === undefined || value === '') return '—';
 	if (typeof value === 'boolean') return value ? 'Yes' : 'No';
 	if (Array.isArray(value)) return value.length ? value.join(', ') : '—';
-	return String(value);
+	return String(value).toUpperCase();
 }
 
 function Row({ label, value }: { label: string; value: unknown }) {
