@@ -34,7 +34,9 @@ export default function LotDetailsPage() {
 	);
 	const currentSrc = AiImage && aiImageMap[selectedImageIndex] ? aiImageMap[selectedImageIndex] : images[selectedImageIndex];
 	const isMainImageLoading = loadedMainImageSrc !== currentSrc;
-	console.log(car);
+	useEffect(() => {
+		console.log('lot changed', car);
+	}, [car?._id]);
 	const handleBack = () => {
 		const page = searchParams.get('page');
 		const mobile = searchParams.get('mobile');
