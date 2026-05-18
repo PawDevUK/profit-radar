@@ -2,7 +2,8 @@ import CheckBoxList from './checkBoxList';
 import { useAllCars } from '@/lib/state/allCars.state';
 import { MapPin, Car, Gavel, Fuel, KeySquare, CarFront, ListTodo, ArrowDownUp } from 'lucide-react';
 import './style.css';
-import { useSetOpenSearch } from '@/lib/state/searchFilters.state';
+import { useSetOpenSearch } from '@/lib/state/openSearch.state';
+import { useResetSearchFilters } from '@/lib/state/searchFilters.state';
 import SearchChipButton from '@/app/components/common/buttons/logButton';
 import {
 	sort,
@@ -80,6 +81,7 @@ export default function SideSearch() {
 	const models = getStateModels(makeFilter);
 	const makes = getStateMakes();
 	const toggleSearch = useSetOpenSearch();
+	const resetFilters = useResetSearchFilters();
 	return (
 		<aside className='flex flex-col md:w-150 mx-auto h-[100dvh] min-h-[100svh]  md:h-[calc(100vh-150px)] bg-white  shadow-lg md:shadow-none z-15 md:rounded-md'>
 			<div className='px-10 py-6 flex items-center justify-between z-15'>
@@ -108,7 +110,7 @@ export default function SideSearch() {
 			</div>
 			<div className='m-6 w-[90%] mx-auto flex space-x-4  md:h-auto'>
 				<div className='flex-auto'>
-					<SearchChipButton item={{ href: '#', label: 'Clear All' }}></SearchChipButton>
+					<SearchChipButton onclick={resetFilters} item={{ href: '#', label: 'Clear All' }}></SearchChipButton>
 				</div>
 				<div className='flex-auto'>
 					<SearchChipButton onclick={toggleSearch} item={{ href: '', label: 'Search' }}></SearchChipButton>

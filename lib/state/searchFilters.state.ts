@@ -81,6 +81,7 @@ interface FilterResultsState {
 	searchFilters: SearchFilters;
 	SET_Filter: (filters: string, label: string) => void;
 	SET_SelectedModel: (value: string) => void;
+	resetSearchFilters: () => void;
 }
 
 export const useFilterResultsStore = create<FilterResultsState>((set) => ({
@@ -119,20 +120,11 @@ export const useFilterResultsStore = create<FilterResultsState>((set) => ({
 			};
 		});
 	},
-}));
-
-interface openSearchTypes {
-	isSearchOpen: boolean;
-	toggleSearchOpen: () => void;
-}
-
-const useOpenSearchStore = create<openSearchTypes>((set, get) => ({
-	isSearchOpen: false,
-	toggleSearchOpen: () => {
-		set((state) => ({ isSearchOpen: !state.isSearchOpen }));
-		console.log('State has changed', get().isSearchOpen);
+	resetSearchFilters: () => {
+		set(() => ({
+			searchFilters: initialSearchFilters,
+		}));
 	},
 }));
 
-export const useOpenSearch = () => useOpenSearchStore((state) => state.isSearchOpen);
-export const useSetOpenSearch = () => useOpenSearchStore((state) => state.toggleSearchOpen);
+export const useResetSearchFilters = () => useFilterResultsStore((state) => state.resetSearchFilters);
