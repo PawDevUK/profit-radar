@@ -9,9 +9,11 @@ function Card({ ...props }) {
 		return str.replace('USD', '');
 	}
 	const imageUrl = images.copart ? images.copart[0] : carImagePlaceholder;
+
+	const mileageColor = item.odometerDescription === 'ACTUAL' ? '--odo-actual' : '--odo-yellow-warning';
 	return (
 		<div
-			className='md:max-h-115.5 w-full max-w-lg md:w-[30%] lg:w-[22%] xl:w-[18%] m-1.5 bg-neutral-primary-soft border border-gray-300 rounded-base shadow-md rounded-lg flex flex-row md:flex-col'
+			className='md:max-h-115.5 w-full max-w-lg md:w-[30%] lg:w-[22%] xl:w-[18%] m-1.5 bg-neutral-primary-soft border border-gray-300 rounded-base shadow-md rounded-lg flex flex-row md:flex-col cursor-pointer'
 			onClick={onClick}>
 			<div className='flex flex-col justify-between md:w-full w-40 relative h-full md:h-40 '>
 				<div className='w-full h-full '>
@@ -37,10 +39,16 @@ function Card({ ...props }) {
 				<div className='flex flex-col items-center mt-1 '>
 					<div className='flex flex-col'>
 						<div className=' flex flex-row items-center space-x-1 mb-1'>
-							<span className='border border-brand-subtle text-(--main-blue)  text-xs font-medium px-1.5 py-0.5 rounded-sm'>{item.odometer} miles</span>
-							<span className='border border-brand-subtle text-(--main-blue)  text-xs font-medium px-1.5 py-0.5 rounded-sm'>{item.year}</span>
+							<span className=' text-black bg-(--odo-light-blue) text-xs font-medium px-1.5 py-0.5 rounded-sm'>{item.odometer} miles</span>
+							<span
+								style={{
+									backgroundColor: `var(${mileageColor})`,
+								}}
+								className={` text-black text-xs font-medium px-1.5 py-0.5 rounded-sm`}>
+								{item.odometerDescription.toLowerCase()}
+							</span>
 						</div>
-						<span className='border border-brand-subtle text-(--main-blue)  text-xs font-medium px-1.5 py-0.5 m-auto rounded-sm'>{item.damageDescription}</span>
+						<span className='bg-(--odo-light-blue)  text-xs font-medium px-1.5 py-0.5 m-auto rounded-sm'>{item.damageDescription}</span>
 					</div>
 
 					<div className='flex flex-row space-x-4 mt-1'>
