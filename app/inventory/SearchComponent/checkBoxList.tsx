@@ -4,7 +4,7 @@ import SearchBar from '@/app/components/search/search';
 import React, { useState, useCallback, useMemo, memo, useEffect } from 'react';
 import { useFilterResultsStore, makesType } from '@/lib/state/searchFilters.state';
 import { selectSetFilter } from '@/lib/state/selectors/searchFilters.selectors';
-
+import { capitalize } from 'lodash';
 type CheckboxListProps = {
 	options: string[];
 	selected?: string[] | string;
@@ -96,7 +96,7 @@ const Memo_CheckboxItem = memo(function CheckboxItem({ option, isSelected, onCha
 							/>
 						</svg>
 					</span>
-					<div className='ml-2 mt-0.5 text-gray-500 text-[16px]'>{option}</div>
+					<div className='ml-2 mt-0.5 text-gray-500 text-[16px]'>{capitalize(option)}</div>
 				</label>
 			</div>
 		</div>
