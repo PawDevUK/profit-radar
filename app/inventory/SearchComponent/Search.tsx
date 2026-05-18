@@ -83,7 +83,7 @@ export default function SideSearch() {
 	const toggleSearch = useSetOpenSearch();
 	const resetFilters = useResetSearchFilters();
 	return (
-		<aside className='flex flex-col md:w-150 mx-auto h-[100dvh] min-h-[100svh]  md:h-[calc(100vh-150px)] bg-white  shadow-lg md:shadow-none z-15 md:rounded-md'>
+		<aside className='flex flex-col md:w-150 mx-auto h-[100dvh]  md:h-[80vh]  bg-white shadow-lg md:shadow-none z-15 md:rounded-md'>
 			<div className='px-10 py-6 flex items-center justify-between z-15'>
 				<h2 className='text-[22px] font-bold text-(--header-text)'>Filter and sort</h2>
 				<div className='flex items-center gap-2'>
