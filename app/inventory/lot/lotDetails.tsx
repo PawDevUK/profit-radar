@@ -29,7 +29,7 @@ function Section({ title, children, gridCol, gridColMd, gridLg }: { title: strin
 
 function SectionWrapper({ children }: { children: React.ReactNode }) {
 	return (
-		<section className=''>
+		<section className='ml-3'>
 			<div className='grid grid-cols-1 gap-2 '>{children}</div>
 		</section>
 	);
