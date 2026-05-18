@@ -78,9 +78,9 @@ const Memo_CheckboxItem = memo(function CheckboxItem({ option, isSelected, onCha
 		}
 	}, [isSelected]);
 	return (
-		<div className='flex flex-row mx-2 my-1'>
+		<div className='flex flex-row mx-2 my-1 '>
 			<div className='inline-flex items-center'>
-				<label className='flex items-center cursor-pointer relative'>
+				<label className='flex items-center cursor-pointer relative w-60'>
 					<input
 						type='checkbox'
 						checked={isSelected}
