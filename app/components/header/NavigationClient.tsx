@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import { authService } from '../../../lib/auth';
 import LogButton from '../common/buttons/logButton';
 import NavButton from '../common/buttons/NavButton';
-import { useOpenSearch, useSetOpenSearch } from '@/lib/state/searchFilters.state';
+import { useOpenSearch, useSetOpenSearch } from '@/lib/state/openSearch.state';
 
 const SideSearch = lazy(() => import('@/app/inventory/SearchComponent/Search'));
 

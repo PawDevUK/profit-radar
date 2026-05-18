@@ -5,7 +5,7 @@ import SaleListResultsPage from './saleListResults/[id]/page';
 import SearchChipsFilters from './searchChipsFilters/searchChipsFilters';
 const MemoizedSaleListResultsPage = memo(SaleListResultsPage);
 
-import { useSetOpenSearch } from '@/lib/state/searchFilters.state';
+import { useSetOpenSearch } from '@/lib/state/openSearch.state';
 const ToggleButton = ({ toggleFilters }: { toggleFilters: () => void }) => {
 	const IconSize = 22;
 	return (
