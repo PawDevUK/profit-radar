@@ -79,6 +79,7 @@ export default function SideSearch() {
 	const bodyStyleFilter = useFilterResultsStore(selectSearchFilterByKey('bodyStyle'));
 	const models = getStateModels(makeFilter);
 	const makes = getStateMakes();
+	const toggleSearch = useSetOpenSearch();
 	return (
 		<aside className='flex flex-col md:w-150 mx-auto h-[100dvh] min-h-[100svh]  md:h-[calc(100vh-150px)] bg-white  shadow-lg md:shadow-none z-15 md:rounded-md'>
 			<div className='px-10 py-6 flex items-center justify-between z-15'>
@@ -110,7 +111,7 @@ export default function SideSearch() {
 					<SearchChipButton item={{ href: '#', label: 'Clear All' }}></SearchChipButton>
 				</div>
 				<div className='flex-auto'>
-					<SearchChipButton item={{ href: '#', label: 'Search' }}></SearchChipButton>
+					<SearchChipButton onclick={toggleSearch} item={{ href: '', label: 'Search' }}></SearchChipButton>
 				</div>
 			</div>
 		</aside>
