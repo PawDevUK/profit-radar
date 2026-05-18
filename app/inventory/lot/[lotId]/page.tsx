@@ -24,6 +24,8 @@ export default function LotDetailsPage() {
 	const [loadedMainImageSrc, setLoadedMainImageSrc] = useState<string | null>(null);
 	const imagesDoc = Array.isArray(car.images) ? (car.images as unknown as { copart: string[] | null }[])[0] : car.images;
 	const images: string[] = imagesDoc?.copart ?? [];
+	const page = searchParams.get('page');
+	const mobile = innerWidth < 768;
 	const aiImageMap: Record<number, string> = Object.fromEntries(
 		aiImages
 			.map((p) => {
@@ -36,8 +38,6 @@ export default function LotDetailsPage() {
 	const isMainImageLoading = loadedMainImageSrc !== currentSrc;
 
 	const handleBack = () => {
-		const page = searchParams.get('page');
-		const mobile = innerWidth < 768;
 		if (page && car?.lotInv) {
 			const backUrl = mobile ? `/inventory?page=${page}&mobile=true#lot-${car.lotInv}` : `/inventory?page=${page}#lot-${car.lotInv}`;
 			router.push(backUrl);
@@ -143,18 +143,20 @@ export default function LotDetailsPage() {
 													e.currentTarget.src = '/images/placeholder.png';
 												}}
 											/>
-											<Img
-												src={currentSrc}
-												alt=''
-												fill
-												sizes='(max-width: 1024px) 100vw, 66vw'
-												aria-hidden
-												priority
-												className='object-cover scale-110 blur-lg opacity-60'
-												onError={(e) => {
-													e.currentTarget.src = '/images/placeholder.png';
-												}}
-											/>
+											{!mobile && (
+												<Img
+													src={currentSrc}
+													alt=''
+													fill
+													sizes='(max-width: 1024px) 100vw, 66vw'
+													aria-hidden
+													priority
+													className='object-cover scale-110 blur-lg opacity-60'
+													onError={(e) => {
+														e.currentTarget.src = '/images/placeholder.png';
+													}}
+												/>
+											)}
 											<div className='z-50'></div>
 											{images.length > 1 && (
 												<>
