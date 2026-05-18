@@ -80,7 +80,7 @@ export default function SideSearch() {
 	const models = getStateModels(makeFilter);
 	const makes = getStateMakes();
 	return (
-		<aside className='flex flex-col md:w-[600px] lg:w-150 mx-auto h-screen  md:h-[calc(100vh-150px)] bg-white  shadow-lg md:shadow-none z-15 md:rounded-md'>
+		<aside className='flex flex-col md:w-150 mx-auto h-[100dvh] min-h-[100svh]  md:h-[calc(100vh-150px)] bg-white  shadow-lg md:shadow-none z-15 md:rounded-md'>
 			<div className='px-10 py-6 flex items-center justify-between z-15'>
 				<h2 className='text-[22px] font-bold text-(--header-text)'>Filter and sort</h2>
 				<div className='flex items-center gap-2'>
@@ -105,7 +105,7 @@ export default function SideSearch() {
 					<CheckBoxList multiSelect title='Location' options={location} selected={locationFilter} scrollable icon={locationIcon} />
 				</div>
 			</div>
-			<div className='m-5 w-[90%] mx-auto flex space-x-4 h-50 md:h-auto'>
+			<div className='m-6 w-[90%] mx-auto flex space-x-4  md:h-auto'>
 				<div className='flex-auto'>
 					<SearchChipButton item={{ href: '#', label: 'Clear All' }}></SearchChipButton>
 				</div>
