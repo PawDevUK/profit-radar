@@ -158,8 +158,8 @@ export default function SaleListResultsPage() {
 								key={index}
 								item={car}
 								onClick={() => {
-									setSelectedLot(car);
 									router.push(`/inventory/lot/${car.lotInv}?page=${currentPage}&mobile=${mobilePage}`);
+									setSelectedLot(car);
 								}}></Card>
 						))}
 					</div>
