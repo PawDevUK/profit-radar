@@ -124,7 +124,7 @@ export default function LotDetailsPage() {
 								{images.length > 0 ? (
 									<>
 										<div
-											className={`relative w-full h-71.75 md:h-100 bg-gray-200  overflow-hidden  group rounded-t-md ${AiImage ? 'border-[var(--mongo-green)]' : 'border-white'}`}>
+											className={`relative w-full h-75.75 md:h-100 bg-gray-200  overflow-hidden  group rounded-t-md ${AiImage ? 'border-[var(--mongo-green)]' : 'border-white'}`}>
 											{isMainImageLoading && (
 												<div className='absolute inset-0 z-50 flex items-center justify-center bg-white/40 backdrop-blur-sm'>
 													<div className='h-10 w-10 animate-spin rounded-full border-2 border-gray-300 border-t-[var(--mongo-green)]' />
