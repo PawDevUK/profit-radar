@@ -113,6 +113,24 @@ export default function SaleListResultsPage() {
 		return () => window.removeEventListener('scroll', handleScroll);
 	}, [mobilePage, currentPage, totalPages]);
 
+	useEffect(() => {
+		if (typeof window === 'undefined') return;
+		if (!visibleCars || visibleCars.length === 0) return;
+
+		const hash = window.location.hash;
+		if (!hash) return;
+
+		const targetId = decodeURIComponent(hash.slice(1));
+		if (!targetId) return;
+
+		const target = document.getElementById(targetId);
+		if (!target) return;
+
+		requestAnimationFrame(() => {
+			target.scrollIntoView({ behavior: 'auto', block: 'center' });
+		});
+	}, [visibleCars]);
+
 	if (loadingPage) {
 		return (
 			<div className='min-h-screen bg-white flex items-center justify-center'>

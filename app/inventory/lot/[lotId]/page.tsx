@@ -37,9 +37,10 @@ export default function LotDetailsPage() {
 
 	const handleBack = () => {
 		const page = searchParams.get('page');
-		const mobile = searchParams.get('mobile');
-		if (page && !mobile) {
-			router.push(`/inventory?page=${page}#${car.lotInv}`);
+		const mobile = innerWidth < 768;
+		if (page && car?.lotInv) {
+			const backUrl = mobile ? `/inventory?page=${page}&mobile=true#lot-${car.lotInv}` : `/inventory?page=${page}#lot-${car.lotInv}`;
+			router.push(backUrl);
 			return;
 		}
 		router.back();

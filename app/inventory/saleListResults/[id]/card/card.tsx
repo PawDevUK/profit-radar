@@ -13,6 +13,7 @@ function Card({ ...props }) {
 	const mileageColor = item.odometerDescription === 'ACTUAL' ? '--odo-actual' : '--odo-yellow-warning';
 	return (
 		<div
+			id={`lot-${item.lotInv}`}
 			className='md:max-h-115.5 w-full max-w-lg md:w-[30%] lg:w-[22%] xl:w-[18%] m-1.5 bg-neutral-primary-soft border border-gray-300 rounded-base shadow-md rounded-lg flex flex-row md:flex-col cursor-pointer'
 			onClick={onClick}>
 			<div className='flex flex-col justify-between md:w-full w-40 relative h-full md:h-40 '>
