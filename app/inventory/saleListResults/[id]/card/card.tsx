@@ -54,11 +54,11 @@ function Card({ ...props }) {
 					<div className='flex flex-row space-x-4 mt-1'>
 						<div className='flex flex-col'>
 							<span className='text-[12px]'>Current Bid</span>
-							<span className='text-lg font-extrabold text-heading'>${removeUSD(item.currentBid)}</span>
+							<span className='text-md text-heading'>${removeUSD(item.currentBid)}</span>
 						</div>
 						<div className='flex flex-col'>
 							<span className='text-[12px]'>Buy it now</span>
-							<span className='text-lg font-extrabold text-heading'>${removeUSD(item.buyItNow ? item.buyItNow : '0')}</span>
+							<span className='text-md  text-heading'>${removeUSD(item.buyItNow ? item.buyItNow : '0')}</span>
 						</div>
 					</div>
 				</div>
