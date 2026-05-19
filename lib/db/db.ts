@@ -41,7 +41,6 @@ export async function updateCalendar(scrapedCalendar: CalendarType) {
 			const CalendarSaleList = new CalendarSaleModel(scrapedCalendar);
 			await CalendarSaleList.save();
 			message = 'Saved new Calendar with sale lists!';
-			console.log(message);
 		} catch (error) {
 			message = error instanceof Error ? error.message : String(error);
 		}
@@ -58,7 +57,6 @@ export async function updateCalendar(scrapedCalendar: CalendarType) {
 
 			if (newScrapedSales.length === 0) {
 				message = 'There are no new sale lists to save!';
-				console.log(message);
 				return {
 					message,
 					updatedCalendar,
@@ -80,7 +78,6 @@ export async function updateCalendar(scrapedCalendar: CalendarType) {
 				);
 
 				databaseChanges = databaseResponse.modifiedCount;
-				console.log(databaseChanges);
 				message = databaseChanges > 0 ? `Saved ${databaseChanges} new sales list saved to database.` : `No new sales scrapped!`;
 				updatedCalendar = true;
 			}
