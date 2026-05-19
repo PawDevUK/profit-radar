@@ -31,11 +31,11 @@ export async function getAllLots() {
 
 export async function updateCalendar(scrapedCalendar: CalendarType) {
 	const databaseEntries = await getAllSalesLists();
+	const currentNumberOfSales = databaseEntries[0].totalAuctions;
 	let message = '';
 	let updatedCalendar = false;
-	let numberOfNewSales = 0;
-
-	if (!databaseEntries) {
+	let databaseChanges = 0;
+	if (databaseEntries && databaseEntries.length === 0) {
 		try {
 			await connectDB();
 			const CalendarSaleList = new CalendarSaleModel(scrapedCalendar);
@@ -50,17 +50,39 @@ export async function updateCalendar(scrapedCalendar: CalendarType) {
 	if (databaseEntries && databaseEntries[0] && databaseEntries[0].auctions.length > 0) {
 		try {
 			const savedAuctions = databaseEntries[0].auctions;
-			const notSavedSales = scrapedCalendar.auctions.filter((scrapedSale) => {
+			const newScrapedSales = scrapedCalendar.auctions.filter((scrapedSale) => {
 				return !savedAuctions.some((savedSale: SaleListType) => {
 					return savedSale.currentSaleUrl === scrapedSale.currentSaleUrl;
 				});
 			});
 
-			if (notSavedSales && notSavedSales.length > 0) {
-				message = notSavedSales.length > 0 ? `Saved new ${notSavedSales.length} sale list to database.` : `No new sales scrapped!`;
+			if (newScrapedSales.length === 0) {
+				message = 'There are no new sale lists to save!';
+				console.log(message);
+				return {
+					message,
+					updatedCalendar,
+					databaseChanges,
+				};
+			}
+
+			if (newScrapedSales && newScrapedSales.length > 0) {
+				const databaseResponse = await CalendarSaleModel.updateOne(
+					{
+						_id: databaseEntries[0]._id,
+					},
+					{
+						$push: {
+							auctions: { $each: newScrapedSales },
+						},
+						$set: { totalAuctions: currentNumberOfSales + newScrapedSales.length },
+					},
+				);
+
+				databaseChanges = databaseResponse.modifiedCount;
+				console.log(databaseChanges);
+				message = databaseChanges > 0 ? `Saved ${databaseChanges} new sales list saved to database.` : `No new sales scrapped!`;
 				updatedCalendar = true;
-				numberOfNewSales = notSavedSales.length;
-				// I need to append the auctions to existing calendar.
 			}
 		} catch (error) {
 			message = error instanceof Error ? error.message : String(error);
@@ -69,7 +91,7 @@ export async function updateCalendar(scrapedCalendar: CalendarType) {
 	return {
 		message,
 		updatedCalendar,
-		numberOfNewSales,
+		databaseChanges,
 	};
 }
 
