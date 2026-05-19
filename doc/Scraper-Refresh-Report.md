@@ -22,7 +22,7 @@ Scrapers are invoked via Next.js API route handlers — there is no standalone C
 
 | Trigger | API Route | What It Does |
 |---|---|---|
-| Calendar scrape | `GET /api/copart/scrape-calendar` | Runs `calendarScraper`, calls `saveCalendar()` |
+| Calendar scrape | `GET /api/copart/scrape-calendar` | Runs `calendarScraper`, calls `updateCalendar()` |
 | Sale list scrape | `PUT /api/copart/db/scrape-save-list` | Iterates upcoming auctions, runs `saleListScraper` per URL, calls `saveSalesList()` |
 | CSV export | `GET /api/copart/login_CsvSaleList` | Logs into Copart via Puppeteer and downloads a CSV sale list |
 
