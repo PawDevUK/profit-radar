@@ -1,12 +1,25 @@
 import { login_CSV } from '@/lib/scrapers/copart/login_CSV/login_CSV';
 
-import { NextResponse } from 'next/server';
-const tempUrl =
-	'https://www.copart.com/saleListResult/376/2026-05-05?location=OH%20-%20Akron&saleDate=1777989600000&liveAuction=false&from=%2FsalesListResult&yardNum=376&qId=1a813ad6-7f82-46c2-bf32-efdc71e1a1f1-1777930318723';
+import { NextRequest, NextResponse } from 'next/server';
 const landingUrl = 'https://www.copart.com';
-const saleId = '232242534';
 
-export async function GET() {
-	const data = await login_CSV(landingUrl, tempUrl, saleId);
-	return NextResponse.json({ data: data, message: 'Success!' });
+export async function POST(request: NextRequest) {
+	const req = await request.json();
+	const saleUrl = req.saleListURL;
+	const saleId = req.saleId;
+	let data;
+	let message = '';
+	if (saleId && saleUrl) {
+		try {
+			data = await login_CSV(landingUrl, saleUrl, saleId);
+		} catch (e) {
+			message = e instanceof Error ? e.message : String(e);
+			console.error(e);
+		}
+	}
+	message = 'The saleId or saleListUrl is missing!! The sale List is not downloaded.';
+	return NextResponse.json({
+		message,
+		data,
+	});
 }
