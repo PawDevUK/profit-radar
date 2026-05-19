@@ -1,9 +1,8 @@
 import mongoose from 'mongoose';
 import 'dotenv/config';
-import { CalendarSaleModel } from './models';
+import { CalendarSaleModel, LotDetailsModel } from './models';
 import { CalendarType, SaleListType } from '@/lib/types/calendar-type';
 import { LotDetailsType } from '@/lib/types/lotDetails-type';
-import { LotDetailsModel } from './models';
 
 const MONGODB_URI = process.env.MONGODB_URI;
 
@@ -21,17 +20,6 @@ export async function connectDB() {
 	return cachedConnection;
 }
 
-export async function saveCalendar(scrapedCalendarMonth: CalendarType) {
-	if (scrapedCalendarMonth) {
-		await connectDB();
-		const CalendarSaleList = new CalendarSaleModel(scrapedCalendarMonth);
-		await CalendarSaleList.save();
-		console.log('Calendar sale data saved to database successfully!');
-	} else {
-		console.log('Not enough auctions scraped, skipping save.');
-	}
-}
-
 export async function getAllSalesLists() {
 	await connectDB();
 	return await CalendarSaleModel.find({});
@@ -39,6 +27,50 @@ export async function getAllSalesLists() {
 export async function getAllLots() {
 	await connectDB();
 	return await LotDetailsModel.find({});
+}
+
+export async function updateCalendar(scrapedCalendar: CalendarType) {
+	const databaseEntries = await getAllSalesLists();
+	let message = '';
+	let updatedCalendar = false;
+	let numberOfNewSales = 0;
+
+	if (!databaseEntries) {
+		try {
+			await connectDB();
+			const CalendarSaleList = new CalendarSaleModel(scrapedCalendar);
+			await CalendarSaleList.save();
+			message = 'Saved new Calendar with sale lists!';
+			console.log(message);
+		} catch (error) {
+			message = error instanceof Error ? error.message : String(error);
+		}
+	}
+
+	if (databaseEntries && databaseEntries[0] && databaseEntries[0].auctions.length > 0) {
+		try {
+			const savedAuctions = databaseEntries[0].auctions;
+			const notSavedSales = scrapedCalendar.auctions.filter((scrapedSale) => {
+				return !savedAuctions.some((savedSale: SaleListType) => {
+					return savedSale.currentSaleUrl === scrapedSale.currentSaleUrl;
+				});
+			});
+
+			if (notSavedSales && notSavedSales.length > 0) {
+				message = notSavedSales.length > 0 ? `Saved new ${notSavedSales.length} sale list to database.` : `No new sales scrapped!`;
+				updatedCalendar = true;
+				numberOfNewSales = notSavedSales.length;
+				// I need to append the auctions to existing calendar.
+			}
+		} catch (error) {
+			message = error instanceof Error ? error.message : String(error);
+		}
+	}
+	return {
+		message,
+		updatedCalendar,
+		numberOfNewSales,
+	};
 }
 
 export async function saveLots(lots: LotDetailsType[]) {
