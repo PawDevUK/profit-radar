@@ -34,6 +34,7 @@ export async function updateCalendar(scrapedCalendar: CalendarType) {
 	let message = '';
 	let updatedCalendar = false;
 	let databaseChanges = 0;
+	let newScrapedSales;
 
 	if (databaseEntries && databaseEntries.length === 0) {
 		try {
@@ -50,7 +51,7 @@ export async function updateCalendar(scrapedCalendar: CalendarType) {
 		const currentNumberOfSales = databaseEntries[0].totalAuctions;
 		try {
 			const savedAuctions = databaseEntries[0].auctions;
-			const newScrapedSales = scrapedCalendar.auctions.filter((scrapedSale) => {
+			newScrapedSales = scrapedCalendar.auctions.filter((scrapedSale) => {
 				return !savedAuctions.some((savedSale: SaleListType) => {
 					return savedSale.currentSaleUrl === scrapedSale.currentSaleUrl;
 				});
@@ -62,6 +63,7 @@ export async function updateCalendar(scrapedCalendar: CalendarType) {
 					message,
 					updatedCalendar,
 					databaseChanges,
+					newScrapedSales,
 				};
 			}
 
@@ -90,6 +92,7 @@ export async function updateCalendar(scrapedCalendar: CalendarType) {
 		message,
 		updatedCalendar,
 		databaseChanges,
+		newScrapedSales,
 	};
 }
 
