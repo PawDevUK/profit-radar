@@ -31,10 +31,10 @@ export async function getAllLots() {
 
 export async function updateCalendar(scrapedCalendar: CalendarType) {
 	const databaseEntries = await getAllSalesLists();
-	const currentNumberOfSales = databaseEntries[0].totalAuctions;
 	let message = '';
 	let updatedCalendar = false;
 	let databaseChanges = 0;
+
 	if (databaseEntries && databaseEntries.length === 0) {
 		try {
 			await connectDB();
@@ -47,6 +47,7 @@ export async function updateCalendar(scrapedCalendar: CalendarType) {
 	}
 
 	if (databaseEntries && databaseEntries[0] && databaseEntries[0].auctions.length > 0) {
+		const currentNumberOfSales = databaseEntries[0].totalAuctions;
 		try {
 			const savedAuctions = databaseEntries[0].auctions;
 			const newScrapedSales = scrapedCalendar.auctions.filter((scrapedSale) => {
