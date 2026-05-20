@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import 'dotenv/config';
 import { CalendarSaleModel, LotDetailsModel } from './models';
 import { CalendarType, SaleListType } from '@/lib/types/calendar-type';
-import { LotDetailsType } from '@/lib/types/lotDetails-type';
+import { LotDetailsType, LotWithProfitStatusType } from '@/lib/types/lotDetails-type';
 
 const MONGODB_URI = process.env.MONGODB_URI;
 
@@ -168,4 +168,32 @@ export async function getOneSalesList(id: string) {
 		return nestedAuction;
 	}
 	console.log('No auction found!!');
+}
+
+export async function updateLotProfitStatus(LotDetails: LotWithProfitStatusType) {
+	await connectDB();
+	let message;
+	if (LotDetails.profitStatus) {
+		try {
+			await LotDetailsModel.findOneAndUpdate(
+				{
+					_id: LotDetails._id,
+				},
+				{
+					$set: {
+						profitStatus: LotDetails.profitStatus,
+					},
+				},
+			);
+			message = `Lot with id:${LotDetails._id} saved to database`;
+		} catch (error) {
+			if (error) {
+				message = error instanceof Error ? error.message : String(error);
+			}
+		}
+	}
+
+	return {
+		message,
+	};
 }
