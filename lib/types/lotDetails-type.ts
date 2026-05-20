@@ -1,8 +1,9 @@
-import { NextParsedUrlQuery } from 'next/dist/server/request-meta';
-
+import { ProfitStatusDetailsType } from './profitStatus-type';
+import mongoose from 'mongoose';
 export type OdometerUnit = 'mi' | 'km';
 
 export interface LotDetailsType {
+	_id?: mongoose.Types.ObjectId;
 	title: string | null;
 	year: string | null;
 	make: string | null;
@@ -54,6 +55,10 @@ export interface LotDetailsType {
 		AiRepaired: Buffer[] | null;
 	};
 	lotUrl: string | null;
+}
+
+export interface LotWithProfitStatusType extends LotDetailsType {
+	profitStatus: ProfitStatusDetailsType;
 }
 
 export function createLotObject(): LotDetailsType {
