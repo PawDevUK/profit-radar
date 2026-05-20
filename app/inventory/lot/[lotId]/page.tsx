@@ -3,8 +3,8 @@
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Spinner } from '@/app/components/common/spinner';
 import { useState, useEffect } from 'react';
-import LotDetailsSection from '@/app/inventory/lot/lotDetails';
-import BidBuy from '../BidBuy';
+import LotDetailsSection from '@/app/inventory/lot/[lotId]/lotDetails';
+import BidBuy from './BidBuy';
 import Img from 'next/image';
 import Toggle from '@/app/components/common/toggler/toggler';
 import { useIsLoading } from '@/lib/state/allCars.state';
