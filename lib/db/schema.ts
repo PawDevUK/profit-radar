@@ -1,8 +1,8 @@
 import { Schema } from 'mongoose';
-import { LotDetailsType } from '@/lib/types/lotDetails-type';
+import { LotWithProfitStatusType } from '@/lib/types/lotDetails-type';
 import { SaleListType, CalendarType } from '@/lib/types/calendar-type';
 
-export const LotDetailsSchema = new Schema<LotDetailsType>(
+export const LotDetailsSchema = new Schema<LotWithProfitStatusType>(
 	{
 		title: { type: String },
 		year: { type: Number },
@@ -54,6 +54,48 @@ export const LotDetailsSchema = new Schema<LotDetailsType>(
 		images: {
 			copart: { type: [String] }, // Keep as URL or change to Buffer if storing binary
 			AiRepaired: { type: [Buffer] }, // Binary data for repaired image
+		},
+		profitStatus: {
+			lotId: { type: String },
+			condition: { type: String },
+			titleType: { type: String, default: null },
+			estimatedRepairLevel: { type: String, enum: ['minor', 'moderate', 'major', 'severe', 'total_loss'] },
+			estimatedRepairLevelDefinition: {
+				minor: { type: String },
+				moderate: { type: String },
+				major: { type: String },
+				severe: { type: String },
+				total_loss: { type: String },
+			},
+			damage: { type: String },
+			nonProfit: { type: Boolean },
+			topCountries: [
+				{
+					rank: { type: Number },
+					country: { type: String },
+					distanceAuctionToPort: { type: Number },
+					estimateInLandUsaTransport: { type: Number },
+					estimateInLandUsaTransportCost: { type: Number },
+					portOfOrigin: { type: String },
+					portOfDestination: { type: String },
+					daysOfSail: { type: Number },
+					estimateSeaTransportCost: { type: Number },
+					estimatedPurchaseCostUsd: { type: Number },
+					estimatedRepairCostUsd: { type: Number },
+					estimatedShippingAndImportUsd: { type: Number },
+					estimatedTotalCostUsd: { type: Number },
+					estimatedResaleValueUsd: { type: Number },
+					estimatedNetProfitUsd: { type: Number },
+					estimatedRoiPercent: { type: Number },
+					timeToSellDays: { type: Number },
+					confidence: { type: String, enum: ['low', 'medium', 'high'] },
+					reasoning: { type: String },
+				},
+			],
+			bestChoice: {
+				country: { type: String },
+				whyBest: { type: String },
+			},
 		},
 	},
 	{ _id: false },
