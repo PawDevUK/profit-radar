@@ -68,7 +68,7 @@ export async function updateCalendar(scrapedCalendar: CalendarType) {
 			}
 
 			if (newScrapedSales && newScrapedSales.length > 0) {
-				const databaseResponse = await CalendarSaleModel.updateOne(
+				await CalendarSaleModel.updateOne(
 					{
 						_id: databaseEntries[0]._id,
 					},
@@ -80,7 +80,7 @@ export async function updateCalendar(scrapedCalendar: CalendarType) {
 					},
 				);
 
-				databaseChanges = databaseResponse.modifiedCount;
+				databaseChanges = newScrapedSales.length;
 				message = databaseChanges > 0 ? `Saved ${databaseChanges} new sales list saved to database.` : `No new sales scrapped!`;
 				updatedCalendar = true;
 			}
