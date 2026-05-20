@@ -78,7 +78,7 @@ export default function LotDetailsSection({ lotData }: { lotData: LotDetailsType
 	return (
 		<div className='space-y-2'>
 			<SectionWrapper>
-				<Section title='Vehicle Overview' gridCol={'grid-cols-2'} gridColMd={'md:grid-cols-3'}>
+				<Section title='' gridCol={'grid-cols-2'} gridColMd={'md:grid-cols-3'}>
 					{returnOnlyDataLotDetails(sectionOne, lotData)}
 				</Section>
 				<Section title='' gridCol={'grid-cols-1'}>
