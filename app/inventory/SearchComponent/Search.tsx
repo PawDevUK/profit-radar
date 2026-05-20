@@ -1,6 +1,22 @@
 import CheckBoxList from './checkBoxList';
+import {
+	sortIcon,
+	makeIcon,
+	modelIcon,
+	titleTypeIcon,
+	bodyStyleIcon,
+	vehicleConditionIcon,
+	vehicleTypeIcon,
+	engineTypeIcon,
+	transmissionIcon,
+	fuelTypeIcon,
+	driveTrainIcon,
+	cylindersIcon,
+	auctionNameIcon,
+	locationIcon,
+} from '@/app/components/common/icons';
+
 import { useAllCars } from '@/lib/state/allCars.state';
-import { MapPin, Car, Gavel, Fuel, KeySquare, CarFront, ListTodo, ArrowDownUp } from 'lucide-react';
 import './style.css';
 import { useSetOpenSearch } from '@/lib/state/openSearch.state';
 import { useResetSearchFilters } from '@/lib/state/searchFilters.state';
@@ -21,24 +37,8 @@ import {
 } from '@/app/inventory/options';
 import { useFilterResultsStore } from '@/lib/state/searchFilters.state';
 import { selectSearchFilterByKey } from '@/lib/state/selectors/searchFilters.selectors';
-
-import { Engine, Gears, VehicleType, CarCondition, DriveType, V8Icon, strokeIcons, colorIcons } from './searchIcons';
 import { X } from 'lucide-react';
-const engineTypeIcon = <Engine />;
-const transmissionIcon = <Gears />;
-const driveTrainIcon = <DriveType />;
-const cylindersIcon = <V8Icon />;
-const vehicleConditionIcon = <CarCondition />;
-const vehicleTypeIcon = <VehicleType />;
 
-const sortIcon = <ArrowDownUp strokeWidth={strokeIcons} className='checkboxIcon' />;
-const makeIcon = <CarFront strokeWidth={strokeIcons} className='checkboxIcon' />;
-const modelIcon = <KeySquare strokeWidth={strokeIcons} className='checkboxIcon' />;
-const titleTypeIcon = <ListTodo strokeWidth={strokeIcons} className='checkboxIcon' />;
-const fuelTypeIcon = <Fuel strokeWidth={strokeIcons} className='checkboxIcon' />;
-const auctionNameIcon = <Gavel strokeWidth={strokeIcons} className='checkboxIcon' />;
-const locationIcon = <MapPin strokeWidth={strokeIcons} className='checkboxIcon' />;
-const bodyStyleIcon = <Car strokeWidth={strokeIcons} className='checkboxIcon' />;
 const CloseButton = ({ toggleFilters }: { toggleFilters: () => void }) => {
 	return (
 		<button className='w-8 h-8' onClick={toggleFilters}>
@@ -46,6 +46,7 @@ const CloseButton = ({ toggleFilters }: { toggleFilters: () => void }) => {
 		</button>
 	);
 };
+
 export default function SideSearch() {
 	const toggleOpenSearch = useSetOpenSearch();
 	function getStateModels(make: string) {

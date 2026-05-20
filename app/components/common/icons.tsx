@@ -1,3 +1,4 @@
+import { MapPin, Car, Gavel, Fuel, KeySquare, CarFront, ListTodo, ArrowDownUp } from 'lucide-react';
 export const sizeIcons = 26;
 export const colorIcons = '#4b5563';
 export const strokeIcons = 2;
@@ -130,4 +131,17 @@ const V8Icon = () => {
 	);
 };
 
-export { BodyTypeIcon, Engine, Gears, VehicleType, CarCondition, DriveType, V8Icon };
+export const engineTypeIcon = <Engine />;
+export const transmissionIcon = <Gears />;
+export const driveTrainIcon = <DriveType />;
+export const cylindersIcon = <V8Icon />;
+export const vehicleConditionIcon = <CarCondition />;
+export const vehicleTypeIcon = <VehicleType />;
+export const sortIcon = <ArrowDownUp strokeWidth={strokeIcons} className='checkboxIcon' />;
+export const makeIcon = <CarFront strokeWidth={strokeIcons} className='checkboxIcon' />;
+export const modelIcon = <KeySquare strokeWidth={strokeIcons} className='checkboxIcon' />;
+export const titleTypeIcon = <ListTodo strokeWidth={strokeIcons} className='checkboxIcon' />;
+export const fuelTypeIcon = <Fuel strokeWidth={strokeIcons} className='checkboxIcon' />;
+export const auctionNameIcon = <Gavel strokeWidth={strokeIcons} className='checkboxIcon' />;
+export const locationIcon = <MapPin strokeWidth={strokeIcons} className='checkboxIcon' />;
+export const bodyStyleIcon = <Car strokeWidth={strokeIcons} className='checkboxIcon' />;
