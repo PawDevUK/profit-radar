@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { getOneLotById } from '@/lib/db/db';
 
 export async function POST(request: NextRequest) {
 	let message: string = '';
 	let body;
-	let report;
 	let saveReportResponse;
 	const origin = new URL(request.url).origin;
 	if (request.body) {
@@ -15,6 +15,18 @@ export async function POST(request: NextRequest) {
 		return NextResponse.json({ message }, { status: 400 });
 	}
 
+	// const lotLookupId = body._id;
+	// const existingLot = await getOneLotById(String(lotLookupId));
+	// if (existingLot?.profitStatus.topCountries.length > 0) {
+	// 	return NextResponse.json(
+	// 		{
+	// 			message: 'Report is already generated for this lot. Process canceled.',
+	// 			lotId: existingLot._id,
+	// 		},
+	// 		{ status: 409 },
+	// 	);
+	// }
+
 	const reportResponse = await fetch(`${origin}/api/copart/getProfitStatus`, {
 		method: 'POST',
 		headers: {
@@ -22,20 +34,37 @@ export async function POST(request: NextRequest) {
 		},
 		body: JSON.stringify(body),
 	});
-	report = await reportResponse.json();
 
-	if (report) {
+	if (!reportResponse.ok) {
+		const reportError = await reportResponse.text();
+		return NextResponse.json({ message: `Failed to generate report: ${reportError}` }, { status: 502 });
+	}
+
+	const report = await reportResponse.json();
+	const lotWithProfitStatus = report?.lotWithProfitStatus;
+
+	if (lotWithProfitStatus?.profitStatus) {
 		const saveResponse = await fetch(`${origin}/api/copart/db/saveProfitStatusToLot`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
 			},
-			body: JSON.stringify(body),
+			body: JSON.stringify(lotWithProfitStatus),
 		});
-		saveReportResponse = saveResponse.json();
+
+		if (!saveResponse.ok) {
+			const saveError = await saveResponse.text();
+			return NextResponse.json({ message: `Failed to save report: ${saveError}` }, { status: 502 });
+		}
+
+		saveReportResponse = await saveResponse.json();
+	} else {
+		message = 'Report generated but profitStatus is missing.';
 	}
 
 	return NextResponse.json({
 		message,
+		report,
+		saveReportResponse,
 	});
 }
