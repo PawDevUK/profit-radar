@@ -25,7 +25,16 @@ export default function LotDetailsPage() {
 	const imagesDoc = Array.isArray(car.images) ? (car.images as unknown as { copart: string[] | null }[])[0] : car.images;
 	const images: string[] = imagesDoc?.copart ?? [];
 	const page = searchParams.get('page');
-	const mobile = innerWidth < 768;
+
+	const [mobile, setMobile] = useState(true);
+
+	useEffect(() => {
+		const updateMobile = () => setMobile(window.innerWidth < 768);
+		updateMobile();
+		window.addEventListener('resize', updateMobile);
+		return () => window.removeEventListener('resize', updateMobile);
+	}, []);
+
 	const aiImageMap: Record<number, string> = Object.fromEntries(
 		aiImages
 			.map((p) => {
