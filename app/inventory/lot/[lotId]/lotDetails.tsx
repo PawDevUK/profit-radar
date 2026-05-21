@@ -1,6 +1,9 @@
-import React from 'react';
+'use client';
+
+import React, { useEffect, useState } from 'react';
 import type { LotDetailsType } from '@/lib/types/lotDetails-type';
 import { camelCase } from 'lodash';
+import ProfitSection from './profitSection';
 
 function formatValue(value: unknown): React.ReactNode {
 	if (value === null || value === undefined || value === '') return '—';
@@ -75,6 +78,7 @@ export default function LotDetailsSection({ lotData }: { lotData: LotDetailsType
 		'Transmission Note',
 	];
 	const sectionTwo = ['Lot Number', 'Lane Item', 'Sale Name', 'Location', 'Sale Date', 'Auction Name', 'Current Bid', 'Buy It Now', 'Auction Countdown'];
+
 	return (
 		<div className='space-y-2'>
 			<SectionWrapper>
@@ -87,7 +91,6 @@ export default function LotDetailsSection({ lotData }: { lotData: LotDetailsType
 				<Section title='' gridCol={'grid-cols-1'}>
 					{returnOnlyDataLotDetails(['Est Retail Value'], lotData)}
 				</Section>
-
 				<Section title='Auction Information' gridCol={'grid-cols-2'} gridColMd={'md:grid-cols-2'}>
 					{returnOnlyDataLotDetails(sectionTwo, lotData)}
 				</Section>
