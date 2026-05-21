@@ -29,6 +29,19 @@ export async function getAllLots() {
 	return await LotDetailsModel.find({});
 }
 
+export async function getOneLotById(id: string) {
+	await connectDB();
+
+	if (mongoose.Types.ObjectId.isValid(id)) {
+		const lotByObjectId = await LotDetailsModel.findById(id);
+		if (lotByObjectId) {
+			return lotByObjectId;
+		}
+	}
+
+	return await LotDetailsModel.findOne({ lotInv: id });
+}
+
 export async function updateCalendar(scrapedCalendar: CalendarType) {
 	const databaseEntries = await getAllSalesLists();
 	let message = '';
@@ -172,20 +185,25 @@ export async function getOneSalesList(id: string) {
 
 export async function updateLotProfitStatus(LotDetails: LotWithProfitStatusType) {
 	await connectDB();
-	let message;
+	let message = 'No profitStatus payload to save.';
 	if (LotDetails.profitStatus) {
 		try {
-			await LotDetailsModel.findOneAndUpdate(
-				{
-					_id: LotDetails._id,
-				},
+			const filter = LotDetails._id ? { _id: LotDetails._id } : { lotInv: LotDetails.lotInv };
+			const updatedLot = await LotDetailsModel.findOneAndUpdate(
+				filter,
 				{
 					$set: {
 						profitStatus: LotDetails.profitStatus,
 					},
 				},
+				{ new: true },
 			);
-			message = `Lot with id:${LotDetails._id} saved to database`;
+
+			if (!updatedLot) {
+				message = `Lot not found for update: ${LotDetails._id ?? LotDetails.lotInv}`;
+			} else {
+				message = `Lot saved to database: ${updatedLot._id}`;
+			}
 		} catch (error) {
 			if (error) {
 				message = error instanceof Error ? error.message : String(error);
