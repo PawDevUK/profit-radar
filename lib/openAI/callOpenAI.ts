@@ -14,8 +14,7 @@ export default async function callOpenAI(Prompt: string) {
 		model: 'gpt-4o-mini',
 		messages: [{ role: 'user', content: Prompt }],
 		response_format: { type: 'json_object' },
-		max_tokens: 4000,
-		temperature: 0,
+		max_completion_tokens: 4000,
 	});
 
 	if (!completion || !completion.choices || completion.choices.length === 0) {
