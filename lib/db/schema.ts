@@ -98,7 +98,6 @@ export const LotDetailsSchema = new Schema<LotWithProfitStatusType>(
 			},
 		},
 	},
-	{ _id: false },
 );
 
 export const SaleListSchema = new Schema<SaleListType>(
