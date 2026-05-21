@@ -6,12 +6,13 @@ export async function POST(request: NextRequest) {
 	let message;
 	if (request.body) {
 		body = await request.json();
-		await updateLotProfitStatus(body);
 	}
-	if (!body || typeof body !== 'object' || Array.isArray(body) || !body.lotInv) {
+	if (!body || typeof body !== 'object' || Array.isArray(body) || (!body.lotInv && !body._id)) {
 		message = 'No lot details data has been passed. Profitability report is not generated.';
 		return NextResponse.json({ message }, { status: 400 });
 	}
 
-	return NextResponse.json({});
+	const saveResult = await updateLotProfitStatus(body);
+
+	return NextResponse.json(saveResult);
 }
