@@ -10,6 +10,7 @@ import Toggle from '@/app/components/common/toggler/toggler';
 import { useIsLoading } from '@/lib/state/allCars.state';
 import { useSingleLotStore } from '@/lib/state/lotDetailsPage.state';
 import { carImagePlaceholder } from '@/img';
+import ProfitSection from './profitSection';
 
 export default function LotDetailsPage() {
 	const [isLoadingImages, setIsLoadingImages] = useState(true);
@@ -263,6 +264,7 @@ export default function LotDetailsPage() {
 					{/* Right Column - Bidding Info */}
 					{/* <BidBuy car={car}></BidBuy> */}
 				</div>
+				<ProfitSection {...car}></ProfitSection>
 			</div>
 		</div>
 	);
