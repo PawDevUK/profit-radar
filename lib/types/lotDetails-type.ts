@@ -58,7 +58,7 @@ export interface LotDetailsType {
 }
 
 export interface LotWithProfitStatusType extends LotDetailsType {
-	profitStatus: ProfitStatusDetailsType;
+	profitStatus?: ProfitStatusDetailsType;
 }
 
 export function createLotObject(): LotDetailsType {
