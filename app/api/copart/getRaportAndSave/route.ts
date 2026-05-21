@@ -9,23 +9,10 @@ export async function POST(request: NextRequest) {
 	if (request.body) {
 		body = await request.json();
 	}
-
 	if (!body || typeof body !== 'object' || Array.isArray(body) || !body.lotInv) {
 		message = 'No lot details data has been passed. Profitability report is not generated.';
 		return NextResponse.json({ message }, { status: 400 });
 	}
-
-	// const lotLookupId = body._id;
-	// const existingLot = await getOneLotById(String(lotLookupId));
-	// if (existingLot?.profitStatus.topCountries.length > 0) {
-	// 	return NextResponse.json(
-	// 		{
-	// 			message: 'Report is already generated for this lot. Process canceled.',
-	// 			lotId: existingLot._id,
-	// 		},
-	// 		{ status: 409 },
-	// 	);
-	// }
 
 	const reportResponse = await fetch(`${origin}/api/copart/getProfitStatus`, {
 		method: 'POST',
@@ -44,6 +31,7 @@ export async function POST(request: NextRequest) {
 	const lotWithProfitStatus = report?.lotWithProfitStatus;
 
 	if (lotWithProfitStatus?.profitStatus) {
+		message = 'Saving report to database!';
 		const saveResponse = await fetch(`${origin}/api/copart/db/saveProfitStatusToLot`, {
 			method: 'POST',
 			headers: {
