@@ -23,15 +23,19 @@ export async function POST(request: NextRequest) {
 		message = 'No lot details data has been passed. Profitability report is not generated.';
 		return NextResponse.json({ message }, { status: 400 });
 	}
-	if (body.title && body.images && body.saleName && !body.profitStatus) {
-		try {
-			lotWithProfitStatus = body;
-			lotWithProfitStatus.profitStatus = await getProfitStatus(body);
-		} catch (error) {
-			message = error instanceof Error ? error.message : String(error);
-		}
+	// if (!body.profitStatus && body.profitStatus.topCountries.length === 0) {
+	message = 'Generating report as there is not topContires';
+	try {
+		lotWithProfitStatus = body;
+		lotWithProfitStatus.profitStatus = await getProfitStatus(body);
+	} catch (error) {
+		message = error instanceof Error ? error.message : String(error);
 	}
-
+	// }
+	if (body.profitStatus && body.profitStatus.topCountries.length > 0) {
+		message = 'The report is already created and accessible to view.';
+	}
+	console.log(message);
 	return await NextResponse.json({
 		lotWithProfitStatus,
 		message,
