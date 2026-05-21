@@ -1,6 +1,7 @@
 export default function createPrompt(data: string) {
 	const prompt = `You are an automotive export risk analyst.
 Analyze the provided vehicle data and return a conservative profitability report for exporting from USA.
+Target markets are ONLY: Poland, Ukraine, and Germany.
 
 ---- IMPORTANT ----
 USE ONLY REAL RESALE FIGURES, NOT ESTIMATES.
@@ -23,7 +24,11 @@ Critical rules:
 7. If any formula cannot be satisfied, lower confidence and explain in reasoning.
 8. Use image urls to assess the damage of the car.
 9. Use external websites to make sure the resale value is correct.
+  - For Poland use otomoto.pl
+  - For Germany use mobile.de or autoscout24.de or mobile.de
+  - For Ukraine use auto.ria.com
 10. Add to each returned country object source of resale value.
+11. Return exactly 3 countries in topCountries and they must be: Poland, Ukraine, Germany.
 
 Vehicle data (json string):
 ${data}
@@ -42,51 +47,7 @@ Return this exact json structure:
   "nonProfit": "boolean",
   "topCountries": [
     {
-      "rank": 1,
-      "country": "string",
-      "distanceAuctionToPort": "number",
-      "estimateInLandUsaTransport": "number",
-      "estimateInLandUsaTransportCost": "number",
-      "portOfOrigin": "string",
-      "portOfDestination": "string",
-      "daysOfSail": "number",
-      "estimateSeaTransportCost": "number",
-      "estimatedPurchaseCostUsd": "number",
-      "estimatedRepairCostUsd": "number",
-      "estimatedShippingAndImportUsd": "number",
-      "estimatedTotalCostUsd": "number",
-      "estimatedResaleValueUsd": "number",
-      "estimatedNetProfitUsd": "number",
-      "estimatedRoiPercent": "number",
-      "timeToSellDays": "number",
-      "confidence": "low|medium|high",
-      "reasoning": "short string",
-      "resaleValueSource": "string"
-    },
-    {
-      "rank": 2,
-      "country": "string",
-      "distanceAuctionToPort": "number",
-      "estimateInLandUsaTransport": "number",
-      "estimateInLandUsaTransportCost": "number",
-      "portOfOrigin": "string",
-      "portOfDestination": "string",
-      "daysOfSail": "number",
-      "estimateSeaTransportCost": "number",
-      "estimatedPurchaseCostUsd": "number",
-      "estimatedRepairCostUsd": "number",
-      "estimatedShippingAndImportUsd": "number",
-      "estimatedTotalCostUsd": "number",
-      "estimatedResaleValueUsd": "number",
-      "estimatedNetProfitUsd": "number",
-      "estimatedRoiPercent": "number",
-      "timeToSellDays": "number",
-      "confidence": "low|medium|high",
-      "reasoning": "short string",
-      "resaleValueSource": "string"
-    },
-    {
-      "rank": 3,
+      "rank": number,
       "country": "string",
       "distanceAuctionToPort": "number",
       "estimateInLandUsaTransport": "number",
