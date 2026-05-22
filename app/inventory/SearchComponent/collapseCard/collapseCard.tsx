@@ -9,8 +9,8 @@ export default function CollapseCard({ children, title, icon }: { children: Reac
 		<div className='z-20 bg-white borderBottom'>
 			<button className='w-full flex items-center justify-between py-5 px-10 font-semibold text-black focus:outline-none' onClick={() => setOpen((prev) => !prev)}>
 				<div className='flex flex-row'>
-					{icon && <span className='icon'>{icon}</span>}
-					<span className='header ml-2 mt-1'>{title}</span>
+					{icon && <span className='icon flex flex-col justify-center'>{icon}</span>}
+					<span className='header ml-2 mt-0.5'>{title}</span>
 				</div>
 				<svg
 					id='chevron'
