@@ -28,7 +28,6 @@ export default function ProfitSection(lotData: LotWithProfitStatusType) {
 			const response = await report.json();
 
 			if (report.ok) {
-				console.log('Saved report ----', response);
 				setLotWithReport(response.report.lotWithProfitStatus);
 				setReportMessage(response.message);
 				setProfitStatus(response.report.lotWithProfitStatus.profitStatus);
