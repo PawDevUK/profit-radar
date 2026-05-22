@@ -3,10 +3,10 @@ import type { LotWithProfitStatusType } from '@/lib/types/lotDetails-type';
 import { ProfitStatusDetailsType } from '@/lib/types/profitStatus-type';
 import { Spinner } from '@/app/components/common/spinner';
 
-const Row = ({ label, value }: { label: string; value: unknown }) => (
+const Row = ({ label, value }: { label: string; value: string | boolean | number | undefined }) => (
 	<div>
 		<p className='text-xs text-gray-600'>{label}</p>
-		<p className='text-sm font-medium text-gray-900'>{value ?? '—'}</p>
+		<p className='text-sm font-medium text-gray-900'>{value ?? '-'}</p>
 	</div>
 );
 
