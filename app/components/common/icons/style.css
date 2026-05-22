@@ -1,0 +1,6 @@
+.Icon-custom-class {
+    width: 26px;
+    height: 26px;
+    stroke-width: 2;
+    color: var(--filter-icons);
+}
