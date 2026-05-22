@@ -14,7 +14,7 @@ import {
 	cylindersIcon,
 	auctionNameIcon,
 	locationIcon,
-} from '@/app/components/common/icons';
+} from '@/app/components/common/icons/icons';
 
 import { useAllCars } from '@/lib/state/allCars.state';
 import './style.css';
