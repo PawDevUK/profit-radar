@@ -15,9 +15,6 @@ export default function ProfitSection(lotData: LotWithProfitStatusType) {
 	const [reportMessage, setReportMessage] = useState<string | null>(null);
 	const [lotWithReport, setLotWithReport] = useState<LotWithProfitStatusType>();
 	const [profitStatus, setProfitStatus] = useState<ProfitStatusDetailsType | undefined>(lotData.profitStatus);
-
-	console.log('Lot data', lotData.profitStatus);
-
 	const handleGenerateReportAndSave = async () => {
 		setIsGeneratingReport(true);
 		try {
