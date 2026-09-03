@@ -51,7 +51,7 @@ ProfitRadar is a Next.js App Router application for discovering profitable vehic
 ## Pages
 
 | Route | Description |
-|---|---|
+| --- | --- |
 | `/howItWorks` | Landing / explainer page (default redirect from `/`) |
 | `/inventory` | Main lot browser with filters and sale list results |
 | `/inventory/lot/[lotId]` | Individual lot detail view with profit section |
@@ -67,7 +67,7 @@ ProfitRadar is a Next.js App Router application for discovering profitable vehic
 ### Copart — Database
 
 | Method | Endpoint | Description |
-|---|---|---|
+| --- | --- | --- |
 | `GET` | `/api/copart/db/getAllSaleLists` | Fetch all calendar months with auctions from MongoDB |
 | `GET` | `/api/copart/db/getSaleListById` | Fetch a specific sale list by ID |
 | `PUT` | `/api/copart/db/scrape-save-list` | Scrape all upcoming auctions and save lot lists to MongoDB |
@@ -75,19 +75,30 @@ ProfitRadar is a Next.js App Router application for discovering profitable vehic
 
 ### Copart — Scraping & Utilities
 
+Calling endpoints need to be in an order starting from updating calendar. First endpoint is to update calendar in order to do that user need to send request to `/api/copart/scrape-calendar`.
+Then when all calendar is scraped, updated and saved each sale can be scraped. In order to scrape each sale multi step process need to be triggered. Firstly sale csv file need to be scraped, then it need to be converted into json object and saved, then title need to parsed and save. Finally, images need to be scraped and urls added to database.
+
+Steps:
+
+- Scrape, update and calendar.
+- Scrape each sale from the calendar.
+  - Download csv file
+  - convert the csv file into json
+  - parse title
+  - get images urls
+
 | Method | Endpoint | Description |
-|---|---|---|
+| --- | --- | --- |
 | `GET` | `/api/copart/scrape-calendar` | Scrape Copart calendar and persist to MongoDB |
 | `GET` | `/api/copart/login` | Log in to Copart via Puppeteer and trigger a sale list page load |
 | `GET` | `/api/copart/login_CsvSaleList` | Log in to Copart and download a CSV export of a sale list |
-| `GET` | `/api/copart/image-proxy?url=...` | Proxy Copart image URLs to bypass CORS/hotlink restrictions |
 | `GET` | `/api/copart/local-ai-images?lotId=...` | List AI-processed images stored locally for a lot |
 | `POST` | `/api/copart/parse-title` | Parse a raw lot title with AI (single, batch, or full car objects) |
 
 ### Otomoto
 
 | Method | Endpoint | Description |
-|---|---|---|
+| --- | --- | --- |
 | `GET` | `/api/otomoto/otomoto-checker?action=check-all` | Cross-check all Copart lots against Otomoto listings |
 | `GET` | `/api/otomoto/otomoto-checker?action=verify-car&make=...&model=...` | Verify a specific make/model exists on Otomoto |
 | `GET\|POST` | `/api/otomoto/otomoto-listing-check` | Check a single Otomoto listing URL |
@@ -95,7 +106,7 @@ ProfitRadar is a Next.js App Router application for discovering profitable vehic
 ### Auctions (filesystem-backed)
 
 | Method | Endpoint | Description |
-|---|---|---|
+| --- | --- | --- |
 | `GET` | `/api/auctions` | Read auctions from `results/auctions.json` |
 | `POST` | `/api/auctions` | Append an auction entry to `results/auctions.json` |
 
