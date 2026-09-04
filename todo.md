@@ -32,5 +32,6 @@
     *number of lots for sale
     *number buy it now
 
-- [ ] Add check for existing sales to avoid saving same sale lists twice.
-- [ ] Create check for duplicates sales lists
+- [x] Add check for duplicates sales to avoid saving same sale lists twice.
+- [x] Create check for duplicates sales lists in the fetchAllSaleLists route.
+- [ ] Fix the bug of the old sales from May added to current sale.
