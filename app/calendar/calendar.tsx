@@ -2,6 +2,7 @@
 import { format, isSameDay } from 'date-fns';
 import { useEffect, useMemo, useState } from 'react';
 import { CalendarType, SaleListType } from '@/lib/types/calendar-type';
+import RefreshButton from '@/app/components/common/buttons/refreshButton';
 
 type CalendarDay = {
 	date: Date;
@@ -122,8 +123,8 @@ export default function Calendar({ allAuctions, todaysEvents }: { allAuctions: C
 			<div className='rounded-xl border border-slate-200 bg-white shadow-sm w-[80vw] lg:w-225 '>
 				<div className='px-6 py-4'>
 					<div className='mt-6'>
-						<div className='flex justify-center space-x-2'>
-							<div className='flex items-center space-x-2'>
+						<div className='relative flex justify-center space-x-2'>
+							<div className=' flex items-center space-x-2'>
 								<button
 									type='button'
 									onClick={goToPreviousMonth}
@@ -137,7 +138,7 @@ export default function Calendar({ allAuctions, todaysEvents }: { allAuctions: C
 										/>
 									</svg>
 								</button>
-								<h3 className='text-sm font-semibold text-gray-900'>{monthLabel}</h3>
+								<h3 className='text-md font-semibold text-gray-800'>{monthLabel}</h3>
 								<button
 									type='button'
 									onClick={goToNextMonth}
@@ -152,6 +153,8 @@ export default function Calendar({ allAuctions, todaysEvents }: { allAuctions: C
 									</svg>
 								</button>
 							</div>
+
+							<div className='absolute right-10 top-1'>{process.env.NODE_ENV === 'development' && <RefreshButton />}</div>
 						</div>
 						<div className='mt-6 grid grid-cols-7 gap-1 text-center text-xs font-medium uppercase tracking-wide text-gray-500'>
 							{dayLabels.map((label, i) => (
