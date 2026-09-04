@@ -27,3 +27,10 @@
         - Download csv file, convert it into lotDetails object and compare it to existing saved in database. In case of additional lots or new lots add them to saleList and in case of different values in existing lotDetails database entries update them.
         
 - [ ]  Add at lest 5 extra login credentials email/password and rotate credentials with rotating ip on every login to reduce possibility of being banned.
+- [ ] Stats component for the calendar to show how many auctions are for selected day with data of the lots for sale.
+    *number of sales
+    *number of lots for sale
+    *number buy it now
+
+- [ ] Add check for existing sales to avoid saving same sale lists twice.
+- [ ] Create check for duplicates sales lists
