@@ -75,6 +75,12 @@ export default function Calendar({ allAuctions, todaysEvents }: { allAuctions: C
 	const goToPreviousMonth = () => setCurrentDate((d) => new Date(d.getFullYear(), d.getMonth() - 1, 1));
 	const goToNextMonth = () => setCurrentDate((d) => new Date(d.getFullYear(), d.getMonth() + 1, 1));
 
+	function getDate(date: Date | string | null) {
+		const live = date === 'LIVE NOW' ? true : false;
+		const currentDate = live ? 'LIVE NOW' : date && new Date(date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+		return <div className={live ? 'text-[var(--mongo-green)]' : ''}>{currentDate}</div>;
+	}
+
 	if (loading) {
 		return (
 			<div className='min-h-screen bg-gray-50 flex items-center justify-center'>
@@ -177,24 +183,24 @@ export default function Calendar({ allAuctions, todaysEvents }: { allAuctions: C
 						{displayDay.map((event, i) => (
 							<li key={i} className='flex items-center space-x-4 py-4'>
 								<div className='flex-1'>
-									<h3 className='text-sm font-medium text-gray-900'>{event.saleName}</h3>
-									<dl className='mt-1 flex space-x-4 text-xs text-gray-500'>
-										<div>
-											<dt className='sr-only'>Date</dt>
-											<dd>
-												<time dateTime={event.currentSale?.toString() ?? undefined}>
-													{event.currentSale &&
-														new Date(event.currentSale).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
-													{event.saleTime && ` at ${event.saleTime}`}
-												</time>
-											</dd>
-										</div>
-										{event.saleName && (
-											<div>
-												<dt className='sr-only'>Location</dt>
-												<dd>{event.saleName}</dd>
+									<h3 className='text-md font-medium text-gray-900'>{event.saleName}</h3>
+									<dl className='mt-1 text-xs text-gray-500'>
+										<dd className='flex flex-col gap-2 text-[14px] md:flex-row md:items-center md:gap-5'>
+											<div className='flex'>
+												<div className='mr-2 font-bold'>Current sale:</div>
+												<time>{getDate(event.currentSale)}</time>
 											</div>
-										)}
+
+											<div className='flex'>
+												<div className='mr-2 font-bold'>Next sale:</div>
+												<time>{getDate(event.nextSale)}</time>
+											</div>
+
+											<div className='flex'>
+												<div className='mr-2 font-bold'>Sale type:</div>
+												<div>{event.saleType}</div>
+											</div>
+										</dd>
 									</dl>
 								</div>
 								<div className='flex-shrink-0'>
