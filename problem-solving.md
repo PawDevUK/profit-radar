@@ -82,3 +82,7 @@ I need the steps to follow.
 1. Fetch sale list in csv format. (done)
 2. Convert CSV into json. (done)
 3. Convert key into camel case keys. At the moment key are with spacing. (done)
+
+### Problem 8
+
+The scraper works only locally as deployed to vercel can access browser window there fore it can works in the same way as the local machine. I need to add update button or functionality which will update calendar automatically  on some event like buton click or user entry (That is potentially problematic solution as users can triggers to meny requests). I think adding a button will be best option to do.
