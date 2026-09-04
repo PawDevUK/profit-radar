@@ -215,3 +215,36 @@ export async function updateLotProfitStatus(LotDetails: LotWithProfitStatusType)
 		message,
 	};
 }
+
+export async function getDuplicateSales() {
+	await connectDB();
+
+	return CalendarSaleModel.aggregate([
+		{ $unwind: '$auctions' },
+		{
+			$match: {
+				'auctions.currentSaleUrl': {
+					$exists: true,
+					$nin: [null, ''],
+				},
+			},
+		},
+		{
+			$group: {
+				_id: '$auctions.currentSaleUrl',
+				count: { $sum: 1 },
+				entries: {
+					$push: {
+						calendarId: '$_id',
+						auctionId: '$auctions._id',
+						saleName: '$auctions.saleName',
+						currentSale: '$auctions.currentSale',
+						currentSaleUrl: '$auctions.currentSaleUrl',
+					},
+				},
+			},
+		},
+		{ $match: { count: { $gt: 1 } } },
+		{ $sort: { count: -1 } },
+	]);
+}
