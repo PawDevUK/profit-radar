@@ -42,7 +42,6 @@ export default function CalendarPage() {
 	};
 
 	useEffect(() => {
-		console.log('Loading calendar data!!');
 		const fetchSales = async () => {
 			setLoading(true);
 			try {
