@@ -68,6 +68,5 @@ export default async function scrapeCopartCalendar(signal?: AbortSignal) {
 	} finally {
 		signal?.removeEventListener('abort', stopScraper);
 		await browser?.close().catch(() => undefined);
-		await page.close();
 	}
 }
