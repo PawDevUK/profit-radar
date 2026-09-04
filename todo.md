@@ -6,9 +6,9 @@
 - [x] Add selectOne function to checkBox component for search filter which need to select only one option.
 - [x] update naming to follow conventions.
 - [x] Improve performance by adding useCallback and useMemo
-- [x] Add onClick to lot card so on click it should open new page with detailed info of the sinlge lot.
+- [x] Add onClick to lot card so on click it should open new page with detailed info of the single lot.
 - [x] Add database for scraped lots
-- [ ] CHANGE NAME TO "IMPORTEK"
+- [ ] CHANGE NAME TO "IMPORTEK" (That's only for Polish market.)
 - [ ] Add tokens to endpoints to authorise requests.
 - [x] Scraper page pagination.
 - [x] Add scraping data to db.
