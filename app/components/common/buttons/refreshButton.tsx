@@ -30,7 +30,7 @@ export default function RefreshButton() {
 	return (
 		<button
 			className='hover:bg-(--mongo-green-light-hover) items-center justify-center rounded-md
-                         flex h-7 text-gray-600  hover:text-gray-700 border '
+                         flex h-7 text-gray-600  hover:text-gray-700 border hover:border-(--mongo-green)'
 			onClick={scrapeCalendar}>
 			<div className='hidden md:block ml-2'>{fetching ? 'Stop' : 'Refresh Calendar'}</div>
 			<RefreshCw className={`h-4 w-4 m-2 ${fetching ? 'spinning-svg' : ''}`} />
