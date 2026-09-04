@@ -109,3 +109,23 @@
     border-bottom: var(--mongo-green) solid 1px;
     border-color: var(--mongo-green);
 }
+
+.spinning-svg {
+    /* Use the keyframe animation called 'spin' */
+    animation: spin 2s linear infinite;
+
+    /* Critical for SVGs: ensures it rotates around its own center */
+    transform-origin: center;
+    transform-box: fill-box;
+}
+
+/* Define the spin animation */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
