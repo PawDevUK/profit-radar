@@ -43,7 +43,7 @@ ProfitRadar is a Next.js App Router application for discovering profitable vehic
 - **Title parser** — sends raw Copart lot titles to OpenAI/Grok and extracts structured fields (make, model, year, trim, body type)
 - **AI image analysis** — processes lot images locally and saves AI-annotated versions under `public/lot-images/copart/<lotId>/`
 
-### Proxy Support
+### Proxy Support (Currently not in use.)
 
 - All Puppeteer scrapers route through a configurable proxy (`PROXY_SERVER`, `PROXY_USERNAME`, `PROXY_PASSWORD`)
 - Stealth plugin applied to avoid bot detection
