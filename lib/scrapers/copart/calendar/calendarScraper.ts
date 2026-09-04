@@ -8,12 +8,22 @@ const pageOptions: GoToOptions = {
 	timeout: 0,
 };
 
-export default async function scrapeCopartCalendar() {
+export default async function scrapeCopartCalendar(signal?: AbortSignal) {
 	const scrapedCalendarMonth: CalendarType = createEmptyCalendarList();
 	const options = {
 		headless: false, // set to true in production
 		args: ['--no-sandbox', '--disable-setuid-sandbox'],
 	};
+
+	const stopScraper = () => {
+		void browser?.close();
+	};
+
+	if (signal?.aborted) {
+		throw new Error('Scraping cancelled');
+	}
+
+	signal?.addEventListener('abort', stopScraper, { once: true });
 
 	const browser = await puppeteer.launch(options);
 	const page = await browser.newPage();
@@ -56,7 +66,8 @@ export default async function scrapeCopartCalendar() {
 
 		return createEmptyCalendarList();
 	} finally {
+		signal?.removeEventListener('abort', stopScraper);
+		await browser?.close().catch(() => undefined);
 		await page.close();
-		await browser.close();
 	}
 }
